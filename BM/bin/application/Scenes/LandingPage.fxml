@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneControllers.LandingPageController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="56.0" layoutY="1.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../img/BG.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="SinglePlayButton" layoutX="220.0" layoutY="87.0" mnemonicParsing="false" onAction="#SinglePlayButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Singleplay" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Button>
+      <Button fx:id="OnlineButton" layoutX="220.0" layoutY="150.0" mnemonicParsing="false" onAction="#OnlineButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Online" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Button>
+      <Button fx:id="GuideButton" layoutX="220.0" layoutY="212.0" mnemonicParsing="false" onAction="#GuideButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Guide" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Button>
+      <Button fx:id="ExitButton" layoutX="220.0" layoutY="276.0" mnemonicParsing="false" onAction="#ExitButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Exit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
