@@ -17,11 +17,18 @@ public class Main extends Application {
 	
 		
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
-			Scene scene = new Scene(root);
+			GamePanel game= new GamePanel();
+			
+//			Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
+//			Scene scene = new Scene(root);
 			primaryStage.setTitle("Bomberman");
-			primaryStage.setScene(scene);
+			primaryStage.setScene(game.getScene());
+			//primaryStage.setMaxWidth(820);
+			primaryStage.setResizable(true);
 			primaryStage.show();
+			
+		
+		
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
