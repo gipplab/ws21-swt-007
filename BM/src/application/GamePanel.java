@@ -1,12 +1,20 @@
 package application;
 
+
+import java.io.File;
+
+import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
-public class GamePanel {
+public class GamePanel  {
 	private static final int WIDTH= 600 ;
     private static final int HEIGHT=WIDTH ;
     private static final int ROWS= 22 ;
@@ -18,14 +26,15 @@ public class GamePanel {
 	 private boolean gameOver;
 	 private Scene scene;
 	 Canvas canvas;
-	
+	 Group root;
+
 	 public GamePanel()  {
 		
-		 Group root = new Group();
-		  canvas = new Canvas(WIDTH, HEIGHT);
-		 root.getChildren().add(canvas);
-		 scene = new Scene(root,WIDTH,HEIGHT);
-		 gc = canvas.getGraphicsContext2D();
+		root  = new Group();
+		canvas = new Canvas(WIDTH, HEIGHT);
+		root.getChildren().add(canvas);
+		scene = new Scene(root,WIDTH,HEIGHT);
+		gc = canvas.getGraphicsContext2D();
 		run();
 		System.out.println(SQUARE_SIZE);
 		 
@@ -63,14 +72,15 @@ private void drawBackground( GraphicsContext gc) {
 }
 
 private void drawPoint (GraphicsContext gc)	{
-	
-	
+	Image iv = new Image(getClass().getResource("img/player.jpg").toExternalForm());
+	 gc.drawImage(iv, 15*SQUARE_SIZE, SQUARE_SIZE*2,SQUARE_SIZE,SQUARE_SIZE);
 	
 }
 
+
 }
 
-
+// KeyListner müssen wir noch hinzufügen um den Character bewegen zu können
 
 
 
