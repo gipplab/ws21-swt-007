@@ -17,8 +17,8 @@ import javafx.stage.Stage;
 public class GamePanel  {
 	private static final int WIDTH= 600 ;
     private static final int HEIGHT=WIDTH ;
-    private static final int ROWS= 22 ;
-    private static final int COLUMNS=22;
+    private static final int ROWS= 16 ;
+    private static final int COLUMNS=16;
     // Rectangle genau auf die Size anpassen
     private static final double SQUARE_SIZE= WIDTH*1.0/ROWS ;
     
