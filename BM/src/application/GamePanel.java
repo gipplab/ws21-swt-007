@@ -2,13 +2,17 @@ package application;
 
 
 
+
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-
+import javafx.util.Duration;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -51,7 +55,10 @@ public class GamePanel extends Thread implements EventHandler<KeyEvent>  {
 	Playerspeed=0.15;
 	Objekte = 0;
 	run();
-		int a;
+	Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000000/60), e -> run()));
+    timeline.setCycleCount(Animation.INDEFINITE);
+    timeline.play();
+	
 	};
 
 
@@ -68,7 +75,7 @@ public double getHeight() {
 	return HEIGHT;
 }
 public void run() {
-
+	update();
 	drawBackground(gc);
 	drawPlayer(gc,imageX,imageY);
 	if(Objekte==1) {
@@ -76,7 +83,9 @@ public void run() {
 	Objekte =0;}
 	}
 	
-
+private void update() {
+	
+}
 private void drawBackground( GraphicsContext gc) {
 	
 	for(int i=0 ; i<ROWS; i++) {
@@ -93,9 +102,7 @@ private void drawBackground( GraphicsContext gc) {
 			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);}
 			
 		}
-		}
-		
-
+		}	
 }
 
 private void drawPlayer (GraphicsContext gc, double d , double e)	{
