@@ -43,7 +43,7 @@ public class KeysHandler {
 	    }
 	    @Override
 	    public void handle(KeyEvent evt) {
-	        //System.out.println("The key released is : "+evt.getText()+" with keycode "+evt.getCode().getName());
+	      
 
 	        KeyCode code = evt.getCode();
 
@@ -54,10 +54,10 @@ public class KeysHandler {
 	class keyPressedHandler implements javafx.event.EventHandler<KeyEvent>{
 	    @Override
 	    public void handle(KeyEvent evt) {
-	        //System.out.println("The key pressed is : "+evt.getText()+" with keycode "+evt.getCode().getName());
+	     
 	        KeyCode code = evt.getCode();
 	        
-	        // only add once... prevent duplicates
+	       
 	        if ( !KeysHandler.inputList.contains(code) )
 	        	KeysHandler.inputList.add( code );
 	    }
