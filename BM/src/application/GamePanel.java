@@ -5,7 +5,10 @@ package application;
 
 import java.io.IOException;
 
+import application.Objects.Bomberman;
+import bomberman.gamecontroller.InputManager;
 import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
@@ -13,14 +16,13 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.util.Duration;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 
-public class GamePanel  implements EventHandler<KeyEvent>  {
+public class GamePanel    {
 	public static final int WIDTH= 600 ;
 	public static final int HEIGHT=600 ;
 	public static final int ROWS= 22;
@@ -31,36 +33,48 @@ public class GamePanel  implements EventHandler<KeyEvent>  {
 
     private  int Objekte ;
 	 private GraphicsContext gc;
-//	 private boolean gameOver;
+	 private boolean gameOver;
 	 private Scene scene;
 	 Canvas canvas;
 	 Group root;
 	 double Playerspeed; //2, 3
 	 public static double imageX=4, imageY=4;
-
+	 static Bomberman player;
 	 public GamePanel()  {
 		
 		root  = new Group();
 		canvas = new Canvas(WIDTH, HEIGHT);
 		root.getChildren().add(canvas);
 		scene = new Scene(root,WIDTH,HEIGHT);
-		scene.setOnKeyPressed(this);
+		KeysHandler.attachEventHandlers(scene);
+		//scene.setOnKeyPressed(this);
 		gc = canvas.getGraphicsContext2D();
 		  
 	}
 	public void init() throws IOException {
-	
-		Ressourcen.readFiles();
+	player= new Bomberman(2,2);
+	Ressourcen.readFiles();
 	Playerspeed=0.15;
 	Objekte = 0;
 	run();
-	Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000000/60), e -> run()));
-    timeline.setCycleCount(Animation.INDEFINITE);
-    timeline.play();
+	AnimationTimer timeline = new AnimationTimer(){
+
+		@Override
+		public void handle(long arg0) {
+			update();
+			
+		}
+		
+	};
+	timeline.start();
+	
+ 
 	
 	};
 
-
+public static Bomberman getPlayer() {
+	return player;
+}
 public Scene getScene() {
 	return scene;
 }
@@ -74,15 +88,25 @@ public double getHeight() {
 	return HEIGHT;
 }
 public void run() {
-	update();
+	
 	drawBackground(gc);
 	drawPlayer(gc,imageX,imageY);
 	if(Objekte==1) {
 	gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(),SQUARE_SIZE*imageX, SQUARE_SIZE*imageY,SQUARE_SIZE,SQUARE_SIZE);
-	Objekte =0;}
+	Objekte =0;
+	}
 	}
 	
 private void update() {
+	InputManager.handlePlayerMovements();
+	drawBackground(gc);
+	drawPlayer(gc,player.getX(),player.getY());
+//	if(Objekte==1) {
+//	gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(),SQUARE_SIZE*imageX, SQUARE_SIZE*imageY,SQUARE_SIZE,SQUARE_SIZE);
+//	Objekte =0;
+//	}
+	
+	
 	
 }
 private void drawBackground( GraphicsContext gc) {
@@ -110,54 +134,7 @@ private void drawPlayer (GraphicsContext gc, double d , double e)	{
 	
 	
 }
-@Override
-public void handle(KeyEvent event){
-	// TODO Auto-generated method stub
-	 KeyCode code = event.getCode();
-     if (code == KeyCode.RIGHT || code == KeyCode.D) {
-    
-    	 moveRight();
-     } else if (code == KeyCode.LEFT || code == KeyCode.A) {
-    	 moveLeft();
-     } else if (code == KeyCode.UP || code == KeyCode.W) {
-    	 moveUp();
-     } else if (code == KeyCode.DOWN || code == KeyCode.S) {
-    	 moveDown();
-	
-     }else if (code == KeyCode.SPACE || code == KeyCode.ENTER) {
-    	 placeBomb();
-	
-     }
-}
 
-private void moveRight() {
-	if(imageX <ROWS-2 )
-	imageX=imageX+Playerspeed;
-	run();	
-}
-
-private void moveLeft() {
-	if(imageX >1)
-	imageX=imageX-Playerspeed;
-	run();
-}
-
-private void moveUp() {
-	if( imageY>1)
-	imageY=imageY-Playerspeed;
-	run();
-}
-
-private void moveDown() {
-	if( imageY<ROWS-2)
-	imageY=imageY+Playerspeed;
-	run();
-	}
-private void placeBomb() {
-	System.out.println(imageX+", "+imageY);
-	Objekte =1;
-	run();
-}
 	
 }
 

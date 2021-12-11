@@ -1,13 +1,12 @@
-package applic.objects;
+package application.Objects;
 
-import bomberman.java;
 
 public class bombentasche {
 	int bombenanzahl=5;
 	
 	
 	//Erhöht die Maximal Anzahl der Bomben die ein Spieler tragen kann .
-	int increasebombs();
+	int increasebombs() {}
 	
 	
 }
@@ -27,7 +26,7 @@ public class laufschuhe {
 	
 	
 	// Erhöht die Bewegungsgeschwindigkeit des Spielers
-	float increasespeed()
+	float increasespeed() {}
 }
 
 public class herz {
@@ -35,7 +34,7 @@ public class herz {
 	
 	
 	//Erhöht die Gesundheitspunkte der Bombermancharakters
-    	int increasehealth(int bomberman.health ){
+int increasehealth(int bomberman.health ){
 		
 		
 	}
