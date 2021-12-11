@@ -3,6 +3,8 @@ package application;
 
 
 
+import java.io.IOException;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -18,16 +20,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 
-public class GamePanel extends Thread implements EventHandler<KeyEvent>  {
+public class GamePanel  implements EventHandler<KeyEvent>  {
 	public static final int WIDTH= 600 ;
 	public static final int HEIGHT=600 ;
-	public static final int ROWS= 17;
+	public static final int ROWS= 22;
 	public static final int COLUMNS=ROWS;
 	public static final double SQUARE_SIZE= WIDTH*1.0/ROWS ;
-    private Image player1;
-    private Image bombe1;
-    private Image Background;
-    private Image Background1;
+
+
+
     private  int Objekte ;
 	 private GraphicsContext gc;
 //	 private boolean gameOver;
@@ -47,11 +48,9 @@ public class GamePanel extends Thread implements EventHandler<KeyEvent>  {
 		gc = canvas.getGraphicsContext2D();
 		  
 	}
-	public void init() {
-	player1 = new Image(getClass().getResource("img/CharacterImages/player.jpg").toString());
-	bombe1= new Image(getClass().getResource("img/danny.jpg").toString());
-	Background= new Image(getClass().getResource("img/hardWall.jpg").toString());
-	Background1= new Image(getClass().getResource("img/softWall.jpg").toString());
+	public void init() throws IOException {
+	
+		Ressourcen.readFiles();
 	Playerspeed=0.15;
 	Objekte = 0;
 	run();
@@ -79,7 +78,7 @@ public void run() {
 	drawBackground(gc);
 	drawPlayer(gc,imageX,imageY);
 	if(Objekte==1) {
-	gc.drawImage(bombe1,SQUARE_SIZE*imageX, SQUARE_SIZE*imageY,SQUARE_SIZE,SQUARE_SIZE);
+	gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(),SQUARE_SIZE*imageX, SQUARE_SIZE*imageY,SQUARE_SIZE,SQUARE_SIZE);
 	Objekte =0;}
 	}
 	
@@ -91,13 +90,13 @@ private void drawBackground( GraphicsContext gc) {
 	for(int i=0 ; i<ROWS; i++) {
 		for(int j=0;j<COLUMNS;j++) {
 			if(i==0 || j==0|| i==ROWS-1||j==COLUMNS-1)
-				gc.drawImage(Background,SQUARE_SIZE*i, SQUARE_SIZE*j,SQUARE_SIZE,SQUARE_SIZE);
+				gc.drawImage(Ressourcen.IMAGES.HARDWALL.getImage(),SQUARE_SIZE*i, SQUARE_SIZE*j,SQUARE_SIZE,SQUARE_SIZE);
 				
 			else if((i+j)%2==0) {
 				gc.setFill(Color.WHITE);
 				gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);
 				if(i%2 ==0 )
-					gc.drawImage(Background1,SQUARE_SIZE*i, SQUARE_SIZE*j,SQUARE_SIZE,SQUARE_SIZE);}
+					gc.drawImage(Ressourcen.IMAGES.SOFTWALL.getImage(),SQUARE_SIZE*i, SQUARE_SIZE*j,SQUARE_SIZE,SQUARE_SIZE);}
 			else { gc.setFill(Color.WHITE);
 			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);}
 			
@@ -107,7 +106,7 @@ private void drawBackground( GraphicsContext gc) {
 
 private void drawPlayer (GraphicsContext gc, double d , double e)	{
 	// draw Player in anfangscoordinate
-	 gc.drawImage(player1,SQUARE_SIZE*d, SQUARE_SIZE*e,SQUARE_SIZE,SQUARE_SIZE);
+	 gc.drawImage(Ressourcen.IMAGES.PLAYER1.getImage(),SQUARE_SIZE*d, SQUARE_SIZE*e,SQUARE_SIZE,SQUARE_SIZE);
 	
 	
 }
