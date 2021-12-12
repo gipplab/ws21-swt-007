@@ -8,8 +8,16 @@ import javafx.scene.image.Image;
 
 public class Laufschuhe {
 	
+	double itemX;
+	double itemY;
+	Image image;
 	
 
+	
+	public Image getImage(){
+		
+		return image;
+	}
 	
 	
 }
