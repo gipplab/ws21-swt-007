@@ -4,6 +4,7 @@ package application;
 
 import java.util.List;
 
+import application.Objects.Bomb;
 import application.Objects.Bomberman;
 import javafx.scene.input.KeyCode;
 
@@ -13,9 +14,8 @@ import javafx.scene.input.KeyCode;
 */
 public class InputManager {
 
-   public static void handlePlayerMovements(){
+   public static void handlePlayerMovements(Bomberman player){
        List keyboardInputs = KeysHandler.getInputList();
-       Bomberman player = GamePanel.getPlayer();
       
        if(keyboardInputs.contains(KeyCode.UP) || keyboardInputs.contains(KeyCode.W)){
          player.moveUp();
@@ -42,16 +42,26 @@ public class InputManager {
            !keyboardInputs.contains(KeyCode.S) &&
            !keyboardInputs.contains(KeyCode.D)
          )
-       {
-    	  // player.unmove();       }
+       { // player.unmove(); 
+    	   }
+       
+    	       
        
        //Drop bomb
-       if(keyboardInputs.contains(KeyCode.SPACE)){
-           //if(player.hasMoreBombs()) {
+       if(KeysHandler.SPACEPRESSED){
+           if(player.getBombanzahl()>0) {
+        	   System.out.println("Bombe");
+        	   Bomb b= new Bomb(player.getX(),player.getY());
+        	   player.BombanzahlDown();
+        	   GamePanel.Objekte.add(b);
+        	   
+        	   KeysHandler.setSPACEPRESSED();
+        	   
+           }
              //  Sandbox.addEntityToGame(new BlackBomb(player.getPositionX()+ GlobalConstants.PLAYER_WIDTH/2, player.getPositionY()+GlobalConstants.PLAYER_HEIGHT/2));
             //   player.decrementBombCount();
     	   //placeBomb();
            }
        }
    }
-}
+

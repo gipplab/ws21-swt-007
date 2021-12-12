@@ -17,7 +17,7 @@ public class KeysHandler {
 	    public static char lastKeyPress;
 	    public static char lastKeyReleased;
 	    public static ArrayList<KeyCode> inputList = new ArrayList<KeyCode>();
-
+	    public static boolean SPACEPRESSED=false;
 	    public static void attachEventHandlers(Scene scene){
 	        keyReleaseHanlder released = new keyReleaseHanlder();
 	        keyPressedHandler pressed = new keyPressedHandler();
@@ -25,15 +25,15 @@ public class KeysHandler {
 	        scene.setOnKeyPressed(pressed);
 	    }
 
-	    public boolean isKeyDown(KeyCode k) {
-	    	if( inputList.contains(k)){
-	    		return true;
-	        }else{
-	            return false;
-	        }
+	    public static boolean getSPACEPRESSED() {
+	    	return SPACEPRESSED;
 	    }
-	    
-	    public static List getInputList(){
+	    public static void setSPACEPRESSED() {
+	    	if(SPACEPRESSED)
+	    	SPACEPRESSED=false;
+	    	else SPACEPRESSED=true;
+	    }
+	    public static List<?> getInputList(){
 	        return inputList;
 	    }
 	}
@@ -56,10 +56,13 @@ public class KeysHandler {
 	    public void handle(KeyEvent evt) {
 	     
 	        KeyCode code = evt.getCode();
-	        
 	       
-	        if ( !KeysHandler.inputList.contains(code) )
+	        if ( !KeysHandler.inputList.contains(code)&& code!=KeyCode.SPACE )
 	        	KeysHandler.inputList.add( code );
+	        if(code==KeyCode.SPACE) {
+	        	
+	        	KeysHandler.SPACEPRESSED=true;
+	        }
 	    }
 	}
 
