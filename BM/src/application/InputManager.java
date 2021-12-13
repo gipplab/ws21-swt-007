@@ -48,14 +48,14 @@ public class InputManager {
     	       
        
        //Drop bomb
-       if(KeysHandler.SPACEPRESSED){
+       if(KeysHandler.SpaceRessed){
            if(player.getBombanzahl()>0) {
         	   System.out.println("Bombe");
         	   Bomb b= new Bomb(player.getX(),player.getY());
         	   player.BombanzahlDown();
         	   GamePanel.Objekte.add(b);
         	   
-        	   KeysHandler.setSPACEPRESSED();
+        	   KeysHandler.setSpaceRessed();
         	   
            }
              //  Sandbox.addEntityToGame(new BlackBomb(player.getPositionX()+ GlobalConstants.PLAYER_WIDTH/2, player.getPositionY()+GlobalConstants.PLAYER_HEIGHT/2));

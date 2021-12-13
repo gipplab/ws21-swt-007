@@ -24,10 +24,10 @@ public class KeysHandler {
 	        scene.setOnKeyPressed(pressed);
 	    }
 
-	    public static boolean getSPACEPRESSED() {
+	    public static boolean getSpaceRessed() {
 	    	return SpaceRessed;
 	    }
-	    public static void setSPACEPRESSED() {
+	    public static void setSpaceRessed() {
 	    	if(SpaceRessed)
 	    		SpaceRessed=false;
 	    	else SpaceRessed=true;
