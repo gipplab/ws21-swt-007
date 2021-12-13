@@ -1,18 +1,17 @@
 package application;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import uet.oop.bomberman.Client;
 
 
 public class Main extends Application {
-	public static Client player= new Client();
+	//public static Client player= new Client();
 	
 	@Override
 	public void start(Stage primaryStage) {
 	
 		
 		try {
-			player.SetAddress("192.168.1.107");
+		//	player.SetAddress("192.168.1.107");
 		
 			GamePanel game= new GamePanel();
 			game.init();

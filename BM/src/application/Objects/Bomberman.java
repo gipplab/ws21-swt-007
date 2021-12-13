@@ -27,7 +27,7 @@ public Bomberman(double x, double y,Image img) {
 	this.speed=0.25;
 	this.explosion=1;
 	this.dead=false;
-	this.health=1;
+	this.health=2;
 		}
 	
 	boolean death() {
@@ -88,26 +88,26 @@ void gethit() {
 public void moveRight() {
 	if( this.playerX < GamePanel.ROWS-2 )
 		this.playerX= this.playerX+  this.speed;
-	 String resp=Client.accessServer("Play-RIGHT");
+	// String resp=Client.accessServer("Play-RIGHT");
 }
 
 public void moveLeft() {
 	if(this.playerX >1)
 		this.playerX=this.playerX- this.speed;
-	 String resp=Client.accessServer("Play-LEFT");
+	// String resp=Client.accessServer("Play-LEFT");
 
 }
 
 public void moveUp() {
 	if( this.playerY >1)
 		this.playerY=this.playerY - this.speed;
-	 String resp=Client.accessServer("Play-UP");
+	 //String resp=Client.accessServer("Play-UP");
 }
 
 public void moveDown() {
 	if( this.playerY < GamePanel.ROWS-2)
 		this.playerY=this.playerY+ this.speed;
-	 String resp=Client.accessServer("Play-DOWN");
+	// String resp=Client.accessServer("Play-DOWN");
 	}
  	
 	

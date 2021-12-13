@@ -30,5 +30,9 @@ public class Ressourcen {
 			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
 			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/danny.jpg").toString());
+			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/Bigflame.jpg").toString());
+			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
+			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/laufschuhe.PNG").toString());
+			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/Bombentascheorigannl.jpg").toString());
 }
 	 }
