@@ -11,15 +11,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/java/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib/javafx.graphics.jar" rootpath="." sourcepath="C:/java/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib/src.zip">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-		<accessrules>
-			<accessrule kind="accessible" pattern="javafx/*"/>
-			<accessrule kind="discouraged" pattern="com/sun/*"/>
-			<accessrule kind="discouraged" pattern="netscape/javascript/*"/>
-		</accessrules>
-	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
