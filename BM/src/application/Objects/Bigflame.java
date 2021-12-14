@@ -12,10 +12,13 @@ public class Bigflame {
 	double itemY;
 	Image image;
 	
-	
+	public void itemapear() {
+		
+	}
 	
 	public Image getImage(){
 		
 		return image;
+
 	}
 }

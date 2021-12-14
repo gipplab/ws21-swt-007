@@ -12,6 +12,9 @@ public class Laufschuhe {
 	double itemY;
 	Image image;
 	
+	public void itemapear() {
+		
+	}
 
 	
 	public Image getImage(){

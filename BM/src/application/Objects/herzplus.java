@@ -12,6 +12,9 @@ public class herzplus {
 	double itemY;
 	Image image;
 	
+	public void itemapear() {
+		
+	}
 	
 	public Image getImage(){
 		
