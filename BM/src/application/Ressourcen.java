@@ -33,6 +33,6 @@ public class Ressourcen {
 			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/Bigflame.jpg").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/laufschuhe.PNG").toString());
-			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/Bombentascheorigannl.jpg").toString());
+			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/Bombentascheoriganl.jpg").toString());
 }
 	 }
