@@ -8,7 +8,10 @@ import java.util.ArrayList;
 
 import application.Objects.Bomb;
 import application.Objects.Bomberman;
-
+import application.Objects.Bigflame;
+import application.Objects.bombentasche;
+import application.Objects.herzplus;
+import application.Objects.Laufschuhe;
 
 import javafx.animation.AnimationTimer;
 
@@ -160,8 +163,8 @@ private void drawBomb (GraphicsContext gc)	{
 
 }
 
-// KeyListner müssen wir noch verbessern 
-//um den Character  in alle Richtungen bewegen zu können
+// KeyListner mï¿½ssen wir noch verbessern 
+//um den Character  in alle Richtungen bewegen zu kï¿½nnen
 // Up left && Up right && down left && down right 
 
 
