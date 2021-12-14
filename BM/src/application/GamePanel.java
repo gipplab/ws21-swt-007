@@ -128,8 +128,7 @@ private void drawBackground( GraphicsContext gc) {
 				if(i%2 ==0 )
 					gc.drawImage(Ressourcen.IMAGES.SOFTWALL.getImage(),SQUARE_SIZE*i, SQUARE_SIZE*j,SQUARE_SIZE,SQUARE_SIZE);}
 			else { gc.setFill(Color.WHITE);
-			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);
-			}
+			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);}
 			
 		
 		}
