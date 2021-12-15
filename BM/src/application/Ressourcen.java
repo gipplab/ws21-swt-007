@@ -1,6 +1,10 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javafx.scene.image.Image;
 
@@ -35,4 +39,37 @@ public class Ressourcen {
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/laufschuhe.PNG").toString());
 			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/Bombentascheoriganl.jpg").toString());
 }
+	 
+	 //Read CSV File
+	 public static void readCSV() {
+	
+	InputStreamReader File = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/level1.csv"));
+
+     String Line = "";
+
+     BufferedReader BUFFR;
+
+     try {
+     	BUFFR = new BufferedReader(File);
+
+         
+         while ((Line = BUFFR.readLine()) != null) {
+             String[] fields = Line.split(",");
+             
+             
+             System.out.println(fields[0] + fields[1] + fields[2] + fields[3] 
+             				             + fields[4] + fields[5]);
+            
+             
+             
+
+         }
+
+     } catch (FileNotFoundException ex) {
+         ex.printStackTrace();
+     } catch (IOException ex) {
+         ex.printStackTrace();
+     }
+
+ }
 	 }
