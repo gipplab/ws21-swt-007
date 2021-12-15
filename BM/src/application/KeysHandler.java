@@ -14,9 +14,10 @@ public class KeysHandler {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	    public static char lastKeyPress;
+	    public static char lastKeyReleased;
 	    public static ArrayList<KeyCode> inputList = new ArrayList<KeyCode>();
-	    public static boolean SpaceRessed=false;
+	    public static boolean SPACEPRESSED=false;
 	    public static void attachEventHandlers(Scene scene){
 	        keyReleaseHanlder released = new keyReleaseHanlder();
 	        keyPressedHandler pressed = new keyPressedHandler();
@@ -24,13 +25,13 @@ public class KeysHandler {
 	        scene.setOnKeyPressed(pressed);
 	    }
 
-	    public static boolean getSpaceRessed() {
-	    	return SpaceRessed;
+	    public static boolean getSPACEPRESSED() {
+	    	return SPACEPRESSED;
 	    }
-	    public static void setSpaceRessed() {
-	    	if(SpaceRessed)
-	    		SpaceRessed=false;
-	    	else SpaceRessed=true;
+	    public static void setSPACEPRESSED() {
+	    	if(SPACEPRESSED)
+	    	SPACEPRESSED=false;
+	    	else SPACEPRESSED=true;
 	    }
 	    public static List<?> getInputList(){
 	        return inputList;
@@ -60,7 +61,7 @@ public class KeysHandler {
 	        	KeysHandler.inputList.add( code );
 	        if(code==KeyCode.SPACE) {
 	        	
-	        	KeysHandler.SpaceRessed=true;
+	        	KeysHandler.SPACEPRESSED=true;
 	        }
 	    }
 	}

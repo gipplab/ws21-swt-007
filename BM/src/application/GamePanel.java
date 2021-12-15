@@ -52,7 +52,8 @@ public class GamePanel    {
 	player= new Bomberman(2,2, Ressourcen.IMAGES.PLAYER1.getImage());
 	Ressourcen.readFiles();
 	Playerspeed=0.15;
-
+	//read .CSV File
+     Ressourcen.readCSV();
 	run();
 	AnimationTimer timeline = new AnimationTimer(){
 
@@ -128,8 +129,7 @@ private void drawBackground( GraphicsContext gc) {
 				if(i%2 ==0 )
 					gc.drawImage(Ressourcen.IMAGES.SOFTWALL.getImage(),SQUARE_SIZE*i, SQUARE_SIZE*j,SQUARE_SIZE,SQUARE_SIZE);}
 			else { gc.setFill(Color.WHITE);
-			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);
-			}
+			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);}
 			
 		
 		}
@@ -161,8 +161,8 @@ private void drawBomb (GraphicsContext gc)	{
 
 }
 
-// KeyListner müssen wir noch verbessern 
-//um den Character  in alle Richtungen bewegen zu können
+// KeyListner mï¿½ssen wir noch verbessern 
+//um den Character  in alle Richtungen bewegen zu kï¿½nnen
 // Up left && Up right && down left && down right 
 
 
