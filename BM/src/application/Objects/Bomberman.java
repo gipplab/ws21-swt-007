@@ -5,26 +5,19 @@ import application.GamePanel;
 
 import javafx.scene.image.Image;
 
-public class Bomberman {
+public class Bomberman extends Entities{
 
-	double playerX;
-	double playerY;
 	int bombanzahl;
 	double speed;
 	double explosion;
 	int health;
 	boolean dead ;
-	Image image;
-
-
 	
 	
 public Bomberman(double x, double y,Image img) {
-	this.playerX=x;
-	this.playerY=y;
-	this.image=img;
+	super(x,y,img);
 	this.bombanzahl=5;
-	this.speed=0.25;
+	this.speed=2;
 	this.explosion=1;
 	this.dead=false;
 	this.health=2;
@@ -54,13 +47,13 @@ double getSpeed(){
 }
 public Image getImage(){
 	
-	return image;
+	return img;
 }
 public double getX(){
-	return this.playerX;
+	return this.x;
 }
 public double getY(){
-	return this.playerY;
+	return this.y;
 }
 public void BombanzahlUp(int b){
 	 this.bombanzahl++;
@@ -86,28 +79,29 @@ void gethit() {
 	
 	
 public void moveRight() {
-	if( this.playerX < GamePanel.ROWS-2 )
-		this.playerX= this.playerX+  this.speed;
-	// String resp=Client.accessServer("Play-RIGHT");
+	if( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )
+		this.x= this.x+  this.speed;
+	// Client.accessServer("Play-RIGHT");
 }
 
 public void moveLeft() {
-	if(this.playerX >1)
-		this.playerX=this.playerX- this.speed;
-	// String resp=Client.accessServer("Play-LEFT");
+	if(this.x >GamePanel.SQUARE_SIZE)
+		this.x=this.x- this.speed;
+	//Client.accessServer("Play-LEFT");
 
 }
 
 public void moveUp() {
-	if( this.playerY >1)
-		this.playerY=this.playerY - this.speed;
-	 //String resp=Client.accessServer("Play-UP");
+	if( this.y >GamePanel.SQUARE_SIZE)
+		this.y=this.y - this.speed;
+	 //Client.accessServer("Play-UP");
+	
 }
 
 public void moveDown() {
-	if( this.playerY < GamePanel.ROWS-2)
-		this.playerY=this.playerY+ this.speed;
-	// String resp=Client.accessServer("Play-DOWN");
+	if( this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)
+		this.y=this.y+ this.speed;
+	// Client.accessServer("Play-DOWN");
 	}
  	
 	
