@@ -23,7 +23,7 @@ public class Ressourcen {
 		
 		 Image image;
 		 
-		public Image getImage() {
+    public Image getImage() {
 			return this.image;
 		}
 	}
