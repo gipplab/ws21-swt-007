@@ -15,6 +15,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 
 
@@ -92,18 +93,25 @@ public class GamePanel {
 	}
 
 	public void run() {
-		drawBackground(gc);
+		drawObjekte(gc);
 	}
 
 	private void update() {
 		InputManager.handlePlayerMovements(this.player);
 		drawBackground(gc);
+		drawObjekte(gc);
 		drawBomb(gc);
 
 	}
-
-
 	private void drawBackground(GraphicsContext gc) {
+	  for(int i=0 ; i<ROWS; i++) 
+		for(int j=0;j<COLUMNS;j++) {
+			gc.setFill(Color.WHITE);
+			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);}
+					
+	}
+
+	private void drawObjekte(GraphicsContext gc) {
 		//hier werden alle Objekte gezeichnet 
 		// die Objekte sind in einer Liste von Listen gespeichert(gameObjects)
 		for (int i = 0; i < GameObjects.gameObjects.size(); i++) {

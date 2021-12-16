@@ -28,7 +28,6 @@ public class Ressourcen {
 		}
 	}
 	public Ressourcen() {}
-		
 	
 	
 	 public static void readFiles() throws IOException {
