@@ -1,33 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneControllers.LandingPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneControllers.LandingPageController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="56.0" layoutY="1.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="773.0" fitWidth="676.0" layoutX="-34.0" layoutY="-57.0">
          <image>
-            <Image url="@../img/BG.png" />
+            <Image url="@../img/BACKG.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="SinglePlayButton" layoutX="220.0" layoutY="87.0" mnemonicParsing="false" onAction="#SinglePlayButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Singleplay" textFill="WHITE">
+      <ImageView fitHeight="139.0" fitWidth="352.0" layoutX="139.0" layoutY="32.0">
+         <image>
+            <Image url="@../../../../../../../Desktop/pngwing.com.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="139.0" fitWidth="352.0" layoutX="147.0" layoutY="32.0">
+         <image>
+            <Image url="@../img/LOGO.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="139.0" fitWidth="352.0" layoutX="139.0" layoutY="14.0">
+         <image>
+            <Image url="@../img/LOGO.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="SinglePlayButton" layoutX="180.0" layoutY="419.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#SinglePlayButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="269.0" stylesheets="@CSS/test.css" text="SINGLEPLAYER">
          <font>
-            <Font name="System Bold" size="22.0" />
-         </font></Button>
-      <Button fx:id="OnlineButton" layoutX="220.0" layoutY="150.0" mnemonicParsing="false" onAction="#OnlineButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Online" textFill="WHITE">
+            <Font name="Ravie" size="22.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.995260663507109">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.8513189554214478" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect></Button>
+      <Button fx:id="OnlineButton" layoutX="225.0" layoutY="480.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#OnlineButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" stylesheets="@CSS/test.css" text="Online">
          <font>
-            <Font name="System Bold" size="22.0" />
-         </font></Button>
-      <Button fx:id="GuideButton" layoutX="220.0" layoutY="212.0" mnemonicParsing="false" onAction="#GuideButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Guide" textFill="WHITE">
+            <Font name="Ravie" size="22.0" />
+         </font>
+         <textFill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.949999988079071" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect></Button>
+      <Button fx:id="GuideButton" layoutX="225.0" layoutY="540.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#GuideButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" stylesheets="@CSS/test.css" text="Guide">
          <font>
-            <Font name="System Bold" size="22.0" />
-         </font></Button>
-      <Button fx:id="ExitButton" layoutX="220.0" layoutY="276.0" mnemonicParsing="false" onAction="#ExitButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Exit" textFill="WHITE">
+            <Font name="Ravie" size="22.0" />
+         </font>
+         <textFill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.949999988079071" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect></Button>
+      <Button fx:id="ExitButton" layoutX="232.0" layoutY="602.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#ExitButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="166.0" stylesheets="@CSS/test.css" text="EXIT">
          <font>
-            <Font name="System Bold" size="22.0" />
-         </font></Button>
+            <Font name="Ravie" size="22.0" />
+         </font>
+         <textFill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0" startY="0.004739336492890996">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.949999988079071" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect></Button>
    </children>
 </AnchorPane>
