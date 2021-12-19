@@ -22,6 +22,7 @@ public class Main extends Application {
 		    Scene scene = new Scene(root);
 			primaryStage.setTitle("Bomberman");
 			primaryStage.setScene(scene);
+	
 			primaryStage.setResizable(false);
 			primaryStage.show();
 			

@@ -81,6 +81,13 @@ public class SinglePlayPanelController  implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
+		try {
+			Ressourcen.readFiles();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		counter=0;
 		MapImage.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
 	}
