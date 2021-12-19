@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -134,10 +135,13 @@
                   <Image url="@../img/Farbe.png" />
                </image>
             </ImageView>
-            <RadioButton fx:id="WhitePlayersRadioButton" layoutX="140.0" layoutY="148.0" mnemonicParsing="false" />
-            <RadioButton fx:id="BlackPlayersRadioButton" layoutX="192.0" layoutY="148.0" mnemonicParsing="false" />
-            <RadioButton fx:id="RedPlayersRadioButton" layoutX="241.0" layoutY="148.0" mnemonicParsing="false" />
-            <RadioButton fx:id="BluePlayersRadioButton" layoutX="288.0" layoutY="148.0" mnemonicParsing="false" />
+            <RadioButton fx:id="WhitePlayersRadioButton" layoutX="140.0" layoutY="148.0" mnemonicParsing="false">
+               <toggleGroup>
+                  <ToggleGroup fx:id="FarbeGroup" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="BlackPlayersRadioButton" layoutX="192.0" layoutY="148.0" mnemonicParsing="false" toggleGroup="$FarbeGroup" />
+            <RadioButton fx:id="RedPlayersRadioButton" layoutX="241.0" layoutY="148.0" mnemonicParsing="false" toggleGroup="$FarbeGroup" />
+            <RadioButton fx:id="BluePlayersRadioButton" layoutX="288.0" layoutY="148.0" mnemonicParsing="false" toggleGroup="$FarbeGroup" />
          </children>
       </Pane>
    </children>
