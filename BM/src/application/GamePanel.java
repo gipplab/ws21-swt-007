@@ -118,6 +118,7 @@ public class GamePanel {
 			for (int j = 0; j < GameObjects.gameObjects.get(i).size(); j++) {
 				
 				Entities obj= GameObjects.gameObjects.get(i).get(j);
+				Bomb ob= new Bomb(5,5,Ressourcen.IMAGES.BOMBE.getImage());
 				obj.drawImage(gc);
 
 			}
@@ -127,7 +128,7 @@ public class GamePanel {
 
 
 	private void drawBomb(GraphicsContext gc) {
-		// draw Player in anfangscoordinate
+		// draw Player in Anfangscoordinate
 		for (Bomb i : Objekte) {
 			gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(), SQUARE_SIZE * i.getX(), SQUARE_SIZE * i.getY(),
 					SQUARE_SIZE, SQUARE_SIZE);
@@ -166,7 +167,7 @@ public class GamePanel {
         for (int y = 0; y < ROWS; y++) {
             for (int x = 0; x < ROWS; x++) {
                 switch (mapLayout.get(y).get(x)) {
-                    case ("S"):     // Soft wall; breakable
+                    case ("S"):     // Soft wall zerstoerbar
                      Wall soft= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL.getImage());
                     if(soft!=null) 
                     GameObjects.spawn(soft);

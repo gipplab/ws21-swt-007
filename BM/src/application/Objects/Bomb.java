@@ -1,11 +1,10 @@
 package application.Objects;
 
+import application.Ressourcen;
 import javafx.scene.image.Image;
 
 public class Bomb extends TileObjects {
-	
-	double x,y;
-	Image img;
+
 	
 	
 	

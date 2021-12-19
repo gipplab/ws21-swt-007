@@ -6,6 +6,7 @@ import java.util.List;
 
 import application.Objects.Bomb;
 import application.Objects.Bomberman;
+import application.Objects.GameObjects;
 import javafx.scene.input.KeyCode;
 
 
@@ -50,8 +51,7 @@ public class InputManager {
         	   System.out.println("Bombe");
         	   Bomb b= new Bomb( player.getX() , player.getY() , Ressourcen.IMAGES.BOMBE.getImage() );
         	   player.BombanzahlDown();
-        	   GamePanel.Objekte.add(b);
-        	   
+        	   GameObjects.spawn(b);
         	   KeysHandler.setSPACEPRESSED();
         	   
            					}
