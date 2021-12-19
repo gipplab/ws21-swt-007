@@ -190,7 +190,26 @@ public class GamePanel {
             }
         }
     }
- 
+// Methode isFree gibt true zuerueck ,wenn SQUARE kein Wall enthaelt.	
+    public static boolean isFree(double nextX, double nextY) {
+		
+	int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
+	int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
+
+	int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
+
+	int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
+	int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+
+	int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	  	    
+	return !(GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("H")||GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("S") ||
+	    	 GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("H")||GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("S") ||
+	    	 GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("H")||GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("S") ||
+	    	 GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("H")||GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("S"));
+    }  
 
 }
 
