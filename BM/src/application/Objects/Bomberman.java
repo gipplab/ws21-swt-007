@@ -79,27 +79,27 @@ void gethit() {
 	
 	
 public void moveRight() {
-	if( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )
+	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&& (GamePanel.isFree(this.x+  this.speed,this.y)))
 		this.x= this.x+  this.speed;
 	// Client.accessServer("Play-RIGHT");
 }
 
 public void moveLeft() {
-	if(this.x >GamePanel.SQUARE_SIZE)
+	if((this.x >GamePanel.SQUARE_SIZE)&& (GamePanel.isFree(this.x- this.speed ,this.y)))
 		this.x=this.x- this.speed;
 	//Client.accessServer("Play-LEFT");
 
 }
 
 public void moveUp() {
-	if( this.y >GamePanel.SQUARE_SIZE)
+	if((this.y >GamePanel.SQUARE_SIZE)&& (GamePanel.isFree(this.x ,this.y - this.speed)))
 		this.y=this.y - this.speed;
 	 //Client.accessServer("Play-UP");
 	
 }
 
 public void moveDown() {
-	if( this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)
+	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)&& (GamePanel.isFree(this.x ,this.y+ this.speed)))
 		this.y=this.y+ this.speed;
 	// Client.accessServer("Play-DOWN");
 	}
