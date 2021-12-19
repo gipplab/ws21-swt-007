@@ -7,11 +7,13 @@ import javafx.scene.image.Image;
 
 public class Bomberman extends Entities{
 
-	int bombanzahl;
+	private int bombanzahl;
 	double speed;
 	double explosion;
 	int health;
 	boolean dead ;
+	private int maxBombs; //số bombs tối đa
+    
 	
 	
 public Bomberman(double x, double y,Image img) {
@@ -103,6 +105,10 @@ public void moveDown() {
 		this.y=this.y+ this.speed;
 	// Client.accessServer("Play-DOWN");
 	}
+//muss definiert werden f�r die Bomben Anzahl
+public void restoreAmmount() {
+    this.bombanzahl = Math.min(this.maxBombs, this.bombanzahl + 1);
+}
  	
 	
 }
