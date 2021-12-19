@@ -65,6 +65,12 @@ public class GamePanel {
 			@Override
 			public void handle(long arg0) {
 				update();
+				 try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 		};

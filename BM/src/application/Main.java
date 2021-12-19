@@ -16,12 +16,13 @@ public class Main extends Application {
 		try {
 		//	player.SetAddress("192.168.1.107");
 		
-			GamePanel game= new GamePanel();
-			game.init();
+		//	GamePanel game= new GamePanel();
+		//	game.init();
 		    Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
 		    Scene scene = new Scene(root);
 			primaryStage.setTitle("Bomberman");
 			primaryStage.setScene(scene);
+	
 			primaryStage.setResizable(false);
 			primaryStage.show();
 			
