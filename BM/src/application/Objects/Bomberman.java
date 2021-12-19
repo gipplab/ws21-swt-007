@@ -17,7 +17,7 @@ public class Bomberman extends Entities{
 public Bomberman(double x, double y,Image img) {
 	super(x,y,img);
 	this.bombanzahl=5;
-	this.speed=5;
+	this.speed=2;
 	this.explosion=1;
 	this.dead=false;
 	this.health=2;
