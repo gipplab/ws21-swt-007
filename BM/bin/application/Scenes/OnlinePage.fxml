@@ -1,33 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneControllers.OnlinePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneControllers.OnlinePageController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="685.0" fitWidth="628.0" layoutY="-6.0">
          <image>
-            <Image url="@../img/online.png" />
+            <Image url="@../img/BG2.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="createGameButten" layoutX="210.0" layoutY="110.0" mnemonicParsing="false" onAction="#CreateGameButtenIsClicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Create game" textFill="WHITE">
+      <Button fx:id="createGameButten" layoutX="186.0" layoutY="287.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#CreateGameButtenIsClicked" opacity="0.86" prefHeight="50.0" prefWidth="257.0" text="Create game">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Ravie" size="22.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9847993850708008" green="0.08796296268701553" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <stylesheets>
+            <URL value="@CSS/test.css" />
+            <URL value="@CSS/test.css" />
+         </stylesheets>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
       </Button>
-      <Button fx:id="JoinGameButton" layoutX="210.0" layoutY="169.0" mnemonicParsing="false" onAction="#JoinGameButtonIsClicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Join game" textFill="WHITE">
+      <Button fx:id="JoinGameButton" layoutX="213.0" layoutY="347.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#JoinGameButtonIsClicked" opacity="0.86" prefHeight="50.0" prefWidth="203.0" stylesheets="@CSS/test.css" text="Join game">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Ravie" size="22.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9847993850708008" green="0.08796296268701553" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
       </Button>
-      <Button fx:id="OnlineBackButton" layoutX="210.0" layoutY="230.0" mnemonicParsing="false" onAction="#OnlineBackButtonIsClicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #154360; -fx-background-radius: 0;" text="Back" textFill="WHITE">
+      <Button fx:id="OnlineBackButton" layoutX="231.0" layoutY="407.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#OnlineBackButtonIsClicked" opacity="0.86" prefHeight="50.0" prefWidth="167.0" stylesheets="@CSS/test.css" text="Back">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Ravie" size="22.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9847993850708008" green="0.08796296268701553" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
       </Button>
    </children>
 </AnchorPane>
