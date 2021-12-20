@@ -199,35 +199,46 @@ public class GamePanel {
     }
 // Methode isFree gibt true zuerueck ,wenn SQUARE kein Wall enthaelt.	
       public static boolean isFree(double nextX, double nextY) {
-	     boolean  frei = true;
-	     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
-	     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
+	       boolean  frei = true;
+	       Entities obje;
+	       
+	       int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
+	       int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
 
-	     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
+	       int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	       int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
 
-	     int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
-	     int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	       int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
+	       int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
 
-	     int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	     int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	      
-	     for (int i = 0; i < GameObjects.tileObjects.size(); i++) {		 
-		 if(GameObjects.tileObjects.get(i).getEntityImage().equals(Ressourcen.IMAGES.HARDWALL.getImage()))
-			 if( (GameObjects.tileObjects.get(i).getEntityX()==nextX_1* SQUARE_SIZE  && GameObjects.tileObjects.get(i).getEntityY()==nextY_1* SQUARE_SIZE)||
-				 (GameObjects.tileObjects.get(i).getEntityX()==nextX_2* SQUARE_SIZE && GameObjects.tileObjects.get(i).getEntityY()==nextY_2* SQUARE_SIZE)||
-				 (GameObjects.tileObjects.get(i).getEntityX()==nextX_3* SQUARE_SIZE && GameObjects.tileObjects.get(i).getEntityY()==nextY_3* SQUARE_SIZE)||
-				 (GameObjects.tileObjects.get(i).getEntityX()==nextX_4* SQUARE_SIZE && GameObjects.tileObjects.get(i).getEntityY()==nextY_4* SQUARE_SIZE) )
-				 frei = false;
-	    } 
+	       int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	       int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	     
+	       for (int i = 0; i < GameObjects.tileObjects.size(); i++) {	
+	    	   
+	    	    obje = GameObjects.tileObjects.get(i);
+	    	    
+		        if((obje.getEntityImage().equals(Ressourcen.IMAGES.SOFTWALL.getImage()))
+		          ||(obje.getEntityImage().equals(Ressourcen.IMAGES.HARDWALL.getImage()))) {
+		        	
+			            if( (obje.getEntityX()==nextX_1* SQUARE_SIZE  && obje.getEntityY()==nextY_1* SQUARE_SIZE)||
+			            	(obje.getEntityX()==nextX_2* SQUARE_SIZE && obje.getEntityY()==nextY_2* SQUARE_SIZE)||
+				            (obje.getEntityX()==nextX_3* SQUARE_SIZE && obje.getEntityY()==nextY_3* SQUARE_SIZE)||
+				            (obje.getEntityX()==nextX_4* SQUARE_SIZE && obje.getEntityY()==nextY_4* SQUARE_SIZE) )
+			            	
+				            frei = false;
+			    }             
+		  }
 	    return frei;
+      }  
 	/* 	    
 	     return !(GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("H")||GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("S") ||
 	    	  GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("H")||GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("S") ||
 	    	  GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("H")||GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("S") ||
 	    	  GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("H")||GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("S"));
        */
-    }  
+ 
+
 
 }
 
