@@ -2,10 +2,14 @@ package application.Objects;
 
 import application.Client;
 import application.GamePanel;
-
+import javafx.animation.Interpolator;
+import javafx.animation.Transition;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import javafx.scene.image.Image;
 
-public class Bomberman {
+public class Bomberman extends Transition {
 
 	double playerX;
 	double playerY;
@@ -15,29 +19,64 @@ public class Bomberman {
 	int health;
 	boolean dead ;
 	Image image;
+	
+	
+	private final ImageView imageView;
+    private final int count;
+    private final int columns;
+    private final int offsetX;
+    private final int offsetY;
+    private final int width;
+    private final int height;
+
+    private int lastIndex;
+
+    public Bomberman(double x , double y,
+    		ImageView imageView, 
+            Duration duration, 
+            int count,   int columns,
+            int offsetX, int offsetY,
+            int width,   int height) {
+        this.imageView = imageView;
+        this.count     = count;
+        this.columns   = columns;
+        this.offsetX   = offsetX;
+        this.offsetY   = offsetY;
+        this.width     = width;
+        this.height    = height;
+        setCycleDuration(duration);
+        setInterpolator(Interpolator.LINEAR);
+    	this.playerX=x;
+    	this.playerY=y;
+    	this.bombanzahl=5;
+    	this.speed=0.25;
+    	this.explosion=1;
+    	this.dead=false;
+    	this.health=2;
+    		}
+    	
+    	boolean death() {
+    		if(health>0) {
+    			return false;
+    		}else 
+    			return true;
+    }
+
+    protected void interpolate(double k) {
+        final int index = Math.min((int) Math.floor(k * count), count - 1);
+        if (index != lastIndex) {
+            final int x = (index % columns) * width  + offsetX;
+            final int y = (index / columns) * height + offsetY;
+            imageView.setViewport(new Rectangle2D(x, y, width, height));
+            lastIndex = index;
+        }
+    }
 
 
+
 	
 	
-public Bomberman(double x, double y,Image img) {
-	this.playerX=x;
-	this.playerY=y;
-	this.image=img;
-	this.bombanzahl=5;
-	this.speed=0.25;
-	this.explosion=1;
-	this.dead=false;
-	this.health=2;
-		}
-	
-	boolean death() {
-		if(health>0) {
-			return false;
-		}else 
-			return true;
-				
-	}
-	
+
 
 public int getBombanzahl(){
 	return this.bombanzahl;
