@@ -14,9 +14,21 @@ public abstract class Entities {
 		this.img=img;
 	
 	}
+	
+	public double getEntityX() {
+		return this.x;
+        }
+	
+	public double getEntityY() {
+		return this.y;
+        }
+	
+	public Image getEntityImage() {
+		return this.img;
+	}
+	
 	public void drawImage(GraphicsContext gc) {
-		gc.drawImage(this.img,this.x, this.y,
-				GamePanel.SQUARE_SIZE,GamePanel.SQUARE_SIZE);
+		gc.drawImage(this.img,this.x, this.y, GamePanel.SQUARE_SIZE,GamePanel.SQUARE_SIZE);
 	}
 
 }
