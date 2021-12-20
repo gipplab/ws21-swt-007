@@ -52,7 +52,7 @@ public class GamePanel    {
 		  
 	}
 	public void init() throws IOException {
-	player= new Bomberman(2,2, Ressourcen.IMAGES.PLAYER1.getImage());
+	player= new Bomberman(2,2, Ressourcen.IMAGES.PLAYER1.getImage(), 1 , 20 ,4 , 0 , 0, 30 , 20);
 	Ressourcen.readFiles();
 	Playerspeed=0.15;
 

@@ -1,7 +1,11 @@
 package application;
 
 import java.io.IOException;
-
+import javafx.animation.Interpolator;
+import javafx.animation.Transition;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import javafx.scene.image.Image;
 
 public class Ressourcen {
@@ -11,10 +15,10 @@ public class Ressourcen {
 		,FLAMMEITEM;
 		
 		
-		 Image image;
+		 ImageView imageview;
 		 
-		public Image getImage() {
-			return this.image;
+		public ImageView getImage() {
+			return this.imageview;
 		}
 	}
 	public Ressourcen() {}
@@ -26,13 +30,13 @@ public class Ressourcen {
 	
 	
 	 public static void readFiles() throws IOException {
-	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
-			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
-			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
-			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/danny.jpg").toString());
-			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/Bigflame.jpg").toString());
-			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
-			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/laufschuhe.PNG").toString());
-			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/Bombentascheoriganl.jpg").toString());
+	        IMAGES.PLAYER1.imageview = new ImageView(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
+			IMAGES.HARDWALL.imageview= new ImageView(Ressourcen.class.getResource("img/hardWall.jpg").toString());
+			IMAGES.SOFTWALL.imageview= new ImageView(Ressourcen.class.getResource("img/softWall.jpg").toString());
+			IMAGES.BOMBE.imageview= new ImageView(Ressourcen.class.getResource("img/danny.jpg").toString());
+			IMAGES.FLAMMEITEM.imageview= new ImageView(Ressourcen.class.getResource("img/Bigflame.jpg").toString());
+			IMAGES.HERZITEM.imageview= new ImageView(Ressourcen.class.getResource("img/herzplus.jpg").toString());
+			IMAGES.SPEEDITEM.imageview= new ImageView(Ressourcen.class.getResource("img/laufschuhe.PNG").toString());
+			IMAGES.BOMBITEM.imageview= new ImageView(Ressourcen.class.getResource("img/Bombentascheoriganl.jpg").toString());
 }
 	 }

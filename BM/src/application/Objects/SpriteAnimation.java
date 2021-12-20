@@ -47,6 +47,3 @@ public class SpriteAnimation extends Transition {
 }
 
 
-public void bomberanimation extends Transition {
-	
-}
