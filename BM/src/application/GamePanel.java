@@ -12,7 +12,7 @@ import application.Objects.Bigflame;
 import application.Objects.bombentasche;
 import application.Objects.herzplus;
 import application.Objects.Laufschuhe;
-
+import javafx.util.Duration;
 import javafx.animation.AnimationTimer;
 
 import javafx.scene.Group;
@@ -52,7 +52,7 @@ public class GamePanel    {
 		  
 	}
 	public void init() throws IOException {
-	player= new Bomberman(2,2, Ressourcen.IMAGES.PLAYER1.getImage(), 1 , 20 ,4 , 0 , 0, 30 , 20);
+	player= new Bomberman(2,2, Ressourcen.IMAGES.PLAYER1.getImage(), Duration.millis(1000) , 20 ,4 , 0 , 0, 30 , 20);
 	Ressourcen.readFiles();
 	Playerspeed=0.15;
 
