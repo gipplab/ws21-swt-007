@@ -12,7 +12,7 @@ import javafx.scene.input.KeyCode;
 
 public class InputManager {
 
-   public static void handlePlayerMovements(Bomberman player){
+   public static void handlePlayerMovements(Bomberman player) throws InterruptedException{
 	  
        List<?> keyboardInputs = KeysHandler.getInputList();
        if(keyboardInputs.contains(KeyCode.UP) || keyboardInputs.contains(KeyCode.W)){
@@ -50,8 +50,10 @@ public class InputManager {
            if(player.getBombanzahl()>0) {
         	   System.out.println("Bombe");
         	   Bomb b= new Bomb( player.getX() , player.getY() , Ressourcen.IMAGES.BOMBE.getImage() );
+        		b.BombCollision(player.getX(),player.getY());
         	   player.BombanzahlDown();
         	   GameObjects.spawn(b);
+        	 
         	   KeysHandler.setSPACEPRESSED();
         	   
            					}

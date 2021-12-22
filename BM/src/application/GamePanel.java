@@ -20,11 +20,11 @@ import javafx.scene.paint.Color;
 
 
 public class GamePanel {
-	public static final int WIDTH = 600;
-	public static final int HEIGHT = 600;
-	public static final int ROWS = 20;
+	public static final int WIDTH = 560;
+	public static final int HEIGHT = 560;
+	public static final int ROWS = 16;
 	public static final int COLUMNS = ROWS;
-	public static final double SQUARE_SIZE = WIDTH * 1.0 / ROWS;
+	public static final int SQUARE_SIZE = WIDTH / ROWS;
 
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
@@ -35,12 +35,13 @@ public class GamePanel {
 	Group root;
 	double Playerspeed;
 	public static double imageX = 4, imageY = 4;
-	public Bomberman player;
+	public static Bomberman player;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	
 	
 
 	public GamePanel() {
+		System.out.println(SQUARE_SIZE);
 
 		root = new Group();
 		canvas = new Canvas(WIDTH, HEIGHT);
@@ -64,8 +65,8 @@ public class GamePanel {
 
 			@Override
 			public void handle(long arg0) {
-				update();
-				 try {
+				try {
+					update();
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -102,8 +103,9 @@ public class GamePanel {
 		drawObjekte(gc);
 	}
 
-	private void update() {
+	private void update() throws InterruptedException {
 		InputManager.handlePlayerMovements(this.player);
+	
 		drawBackground(gc);
 		drawObjekte(gc);
 		drawBomb(gc);
@@ -124,7 +126,8 @@ public class GamePanel {
 			for (int j = 0; j < GameObjects.gameObjects.get(i).size(); j++) {
 				
 				Entities obj= GameObjects.gameObjects.get(i).get(j);
-				Bomb ob= new Bomb(5,5,Ressourcen.IMAGES.BOMBE.getImage());
+				obj.update();
+			
 				obj.drawImage(gc);
 
 			}

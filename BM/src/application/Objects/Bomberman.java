@@ -16,8 +16,10 @@ public class Bomberman extends Entities{
 	
 public Bomberman(double x, double y,Image img) {
 	super(x,y,img);
-	this.bombanzahl=5;
-	this.speed=5;
+
+	this.bombanzahl=3;
+	this.speed=5;// 5, 7 ,8,75 
+				// Rows= 15
 	this.explosion=1;
 	this.dead=false;
 	this.health=2;
@@ -30,6 +32,8 @@ public Bomberman(double x, double y,Image img) {
 			return true;
 				
 	}
+	
+
 	
 
 public int getBombanzahl(){
@@ -55,7 +59,7 @@ public double getX(){
 public double getY(){
 	return this.y;
 }
-public void BombanzahlUp(int b){
+public void BombanzahlUp(){
 	 this.bombanzahl++;
 }
 

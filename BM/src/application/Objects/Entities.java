@@ -7,11 +7,13 @@ import javafx.scene.image.Image;
 public abstract class Entities {
 	double x,y;
 	Image img;
+	
 	public Entities(double x, double y, Image img) {
 		// TODO Auto-generated constructor stub
 		this.x=x;
 		this.y=y;
 		this.img=img;
+		
 	
 	}
 	
@@ -28,7 +30,17 @@ public abstract class Entities {
 	}
 	
 	public void drawImage(GraphicsContext gc) {
+		if(this.getClass()==Bomb.class) {
+		
+			gc.drawImage(this.img,this.x, this.y, GamePanel.SQUARE_SIZE,GamePanel.SQUARE_SIZE);
+		}
+			else
 		gc.drawImage(this.img,this.x, this.y, GamePanel.SQUARE_SIZE,GamePanel.SQUARE_SIZE);
 	}
-
+	public void update() {}
+	public Boolean isDestroyed() {
+		return false;
+	
+		
+	}
 }
