@@ -29,7 +29,7 @@ public class GamePanel {
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
 	private GraphicsContext gc;
-	private boolean gameOver;
+	private boolean gameOver=false;
 	private Scene scene;
 	Canvas canvas;
 	Group root;
@@ -66,6 +66,7 @@ public class GamePanel {
 			@Override
 			public void handle(long arg0) {
 				try {
+					if(!gameOver)
 					update();
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
@@ -104,7 +105,7 @@ public class GamePanel {
 	}
 
 	private void update() throws InterruptedException {
-		InputManager.handlePlayerMovements(this.player);
+		InputManager.handlePlayerMovements(player);
 	
 		drawBackground(gc);
 		drawObjekte(gc);
@@ -127,8 +128,14 @@ public class GamePanel {
 				
 				Entities obj= GameObjects.gameObjects.get(i).get(j);
 				obj.update();
+			if(obj.getDeath() && obj instanceof Bomberman) {
+				gameOver=true;
+			System.out.println("GameOber");
+			System.exit(0);
+			}
+			if(!obj.getDeath()) {
 			
-				obj.drawImage(gc);
+				obj.drawImage(gc);}
 
 			}
 		}

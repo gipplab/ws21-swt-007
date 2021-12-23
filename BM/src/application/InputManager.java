@@ -50,9 +50,13 @@ public class InputManager {
            if(player.getBombanzahl()>0) {
         	   System.out.println("Bombe");
         	   Bomb b= new Bomb( player.getX() , player.getY() , Ressourcen.IMAGES.BOMBE.getImage() );
-        		b.BombCollision(player.getX(),player.getY());
+        	   b.BombCollision(player.getX(),player.getY());
+        	if(!b.BombeDuplikate()) {
+        		
         	   player.BombanzahlDown();
         	   GameObjects.spawn(b);
+        	   
+        	   }
         	 
         	   KeysHandler.setSPACEPRESSED();
         	   

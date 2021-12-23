@@ -38,6 +38,6 @@ public class GameObjects {
 		    public static void spawn(Bomberman spawnObj) {
 		        bomberObjects.add(spawnObj);
 		    }
-	
+		
 
 }

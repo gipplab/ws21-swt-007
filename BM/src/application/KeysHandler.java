@@ -14,8 +14,6 @@ public class KeysHandler {
 		// TODO Auto-generated constructor stub
 	}
 	
-	    public static char lastKeyPress;
-	    public static char lastKeyReleased;
 	    public static ArrayList<KeyCode> inputList = new ArrayList<KeyCode>();
 	    public static boolean SPACEPRESSED=false;
 	    public static void attachEventHandlers(Scene scene){

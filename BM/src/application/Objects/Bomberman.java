@@ -22,7 +22,7 @@ public Bomberman(double x, double y,Image img) {
 				// Rows= 15
 	this.explosion=1;
 	this.dead=false;
-	this.health=2;
+	this.health=1;
 		}
 	
 	boolean death() {
@@ -75,8 +75,10 @@ public void HealthUp(){
 
 
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
-void gethit() {
+public void gethit() {
 		this.health--;
+		if(health<=0)
+			dead=true;
 		
 	}
 	
@@ -131,16 +133,57 @@ public  boolean isFree(double nextX, double nextY) {
 	        if((obje.getEntityImage().equals(Ressourcen.IMAGES.SOFTWALL.getImage()))
 	          ||(obje.getEntityImage().equals(Ressourcen.IMAGES.HARDWALL.getImage()))) {
 	        	
-		            if( (obje.getEntityX()==nextX_1*GamePanel.SQUARE_SIZE  && obje.getEntityY()==nextY_1* GamePanel.SQUARE_SIZE)||
-		            	(obje.getEntityX()==nextX_2* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_2* GamePanel.SQUARE_SIZE)||
-			            (obje.getEntityX()==nextX_3* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_3* GamePanel.SQUARE_SIZE)||
-			            (obje.getEntityX()==nextX_4* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_4* GamePanel.SQUARE_SIZE) )
-		            	
-			            frei = false;
+		      if((obje.getEntityX()==nextX_1*GamePanel.SQUARE_SIZE  && obje.getEntityY()==nextY_1* GamePanel.SQUARE_SIZE)||
+		            (obje.getEntityX()==nextX_2* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_2* GamePanel.SQUARE_SIZE)||
+			        (obje.getEntityX()==nextX_3* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_3* GamePanel.SQUARE_SIZE)||
+			        (obje.getEntityX()==nextX_4* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_4* GamePanel.SQUARE_SIZE))
+			           frei = false;
 		    }             
 	  }
-  return frei;
+     	return frei;
 } 
- 	
+public  Boolean isFreeExplosion() {
+  
+    Entities obje;
+    
+    int nextX_1 = (int) (this.x / GamePanel.SQUARE_SIZE);
+    int nextY_1 = (int) (this.y / GamePanel.SQUARE_SIZE);
+
+    int nextX_2 = (int) ((this.x + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+    int nextY_2 = (int) (this.y / GamePanel.SQUARE_SIZE);
+
+    int nextX_3 = (int) (this.x / GamePanel.SQUARE_SIZE);
+    int nextY_3 = (int) ((this.y + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+
+    int nextX_4 = (int) ((this.x + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+    int nextY_4 = (int) ((this.y + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+  
+    for (int i = 0; i < GameObjects.explosionObjects.size(); i++) {	
+ 	    obje = GameObjects.explosionObjects.get(i);
+ 	    
+	        if(obje.getEntityImage().equals(Ressourcen.IMAGES.EXPLOSION.getImage())) {
+	        	
+		      if((obje.getEntityX()==nextX_1*GamePanel.SQUARE_SIZE  && obje.getEntityY()==nextY_1* GamePanel.SQUARE_SIZE)||
+		            (obje.getEntityX()==nextX_2* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_2* GamePanel.SQUARE_SIZE)||
+			        (obje.getEntityX()==nextX_3* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_3* GamePanel.SQUARE_SIZE)||
+			        (obje.getEntityX()==nextX_4* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_4* GamePanel.SQUARE_SIZE))
+			           return false;
+		    }             
+	  }
+    	return true;
+} 
+@Override
+public boolean getDeath() {
+	return this.dead;
+}
+
+@Override
+public void update() {
+	// TODO Auto-generated method stub
+
+	if(!isFreeExplosion())
+		this.dead=true;
+	
+}
 	
 }

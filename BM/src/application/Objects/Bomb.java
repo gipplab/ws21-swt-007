@@ -48,14 +48,31 @@ public double getX() {return this.x;}
 public double getY() {return this.y;}
 
 public void update() {
-	if(System.currentTimeMillis()-time>=timeToExplosion) {
-	death=true;
+	if(System.currentTimeMillis()-time>=timeToExplosion&& !death) {
+		death=true;
 		GameObjects.tileObjects.remove(this);
+		System.out.println("remove Bome "+this.x+", "+ this.y);
+		Explotionart ex0= new Explotionart((int)this.x,(int) this.y);
+		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, 3);
+		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, 3);
+		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, 3);
+		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, 3);
 		GamePanel.player.BombanzahlUp();
 		
 	}
 }
-	
+
+public Boolean BombeDuplikate() {
+	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
+		   if(this.x==(GameObjects.tileObjects.get(i).x) && this.y==(GameObjects.tileObjects.get(i).y)) 
+			   return true;
+	   return false;
+	   
+}
+public boolean getDeath() {
+	return death;
+}
+
 }
 
 

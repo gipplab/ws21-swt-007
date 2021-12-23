@@ -19,7 +19,7 @@ public class Ressourcen {
 	
 	public enum IMAGES{
 		BACKGROUND, BOMBE, SOFTWALL, HARDWALL, PLAYER1, BOT, PLAYER2, BOMBITEM, HERZITEM, SPEEDITEM
-		,FLAMMEITEM, MAP;
+		,FLAMMEITEM, MAP,EXPLOSION;
 		
 		
 		static Image Map[] = new Image[4];
@@ -46,7 +46,7 @@ public class Ressourcen {
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/laufschuhe.PNG").toString());
 			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/Bombentascheoriganl.jpg").toString());
-			   
+			IMAGES.EXPLOSION.image= new Image(Ressourcen.class.getResource("img/danny.jpg").toString());
 			IMAGES.Map[0] = new Image(Ressourcen.class.getResource("img/Frame 3.png").toString());
 			IMAGES.Map[1] = new Image(Ressourcen.class.getResource("img/landscape-mountains-minimalist-o7.jpg").toString());
 			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/BG.png").toString());
