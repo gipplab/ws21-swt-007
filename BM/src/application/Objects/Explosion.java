@@ -29,12 +29,4 @@ public void update() {
 public boolean getDeath() {
 	return death;
 }
-
-
-
-@Override
-public boolean isPlayer() {
-	// TODO Auto-generated method stub
-	return false;
-}
 }

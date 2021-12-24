@@ -112,7 +112,7 @@ public class Server {
 					
 				}else if(message[0].equals("Play"))
 				{
-					messageOut="Noting";
+					messageOut="";
 					for(Room room : roomsList)
 					{
 						if(message[1].equals(room.getHostName()))
@@ -121,27 +121,23 @@ public class Server {
 							{
 								if(message[2].equals(player.getName())) 
 								{
-									//if(!player.GetUpdates().equals(""))
-									//{
-									messageOut=player.GetUpdates();
-									player.SetUpdates("");
-									//}
+									//messageOut=player.GetUpdates();
 								}else 
-								{		if(message[3].equals("Updates"))
-										{
-											if(!player.GetUpdates().equals(""))
-											{
-												String updates=message[2]+"-"+message[4];
-												System.out.println("#2323213#"+updates);
-												player.AddUpdatesToPlayers(updates);
-											}
-										}
-										
+								{
+									if(message[3].equals("Move")) 
+									{
+										String updates=message[2]+"-Move-"+message[4];
+										player.SetUpdates(updates);
+									}else if(message[3].equals("Bomb")) 
+									{
+										String updates=message[2]+"-Bomb-"+message[4];
+										player.SetUpdates(updates);
+									}
+									 
 								}
 							}
 						}
 					}
-					System.out.println("##"+messageOut);
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
 				    datagramSocket.send(outPacket);
 				}

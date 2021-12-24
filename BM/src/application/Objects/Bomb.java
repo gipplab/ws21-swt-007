@@ -55,10 +55,10 @@ public void update() {
 		GameObjects.tileObjects.remove(this);
 		System.out.println("remove Bome "+this.x+", "+ this.y);
 		Explotionart ex0= new Explotionart((int)this.x,(int) this.y);
-		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, GamePanel.player.getExplosion());
-		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, GamePanel.player.getExplosion());
-		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, GamePanel.player.getExplosion());
-		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, GamePanel.player.getExplosion());
+		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, 3);
+		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, 3);
+		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, 3);
+		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, 3);
 		if(Main.online)
 			GamePanelOnline.player[GamePanelOnline.mainPlayerIndex].BombanzahlUp();
 		else
@@ -75,14 +75,6 @@ public Boolean BombeDuplikate() {
 }
 public boolean getDeath() {
 	return death;
-}
-
-
-
-@Override
-public boolean isPlayer() {
-	// TODO Auto-generated method stub
-	return false;
 }
 
 }

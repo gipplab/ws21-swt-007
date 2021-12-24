@@ -74,7 +74,6 @@ public abstract class Entities {
 	}
 	public abstract boolean getDeath();
 	public void gethit() {}
-	public abstract boolean isPlayer();
 
 	
 	

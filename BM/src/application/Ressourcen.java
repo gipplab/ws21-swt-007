@@ -51,8 +51,8 @@ public class Ressourcen {
 			IMAGES.Map[1] = new Image(Ressourcen.class.getResource("img/landscape-mountains-minimalist-o7.jpg").toString());
 			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/BG.png").toString());
 			IMAGES.Map[3] = new Image(Ressourcen.class.getResource("img/BACKG.jpg").toString());
-			IMAGES.BOT.image= new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
-			file = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
+			
+			file = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map1.csv"));
 			
 			
 	 }
