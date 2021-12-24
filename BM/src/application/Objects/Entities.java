@@ -44,7 +44,7 @@ public abstract class Entities {
 			 if(GameObjects.tileObjects.get(i).getEntityX()==(double)x &&
 				GameObjects.tileObjects.get(i).getEntityY()==(double)y&&
 				GameObjects.tileObjects.get(i).img.equals(Ressourcen.IMAGES.SOFTWALL.getImage()))
-				 			GameObjects.tileObjects.get(i).onDestroy();
+				 			GameObjects.tileObjects.get(i).onDestroy(); 
 		}
 		
 		return false;
