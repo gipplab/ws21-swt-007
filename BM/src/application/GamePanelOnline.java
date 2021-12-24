@@ -254,12 +254,12 @@ public class GamePanelOnline {
                         break;
 
                     case ("1"):     // Player 1
-                    	GamePanelOnline.player[0]= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
+                    	GamePanelOnline.player[0]= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
                     	GamePanelOnline.player[0].setName(Client.players.get(0));
                     	GameObjects.spawn(GamePanelOnline.player[0]);                    
                     break;
                     case ("2"):     // Player 2
-                    	GamePanelOnline.player[1] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
+                    	GamePanelOnline.player[1] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
                     	GamePanelOnline.player[1].setName(Client.players.get(1));
                         GameObjects.spawn(GamePanelOnline.player[1]);                    
                         break;

@@ -40,9 +40,14 @@ public class Explotionart //extends Entities
 			
 			if(Entities.isBomber(x1, y1)) ++radius; //Bot oder Spieler getroffen
 			
-			if(Entities.isWall(x1, y1)) {
+			int k=Entities.isWall(x1, y1);
+			if(k==1) {
 				break;
 				}
+			else if(k==0) {
+						radius++;
+						break;
+							}
 			
 			++radius;
 		}

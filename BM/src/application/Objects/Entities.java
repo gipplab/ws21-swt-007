@@ -28,26 +28,23 @@ public abstract class Entities {
 		return false;
 	}
 	
-	static Boolean isWall(int x, int y){
+	static int isWall(int x, int y){
 		
 		for(int i=0;i< GameObjects.tileObjects.size();i++) {
 			if(GameObjects.tileObjects.get(i).getEntityX()==(double)x &&
-				GameObjects.tileObjects.get(i).getEntityY()==(double)y&&
-				GameObjects.tileObjects.get(i).img.equals(Ressourcen.IMAGES.HARDWALL.getImage()) ) {
-//				System.out.println(x+ ", "+y+", "+GameObjects.tileObjects.get(i).getEntityX()+" "+
-//						GameObjects.tileObjects.get(i).getEntityY());
-				
-				return true;
-				}
-//				System.out.println(x+ ",, "+y+",, "+GameObjects.tileObjects.get(i).getEntityX()+",,"+
-//				GameObjects.tileObjects.get(i).getEntityY());
-			 if(GameObjects.tileObjects.get(i).getEntityX()==(double)x &&
-				GameObjects.tileObjects.get(i).getEntityY()==(double)y&&
-				GameObjects.tileObjects.get(i).img.equals(Ressourcen.IMAGES.SOFTWALL.getImage()))
-				 			GameObjects.tileObjects.get(i).onDestroy(); 
+				GameObjects.tileObjects.get(i).getEntityY()==(double)y)
+			{	
+				if(GameObjects.tileObjects.get(i).img.equals(Ressourcen.IMAGES.SOFTWALL.getImage())) {
+					GameObjects.tileObjects.get(i).onDestroy();
+					return 0;
+				}else if(GameObjects.tileObjects.get(i).img.equals(Ressourcen.IMAGES.HARDWALL.getImage()))
+						return 1;
+			}
+
+		
 		}
 		
-		return false;
+		return 2;
 	}
 	public double getEntityX() {
 		return this.x;
