@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Client
 {
-	public static String updateString;
+	public static String updateString="";
 private static InetAddress host;
 public static ArrayList<String> players=new ArrayList<>();
 public static String playerpseudo;
