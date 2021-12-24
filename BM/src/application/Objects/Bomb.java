@@ -50,7 +50,7 @@ public double getX() {return this.x;}
 public double getY() {return this.y;}
 
 public void update() {
-	if(System.currentTimeMillis()-time>=timeToExplosion&& !death) {
+	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
 		death=true;
 		GameObjects.tileObjects.remove(this);
 		System.out.println("remove Bome "+this.x+", "+ this.y);
@@ -84,6 +84,36 @@ public boolean isPlayer() {
 	// TODO Auto-generated method stub
 	return false;
 }
+public boolean isFreeExplosion() {
+	// TODO Auto-generated method stub
+	 Entities obje;
+	    
+	    int nextX_1 = (int) (this.x / GamePanel.SQUARE_SIZE);
+	    int nextY_1 = (int) (this.y / GamePanel.SQUARE_SIZE);
+
+	    int nextX_2 = (int) ((this.x + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	    int nextY_2 = (int) (this.y / GamePanel.SQUARE_SIZE);
+
+	    int nextX_3 = (int) (this.x / GamePanel.SQUARE_SIZE);
+	    int nextY_3 = (int) ((this.y + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+
+	    int nextX_4 = (int) ((this.x + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	    int nextY_4 = (int) ((this.y + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	  
+	    for (int i = 0; i < GameObjects.explosionObjects.size(); i++) {	
+	 	    obje = GameObjects.explosionObjects.get(i);
+	 	    
+		        if(obje.getEntityImage().equals(Ressourcen.IMAGES.EXPLOSION.getImage())) {
+		        	
+			      if((obje.getEntityX()==nextX_1*GamePanel.SQUARE_SIZE  && obje.getEntityY()==nextY_1* GamePanel.SQUARE_SIZE)||
+			            (obje.getEntityX()==nextX_2* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_2* GamePanel.SQUARE_SIZE)||
+				        (obje.getEntityX()==nextX_3* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_3* GamePanel.SQUARE_SIZE)||
+				        (obje.getEntityX()==nextX_4* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_4* GamePanel.SQUARE_SIZE))
+				           return false;
+			    }             
+		  }
+	    	return true;
+	} 
 
 }
 
