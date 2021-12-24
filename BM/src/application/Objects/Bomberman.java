@@ -2,6 +2,7 @@ package application.Objects;
 
 import application.Client;
 import application.GamePanel;
+import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
@@ -96,6 +97,7 @@ public void gethit() {
 public void moveRight() {
 	
 	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&& (isFree(this.x+  this.speed,this.y))) {
+	 	   if(Main.online)
 		Client.updateString =Client.updateString+"/RIGHT";
 		this.x= this.x+  this.speed;
 	// Client.accessServer("Play-RIGHT");
@@ -105,6 +107,7 @@ public void moveRight() {
 public void moveLeft() {
 	if((this.x >GamePanel.SQUARE_SIZE)&& (isFree(this.x- this.speed ,this.y))) {
 		this.x=this.x- this.speed;
+	 	   if(Main.online)
 		Client.updateString =Client.updateString+"/LEFT";
 	//Client.accessServer("Play-LEFT");
 	}
@@ -113,6 +116,7 @@ public void moveLeft() {
 public void moveUp() {
 	if((this.y >GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y - this.speed))) {
 		this.y=this.y - this.speed;
+	 	   if(Main.online)
 	Client.updateString =Client.updateString+"/UP";}
 	 //Client.accessServer("Play-UP");
 	
@@ -121,8 +125,9 @@ public void moveUp() {
 public void moveDown() {
 	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y+ this.speed))) {
 		this.y=this.y+ this.speed;
-	Client.updateString =Client.updateString+"/DOWN";
-	// Client.accessServer("Play-DOWN");
+	 	   if(Main.online)
+	 		   Client.updateString =Client.updateString+"/DOWN";
+	 	   // Client.accessServer("Play-DOWN");
 	}
 	}
 

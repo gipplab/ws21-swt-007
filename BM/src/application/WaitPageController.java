@@ -42,7 +42,7 @@ public class WaitPageController {
 							for(int i=1 ;i<message.length;i++) 
 							{
 								if(Client.playerpseudo.equals(message[i])) {
-									GamePanel.mainPlayerIndex=i-1;
+									GamePanelOnline.mainPlayerIndex=i-1;
 								}
 
 								Client.addPlayer(message[i]);
@@ -55,7 +55,8 @@ public class WaitPageController {
 							
 							
 							try {
-								GamePanel game= new GamePanel();
+								Main.online=true;
+								GamePanelOnline game= new GamePanelOnline();
 								game.init();
 								stage = (Stage) infoRoom.getScene().getWindow();
 								stage.setTitle("Bomberman");

@@ -19,7 +19,7 @@ import javafx.scene.paint.Color;
 
 
 
-public class GamePanel {
+public class GamePanelOnline {
 	public static final int WIDTH = 560;
 	public static final int HEIGHT = 560;
 	public static final int ROWS = 16;
@@ -35,12 +35,13 @@ public class GamePanel {
 	Group root;
 	double Playerspeed;
 	public static double imageX = 4, imageY = 4;
-	public static Bomberman player;
+	public static Bomberman[] player=new Bomberman[3];
+	public static int mainPlayerIndex=0;
 	public static ArrayList<ArrayList<String>> mapLayout;
 
 	
 
-	public GamePanel() {
+	public GamePanelOnline() {
 		System.out.println(SQUARE_SIZE);
 
 		root = new Group();
@@ -68,7 +69,8 @@ public class GamePanel {
 				try {
 					if(!gameOver)
 					{
-
+					String resp= Client.accessServer("Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-"+Client.updateString);
+					//updateServer(resp);
 					update();
 					Thread.sleep(100);
 					}
@@ -84,7 +86,7 @@ public class GamePanel {
 	};
 
 	public Bomberman getPlayer() {
-		return player;
+		return player[mainPlayerIndex];
 	}
 
 	public Scene getScene() {
@@ -108,7 +110,7 @@ public class GamePanel {
 	}
 
 	private void update() throws InterruptedException {
-		InputManager.handlePlayerMovements(player);
+		InputManager.handlePlayerMovements(player[mainPlayerIndex]);
 		drawBackground(gc);
 		drawObjekte(gc);
 		drawBomb(gc);
@@ -198,10 +200,20 @@ public class GamePanel {
                         break;
 
                     case ("1"):     // Player 1
-                    GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
-                    GameObjects.spawn(GamePanel.player);                    
+                    	GamePanelOnline.player[0]= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
+                    	GamePanelOnline.player[0].setName(Client.players.get(0));
+                    	GameObjects.spawn(GamePanelOnline.player[0]);                    
                     break;
-               
+                    case ("2"):     // Player 1
+                    	GamePanelOnline.player[1] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
+                    	GamePanelOnline.player[1].setName(Client.players.get(1));
+                        GameObjects.spawn(GamePanelOnline.player[1]);                    
+                        break;
+                    case ("3"):     // Player 1
+                    	GamePanelOnline.player[2] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
+                    GamePanelOnline.player[2].setName(Client.players.get(2));
+                        GameObjects.spawn(GamePanelOnline.player[2]);                    
+                        break;
                     default:
                     	
                         break;

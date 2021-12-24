@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	public static Client player= new Client();
-	
+	public static Boolean  online= false;
 	@Override
 	public void start(Stage primaryStage) {
 	

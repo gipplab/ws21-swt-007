@@ -1,6 +1,8 @@
 package application.Objects;
 
 import application.GamePanel;
+import application.GamePanelOnline;
+import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
@@ -57,8 +59,10 @@ public void update() {
 		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, 3);
 		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, 3);
 		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, 3);
-		GamePanel.player[GamePanel.mainPlayerIndex].BombanzahlUp();
-		
+		if(Main.online)
+			GamePanelOnline.player[GamePanelOnline.mainPlayerIndex].BombanzahlUp();
+		else
+			GamePanel.player.BombanzahlUp();
 	}
 }
 

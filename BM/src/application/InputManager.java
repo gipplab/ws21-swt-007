@@ -53,11 +53,11 @@ public class InputManager {
         	   b.BombCollision(player.getX(),player.getY());
         	if(!b.BombeDuplikate()) {
         	   player.BombanzahlDown();
+        	   if(Main.online)
         	   Client.updateString =Client.updateString+"/BOMB/"+b.getX()+"/"+b.getY();
         	   GameObjects.spawn(b);
         	   
         	   }
-        	 
         	   KeysHandler.setSPACEPRESSED();
         	   
            					}
