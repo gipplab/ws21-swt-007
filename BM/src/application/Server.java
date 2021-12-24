@@ -101,7 +101,6 @@ public class Server {
 									{
 										messageOut=messageOut+"-"+player.getName();
 									}
-									System.out.println("\n tessage"+messageOut);
 									
 									break;
 								}

@@ -30,8 +30,7 @@ public class WaitPageController {
 		TimerTask task = new TimerTask() {
 			public void run() {
 				Platform.runLater(new Runnable() {
-					public void run() {
-	
+					public void run(){
 						String msg = "Waiting-"+Client.roomToJoin;	
 						String resp;
 						resp=Client.accessServer(msg);
@@ -40,23 +39,34 @@ public class WaitPageController {
 						 
 						
 						if(message[0].equals("Complited")) {
-							//for(int i=1 ;i<message.length-1;i++) 
-							//{
-							//	System.out.println(" \n SERVER-tst->>"+ message[i]);
-							//	Client.addPlayer(message[i]);
-							//}
+							for(int i=1 ;i<message.length;i++) 
+							{
+								if(Client.playerpseudo.equals(message[i])) {
+									GamePanel.mainPlayerIndex=i-1;
+								}
+
+								Client.addPlayer(message[i]);
+								for(String name : Client.players) {
+									System.out.println("/"+name);
+								}
+							}
 							fall.cancel();
 							fall.purge();
+							
+							
 							try {
-								root = FXMLLoader.load(getClass().getResource("GamePage.fxml"));
+								GamePanel game= new GamePanel();
+								game.init();
 								stage = (Stage) infoRoom.getScene().getWindow();
-								scene = new Scene(root);
-								stage.setScene(scene);		
+								stage.setTitle("Bomberman");
+								stage.setScene(game.getScene());
+								stage.setResizable(false);
 								stage.show();
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							
 							
 						}else {
 							infoRoom.setText("wait "+resp);

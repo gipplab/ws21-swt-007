@@ -6,8 +6,9 @@ import java.util.ArrayList;
 
 public class Client
 {
+	public static String updateString;
 private static InetAddress host;
-private static ArrayList<String> players;
+public static ArrayList<String> players=new ArrayList<>();
 public static String playerpseudo;
 public static String roomToJoin;
 private static final int PORT=1234;

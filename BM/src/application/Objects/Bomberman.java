@@ -12,8 +12,17 @@ public class Bomberman extends Entities{
 	double explosion;
 	int health;
 	boolean dead ;
+	String Name;
 	
 	
+public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
 public Bomberman(double x, double y,Image img) {
 	super(x,y,img);
 
@@ -85,30 +94,38 @@ public void gethit() {
 	
 	
 public void moveRight() {
-	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&& (isFree(this.x+  this.speed,this.y)))
+	
+	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&& (isFree(this.x+  this.speed,this.y))) {
+		Client.updateString =Client.updateString+"/RIGHT";
 		this.x= this.x+  this.speed;
 	// Client.accessServer("Play-RIGHT");
 }
+	}
 
 public void moveLeft() {
-	if((this.x >GamePanel.SQUARE_SIZE)&& (isFree(this.x- this.speed ,this.y)))
+	if((this.x >GamePanel.SQUARE_SIZE)&& (isFree(this.x- this.speed ,this.y))) {
 		this.x=this.x- this.speed;
+		Client.updateString =Client.updateString+"/LEFT";
 	//Client.accessServer("Play-LEFT");
-
+	}
 }
 
 public void moveUp() {
-	if((this.y >GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y - this.speed)))
+	if((this.y >GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y - this.speed))) {
 		this.y=this.y - this.speed;
+	Client.updateString =Client.updateString+"/UP";}
 	 //Client.accessServer("Play-UP");
 	
 }
 
 public void moveDown() {
-	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y+ this.speed)))
+	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y+ this.speed))) {
 		this.y=this.y+ this.speed;
+	Client.updateString =Client.updateString+"/DOWN";
 	// Client.accessServer("Play-DOWN");
 	}
+	}
+
 //Methode isFree gibt true zuerueck ,wenn SQUARE kein Wall enthaelt.	
 public  boolean isFree(double nextX, double nextY) {
      boolean  frei = true;

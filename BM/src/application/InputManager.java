@@ -52,8 +52,8 @@ public class InputManager {
         	   Bomb b= new Bomb( player.getX() , player.getY() , Ressourcen.IMAGES.BOMBE.getImage() );
         	   b.BombCollision(player.getX(),player.getY());
         	if(!b.BombeDuplikate()) {
-        		
         	   player.BombanzahlDown();
+        	   Client.updateString =Client.updateString+"/BOMB/"+b.getX()+"/"+b.getY();
         	   GameObjects.spawn(b);
         	   
         	   }
