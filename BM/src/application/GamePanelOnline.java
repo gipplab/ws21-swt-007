@@ -35,7 +35,7 @@ public class GamePanelOnline {
 	Group root;
 	double Playerspeed;
 	public static double imageX = 4, imageY = 4;
-	public static Bomberman[] player=new Bomberman[3];
+	public static Bomberman[] player=new Bomberman[2];
 	public static int mainPlayerIndex=0;
 	public static ArrayList<ArrayList<String>> mapLayout;
 
@@ -69,7 +69,7 @@ public class GamePanelOnline {
 				try {
 					if(!gameOver)
 					{
-					String resp= Client.accessServer("Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-"+Client.updateString);
+					//String resp= Client.accessServer("Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-"+Client.updateString);
 					//updateServer(resp);
 					update();
 					Thread.sleep(100);
@@ -110,6 +110,13 @@ public class GamePanelOnline {
 	}
 
 	private void update() throws InterruptedException {
+		System.out.println("Hallllooooooooooo"+Client.updateString);
+		String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-Updates-"+Client.updateString;
+		String resp= "";
+		resp=Client.accessServer(messageout);
+		System.out.println(resp);
+		onlineUpdates(resp);
+		Client.updateString="";
 		InputManager.handlePlayerMovements(player[mainPlayerIndex]);
 		drawBackground(gc);
 		drawObjekte(gc);
@@ -155,6 +162,53 @@ public class GamePanelOnline {
 		}
 	}
 	 
+	
+	void onlineUpdates(String resp) {
+		String[] message = resp.split("-");
+		for (int i=0;i< message.length;i+=2 ) {
+			for (int j=0;j< player.length;j++ )
+			if(message[i].equals(player[j].getName())) {
+				String[] movesUpdates = message[i+1].split("/");
+				for (int k=0;k< message.length;k++ ) {
+				     switch (movesUpdates[k]) {
+	                    case ("UP"):    
+	                   player[j].moveUp();
+	                        break;
+
+	                    case ("RIGHT"):    
+	                    	player[j].moveRight();                 
+	                        break;
+
+	                    case ("DOWN"):    
+	                    	player[j].moveDown();             
+	                    break;
+	                    case ("LEFT"):    
+	                    	player[j].moveLeft();              
+	                        break;
+	                    case ("BOMB"):  
+	                    	Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]) , Ressourcen.IMAGES.BOMBE.getImage() );
+	             	   		b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
+	             	   		if(!b.BombeDuplikate()) {
+	             	   			player[j].BombanzahlDown();
+	             	   			Client.updateString =Client.updateString+"/BOMB/"+b.getX()+"/"+b.getY();
+	             	   			GameObjects.spawn(b);
+	             	   			k+=2;
+	             	   			}            
+	                        break;
+	                        
+	                    default:
+	                    	
+	                        break;
+	                }
+				}
+			
+			}
+			
+			
+		}
+		
+		
+}
 	
 	 private static void loadMapFile()  {
 		
@@ -204,16 +258,16 @@ public class GamePanelOnline {
                     	GamePanelOnline.player[0].setName(Client.players.get(0));
                     	GameObjects.spawn(GamePanelOnline.player[0]);                    
                     break;
-                    case ("2"):     // Player 1
+                    case ("2"):     // Player 2
                     	GamePanelOnline.player[1] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
                     	GamePanelOnline.player[1].setName(Client.players.get(1));
                         GameObjects.spawn(GamePanelOnline.player[1]);                    
                         break;
-                    case ("3"):     // Player 1
+                    /*case ("3"):     // Player 3
                     	GamePanelOnline.player[2] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
-                    GamePanelOnline.player[2].setName(Client.players.get(2));
+                        GamePanelOnline.player[2].setName(Client.players.get(2));
                         GameObjects.spawn(GamePanelOnline.player[2]);                    
-                        break;
+                        break;*/
                     default:
                     	
                         break;

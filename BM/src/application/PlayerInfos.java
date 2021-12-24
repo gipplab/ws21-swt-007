@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class PlayerInfos {
 		
 	String name;
-	ArrayList<String> gameUpdates;
+	String gameUpdates="";
 	public PlayerInfos(String playerName) {
 		name = playerName;
 	}
@@ -15,19 +15,17 @@ public class PlayerInfos {
 	public void setName(String playerName) {
 		name = playerName;
 	}
-	/*public String GetUpdates() {
+	public String GetUpdates() {
 		// TODO Auto-generated method stub	
-		String output="";
-		for (String s : gameUpdates)
-		{
-			output += s + "-";
-		}
-		gameUpdates.clear();
-		return output;
-	}*/
+		return gameUpdates;
+	}
 	public void SetUpdates(String updates) {
 		// TODO Auto-generated method stub
-		gameUpdates.add(updates);
+		gameUpdates="";
+	}
+	public void AddUpdatesToPlayers(String updates) {
+		// TODO Auto-generated method stub
+		gameUpdates=gameUpdates+"-"+updates;
 	}
 	
 	

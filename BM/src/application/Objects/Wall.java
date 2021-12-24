@@ -32,6 +32,13 @@ public  class Wall extends TileObjects{
 	}
 
 
+	@Override
+	public boolean isPlayer() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 	
 
 }

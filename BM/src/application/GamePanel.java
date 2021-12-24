@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import application.Objects.Bomb;
 import application.Objects.Bomberman;
+import application.Objects.Bot;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
 import application.Objects.Wall;
@@ -130,7 +131,7 @@ public class GamePanel {
 				
 				Entities obj= GameObjects.gameObjects.get(i).get(j);
 				obj.update();
-			if(obj.getDeath() && obj instanceof Bomberman) {
+			if(obj.getDeath() && obj.isPlayer()) {
 				gameOver=true;
 			System.out.println("GameOber");
 			System.exit(0);
@@ -198,9 +199,14 @@ public class GamePanel {
                         break;
 
                     case ("1"):     // Player 1
-                    GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
+                    GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
                     GameObjects.spawn(GamePanel.player);                    
                     break;
+                    case ("B"):     // Soft wall zerstoerbar
+                        Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
+                       if(bot!=null) 
+                       GameObjects.spawn(bot);
+                           break;
                
                     default:
                     	
