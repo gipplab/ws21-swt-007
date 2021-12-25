@@ -16,4 +16,13 @@ public abstract class TileObjects extends Entities{
 	}
 
 	public abstract  void update();
+
+	public double getX() {
+		// TODO Auto-generated method stub
+		return x;
+	}
+	public double getY() {
+		// TODO Auto-generated method stub
+		return y;
+	}
 }

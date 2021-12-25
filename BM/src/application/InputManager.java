@@ -30,28 +30,15 @@ public class InputManager {
        if(keyboardInputs.contains(KeyCode.RIGHT) || keyboardInputs.contains(KeyCode.D)){
     	   player.moveRight();     
        }
-       
-       if( !keyboardInputs.contains(KeyCode.LEFT) &&
-           !keyboardInputs.contains(KeyCode.RIGHT) &&
-           !keyboardInputs.contains(KeyCode.UP) &&
-           !keyboardInputs.contains(KeyCode.DOWN) &&
-           !keyboardInputs.contains(KeyCode.W) &&
-           !keyboardInputs.contains(KeyCode.A) &&
-           !keyboardInputs.contains(KeyCode.S) &&
-           !keyboardInputs.contains(KeyCode.D)
-         )
-       {
-    	   // player.unmove(); 
-       }
-       
-    	       
+
+     
        //Drop bomb
        if(KeysHandler.SPACEPRESSED){
            if(player.getBombanzahl()>0) {
         	   System.out.println("Bombe");
-        	   Bomb b= new Bomb( player.getX() , player.getY() , Ressourcen.IMAGES.BOMBE.getImage() );
-        	   b.BombCollision(player.getX(),player.getY());
-        	if(!b.BombeDuplikate()) {
+        
+        	   Bomb b= new Bomb( player.getEntityX() , player.getEntityY() ,player.getExplosion(), Ressourcen.IMAGES.BOMBE.getImage(), player);
+        	   b.BombCollision(player.getEntityX(),player.getEntityY());
         	   player.BombanzahlDown();
         	   if(Main.online)
         	   Client.updateString =Client.updateString+"/BOMB/"+b.getX()+"/"+b.getY();
@@ -66,5 +53,5 @@ public class InputManager {
        
        		}
    
-   }
+
 

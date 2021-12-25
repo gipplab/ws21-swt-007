@@ -25,7 +25,6 @@ public class Explotionart //extends Entities
 		createExplosions();
 		
 	}
-
 	int berechneDistance() {
 		int radius = 0;
 		int x1 = this.x;

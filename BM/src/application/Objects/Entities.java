@@ -59,7 +59,7 @@ public abstract class Entities {
 	}
 	
 	public void drawImage(GraphicsContext gc) {
-		
+	
 		gc.drawImage(this.img,this.x, this.y, GamePanel.SQUARE_SIZE,GamePanel.SQUARE_SIZE);
 		
 	}

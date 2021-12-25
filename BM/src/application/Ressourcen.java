@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 public class Ressourcen {
 	
 	
-	public static InputStreamReader file;
+	public static InputStreamReader file,file_Server;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static String[] fields;
 	public int yazan;
@@ -53,7 +53,7 @@ public class Ressourcen {
 			IMAGES.Map[3] = new Image(Ressourcen.class.getResource("img/BACKG.jpg").toString());
 			IMAGES.BOT.image= new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
 			file = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
-			
+			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
 			
 	 }
 	 

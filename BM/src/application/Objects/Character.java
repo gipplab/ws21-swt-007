@@ -5,6 +5,7 @@ import application.Ressourcen;
 import javafx.scene.image.Image;
 
 public abstract class Character extends Entities {
+
 	int bombanzahl;
 	double speed;
 	int explosion;
@@ -16,6 +17,7 @@ public abstract class Character extends Entities {
 		super(x,y,img);
 		// TODO Auto-generated constructor stub
 		this.Player=isPlayer;
+		
 	}
 	
 	
@@ -88,7 +90,6 @@ public abstract class Character extends Entities {
 		return Player;
 		
 	}
-	
 	public int getBombanzahl(){
 		return this.bombanzahl;
 	}
@@ -96,30 +97,6 @@ public abstract class Character extends Entities {
 	public int getExplosion(){
 		return this.explosion;
 	}
-	public int getHealth(){
-		return this.health;
-	}
-	double getSpeed(){
-		return this.speed;
-	}
-	public Image getImage(){
-		
-		return img;
-	}
-	public double getX(){
-		return this.x;
-	}
-	public double getY(){
-		return this.y;
-	}
-	boolean death() {
-		if(health>0) {
-			return false;
-		}else 
-			return true;
-				
-	}
-	
 	public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
@@ -127,12 +104,7 @@ public abstract class Character extends Entities {
 	public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
-	public void ExplosionUp(){
-		this.explosion++;
-	}
-	public void HealthUp(){
-		this.health++;
-	}
+
 	protected abstract void moveDown();
 
 	protected abstract void moveUp();

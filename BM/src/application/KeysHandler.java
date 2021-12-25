@@ -55,10 +55,9 @@ public class KeysHandler {
 	     
 	        KeyCode code = evt.getCode();
 	       
-	        if ( !KeysHandler.inputList.contains(code)&& code!=KeyCode.SPACE )
+	        if ( !KeysHandler.inputList.contains(code) )
 	        	KeysHandler.inputList.add( code );
 	        if(code==KeyCode.SPACE) {
-	        	
 	        	KeysHandler.SPACEPRESSED=true;
 	        }
 	    }

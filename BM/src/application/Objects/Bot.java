@@ -33,12 +33,12 @@ public class Bot extends Character {
 		 else if(keyRandom == 3)
 		    moveDown();
 		 else if(keyRandom==4) {
-			 Bomb b= new Bomb( this.x , this.y , Bombimag );
-			 b.BombCollision(this.getX(),this.getY());
-			 if(!b.BombeDuplikate()) {
-				 this.BombanzahlDown();
-				 GameObjects.spawn(b);
-  	   }
+//			 Bomb b= new Bomb( this.x , this.y, explosion , Bombimag );
+//			 b.BombCollision(this.getX(),this.getY());
+//			 if(!b.BombeDuplikate()) {
+//				 bombanzahl--;
+//				 GameObjects.spawn(b);
+//  	   }
 	}
 		 }
 
@@ -84,16 +84,60 @@ public class Bot extends Character {
 			}
 		else
 		moveRandom();
+		
+	}
+	
+	public void gethit() {
+		this.health--;
+		if(health<=0)
+			dead=true;
+		
 	}
 	
 
-	@Override
-	public boolean getDeath() {
-		// TODO Auto-generated method stub
-		return this.dead;
-	}
+public int getHealth(){
+	return this.health;
+}
+double getSpeed(){
+	return this.speed;
+}
+public Image getImage(){
 	
-	
-	
-	
+	return img;
+}
+public String getName() {
+
+	return Name;
+}
+
+public void setName(String name) {
+	Name = name;
+}
+
+
+@Override
+public boolean getDeath() {
+	return this.dead;
+}
+public double getX(){
+	return this.x;
+}
+public double getY(){
+	return this.y;
+}
+boolean death() {
+	if(health>0) {
+		return false;
+	}else 
+		return true;
+			
+}
+
+
+public void ExplosionUp(){
+	this.explosion++;
+}
+public void HealthUp(){
+	this.health++;
+}
 	}

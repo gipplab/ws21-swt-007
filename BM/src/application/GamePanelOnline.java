@@ -62,6 +62,7 @@ public class GamePanelOnline {
 		loadMapFile();
 		generateMap();
 		run();
+	
 		AnimationTimer timeline = new AnimationTimer() {
 
 			@Override
@@ -71,8 +72,9 @@ public class GamePanelOnline {
 					{
 					//String resp= Client.accessServer("Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-"+Client.updateString);
 					//updateServer(resp);
-					update();
 					Thread.sleep(100);
+					update();
+					
 					}
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -110,12 +112,13 @@ public class GamePanelOnline {
 	}
 
 	private void update() throws InterruptedException {
-		System.out.println("Hallllooooooooooo"+Client.updateString);
+		System.out.println("114GamePanel: "+Client.updateString);
 		String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-Updates-"+Client.updateString;
 		String resp= "";
 		resp=Client.accessServer(messageout);
 		System.out.println(resp);
 		onlineUpdates(resp);
+		//druekeNachricht(resp);
 		Client.updateString="";
 		InputManager.handlePlayerMovements(player[mainPlayerIndex]);
 		drawBackground(gc);
@@ -143,6 +146,7 @@ public class GamePanelOnline {
 				gameOver=true;
 			System.out.println("GameOber");
 			System.exit(0);
+		
 			}
 			if(!obj.getDeath()) {
 			
@@ -161,7 +165,54 @@ public class GamePanelOnline {
 					SQUARE_SIZE, SQUARE_SIZE);
 		}
 	}
-	 
+	
+//	 void druekeNachricht(String resp) {
+//		 String[] message = resp.split("-");
+//			for (int i=0;i< message.length;i+=2 ) {
+//				System.out.println(" M# "+message[i]);
+//				for (int j=0;j< player.length;j++ ) {
+//					
+//				if(message[i].equals(player[j].getName())) {
+//					String[] movesUpdates = message[i+1].split("/");
+//					for (int k=0;k< message.length;k++ ) {
+//						System.out.println("#mU# "+movesUpdates[k]);
+//					     switch (movesUpdates[k]) {
+//		                    case ("UP"):    
+//		                   player[j].moveUp();
+//		                        break;
+//
+//		                    case ("RIGHT"):    
+//		                    	player[j].moveRight();                 
+//		                        break;
+//
+//		                    case ("DOWN"):    
+//		                    	player[j].moveDown();             
+//		                    break;
+//		                    case ("LEFT"):    
+//		                    	player[j].moveLeft();              
+//		                        break;
+//		                    case ("BOMB"):  
+//		                    	Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]),player[j].getExplosion() , Ressourcen.IMAGES.BOMBE.getImage(),player[j] );
+//		             	   		b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
+//		             	   		if(!b.BombeDuplikate()) {
+//		             	   			player[j].BombanzahlDown();
+//		             	   			Client.updateString =Client.updateString+"/BOMB/"+b.getX()+"/"+b.getY();
+//		             	   			GameObjects.spawn(b);
+//		             	   			k+=2;
+//		             	   			}            
+//		                        break;
+//		                        
+//		                    default:
+//		                    	
+//		                        break;
+//			                }
+//					}
+//				
+//				}
+//				
+//				}
+//			}
+//	 }
 	
 	void onlineUpdates(String resp) {
 		String[] message = resp.split("-");
@@ -186,7 +237,7 @@ public class GamePanelOnline {
 	                    	player[j].moveLeft();              
 	                        break;
 	                    case ("BOMB"):  
-	                    	Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]) , Ressourcen.IMAGES.BOMBE.getImage() );
+	                    	Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]),player[j].getExplosion() , Ressourcen.IMAGES.BOMBE.getImage(),player[j] );
 	             	   		b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
 	             	   		if(!b.BombeDuplikate()) {
 	             	   			player[j].BombanzahlDown();
@@ -212,7 +263,7 @@ public class GamePanelOnline {
 	
 	 private static void loadMapFile()  {
 		
-        bufferedReader = new BufferedReader(Ressourcen.file);
+        bufferedReader = new BufferedReader(Ressourcen.file_Server);
 	    mapLayout = new ArrayList<>();
 	 
         try {
@@ -275,15 +326,6 @@ public class GamePanelOnline {
             }
         }
     }
- 
-	/* 	    
-	     return !(GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("H")||GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("S") ||
-	    	  GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("H")||GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("S") ||
-	    	  GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("H")||GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("S") ||
-	    	  GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("H")||GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("S"));
-       */
- 
-
 
 }
 

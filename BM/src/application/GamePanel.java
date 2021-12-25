@@ -64,6 +64,7 @@ public class GamePanel {
 		run();
 		AnimationTimer timeline = new AnimationTimer() {
 
+			
 			@Override
 			public void handle(long arg0) {
 				try {
@@ -133,12 +134,12 @@ public class GamePanel {
 				obj.update();
 			if(obj.getDeath() && obj.isPlayer()) {
 				gameOver=true;
-			System.out.println("GameOber");
+			System.out.println("GameOver");
 			System.exit(0);
 			}
 			if(!obj.getDeath()) {
-			
-				obj.drawImage(gc);}
+				obj.drawImage(gc);
+				}
 
 			}
 		}

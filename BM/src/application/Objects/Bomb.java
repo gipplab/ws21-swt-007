@@ -7,19 +7,28 @@ import application.Ressourcen;
 import javafx.scene.image.Image;
 
 public class Bomb extends TileObjects {
-
-	
+	Character player;
+	int power;
 	double time;
 	double timeToExplosion;
 	 Boolean death;
 	
-public Bomb(double x2, double y2, Image image)  {
+public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	super(x2,y2,image);
+	
 	this.x=x2;
 	this.y=y2;
 	time= System.currentTimeMillis();
 	timeToExplosion=5000;
 	death=false;
+	this.power=power;
+	player=p;
+	
+	if (BombeDuplikate()) {
+		player.BombanzahlUp();
+		death=true;
+		GameObjects.tileObjects.remove(this);
+	}
 	}
 
 
@@ -55,10 +64,10 @@ public void update() {
 		GameObjects.tileObjects.remove(this);
 		System.out.println("remove Bome "+this.x+", "+ this.y);
 		Explotionart ex0= new Explotionart((int)this.x,(int) this.y);
-		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, GamePanel.player.getExplosion());
-		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, GamePanel.player.getExplosion());
-		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, GamePanel.player.getExplosion());
-		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, GamePanel.player.getExplosion());
+		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, this.power);
+		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, this.power);
+		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
+		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
 		if(Main.online)
 			GamePanelOnline.player[GamePanelOnline.mainPlayerIndex].BombanzahlUp();
 		else
@@ -68,7 +77,7 @@ public void update() {
 
 public Boolean BombeDuplikate() {
 	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
-		   if(this.x==(GameObjects.tileObjects.get(i).x) && this.y==(GameObjects.tileObjects.get(i).y)) 
+		   if(this.x==(GameObjects.tileObjects.get(i).getX()) && this.y==(GameObjects.tileObjects.get(i).getY())) 
 			   return true;
 	   return false;
 	   

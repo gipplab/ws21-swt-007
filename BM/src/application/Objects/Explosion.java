@@ -17,7 +17,7 @@ public class Explosion extends Entities{
 		System.out.println("erzeuge Ex");
 	}
 	
-	
+
 	
 public void update() {
 		if(System.currentTimeMillis()-time>=timeToExplosion && !death) {
