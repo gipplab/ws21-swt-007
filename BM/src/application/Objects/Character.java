@@ -1,6 +1,8 @@
 package application.Objects;
 
+import application.Client;
 import application.GamePanel;
+import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
@@ -19,7 +21,6 @@ public abstract class Character extends Entities {
 		this.Player=isPlayer;
 		
 	}
-	
 	
 	public  boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
@@ -52,23 +53,47 @@ public abstract class Character extends Entities {
 	 		    }             
 	 	  }
 	      	return frei;
-	 } 
+	 }
+	private  boolean isFreeBomb(double nextX, double nextY) {
+	     Entities obje;
+	     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
+	     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
 
-	public boolean isFreeExplosion() {
+	     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
+
+	     int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
+	     int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+
+	     int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	     int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+	   
+	     for (int i = 0; i < GameObjects.tileObjects.size(); i++) {	
+	    	   
+	   	    obje = GameObjects.tileObjects.get(i);
+	   	    
+	 	        if((obje.getEntityImage().equals(Ressourcen.IMAGES.BOMBE.getImage()))) {
+	 		    	  		return false;
+	 		    }             
+	 	  }
+	      	return true;
+	 }
+
+	public boolean isFreeExplosion(double nextX, double nextY) {
 		// TODO Auto-generated method stub
-		 Entities obje;
-		    
-		    int nextX_1 = (int) (this.x / GamePanel.SQUARE_SIZE);
-		    int nextY_1 = (int) (this.y / GamePanel.SQUARE_SIZE);
+		  Entities obje;
+		     
+		     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
+		     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
 
-		    int nextX_2 = (int) ((this.x + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-		    int nextY_2 = (int) (this.y / GamePanel.SQUARE_SIZE);
+		     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+		     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
 
-		    int nextX_3 = (int) (this.x / GamePanel.SQUARE_SIZE);
-		    int nextY_3 = (int) ((this.y + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+		     int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
+		     int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
 
-		    int nextX_4 = (int) ((this.x + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-		    int nextY_4 = (int) ((this.y + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+		     int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+		     int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
 		  
 		    for (int i = 0; i < GameObjects.explosionObjects.size(); i++) {	
 		 	    obje = GameObjects.explosionObjects.get(i);
@@ -105,12 +130,53 @@ public abstract class Character extends Entities {
 		 this.bombanzahl--;
 	}
 
-	protected abstract void moveDown();
+	
+public void moveRight() {
+	
+	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&& (isFree(this.x+  this.speed,this.y))) {
+	 	   if(Main.online) {
+	 		   Client.updateString =Client.updateString+"/RIGHT";
+	 		   // Client.accessServer("Play-RIGHT");
+	 	   }
+	 	  this.x= this.x+  this.speed;
+	
+}
+}
 
-	protected abstract void moveUp();
+public void moveLeft() {
+	if((this.x >GamePanel.SQUARE_SIZE)&& (isFree(this.x- this.speed ,this.y))) {
+		
+	 	   if(Main.online) {
+	 		   	Client.updateString =Client.updateString+"/LEFT";
+	 		   	//Client.accessServer("Play-LEFT");
+	 	   }
+	 	   this.x=this.x- this.speed;
+	}
+}
 
-	protected abstract void moveLeft();
+public void moveUp() {
+	if((this.y >GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y - this.speed))) {
+		
+	 	   if(Main.online) {
+	 		   	Client.updateString =Client.updateString+"/UP";
+	 		   	//Client.accessServer("Play-UP");
+	 	   					}
+	 	   this.y=this.y - this.speed;
 
-	protected abstract void moveRight();
+	 	   }
+	
+}
+
+public void moveDown() {
+	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y+ this.speed))) {
+		
+	 	   if(Main.online) {
+	 		   Client.updateString =Client.updateString+"/DOWN";
+	 		   // Client.accessServer("Play-DOWN");
+	 		   }
+	 	   this.y=this.y+ this.speed;
+	}
+	}
+
 	
 }

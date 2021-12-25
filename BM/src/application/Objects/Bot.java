@@ -1,92 +1,131 @@
 package application.Objects;
+import java.util.List;
+
 import application.GamePanel;
+import application.KeysHandler;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
 
 
 public class Bot extends Character {
+	 List<?> keyboardInputs = KeysHandler.getInputList();
 
-
+	int lastRichtung=0;
+	
+	
 	Image Bombimag= Ressourcen.IMAGES.BOMBE.getImage();
 	public Bot(double x, double y, Image img, Boolean p) {
 		super(x, y, img,p);
 		// TODO Auto-generated constructor stub
-			this.bombanzahl=3;
-			this.speed=5;// 5, 7 ,8,75 
-						// Rows= 15
+			this.bombanzahl=1;
+			this.speed=1.25;//2.5, 5, 7 ,8,75 
+	
 			this.explosion=1;
 			this.dead=false;
 			this.health=1;
+		
 		}
-	
-
-	
-	public void moveRandom() {
-		 int keyRandom = (int) Math.round(Math.random() * 4);
-		 if(keyRandom == 0)
-			 moveRight();
-		 else if(keyRandom == 1)
-			 moveLeft();
-		 else if(keyRandom == 2)
-			 moveUp();
-		 else if(keyRandom == 3)
-		    moveDown();
-		 else if(keyRandom==4) {
-//			 Bomb b= new Bomb( this.x , this.y, explosion , Bombimag );
-//			 b.BombCollision(this.getX(),this.getY());
-//			 if(!b.BombeDuplikate()) {
-//				 bombanzahl--;
-//				 GameObjects.spawn(b);
-//  	   }
-	}
-		 }
-
-	
-	@Override
-	protected void moveDown() {
-		// TODO Auto-generated method stub
-		if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y+ this.speed))) 
-			this.y=this.y+ this.speed;
-	
-	}
-	@Override
-	protected void moveUp() {
-		// TODO Auto-generated method stub
-		if((this.y >GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y - this.speed))) 
-			this.y=this.y - this.speed;
-	
-	}
-	@Override
-	protected void moveLeft() {
-		// TODO Auto-generated method stub
-		if((this.x >GamePanel.SQUARE_SIZE)&& (isFree(this.x- this.speed ,this.y))) 
-			this.x=this.x- this.speed;
-
-	}
-	@Override
-	protected void moveRight() {
-		// TODO Auto-generated method stub
-		if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&& (isFree(this.x+  this.speed,this.y))) {
-			this.x= this.x+  this.speed;
-	}
-	}
-	
-
+	void placeBomb() {
+		if(bombanzahl>0) 
+		{
+		
+			Bomb b= new Bomb( this.x , this.y, explosion , Bombimag, this );
+			b.BombCollision(this.x,this.y);
+			if(!b.BombeDuplikate()) 
+			{
+				bombanzahl--;
+				GameObjects.spawn(b);
+			}
+		}
+}
 	
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 		
-		if(!isFreeExplosion()) {
+		if(!isFreeExplosion(this.x,this.y)) {
 			this.dead=true;
 			GameObjects.bomberObjects.remove(this);
 			}
-		else
-		moveRandom();
+		
+			moveRandom();
 		
 	}
+void moveRandom(){
 	
+	isFreeBot();
+    if (lastRichtung == 0) {
+        moveUp();
+    }
+    else if (lastRichtung == 1) {
+    	  moveRight();
+    }
+    else if (lastRichtung == 2) {
+    	  moveLeft();
+    }
+    else if (lastRichtung == 3) {
+    	  moveDown();
+    }
+	
+}
+
+
+
+void isFreeBot(){
+		
+		int a = (int) (this.x % GamePanel.SQUARE_SIZE);
+		int b= (int) (this.y % GamePanel.SQUARE_SIZE);
+	
+		switch(lastRichtung) {
+		case 0:// Up
+		{
+			if((isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))==0 
+					||isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)==1) {
+				lastRichtung=(int) Math.round(Math.random() * 3);
+				placeBomb();
+				}
+			
+			break;
+		}
+		case 1: // right
+		{	if((isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))==0 
+		||isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)==1) {
+				lastRichtung=(int) Math.round(Math.random() * 3);
+				placeBomb();
+				}
+			
+		break;
+		}
+		case 2:// Left
+		{if((isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))==0 
+		||isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)==1){
+		lastRichtung=(int) Math.round(Math.random() * 3);
+		placeBomb();
+		}
+			
+		break;
+		}
+		case 3:// Down
+		{
+			if((isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
+					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1) {
+				lastRichtung=(int) Math.round(Math.random() * 3);
+				placeBomb();}
+			break;
+		}
+		default:
+			break;
+		}
+	
+	
+	
+}
+
+void isWall() {
+	lastRichtung = (int) Math.round(Math.random() * 3);
+	
+}
 	public void gethit() {
 		this.health--;
 		if(health<=0)

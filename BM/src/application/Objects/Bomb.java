@@ -69,9 +69,9 @@ public void update() {
 		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
 		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
 		if(Main.online)
-			GamePanelOnline.player[GamePanelOnline.mainPlayerIndex].BombanzahlUp();
+			player.BombanzahlUp();
 		else
-			GamePanel.player.BombanzahlUp();
+			player.BombanzahlUp();
 	}
 }
 

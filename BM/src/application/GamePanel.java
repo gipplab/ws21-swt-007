@@ -11,12 +11,16 @@ import application.Objects.Bot;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
 import application.Objects.Wall;
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 
 
@@ -62,26 +66,38 @@ public class GamePanel {
 		loadMapFile();
 		generateMap();
 		run();
-		AnimationTimer timeline = new AnimationTimer() {
-
-			
-			@Override
-			public void handle(long arg0) {
-				try {
-					if(!gameOver)
-					{
-
-					update();
-					Thread.sleep(100);
-					}
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		
+		 Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
+			try {
+				update();
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-
-		};
-		timeline.start();
+		}));
+	        timeline.setCycleCount(Animation.INDEFINITE);
+	        timeline.play();
+		
+//		AnimationTimer timeline = new AnimationTimer() {
+//
+//			
+//			@Override
+//			public void handle(long arg0) {
+//				try {
+//					if(!gameOver)
+//					{
+//
+//					update();
+//					Thread.sleep(100);
+//					}
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//
+//		};
+//		timeline.start();
 
 	};
 
