@@ -1,17 +1,17 @@
 package application;
 
 
-
-
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.Arrays;
 import application.Objects.Bomb;
 import application.Objects.Bomberman;
-
-
+import application.Objects.Bot;
+import application.Objects.Entities;
+import application.Objects.GameObjects;
+import application.Objects.Wall;
 import javafx.animation.AnimationTimer;
-
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -19,152 +19,213 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 
-public class GamePanel    {
-	public static final int WIDTH= 600 ;
-	public static final int HEIGHT=600 ;
-	public static final int ROWS= 20;
-	public static final int COLUMNS=ROWS;
-	public static final double SQUARE_SIZE= WIDTH*1.0/ROWS ;
 
- 
-     public static  ArrayList<Bomb>  Objekte= new ArrayList<>();
-	 private GraphicsContext gc;
-	 private boolean gameOver;
-	 private Scene scene;
-	 Canvas canvas;
-	 Group root;
-	 double Playerspeed; 
-	 public static double imageX=4, imageY=4;
-	 public Bomberman player;
+public class GamePanel {
+	public static final int WIDTH = 560;
+	public static final int HEIGHT = 560;
+	public static final int ROWS = 16;
+	public static final int COLUMNS = ROWS;
+	public static final int SQUARE_SIZE = WIDTH / ROWS;
 
-	 public GamePanel()  {
-		
-		root  = new Group();
+	private static BufferedReader bufferedReader;
+	public static ArrayList<Bomb> Objekte = new ArrayList<>();
+	private GraphicsContext gc;
+	private boolean gameOver=false;
+	private Scene scene;
+	Canvas canvas;
+	Group root;
+	double Playerspeed;
+	public static double imageX = 4, imageY = 4;
+	public static Bomberman player;
+	public static ArrayList<ArrayList<String>> mapLayout;
+
+	
+
+	public GamePanel() {
+		System.out.println(SQUARE_SIZE);
+
+		root = new Group();
 		canvas = new Canvas(WIDTH, HEIGHT);
 		root.getChildren().add(canvas);
-		scene = new Scene(root,WIDTH,HEIGHT);
+		scene = new Scene(root, WIDTH, HEIGHT);
 		KeysHandler.attachEventHandlers(scene);
-		//scene.setOnKeyPressed(this);
+		// scene.setOnKeyPressed(this);
 		gc = canvas.getGraphicsContext2D();
-		  
+
 	}
+
 	public void init() throws IOException {
-	player= new Bomberman(2,2, Ressourcen.IMAGES.PLAYER1.getImage());
-	Ressourcen.readFiles();
-	Playerspeed=0.15;
-	//read .CSV File
-     Ressourcen.readCSV();
-	run();
-	AnimationTimer timeline = new AnimationTimer(){
+		
+		Ressourcen.readFiles();
+		GameObjects.init();
+		Playerspeed = 0.15;
+		loadMapFile();
+		generateMap();
+		run();
+		AnimationTimer timeline = new AnimationTimer() {
 
-		@Override
-		public void handle(long arg0) {
-			update();
-			try {
 			
-				Thread.sleep(90);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			@Override
+			public void handle(long arg0) {
+				try {
+					if(!gameOver)
+					{
+
+					update();
+					Thread.sleep(100);
+					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-	
-			
-		}
-		
-	};
-	timeline.start();
-	
- 
-	
+
+		};
+		timeline.start();
+
 	};
 
-public  Bomberman getPlayer() {
-	return player;
-}
-public Scene getScene() {
-	return scene;
-}
-public double getSQUARE_SIZE() {
-	return SQUARE_SIZE;
-}
-public double getWidth() {
-	return WIDTH;
-}
-public double getHeight() {
-	return HEIGHT;
-}
-public void run() {
-	
-	drawBackground(gc);
-	drawPlayer(gc,imageX,imageY);
-	if(!Objekte.isEmpty()) {
-	gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(),SQUARE_SIZE*imageX, SQUARE_SIZE*imageY,SQUARE_SIZE,SQUARE_SIZE);
-	Objekte.remove(this);
+	public Bomberman getPlayer() {
+		return player;
 	}
+
+	public Scene getScene() {
+		return scene;
 	}
-	
-private void update() {
-	InputManager.handlePlayerMovements(player);
-	drawBackground(gc);
-	drawPlayer(gc,player.getX(),player.getY());
-	drawBomb(gc);
-//	if(Objekte==1) {
-//	gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(),SQUARE_SIZE*imageX, SQUARE_SIZE*imageY,SQUARE_SIZE,SQUARE_SIZE);
-//	Objekte =0;
-//	}
-	
-	
-	
-}
-private void drawBackground( GraphicsContext gc) {
-	
-	for(int i=0 ; i<ROWS; i++) {
+
+	public double getSQUARE_SIZE() {
+		return SQUARE_SIZE;
+	}
+
+	public double getWidth() {
+		return WIDTH;
+	}
+
+	public double getHeight() {
+		return HEIGHT;
+	}
+
+	public void run() {
+		drawObjekte(gc);
+	}
+
+	private void update() throws InterruptedException {
+		InputManager.handlePlayerMovements(player);
+		drawBackground(gc);
+		drawObjekte(gc);
+		drawBomb(gc);
+
+	}
+	private void drawBackground(GraphicsContext gc) {
+	  for(int i=0 ; i<ROWS; i++) 
 		for(int j=0;j<COLUMNS;j++) {
-			if(i==0 || j==0|| i==ROWS-1||j==COLUMNS-1)
-				gc.drawImage(Ressourcen.IMAGES.HARDWALL.getImage(),SQUARE_SIZE*i, SQUARE_SIZE*j,SQUARE_SIZE,SQUARE_SIZE);
-				
-			else if((i+j)%2==0) {
-				gc.setFill(Color.WHITE);
-				gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);
-				if(i%2 ==0 )
-					gc.drawImage(Ressourcen.IMAGES.SOFTWALL.getImage(),SQUARE_SIZE*i, SQUARE_SIZE*j,SQUARE_SIZE,SQUARE_SIZE);}
-			else { gc.setFill(Color.WHITE);
+			gc.setFill(Color.WHITE);
 			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);}
-			
-		
-		}
-	}	
-
-}
-
-private void drawPlayer (GraphicsContext gc, double d , double e)	{
-	// draw Player in anfangscoordinate
-	 gc.drawImage(Ressourcen.IMAGES.PLAYER1.getImage(),SQUARE_SIZE*d, SQUARE_SIZE*e,SQUARE_SIZE,SQUARE_SIZE);
-	
-}
-
-private void drawBomb (GraphicsContext gc)	{
-	// draw Player in anfangscoordinate
-	for(Bomb i : Objekte) {
-		gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(),SQUARE_SIZE*i.getX(), SQUARE_SIZE*i.getY(),SQUARE_SIZE,SQUARE_SIZE);
-		
+					
 	}
 
+	private void drawObjekte(GraphicsContext gc) {
+		//hier werden alle Objekte gezeichnet 
+		// die Objekte sind in einer Liste von Listen gespeichert(gameObjects)
+		for (int i = 0; i < GameObjects.gameObjects.size(); i++) {
+			for (int j = 0; j < GameObjects.gameObjects.get(i).size(); j++) {
+				
+				Entities obj= GameObjects.gameObjects.get(i).get(j);
+				obj.update();
+			if(obj.getDeath() && obj.isPlayer()) {
+				gameOver=true;
+			System.out.println("GameOver");
+			System.exit(0);
+			}
+			if(!obj.getDeath()) {
+				obj.drawImage(gc);
+				}
+
+			}
+		}
+
+	}
+
+
+	private void drawBomb(GraphicsContext gc) {
+		// draw Player in Anfangscoordinate
+		for (Bomb i : Objekte) {
+			gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(), SQUARE_SIZE * i.getX(), SQUARE_SIZE * i.getY(),
+					SQUARE_SIZE, SQUARE_SIZE);
+		}
+	}
 	 
 	
+	 private static void loadMapFile()  {
+		
+        bufferedReader = new BufferedReader(Ressourcen.file);
+	    mapLayout = new ArrayList<>();
+	 
+        try {
+            String currentLine;
+         int i=1;
+            while ((currentLine = bufferedReader.readLine()) != null) {
+               if (currentLine.isEmpty()) {
+                  continue;
+               }
+
+                mapLayout.add(new ArrayList<>(Arrays.asList(currentLine.split(","))));
+             
+            }   
+          
+        } catch (IOException | NullPointerException e) {
+            System.out.println(e + "Error beim LoadMapFile()");
+            e.printStackTrace();
+        }
+       
+	 }
+	 
+
+	private void generateMap() {
+	      
+    
+        for (int y = 0; y < ROWS; y++) {
+            for (int x = 0; x < ROWS; x++) {
+                switch (mapLayout.get(y).get(x)) {
+                    case ("S"):     // Soft wall zerstoerbar
+                     Wall soft= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL.getImage());
+                    if(soft!=null) 
+                    GameObjects.spawn(soft);
+                        break;
+
+                    case ("H"):    
+                    	Wall hard= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL.getImage());
+                    if(hard!=null)
+                    GameObjects.spawn(hard);                    
+                        break;
+
+                    case ("1"):     // Player 1
+                    GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
+                    GameObjects.spawn(GamePanel.player);                    
+                    break;
+                    case ("B"):     // Soft wall zerstoerbar
+                        Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
+                       if(bot!=null) 
+                       GameObjects.spawn(bot);
+                           break;
+               
+                    default:
+                    	
+                        break;
+                }
+            }
+        }
+    }
+ 
+	/* 	    
+	     return !(GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("H")||GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("S") ||
+	    	  GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("H")||GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("S") ||
+	    	  GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("H")||GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("S") ||
+	    	  GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("H")||GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("S"));
+       */
+ 
+
+
 }
-
-
-
-
-
-
-}
-
-// KeyListner m�ssen wir noch verbessern 
-//um den Character  in alle Richtungen bewegen zu k�nnen
-// Up left && Up right && down left && down right 
-
-
 
 

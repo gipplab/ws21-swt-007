@@ -2,113 +2,119 @@ package application.Objects;
 
 import application.Client;
 import application.GamePanel;
-
+import application.Main;
+import application.Ressourcen;
 import javafx.scene.image.Image;
 
-public class Bomberman {
-
-	double playerX;
-	double playerY;
-	int bombanzahl;
-	double speed;
-	double explosion;
-	int health;
-	boolean dead ;
-	Image image;
-
+public class Bomberman extends Character{
 
 	
 	
-public Bomberman(double x, double y,Image img) {
-	this.playerX=x;
-	this.playerY=y;
-	this.image=img;
-	this.bombanzahl=5;
-	this.speed=0.25;
-	this.explosion=1;
+public Bomberman(double x, double y,Image img, Boolean p) {
+	super(x,y,img,p);
+
+	this.bombanzahl=2;
+	this.speed=5;// 5, 7 ,8,75 
+				// Rows= 15
+	this.explosion=3;
 	this.dead=false;
-	this.health=2;
+	this.health=1;
 		}
 	
-	boolean death() {
-		if(health>0) {
-			return false;
-		}else 
-			return true;
-				
+
+
+//Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
+public void gethit() {
+		this.health--;
+		if(health<=0)
+			dead=true;
+		
 	}
 	
 
-public int getBombanzahl(){
-	return this.bombanzahl;
+
+
+
+public String getName() {
+
+	return Name;
 }
 
-public double getExplosion(){
-	return this.explosion;
-}
-public int getHealth(){
-	return this.health;
-}
-double getSpeed(){
-	return this.speed;
-}
-public Image getImage(){
-	
-	return image;
-}
-public double getX(){
-	return this.playerX;
-}
-public double getY(){
-	return this.playerY;
-}
-public void BombanzahlUp(int b){
-	 this.bombanzahl++;
+public void setName(String name) {
+	Name = name;
 }
 
-public void BombanzahlDown(){
-	 this.bombanzahl--;
+
+@Override
+public boolean getDeath() {
+	return this.dead;
 }
+
+ public boolean death() {
+	if(health>0) {
+		return false;
+	}else 
+		return true;
+			
+}
+
+
 public void ExplosionUp(){
 	this.explosion++;
 }
 public void HealthUp(){
 	this.health++;
 }
-
-
-//Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
-void gethit() {
-		this.health--;
-		
-	}
-	
 	
 	
 public void moveRight() {
-	if( this.playerX < GamePanel.ROWS-2 )
-		this.playerX= this.playerX+  this.speed;
-	// String resp=Client.accessServer("Play-RIGHT");
+	
+	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&& (isFree(this.x+  this.speed,this.y))) {
+	 	   if(Main.online)
+		Client.updateString =Client.updateString+"/RIGHT";
+		this.x= this.x+  this.speed;
+	// Client.accessServer("Play-RIGHT");
+}
 }
 
 public void moveLeft() {
-	if(this.playerX >1)
-		this.playerX=this.playerX- this.speed;
-	// String resp=Client.accessServer("Play-LEFT");
-
+	if((this.x >GamePanel.SQUARE_SIZE)&& (isFree(this.x- this.speed ,this.y))) {
+		this.x=this.x- this.speed;
+	 	   if(Main.online)
+		Client.updateString =Client.updateString+"/LEFT";
+	//Client.accessServer("Play-LEFT");
+	}
 }
 
 public void moveUp() {
-	if( this.playerY >1)
-		this.playerY=this.playerY - this.speed;
-	 //String resp=Client.accessServer("Play-UP");
+	if((this.y >GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y - this.speed))) {
+		this.y=this.y - this.speed;
+	 	   if(Main.online)
+	Client.updateString =Client.updateString+"/UP";}
+	 //Client.accessServer("Play-UP");
+	
 }
 
 public void moveDown() {
-	if( this.playerY < GamePanel.ROWS-2)
-		this.playerY=this.playerY+ this.speed;
-	// String resp=Client.accessServer("Play-DOWN");
+	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y+ this.speed))) {
+		this.y=this.y+ this.speed;
+	 	   if(Main.online)
+	 		   Client.updateString =Client.updateString+"/DOWN";
+	 	   // Client.accessServer("Play-DOWN");
 	}
- 	
+	}
+
+
+
+@Override
+public void update() {
+	// TODO Auto-generated method stub
+
+	if(!isFreeExplosion()) {
+		this.dead=true;
+	GameObjects.bomberObjects.remove(this);
+	}
+	
+}
 	
 }

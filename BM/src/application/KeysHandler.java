@@ -14,8 +14,6 @@ public class KeysHandler {
 		// TODO Auto-generated constructor stub
 	}
 	
-	    public static char lastKeyPress;
-	    public static char lastKeyReleased;
 	    public static ArrayList<KeyCode> inputList = new ArrayList<KeyCode>();
 	    public static boolean SPACEPRESSED=false;
 	    public static void attachEventHandlers(Scene scene){
@@ -57,10 +55,9 @@ public class KeysHandler {
 	     
 	        KeyCode code = evt.getCode();
 	       
-	        if ( !KeysHandler.inputList.contains(code)&& code!=KeyCode.SPACE )
+	        if ( !KeysHandler.inputList.contains(code) )
 	        	KeysHandler.inputList.add( code );
 	        if(code==KeyCode.SPACE) {
-	        	
 	        	KeysHandler.SPACEPRESSED=true;
 	        }
 	    }
