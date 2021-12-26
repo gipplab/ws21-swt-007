@@ -17,8 +17,6 @@ public class Main extends Application {
 
 		
 			
-			
-
 			player.SetAddress("192.168.2.112");
 
 			Ressourcen.readFiles();
