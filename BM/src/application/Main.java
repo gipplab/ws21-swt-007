@@ -7,16 +7,13 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
-	//public static Client player= new Client();
-	
+	public static Client player= new Client();
+	public static Boolean  online= false;
 	@Override
 	public void start(Stage primaryStage) {
 	
 		
 		try {
-<<<<<<< Updated upstream
-		//	player.SetAddress("192.168.1.107");
-=======
 
 		
 			
@@ -24,11 +21,10 @@ public class Main extends Application {
 
 			player.SetAddress("192.168.2.112");
 
->>>>>>> Stashed changes
 			Ressourcen.readFiles();
-			GamePanel game= new GamePanel();
-			game.init();
-		    Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
+			//GamePanel game= new GamePanel();
+			//game.init();
+		   Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
 		    Scene scene = new Scene(root);
 			primaryStage.setTitle("Bomberman");
 			primaryStage.setScene(scene);

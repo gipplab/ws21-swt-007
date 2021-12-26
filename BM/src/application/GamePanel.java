@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import application.Objects.Bomb;
 import application.Objects.Bomberman;
+import application.Objects.Bot;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
 import application.Objects.Wall;
@@ -20,27 +21,28 @@ import javafx.scene.paint.Color;
 
 
 public class GamePanel {
-	public static final int WIDTH = 600;
-	public static final int HEIGHT = 600;
-	public static final int ROWS = 20;
+	public static final int WIDTH = 560;
+	public static final int HEIGHT = 560;
+	public static final int ROWS = 16;
 	public static final int COLUMNS = ROWS;
-	public static final double SQUARE_SIZE = WIDTH * 1.0 / ROWS;
+	public static final int SQUARE_SIZE = WIDTH / ROWS;
 
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
 	private GraphicsContext gc;
-	private boolean gameOver;
+	private boolean gameOver=false;
 	private Scene scene;
 	Canvas canvas;
 	Group root;
 	double Playerspeed;
 	public static double imageX = 4, imageY = 4;
-	public Bomberman player;
+	public static Bomberman player;
 	public static ArrayList<ArrayList<String>> mapLayout;
-	
+
 	
 
 	public GamePanel() {
+		System.out.println(SQUARE_SIZE);
 
 		root = new Group();
 		canvas = new Canvas(WIDTH, HEIGHT);
@@ -62,15 +64,20 @@ public class GamePanel {
 		run();
 		AnimationTimer timeline = new AnimationTimer() {
 
+			
 			@Override
 			public void handle(long arg0) {
-				update();
-//				 try {
-//					Thread.sleep(100);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+				try {
+					if(!gameOver)
+					{
+
+					update();
+					Thread.sleep(100);
+					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 		};
@@ -102,8 +109,8 @@ public class GamePanel {
 		drawObjekte(gc);
 	}
 
-	private void update() {
-		InputManager.handlePlayerMovements(this.player);
+	private void update() throws InterruptedException {
+		InputManager.handlePlayerMovements(player);
 		drawBackground(gc);
 		drawObjekte(gc);
 		drawBomb(gc);
@@ -124,8 +131,15 @@ public class GamePanel {
 			for (int j = 0; j < GameObjects.gameObjects.get(i).size(); j++) {
 				
 				Entities obj= GameObjects.gameObjects.get(i).get(j);
-				Bomb ob= new Bomb(5,5,Ressourcen.IMAGES.BOMBE.getImage());
+				obj.update();
+			if(obj.getDeath() && obj.isPlayer()) {
+				gameOver=true;
+			System.out.println("GameOver");
+			System.exit(0);
+			}
+			if(!obj.getDeath()) {
 				obj.drawImage(gc);
+				}
 
 			}
 		}
@@ -186,10 +200,15 @@ public class GamePanel {
                         break;
 
                     case ("1"):     // Player 1
-                    this.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
-                    GameObjects.spawn(player);                    
+                    GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
+                    GameObjects.spawn(GamePanel.player);                    
                     break;
-
+                    case ("B"):     // Soft wall zerstoerbar
+                        Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
+                       if(bot!=null) 
+                       GameObjects.spawn(bot);
+                           break;
+               
                     default:
                     	
                         break;
@@ -197,26 +216,15 @@ public class GamePanel {
             }
         }
     }
-// Methode isFree gibt true zuerueck ,wenn SQUARE kein Wall enthaelt.	
-    public static boolean isFree(double nextX, double nextY) {
-		
-	int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
-	int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
+ 
+	/* 	    
+	     return !(GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("H")||GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("S") ||
+	    	  GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("H")||GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("S") ||
+	    	  GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("H")||GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("S") ||
+	    	  GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("H")||GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("S"));
+       */
+ 
 
-	int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
-
-	int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
-	int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-
-	int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	  	    
-	return !(GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("H")||GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("S") ||
-	    	 GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("H")||GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("S") ||
-	    	 GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("H")||GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("S") ||
-	    	 GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("H")||GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("S"));
-    }  
 
 }
 

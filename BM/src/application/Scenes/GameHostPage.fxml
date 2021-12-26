@@ -160,22 +160,14 @@
                <image>
                   <Image url="@../img/Frame%203.png" />
                </image></ImageView>
-<<<<<<< Updated upstream
-            <Button fx:id="PreviousLevelButton" layoutX="111.0" layoutY="321.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#PreviousLevelButtonIsClicked" prefHeight="35.0" prefWidth="35.0" rotate="-90.0" styleClass="first-butten" stylesheets="@CSS/test2.css">
-=======
             <Button fx:id="PreviousLevelButton" layoutX="111.0" layoutY="321.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#PreviousLevelButtonIsClicked" prefHeight="35.0" prefWidth="35.0" rotate="-90.0" styleClass="first-butten" stylesheets="@CSS/BUTTON2.css">
->>>>>>> Stashed changes
                <effect>
                   <Glow level="1.0">
                      <input>
                         <Glow level="1.0" />
                      </input></Glow>
                </effect></Button>
-<<<<<<< Updated upstream
-            <Button fx:id="NextLevelButton" layoutX="440.0" layoutY="321.0" mnemonicParsing="false" onAction="#NextLevelButtonIsClicked" prefHeight="35.0" prefWidth="35.0" rotate="90.0" styleClass="first-butten" stylesheets="@CSS/test2.css">
-=======
             <Button fx:id="NextLevelButton" layoutX="440.0" layoutY="321.0" mnemonicParsing="false" onAction="#NextLevelButtonIsClicked" prefHeight="35.0" prefWidth="35.0" rotate="90.0" styleClass="first-butten" stylesheets="@CSS/BUTTON2.css">
->>>>>>> Stashed changes
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
