@@ -14,7 +14,17 @@ public class Main extends Application {
 	
 		
 		try {
+<<<<<<< Updated upstream
 		//	player.SetAddress("192.168.1.107");
+=======
+
+		
+			
+			
+
+			player.SetAddress("192.168.2.112");
+
+>>>>>>> Stashed changes
 			Ressourcen.readFiles();
 			GamePanel game= new GamePanel();
 			game.init();
