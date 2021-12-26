@@ -19,8 +19,12 @@ public class Ressourcen {
 	
 	public enum IMAGES{
 		BACKGROUND, BOMBE, SOFTWALL, HARDWALL, PLAYER1, BOT, PLAYER2, BOMBITEM, HERZITEM, SPEEDITEM
-		,FLAMMEITEM, MAP,EXPLOSION;
+		,FLAMMEITEM, MAP,EXPLOSION , BOMBERMANMATRIX ;
 		
+		public static Image[] playerUp = new Image[3];
+		public static Image[] playerDown = new Image[3];
+		public static Image[] playerRight = new Image[3];
+		public static Image[] playerLeft = new Image[3];
 		
 		static Image Map[] = new Image[4];
 		
@@ -36,9 +40,15 @@ public class Ressourcen {
 	}
 	public Ressourcen() {}
 	
+	public static Image teilImage(Image img, int stratX , int startY,int x , int y) throws IOException {	           
+          PixelReader reader = img.getPixelReader();
+          WritableImage newImage = new WritableImage(reader, stratX, startY, x, y);	         
+          return newImage;
+    }
 	
 	 public static void readFiles() throws IOException {
 	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
+		        IMAGES.BOMBERMANMATRIX.image = new Image(Ressourcen.class.getResource("img/CharacterImages/bombermanmatrix.png").toString());
 			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
 			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
@@ -54,6 +64,13 @@ public class Ressourcen {
 			IMAGES.BOT.image= new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
 			file = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
 			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
+		 
+		       for (int i = 0; i < 3; i++) {
+		             IMAGES.playerRight[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (4*GamePanel.SQUARE_SIZE)+7, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+4);
+		             IMAGES.playerLeft[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (3*GamePanel.SQUARE_SIZE)-7, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+4);
+		             IMAGES.playerDown[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*( GamePanel.SQUARE_SIZE-3), GamePanel.SQUARE_SIZE+12, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
+		             IMAGES.playerUp[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), 0, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
+		    }
 			
 	 }
 	 
