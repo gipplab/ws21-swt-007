@@ -82,16 +82,16 @@ public abstract class Character extends Entities {
 	public boolean isFreeExplosion(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
-		     
+	
 		     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
 		     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
-
+	
 		     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
 		     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
-
+		    
 		     int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
 		     int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-
+		 
 		     int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
 		     int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
 		  
@@ -133,48 +133,74 @@ public abstract class Character extends Entities {
 	
 public void moveRight() {
 	
-	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&& (isFree(this.x+  this.speed,this.y))) {
-	 	   if(Main.online) {
+	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )) {
+	 	 if( isFree(this.x+  this.speed,this.y))
+	 	  this.x= this.x+  this.speed;
+	 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) ) {
+	 		  this.y= this.y+  (this.speed/4);	
+	 		}
+	 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) {
+	 		  this.y= this.y-  (this.speed/4);	
+	 		 
+	 	 }
+	 	  if(Main.online) {
 	 		   Client.updateString =Client.updateString+"/RIGHT";
 	 		   // Client.accessServer("Play-RIGHT");
 	 	   }
-	 	  this.x= this.x+  this.speed;
+} 
 	
-}
 }
 
 public void moveLeft() {
-	if((this.x >GamePanel.SQUARE_SIZE)&& (isFree(this.x- this.speed ,this.y))) {
-		
+	if((this.x >GamePanel.SQUARE_SIZE)) {
+	 	 if(isFree(this.x- this.speed ,this.y))
+	 		 this.x=this.x- this.speed;
+		 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) ) {
+		 		  this.y= this.y+  (this.speed/4);	
+		 		}
+		 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) {
+		 		  this.y= this.y-  (this.speed/4);	
+		 		 
+		 	 }
 	 	   if(Main.online) {
 	 		   	Client.updateString =Client.updateString+"/LEFT";
 	 		   	//Client.accessServer("Play-LEFT");
 	 	   }
-	 	   this.x=this.x- this.speed;
+	 	  
 	}
 }
 
 public void moveUp() {
-	if((this.y >GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y - this.speed))) {
+	if((this.y >GamePanel.SQUARE_SIZE)) {
+		if(isFree(this.x ,this.y - this.speed))
+				   this.y=this.y - this.speed;
+		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) )
+		 		  this.x= this.x+  (this.speed/4);	
+		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
+		 		  this.x= this.x-  (this.speed/4);	
 		
-	 	   if(Main.online) {
+		if(Main.online) {
 	 		   	Client.updateString =Client.updateString+"/UP";
 	 		   	//Client.accessServer("Play-UP");
 	 	   					}
-	 	   this.y=this.y - this.speed;
-
-	 	   }
+		 	 
+		}
 	
 }
 
 public void moveDown() {
-	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y+ this.speed))) {
-		
+	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)) {
+		if(isFree(this.x ,this.y+ this.speed))
+			 this.y=this.y+ this.speed;
+		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) )
+	 		  this.x= this.x+  (this.speed/4);	
+		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
+	 		  this.x= this.x-  (this.speed/4);	
 	 	   if(Main.online) {
 	 		   Client.updateString =Client.updateString+"/DOWN";
 	 		   // Client.accessServer("Play-DOWN");
 	 		   }
-	 	   this.y=this.y+ this.speed;
+	 	  
 	}
 	}
 
