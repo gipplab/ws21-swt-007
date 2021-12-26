@@ -131,7 +131,18 @@ public abstract class Character extends Entities {
 	public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
-
+     
+	 public int indexAnimPlayer() {
+		 framePlayer++;
+	        if (framePlayer > intervalPlayer) {
+	            framePlayer = 0;
+	            indexAnimPlayer++;
+	            if (indexAnimPlayer > 2) {
+	                indexAnimPlayer = 0;
+	            }
+	        }
+	        return indexAnimPlayer;
+	 }
 	
 public void moveRight() {
 	
@@ -149,15 +160,8 @@ public void moveRight() {
 	 		   Client.updateString =Client.updateString+"/RIGHT";
 	 		   // Client.accessServer("Play-RIGHT");
 	 	   }
-		framePlayer++;
-	        if (framePlayer > intervalPlayer) {
-	            framePlayer = 0;
-	            indexAnimPlayer++;
-	            if (indexAnimPlayer > 2) {
-	                indexAnimPlayer = 0;
-	            }
-	        }
-	        this.img = Ressourcen.IMAGES.playerRight[indexAnimPlayer];
+		
+	         this.img = Ressourcen.IMAGES.playerRight[indexAnimPlayer()];
 
     } 
 	
@@ -178,15 +182,8 @@ public void moveLeft() {
 	 		   	Client.updateString =Client.updateString+"/LEFT";
 	 		   	//Client.accessServer("Play-LEFT");
 	 	   }
-		framePlayer++;
-	        if (framePlayer > intervalPlayer) {
-	            framePlayer = 0;
-	            indexAnimPlayer++;
-	            if (indexAnimPlayer > 2) {
-	                indexAnimPlayer = 0;
-	            }
-	        }
-	        this.img = Ressourcen.IMAGES.playerLeft[indexAnimPlayer];
+		
+	         this.img = Ressourcen.IMAGES.playerLeft[indexAnimPlayer()];
 	 	  
 	}
 }
@@ -204,15 +201,8 @@ public void moveUp() {
 	 		   	Client.updateString =Client.updateString+"/UP";
 	 		   	//Client.accessServer("Play-UP");
 	 	   		}
-		framePlayer++;
-	        if (framePlayer > intervalPlayer) {
-	            framePlayer = 0;
-	            indexAnimPlayer++;
-	            if (indexAnimPlayer > 2) {
-	                indexAnimPlayer = 0;
-	            }
-	        }
-	        this.img = Ressourcen.IMAGES.playerUp[indexAnimPlayer];
+		
+	        this.img = Ressourcen.IMAGES.playerUp[indexAnimPlayer()];
 		 	 
 		}
 	
@@ -230,15 +220,8 @@ public void moveDown() {
 	 		   Client.updateString =Client.updateString+"/DOWN";
 	 		   // Client.accessServer("Play-DOWN");
 	 		   }
-		 framePlayer++;
-	        if (framePlayer > intervalPlayer) {
-	            framePlayer = 0;
-	            indexAnimPlayer++;
-	            if (indexAnimPlayer > 2) {
-	                indexAnimPlayer = 0;
-	            }
-	        }
-	        this.img = Ressourcen.IMAGES.playerDown[indexAnimPlayer];
+		
+	        this.img = Ressourcen.IMAGES.playerDown[indexAnimPlayer()];
 	 	  
 	}
 	}
