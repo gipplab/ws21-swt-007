@@ -233,14 +233,6 @@ public class GamePanel {
         }
     }
  
-	/* 	    
-	     return !(GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("H")||GamePanel.mapLayout.get(nextY_1).get(nextX_1).contentEquals("S") ||
-	    	  GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("H")||GamePanel.mapLayout.get(nextY_2).get(nextX_2).contentEquals("S") ||
-	    	  GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("H")||GamePanel.mapLayout.get(nextY_3).get(nextX_3).contentEquals("S") ||
-	    	  GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("H")||GamePanel.mapLayout.get(nextY_4).get(nextX_4).contentEquals("S"));
-       */
- 
-
 
 }
 
