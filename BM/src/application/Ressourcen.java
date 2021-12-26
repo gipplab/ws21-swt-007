@@ -67,8 +67,8 @@ public class Ressourcen {
 			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
 		 
 		       for (int i = 0; i < 3; i++) {
-		             IMAGES.playerRight[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (4*GamePanel.SQUARE_SIZE)+7, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+4);
-		             IMAGES.playerLeft[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (3*GamePanel.SQUARE_SIZE)-7, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+4);
+		             IMAGES.playerRight[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (4*GamePanel.SQUARE_SIZE)+4, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
+		             IMAGES.playerLeft[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (3*GamePanel.SQUARE_SIZE)-8, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		             IMAGES.playerDown[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*( GamePanel.SQUARE_SIZE-3), GamePanel.SQUARE_SIZE+12, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		             IMAGES.playerUp[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), 0, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		    }
