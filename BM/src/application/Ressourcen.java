@@ -6,7 +6,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
 
-
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.WritableImage;
 
 
 public class Ressourcen {
