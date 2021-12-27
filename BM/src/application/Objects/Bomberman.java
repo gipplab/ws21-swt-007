@@ -61,6 +61,7 @@ public void BombanzahlUp(int b){
 	 this.bombanzahl++;
 }
 
+<<<<<<< Updated upstream
 public void BombanzahlDown(){
 	 this.bombanzahl--;
 }
@@ -77,6 +78,10 @@ void gethit() {
 		this.health--;
 		
 	}
+=======
+
+ 
+>>>>>>> Stashed changes
 	
 	
 	
@@ -109,6 +114,13 @@ public void moveDown() {
 public void restoreAmmount() {
     this.bombanzahl = Math.min(this.maxBombs, this.bombanzahl + 1);
 }
+<<<<<<< Updated upstream
  	
+=======
+
+
+
+
+>>>>>>> Stashed changes
 	
 }

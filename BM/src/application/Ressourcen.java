@@ -34,12 +34,28 @@ public class Ressourcen {
 	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
 			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
 			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
+<<<<<<< Updated upstream
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/danny.jpg").toString());
 			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/Bigflame.jpg").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/laufschuhe.PNG").toString());
 			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/Bombentascheoriganl.jpg").toString());
 			file = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/level1.csv"));
+=======
+			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
+			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/FireUp.png").toString());
+			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
+			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/Skate.png").toString());
+			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/BombTasche.png").toString());
+			IMAGES.EXPLOSION.image= new Image(Ressourcen.class.getResource("img/danny.jpg").toString());
+			IMAGES.Map[0] = new Image(Ressourcen.class.getResource("img/Frame 3.png").toString());
+			IMAGES.Map[1] = new Image(Ressourcen.class.getResource("img/landscape-mountains-minimalist-o7.jpg").toString());
+			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/BG.png").toString());
+			IMAGES.Map[3] = new Image(Ressourcen.class.getResource("img/BACKG.jpg").toString());
+			IMAGES.BOT.image= new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
+			file = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
+			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
+>>>>>>> Stashed changes
 			
 	 }
 	 
