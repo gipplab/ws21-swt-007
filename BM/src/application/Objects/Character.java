@@ -137,7 +137,7 @@ public abstract class Character extends Entities {
 	        if (framePlayer > intervalPlayer) {
 	            framePlayer = 0;
 	            indexAnimPlayer++;
-	            if (indexAnimPlayer > 2) {
+	            if (indexAnimPlayer > 3) {
 	                indexAnimPlayer = 0;
 	            }
 	        }
