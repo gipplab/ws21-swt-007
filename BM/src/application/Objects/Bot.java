@@ -55,43 +55,68 @@ public class Bot extends Character {
 void moveRandom(){
 	
 	isFreeBot();
-    if (lastRichtung == 0) {
+	
+		
+		//
+		//
+		//&&	
+		//
+		
+    if (lastRichtung == 0&&	isFreeExplosion(this.x, this.y-this.speed)) {
         moveUp();
     }
-    else if (lastRichtung == 1) {
+    else if (lastRichtung == 1&&	isFreeExplosion(this.x+this.speed, this.y)) {
     	  moveRight();
     }
-    else if (lastRichtung == 2) {
+    else if (lastRichtung == 2&&	isFreeExplosion(this.x-this.speed, this.y)) {
     	  moveLeft();
     }
-    else if (lastRichtung == 3) {
+    else if (lastRichtung == 3 && isFreeExplosion(this.x, this.y+this.speed) ){
     	  moveDown();
     }
-	
-}
+    // Down-Right
+    else if (lastRichtung == 4 && isFreeExplosion(this.x+this.speed, this.y+this.speed)){
+  	  moveDown();
+    }   
+    //Right-Up
+    else if (lastRichtung == 5 && isFreeExplosion(this.x+this.speed, this.y-this.speed) ){
+	  moveDown();
+  	}
+    //Left Up
+    else if (lastRichtung == 6 && isFreeExplosion(this.x-this.speed, this.y-this.speed) ){
+  	  moveDown();
+    	}
+    //Left Down //Left Up
+    else if (lastRichtung == 7 && isFreeExplosion(this.x-this.speed, this.y+this.speed) ){
+  	  moveDown();
+    	}
+    
+	}
+
 
 
 
 void isFreeBot(){
 		
-		int a = (int) (this.x % GamePanel.SQUARE_SIZE);
-		int b= (int) (this.y % GamePanel.SQUARE_SIZE);
+	
 	
 		switch(lastRichtung) {
 		case 0:// Up
 		{
 			if((isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))==0 
 					||isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)==1) {
-				lastRichtung=(int) Math.round(Math.random() * 3);
-				placeBomb();
+					lastRichtung=(int) Math.round(Math.random() * 3);
+					if(lastRichtung==0)
+						placeBomb();
 				}
 			
 			break;
 		}
 		case 1: // right
 		{	if((isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))==0 
-		||isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)==1) {
+				||isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)==1) {
 				lastRichtung=(int) Math.round(Math.random() * 3);
+				if(1==lastRichtung)
 				placeBomb();
 				}
 			
@@ -101,6 +126,7 @@ void isFreeBot(){
 		{if((isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))==0 
 		||isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)==1){
 		lastRichtung=(int) Math.round(Math.random() * 3);
+		if(2==lastRichtung)
 		placeBomb();
 		}
 			
@@ -111,9 +137,47 @@ void isFreeBot(){
 			if((isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
 					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1) {
 				lastRichtung=(int) Math.round(Math.random() * 3);
+				if(3==lastRichtung)
 				placeBomb();}
 			break;
 		}
+//		case 4:// Down-Right
+//		{
+//			if((isWall((int)(this.x+(GamePanel.SQUARE_SIZE)),(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
+//					||isWall((int)(this.x+(GamePanel.SQUARE_SIZE)),(int)this.y+(GamePanel.SQUARE_SIZE))==1) {
+//				lastRichtung=(int) Math.round(Math.random() * 3);
+//				if(1==(int) Math.round(Math.random()))
+//					placeBomb();
+//				}
+//			break;
+//		}
+//		case 5: //Right-Up
+//		{
+//			if((isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
+//					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1) {
+//				lastRichtung=(int) Math.round(Math.random() * 3);
+//				if(1==(int) Math.round(Math.random()))
+//				placeBomb();}
+//			break;
+//		}
+//		case 6: //Left Up
+//		{
+//			if((isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
+//					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1) {
+//				lastRichtung=(int) Math.round(Math.random() * 3);
+//				if(1==(int) Math.round(Math.random()))
+//				placeBomb();}
+//			break;
+//		}
+//		case 7://Left Down
+//		{
+//			if((isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
+//					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1) {
+//				lastRichtung=(int) Math.round(Math.random() * 3);
+//				if(1==(int) Math.round(Math.random()))
+//				placeBomb();}
+//			break;
+//		}
 		default:
 			break;
 		}
