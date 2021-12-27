@@ -2,6 +2,7 @@ package application.Objects;
 
 
 
+import application.Ressourcen;
 import javafx.scene.image.Image;
 
 public class Bomberman extends Character{
@@ -57,12 +58,6 @@ public boolean getDeath() {
 }
 
 
-public void ExplosionUp(){
-	this.explosion++;
-}
-public void HealthUp(){
-	this.health++;
-}
 	
 
 
@@ -75,7 +70,39 @@ public void update() {
 		this.dead=true;
 	GameObjects.bomberObjects.remove(this);
 	}
+	 int v=isItem(this.x, this.y);
+		   switch(v) {
+	       case 0:{// Hertz
+	    	   HealthUp();
+	       	break;
+	       }
+	       case 1:{ // Bomb
+	    		BombanzahlUp();
+	    		
+	       	break;
+	       }
+	       case 2:{// Flamme
+	    	   ExplosionUp();
 	
+	       	break;
+	       }
+	       case 3:{// Speed
+	    	   speedUp();
+	       	break;
+	       }
+	       default:
+	       	break;
+	       
+	       };
+	
+}
+
+
+
+@Override
+protected int getItemtype() {
+	// TODO Auto-generated method stub
+	return -1;
 }
 	
 }

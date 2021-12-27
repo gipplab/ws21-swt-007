@@ -1,7 +1,6 @@
 package application.Objects;
 
 import application.GamePanel;
-import application.GamePanelOnline;
 import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
@@ -122,7 +121,15 @@ public boolean isFreeExplosion() {
 			    }             
 		  }
 	    	return true;
-	} 
+	}
+
+
+
+@Override
+protected int getItemtype() {
+	// TODO Auto-generated method stub
+	return -1;
+} 
 
 }
 

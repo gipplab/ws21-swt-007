@@ -110,6 +110,38 @@ public abstract class Character extends Entities {
 		    	return true;
 		} 
 
+	public int isItem(double nextX, double nextY) {
+		// TODO Auto-generated method stub
+		  Entities obje;
+	
+		     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
+		     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
+	
+		     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+		     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
+		    
+		     int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
+		     int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+		 
+		     int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+		     int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+		  
+		    for (int i = 0; i < GameObjects.tileObjects.size(); i++) {	
+		 	    obje = GameObjects.tileObjects.get(i);
+		 	    
+			        if(obje instanceof Items) {
+				      if((obje.getEntityX()==nextX_1*GamePanel.SQUARE_SIZE  && obje.getEntityY()==nextY_1* GamePanel.SQUARE_SIZE)||
+				            (obje.getEntityX()==nextX_2* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_2* GamePanel.SQUARE_SIZE)||
+					        (obje.getEntityX()==nextX_3* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_3* GamePanel.SQUARE_SIZE)||
+					        (obje.getEntityX()==nextX_4* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_4* GamePanel.SQUARE_SIZE))
+				      	{  		GameObjects.tileObjects.remove(obje);
+				    	  		return obje.getItemtype();
+				     
+				      	}
+				    }             
+			  }
+		    	return -1;
+		} 
 
 	public boolean isPlayer() {
 		return Player;
@@ -119,17 +151,31 @@ public abstract class Character extends Entities {
 		return this.bombanzahl;
 	}
 
-	public int getExplosion(){
+public int getExplosion(){
 		return this.explosion;
 	}
-	public void BombanzahlUp(){
+public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
 
-	public void BombanzahlDown(){
+public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
 
+	protected void ExplosionUp(){
+	this.explosion++;
+}
+protected void HealthUp(){
+	this.health++;
+}
+protected void speedUp() {
+	if(speed ==2.5)
+		speed=5;
+	else if(speed ==5)
+		speed=7;
+	else if(speed==7)
+		speed=7;
+}
 	
 public void moveRight() {
 	
