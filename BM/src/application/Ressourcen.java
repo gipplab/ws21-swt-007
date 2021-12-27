@@ -22,10 +22,10 @@ public class Ressourcen {
 		BACKGROUND, BOMBE, SOFTWALL, HARDWALL, PLAYER1, BOT, PLAYER2, BOMBITEM, HERZITEM, SPEEDITEM
 		,FLAMMEITEM, MAP,EXPLOSION , BOMBERMANMATRIX ;
 		
-		public static Image[] playerUp = new Image[3];
-		public static Image[] playerDown = new Image[3];
-		public static Image[] playerRight = new Image[3];
-		public static Image[] playerLeft = new Image[3];
+		public static Image[] playerUp = new Image[4];
+		public static Image[] playerDown = new Image[4];
+		public static Image[] playerRight = new Image[4];
+		public static Image[] playerLeft = new Image[4];
 		
 		static Image Map[] = new Image[4];
 		
@@ -66,7 +66,7 @@ public class Ressourcen {
 			file = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
 			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
 		 
-		       for (int i = 0; i < 3; i++) {
+		       for (int i = 0; i < 4; i++) {
 		             IMAGES.playerRight[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (4*GamePanel.SQUARE_SIZE)+4, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		             IMAGES.playerLeft[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (3*GamePanel.SQUARE_SIZE)-8, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		             IMAGES.playerDown[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*( GamePanel.SQUARE_SIZE-3), GamePanel.SQUARE_SIZE+12, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
