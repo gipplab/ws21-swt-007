@@ -132,9 +132,7 @@ void isWall() {
 public int getHealth(){
 	return this.health;
 }
-double getSpeed(){
-	return this.speed;
-}
+
 public Image getImage(){
 	
 	return img;
@@ -160,12 +158,6 @@ boolean death() {
 }
 
 
-public void ExplosionUp(){
-	this.explosion++;
-}
-public void HealthUp(){
-	this.health++;
-}
 @Override
 protected int getItemtype() {
 	// TODO Auto-generated method stub
