@@ -1,9 +1,12 @@
-package application;
+package application.SceneControllers;
 
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import application.Client;
+import application.GamePanelOnline;
+import application.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

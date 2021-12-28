@@ -38,8 +38,8 @@ public class Server {
 				//System.out.println(messageIn);
 				if(message[0].equals("Host")) 
 				{
-					PlayerInfos host = new PlayerInfos(message[1]); 
-					Room rm = new Room(message[1],Integer.parseInt(message[2]));
+					PlayerInfos host = new PlayerInfos(message[2]); 
+					Room rm = new Room(message[1],Integer.parseInt(message[3]));
 					rm.AddPlayerToRoom(host);
 					roomsList.add(rm);
 					System.out.print(" : ");
@@ -100,6 +100,7 @@ public class Server {
 									for(PlayerInfos player : room.players) 
 									{
 										messageOut=messageOut+"-"+player.getName();
+										System.out.println("txt"+messageOut);
 									}
 									
 									break;
