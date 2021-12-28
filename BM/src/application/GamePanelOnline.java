@@ -10,12 +10,16 @@ import application.Objects.Bomberman;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
 import application.Objects.Wall;
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 
 
@@ -62,28 +66,19 @@ public class GamePanelOnline {
 		loadMapFile();
 		generateMap();
 		run();
-	
-		AnimationTimer timeline = new AnimationTimer() {
-
-			@Override
-			public void handle(long arg0) {
-				try {
-					if(!gameOver)
-					{
-					//String resp= Client.accessServer("Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-"+Client.updateString);
-					//updateServer(resp);
-					Thread.sleep(100);
-					update();
-					
-					}
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
+			try {
+				
+				update();				
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				
 			}
-
-		};
-		timeline.start();
+		}));
+	        timeline.setCycleCount(Animation.INDEFINITE);
+	        timeline.play();
+	
 
 	};
 
@@ -166,54 +161,6 @@ public class GamePanelOnline {
 		}
 	}
 	
-//	 void druekeNachricht(String resp) {
-//		 String[] message = resp.split("-");
-//			for (int i=0;i< message.length;i+=2 ) {
-//				System.out.println(" M# "+message[i]);
-//				for (int j=0;j< player.length;j++ ) {
-//					
-//				if(message[i].equals(player[j].getName())) {
-//					String[] movesUpdates = message[i+1].split("/");
-//					for (int k=0;k< message.length;k++ ) {
-//						System.out.println("#mU# "+movesUpdates[k]);
-//					     switch (movesUpdates[k]) {
-//		                    case ("UP"):    
-//		                   player[j].moveUp();
-//		                        break;
-//
-//		                    case ("RIGHT"):    
-//		                    	player[j].moveRight();                 
-//		                        break;
-//
-//		                    case ("DOWN"):    
-//		                    	player[j].moveDown();             
-//		                    break;
-//		                    case ("LEFT"):    
-//		                    	player[j].moveLeft();              
-//		                        break;
-//		                    case ("BOMB"):  
-//		                    	Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]),player[j].getExplosion() , Ressourcen.IMAGES.BOMBE.getImage(),player[j] );
-//		             	   		b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
-//		             	   		if(!b.BombeDuplikate()) {
-//		             	   			player[j].BombanzahlDown();
-//		             	   			Client.updateString =Client.updateString+"/BOMB/"+b.getX()+"/"+b.getY();
-//		             	   			GameObjects.spawn(b);
-//		             	   			k+=2;
-//		             	   			}            
-//		                        break;
-//		                        
-//		                    default:
-//		                    	
-//		                        break;
-//			                }
-//					}
-//				
-//				}
-//				
-//				}
-//			}
-//	 }
-	
 	void onlineUpdates(String resp) {
 		String[] message = resp.split("-");
 		for (int i=0;i< message.length;i+=2 ) {
@@ -237,14 +184,13 @@ public class GamePanelOnline {
 	                    	player[j].moveLeft();              
 	                        break;
 	                    case ("BOMB"):  
-	                    	Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]),player[j].getExplosion() , Ressourcen.IMAGES.BOMBE.getImage(),player[j] );
-	             	   		b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
-	             	   		if(!b.BombeDuplikate()) {
+	                    		Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]),player[j].getExplosion() , Ressourcen.IMAGES.BOMBE.getImage(),player[j] );
+	             	   			b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
 	             	   			player[j].BombanzahlDown();
 	             	   			Client.updateString =Client.updateString+"/BOMB/"+b.getX()+"/"+b.getY();
 	             	   			GameObjects.spawn(b);
 	             	   			k+=2;
-	             	   			}            
+	             	   		       
 	                        break;
 	                        
 	                    default:

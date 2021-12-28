@@ -25,7 +25,12 @@ public class PlayerInfos {
 	}
 	public void AddUpdatesToPlayers(String updates) {
 		// TODO Auto-generated method stub
-		gameUpdates=gameUpdates+"-"+updates;
+		if(gameUpdates.equals("")) {
+			gameUpdates=updates;
+		}else {
+			gameUpdates=gameUpdates+"-"+updates;
+		}
+		
 	}
 	
 	

@@ -174,7 +174,7 @@ public class GamePanel {
 	
 	 private static void loadMapFile()  {
 		
-        bufferedReader = new BufferedReader(Ressourcen.file);
+        bufferedReader = new BufferedReader(Ressourcen.file[0]);
 	    mapLayout = new ArrayList<>();
 	 
         try {
