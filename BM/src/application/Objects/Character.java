@@ -204,14 +204,14 @@ public void moveRight() {
 	 	 if( isFree(this.x+  this.speed,this.y))
 	 	  this.x= this.x+  this.speed;
 	 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) ) {
-	 		  this.y= this.y+  (this.speed/4);	
+	 		  this.y= this.y+  (this.speed/(4*this.speed));	
 	 		}
 	 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) {
-	 		  this.y= this.y-  (this.speed/4);	
+	 		  this.y= this.y-  (this.speed/(4*this.speed));	
 	 		 
 	 	 }
 	 	  if(Main.online) {
-	 		   Client.updateString =Client.updateString+"/RIGHT";
+	 		   Client.updateString =Client.updateString+"RIGHT/";
 	 		   // Client.accessServer("Play-RIGHT");
 	 	   }
 		
@@ -226,14 +226,14 @@ public void moveLeft() {
 	 	 if(isFree(this.x- this.speed ,this.y))
 	 		 this.x=this.x- this.speed;
 		 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) ) {
-		 		  this.y= this.y+  (this.speed/4);	
+		 		  this.y= this.y+  (this.speed/(4*this.speed));	
 		 		}
 		 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) {
-		 		  this.y= this.y-  (this.speed/4);	
+		 		  this.y= this.y-  (this.speed/(4*this.speed));	
 		 		 
 		 	 }
 	 	   if(Main.online) {
-	 		   	Client.updateString =Client.updateString+"/LEFT";
+	 		   	Client.updateString =Client.updateString+"LEFT/";
 	 		   	//Client.accessServer("Play-LEFT");
 	 	   }
 		
@@ -249,10 +249,10 @@ public void moveUp() {
 		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) )
 		 		  this.x= this.x+  (this.speed/4);	
 		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
-		 		  this.x= this.x-  (this.speed/4);	
+		 		  this.x= this.x-  (this.speed/(4*this.speed));	
 		
 		if(Main.online) {
-	 		   	Client.updateString =Client.updateString+"/UP";
+	 		   	Client.updateString =Client.updateString+"UP/";
 	 		   	//Client.accessServer("Play-UP");
 	 	   		}
 		
@@ -267,11 +267,11 @@ public void moveDown() {
 		if(isFree(this.x ,this.y+ this.speed))
 			 this.y=this.y+ this.speed;
 		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) )
-	 		  this.x= this.x+  (this.speed/4);	
+	 		  this.x= this.x+  (this.speed/(4*this.speed));	
 		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
-	 		  this.x= this.x-  (this.speed/4);	
+	 		  this.x= this.x-  (this.speed/(4*this.speed));	
 	 	   if(Main.online) {
-	 		   Client.updateString =Client.updateString+"/DOWN";
+	 		   Client.updateString =Client.updateString+"DOWN/";
 	 		   // Client.accessServer("Play-DOWN");
 	 		   }
 		
