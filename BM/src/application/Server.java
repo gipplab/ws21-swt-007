@@ -127,14 +127,13 @@ public class Server {
 									player.SetUpdates("");
 									//}
 								}else 
-								{		if(message[3].equals("Updates"))
+								{		if(message.length == 5)
 										{
-											if(!player.GetUpdates().equals(""))
-											{
+											
 												String updates=message[2]+"-"+message[4];
 												System.out.println("#2323213#"+updates);
 												player.AddUpdatesToPlayers(updates);
-											}
+											
 										}
 										
 								}
