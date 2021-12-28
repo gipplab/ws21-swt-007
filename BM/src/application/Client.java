@@ -17,7 +17,7 @@ private static DatagramPacket inPacket,outPacket;
 private static byte[] buffer;
 public void SetAddress(String addr){
 	 try {
-		host = InetAddress.getByName(addr);
+		host = InetAddress.getByName("localhost");
 	} catch (UnknownHostException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
