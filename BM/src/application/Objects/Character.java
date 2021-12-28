@@ -13,17 +13,20 @@ public abstract class Character extends Entities {
 	int explosion;
 	int health;
 	boolean dead ;
-	String Name;
 	Boolean Player= false;
 	public Character(double x, double y,Image img, Boolean isPlayer) {
 		super(x,y,img);
 		// TODO Auto-generated constructor stub
 		this.Player=isPlayer;
+		bombanzahl=1;
+		 explosion=1;
+		 health=1;
+		 dead=false ;
 		
 	}
 	
-	public  boolean isFree(double nextX, double nextY) {
-	     boolean  frei = true;
+	public  boolean isFree(double nextX, double nextY) {// Wande Kiste 
+	
 	     Entities obje;
 	     
 	     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
@@ -49,37 +52,13 @@ public abstract class Character extends Entities {
 	 		            (obje.getEntityX()==nextX_2* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_2* GamePanel.SQUARE_SIZE)||
 	 			        (obje.getEntityX()==nextX_3* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_3* GamePanel.SQUARE_SIZE)||
 	 			        (obje.getEntityX()==nextX_4* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_4* GamePanel.SQUARE_SIZE))
-	 			           frei = false;
-	 		    }             
-	 	  }
-	      	return frei;
-	 }
-	private  boolean isFreeBomb(double nextX, double nextY) {
-	     Entities obje;
-	     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
-	     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
-
-	     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
-
-	     int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
-	     int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-
-	     int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	     int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	   
-	     for (int i = 0; i < GameObjects.tileObjects.size(); i++) {	
-	    	   
-	   	    obje = GameObjects.tileObjects.get(i);
-	   	    
-	 	        if((obje.getEntityImage().equals(Ressourcen.IMAGES.BOMBE.getImage()))) {
 	 		    	  		return false;
 	 		    }             
 	 	  }
 	      	return true;
 	 }
 
-	public boolean isFreeExplosion(double nextX, double nextY) {
+public boolean isFreeExplosion(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
 	
@@ -182,10 +161,10 @@ public void moveRight() {
 	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )) {
 	 	 if( isFree(this.x+  this.speed,this.y))
 	 	  this.x= this.x+  this.speed;
-	 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) ) {
+	 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.8) ) {
 	 		  this.y= this.y+  (this.speed/4);	
 	 		}
-	 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) {
+	 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.2) ) {
 	 		  this.y= this.y-  (this.speed/4);	
 	 		 
 	 	 }
@@ -201,10 +180,10 @@ public void moveLeft() {
 	if((this.x >GamePanel.SQUARE_SIZE)) {
 	 	 if(isFree(this.x- this.speed ,this.y))
 	 		 this.x=this.x- this.speed;
-		 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) ) {
+		 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.8) ) {
 		 		  this.y= this.y+  (this.speed/4);	
 		 		}
-		 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) {
+		 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.2) ) {
 		 		  this.y= this.y-  (this.speed/4);	
 		 		 
 		 	 }
@@ -220,9 +199,9 @@ public void moveUp() {
 	if((this.y >GamePanel.SQUARE_SIZE)) {
 		if(isFree(this.x ,this.y - this.speed))
 				   this.y=this.y - this.speed;
-		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) )
+		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.8) )
 		 		  this.x= this.x+  (this.speed/4);	
-		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
+		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.2) ) 
 		 		  this.x= this.x-  (this.speed/4);	
 		
 		if(Main.online) {
@@ -238,13 +217,12 @@ public void moveDown() {
 	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)) {
 		if(isFree(this.x ,this.y+ this.speed))
 			 this.y=this.y+ this.speed;
-		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) )
+		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.8) )
 	 		  this.x= this.x+  (this.speed/4);	
-		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
+		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.2) ) 
 	 		  this.x= this.x-  (this.speed/4);	
 	 	   if(Main.online) {
 	 		   Client.updateString =Client.updateString+"/DOWN";
-	 		   // Client.accessServer("Play-DOWN");
 	 		   }
 	 	  
 	}

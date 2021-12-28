@@ -1,23 +1,16 @@
 package application.Objects;
-
-
-
-import application.Ressourcen;
 import javafx.scene.image.Image;
 
-public class Bomberman extends Character{
 
+
+public class Bomberman extends Character{
+String Name="";
 	
 	
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
-
-	this.bombanzahl=2;
 	this.speed=2.5;//2.5, 5, 7 ,8,75 
-				// Rows= 15
-	this.explosion=1;
-	this.dead=false;
-	this.health=1;
+
 		}
 	
 
@@ -71,8 +64,9 @@ public void update() {
 	GameObjects.bomberObjects.remove(this);
 	}
 	 int v=isItem(this.x, this.y);
+	 
 		   switch(v) {
-	       case 0:{// Hertz
+	       case 0:{	// Hertz
 	    	   HealthUp();
 	       	break;
 	       }
@@ -81,15 +75,16 @@ public void update() {
 	    		
 	       	break;
 	       }
-	       case 2:{// Flamme
+	       case 2:{	// Flamme
 	    	   ExplosionUp();
 	
 	       	break;
 	       }
-	       case 3:{// Speed
+	       case 3:{	// Speed
 	    	   speedUp();
 	       	break;
 	       }
+	
 	       default:
 	       	break;
 	       

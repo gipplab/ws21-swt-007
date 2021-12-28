@@ -17,7 +17,7 @@ public  class Wall extends TileObjects{
 	
 	
 	public void onDestroy() {
-		if(zerstoerbar)
+		if(zerstoerbar) 
 			GameObjects.tileObjects.remove(this);
 		
 	}
@@ -36,6 +36,13 @@ public  class Wall extends TileObjects{
 	public boolean isPlayer() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	protected int getItemtype() {
+		// TODO Auto-generated method stub
+		return -1;
 	}
 
 

@@ -28,7 +28,7 @@ public void update() {
 				if(GameObjects.tileObjects.get(i).getEntityX()==this.x &&
 				GameObjects.tileObjects.get(i).getEntityY()==this.y ) {
 					GameObjects.tileObjects.remove(i);
-					if((int) Math.round(Math.random() * 4)==1)
+					if( Math.round(Math.random())<0.5)
 					createItem();
 					}
 		

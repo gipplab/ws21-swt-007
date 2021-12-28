@@ -12,10 +12,9 @@ import javafx.scene.image.Image;
 public class Ressourcen {
 	
 	
-	public static InputStreamReader file,file_Server;
+	public static InputStreamReader file[]=new InputStreamReader[4] ,file_Server;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static String[] fields;
-	public int yazan;
 	
 	public enum IMAGES{
 		BACKGROUND, BOMBE, SOFTWALL, HARDWALL, PLAYER1, BOT, PLAYER2, BOMBITEM, HERZITEM, SPEEDITEM
@@ -38,6 +37,7 @@ public class Ressourcen {
 	
 	
 	 public static void readFiles() throws IOException {
+		 
 	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
 			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
 			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
@@ -52,9 +52,9 @@ public class Ressourcen {
 			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/BG.png").toString());
 			IMAGES.Map[3] = new Image(Ressourcen.class.getResource("img/BACKG.jpg").toString());
 			IMAGES.BOT.image= new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
-			file = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
+			file[0] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
+			file[1] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
 			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
 			
 	 }
-	 
 	 }

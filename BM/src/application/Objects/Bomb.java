@@ -9,7 +9,7 @@ public class Bomb extends TileObjects {
 	Character player;
 	int power;
 	double time;
-	double timeToExplosion;
+	final double timeToExplosion=5000;
 	 Boolean death;
 	
 public Bomb(double x2, double y2,int power, Image image,Character p)  {
@@ -18,7 +18,7 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	this.x=x2;
 	this.y=y2;
 	time= System.currentTimeMillis();
-	timeToExplosion=5000;
+
 	death=false;
 	this.power=power;
 	player=p;
@@ -74,7 +74,7 @@ public void update() {
 	}
 }
 
-public Boolean BombeDuplikate() {
+private Boolean BombeDuplikate() {
 	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
 		   if(this.x==(GameObjects.tileObjects.get(i).getX()) && this.y==(GameObjects.tileObjects.get(i).getY())) 
 			   return true;

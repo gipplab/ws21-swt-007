@@ -18,12 +18,9 @@ public class Bot extends Character {
 	public Bot(double x, double y, Image img, Boolean p) {
 		super(x, y, img,p);
 		// TODO Auto-generated constructor stub
-			this.bombanzahl=1;
 			this.speed=1.25;//2.5, 5, 7 ,8,75 
 	
-			this.explosion=1;
-			this.dead=false;
-			this.health=1;
+	
 		
 		}
 	void placeBomb() {
@@ -32,11 +29,9 @@ public class Bot extends Character {
 		
 			Bomb b= new Bomb( this.x , this.y, explosion , Bombimag, this );
 			b.BombCollision(this.x,this.y);
-			if(!b.BombeDuplikate()) 
-			{
 				bombanzahl--;
 				GameObjects.spawn(b);
-			}
+			
 		}
 }
 	
@@ -144,14 +139,6 @@ public Image getImage(){
 	
 	return img;
 }
-public String getName() {
-
-	return Name;
-}
-
-public void setName(String name) {
-	Name = name;
-}
 
 
 @Override
@@ -178,5 +165,10 @@ public void ExplosionUp(){
 }
 public void HealthUp(){
 	this.health++;
+}
+@Override
+protected int getItemtype() {
+	// TODO Auto-generated method stub
+	return -1;
 }
 	}
