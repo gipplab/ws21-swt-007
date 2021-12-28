@@ -23,7 +23,6 @@ public class SinglePlayPanelController  implements Initializable{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
-	int numb=0;
     @FXML
     private Button BackButton;
 

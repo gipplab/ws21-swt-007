@@ -39,7 +39,7 @@
             <Image url="@../img/LOGO.png" />
          </image>
       </ImageView>
-      <Button fx:id="SinglePlayButton" layoutX="180.0" layoutY="419.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#SinglePlayButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="269.0" stylesheets="@CSS/test.css" text="SINGLEPLAYER">
+      <Button fx:id="SinglePlayButton" layoutX="180.0" layoutY="419.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#SinglePlayButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="269.0" stylesheets="@CSS/BUTTON.css" text="SINGLEPLAYER">
          <font>
             <Font name="Ravie" size="22.0" />
          </font>
@@ -62,7 +62,7 @@
          <effect>
             <Glow level="0.85" />
          </effect></Button>
-      <Button fx:id="OnlineButton" layoutX="225.0" layoutY="480.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#OnlineButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" stylesheets="@CSS/test.css" text="Online">
+      <Button fx:id="OnlineButton" layoutX="225.0" layoutY="480.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#OnlineButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" stylesheets="@CSS/BUTTON.css" text="Online">
          <font>
             <Font name="Ravie" size="22.0" />
          </font>
@@ -85,7 +85,7 @@
          <effect>
             <Glow level="0.85" />
          </effect></Button>
-      <Button fx:id="GuideButton" layoutX="225.0" layoutY="540.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#GuideButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" stylesheets="@CSS/test.css" text="Guide">
+      <Button fx:id="GuideButton" layoutX="225.0" layoutY="540.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#GuideButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="180.0" stylesheets="@CSS/BUTTON.css" text="Guide">
          <font>
             <Font name="Ravie" size="22.0" />
          </font>
@@ -108,7 +108,7 @@
          <effect>
             <Glow level="0.85" />
          </effect></Button>
-      <Button fx:id="ExitButton" layoutX="232.0" layoutY="602.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#ExitButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="166.0" stylesheets="@CSS/test.css" text="EXIT">
+      <Button fx:id="ExitButton" layoutX="232.0" layoutY="602.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#ExitButtonIsKlicked" opacity="0.86" prefHeight="50.0" prefWidth="166.0" stylesheets="@CSS/BUTTON.css" text="EXIT">
          <font>
             <Font name="Ravie" size="22.0" />
          </font>

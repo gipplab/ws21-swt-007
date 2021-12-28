@@ -39,7 +39,7 @@ public class CreateOnlineController {
 		resp=Client.accessServer(msg);
 		if(resp.equals("Created"))
 		{
-			Client.playerpseudo=TextToSend.getText();
+			Client.playerpseudo=TextToSend1.getText();
 			Client.roomToJoin=TextToSend.getText();
 			TextRecieved.setText(resp);
 			root = FXMLLoader.load(getClass().getResource("WaitPage.fxml"));
