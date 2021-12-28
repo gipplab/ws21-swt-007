@@ -30,7 +30,7 @@
                   <Image url="@../img/Frame%203.png" />
                </image>
             </ImageView>
-            <Button fx:id="RunRoomButton" layoutX="347.0" layoutY="603.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#RunRoomButtonIsClicked" prefHeight="37.0" prefWidth="118.0" stylesheets="@CSS/test.css" text="Run">
+            <Button fx:id="RunRoomButton" layoutX="347.0" layoutY="603.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#RunRoomButtonIsClicked" prefHeight="37.0" prefWidth="118.0" stylesheets="@CSS/BUTTON.css" text="Run">
                <font>
                   <Font name="Ravie" size="22.0" />
                </font>
@@ -58,7 +58,7 @@
                   <String fx:value="button" />
                </styleClass>
             </Button>
-            <Button fx:id="BackButton" layoutX="477.0" layoutY="603.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="37.0" prefWidth="118.0" stylesheets="@CSS/test.css" text="Back">
+            <Button fx:id="BackButton" layoutX="477.0" layoutY="603.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#BackButton" prefHeight="37.0" prefWidth="118.0" stylesheets="@CSS/BUTTON.css" text="Back">
                <font>
                   <Font name="Ravie" size="22.0" />
                </font>
@@ -124,12 +124,15 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <TextField fx:id="PlayerNicknameTextField" layoutX="249.0" layoutY="47.0" prefHeight="25.0" prefWidth="160.0">
+            <TextField fx:id="PlayerNicknameTextField" alignment="CENTER_RIGHT" layoutX="237.0" layoutY="38.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="170.0" stylesheets="@CSS/textfild.css">
                <font>
                   <Font name="Ravie" size="12.0" />
-               </font></TextField>
-            <Button fx:id="nextMapbutton" layoutX="465.0" layoutY="333.0" mnemonicParsing="false" onAction="#nextMap" prefHeight="35.0" prefWidth="35.0" rotate="90.0" styleClass="first-butten" stylesheets="@CSS/test2.css" />
-            <Button fx:id="VorMapbutton" layoutX="129.0" layoutY="333.0" mnemonicParsing="false" onAction="#vorMap" prefHeight="35.0" prefWidth="35.0" rotate="-90.0" styleClass="first-butten" stylesheets="@CSS/test2.css" />
+               </font>
+               <effect>
+                  <Glow level="0.85" />
+               </effect></TextField>
+            <Button fx:id="nextMapbutton" layoutX="465.0" layoutY="333.0" mnemonicParsing="false" onAction="#nextMap" prefHeight="35.0" prefWidth="35.0" rotate="90.0" styleClass="first-butten" stylesheets="@CSS/BUTTON2.css" />
+            <Button fx:id="VorMapbutton" layoutX="129.0" layoutY="333.0" mnemonicParsing="false" onAction="#vorMap" prefHeight="35.0" prefWidth="35.0" rotate="-90.0" styleClass="first-butten" stylesheets="@CSS/BUTTON2.css" />
             <ImageView fitHeight="59.0" fitWidth="199.0" layoutX="123.0" layoutY="82.0">
                <image>
                   <Image url="@../img/Farbe.png" />

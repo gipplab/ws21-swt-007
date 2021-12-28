@@ -1,0 +1,18 @@
+.text-field{
+	
+	-fx-background-color :#000000 ;
+	-fx-font-size:	12pt;
+	-fx-text-fill:#B9770E;
+	-fx-background-radius :30 10 30 10;
+	
+	
+}
+
+.text-field:hover {
+	
+	
+	
+	-fx-background-color :#2E86C1;
+	-fx-background-radius :30 10 30 10;
+	
+}
