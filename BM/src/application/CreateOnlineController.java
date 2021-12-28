@@ -42,7 +42,7 @@ public class CreateOnlineController {
 			Client.playerpseudo=TextToSend.getText();
 			Client.roomToJoin=TextToSend.getText();
 			TextRecieved.setText(resp);
-			root = FXMLLoader.load(getClass().getResource("WaitPage.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../Scenes/WaitPage.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);		
