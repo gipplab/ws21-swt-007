@@ -167,7 +167,8 @@ public class GamePanelOnline {
 			for (int j=0;j< player.length;j++ )
 			if(message[i].equals(player[j].getName())) {
 				String[] movesUpdates = message[i+1].split("/");
-				for (int k=0;k< message.length;k++ ) {
+			
+				for (int k=0;k< movesUpdates.length;k++ ) {
 				     switch (movesUpdates[k]) {
 	                    case ("UP"):    
 	                   player[j].moveUp();
@@ -187,7 +188,7 @@ public class GamePanelOnline {
 	                    		Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]),player[j].getExplosion() , Ressourcen.IMAGES.BOMBE.getImage(),player[j] );
 	             	   			b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
 	             	   			player[j].BombanzahlDown();
-	             	   			Client.updateString =Client.updateString+"/BOMB/"+b.getX()+"/"+b.getY();
+	             	   			Client.updateString =Client.updateString+"BOMB/"+b.getX()+"/"+b.getY()+"/";
 	             	   			GameObjects.spawn(b);
 	             	   			k+=2;
 	             	   		       

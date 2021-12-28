@@ -144,7 +144,7 @@ public void HealthUp(){
 double getSpeed(){
 	return this.speed;
 }
-	 public int indexAnimPlayer() {
+public int indexAnimPlayer() {
 		 framePlayer++;
 	        if (framePlayer > intervalPlayer) {
 	            framePlayer = 0;
@@ -210,10 +210,7 @@ public void moveRight() {
 	 		  this.y= this.y-  (this.speed/4);	
 	 		 
 	 	 }
-	 	  if(Main.online) {
-	 		   Client.updateString =Client.updateString+"/RIGHT";
-	 		   // Client.accessServer("Play-RIGHT");
-	 	   }
+	 
 		
 	         this.img = Ressourcen.IMAGES.playerRight[indexAnimPlayer()];
 
@@ -232,10 +229,7 @@ public void moveLeft() {
 		 		  this.y= this.y-  (this.speed/4);	
 		 		 
 		 	 }
-	 	   if(Main.online) {
-	 		   	Client.updateString =Client.updateString+"/LEFT";
-	 		   	//Client.accessServer("Play-LEFT");
-	 	   }
+	 
 		
 	         this.img = Ressourcen.IMAGES.playerLeft[indexAnimPlayer()];
 	 	  
@@ -251,10 +245,7 @@ public void moveUp() {
 		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
 		 		  this.x= this.x-  (this.speed/4);	
 		
-		if(Main.online) {
-	 		   	Client.updateString =Client.updateString+"/UP";
-	 		   	//Client.accessServer("Play-UP");
-	 	   		}
+	
 		
 	        this.img = Ressourcen.IMAGES.playerUp[indexAnimPlayer()];
 		 	 
@@ -270,10 +261,6 @@ public void moveDown() {
 	 		  this.x= this.x+  (this.speed/4);	
 		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
 	 		  this.x= this.x-  (this.speed/4);	
-	 	   if(Main.online) {
-	 		   Client.updateString =Client.updateString+"/DOWN";
-	 		   // Client.accessServer("Play-DOWN");
-	 		   }
 		
 	        this.img = Ressourcen.IMAGES.playerDown[indexAnimPlayer()];
 	 	  

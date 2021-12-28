@@ -17,18 +17,34 @@ public class InputManager {
        List<?> keyboardInputs = KeysHandler.getInputList();
        if(keyboardInputs.contains(KeyCode.UP) || keyboardInputs.contains(KeyCode.W)){
          player.moveUp();
+     	if(Main.online) {
+ 		   	Client.updateString =Client.updateString+"UP/";
+ 	
+ 	   		}
        }
        
        if(keyboardInputs.contains(KeyCode.DOWN) || keyboardInputs.contains(KeyCode.S)){
     	  player.moveDown();
+    	   if(Main.online) {
+	 		   Client.updateString =Client.updateString+"DOWN/";
+	 		   // Client.accessServer("Play-DOWN");
+	 		   }
+    	
        }
        
        if(keyboardInputs.contains(KeyCode.LEFT) || keyboardInputs.contains(KeyCode.A)){
     	  player.moveLeft();
+   	   if(Main.online) {
+		   	Client.updateString =Client.updateString+"LEFT/";
+		   	   }
        }
        
        if(keyboardInputs.contains(KeyCode.RIGHT) || keyboardInputs.contains(KeyCode.D)){
-    	   player.moveRight();     
+    	   player.moveRight();  
+    	   if(Main.online) {
+	 		   Client.updateString =Client.updateString+"RIGHT/";
+	 	
+	 	   }
        }
 
      
