@@ -1,6 +1,6 @@
 package application.Objects;
 import javafx.scene.image.Image;
-
+import application.Ressourcen;
 
 
 public class Bomberman extends Character{
