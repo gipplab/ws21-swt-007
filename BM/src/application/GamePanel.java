@@ -213,9 +213,9 @@ public class GamePanel {
                         break;
 
                     case ("1"):     // Player 1
-                    GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
-		 // GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0],true);
-                    GameObjects.spawn(GamePanel.player);                    
+                //   GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
+		     GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0],true);
+                     GameObjects.spawn(GamePanel.player);                    
                     break;
                     case ("B"):     // Soft wall zerstoerbar
                         Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
