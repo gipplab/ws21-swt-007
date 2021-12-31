@@ -152,9 +152,9 @@ public class GamePanel {
 			        System.out.println("GameOver");
 		             // System.exit(0);
 			     }
-			     if(!obj.getDeath()) {
+		      //     if(!obj.getDeath()) {
 				 obj.drawImage(gc);
-			     }
+		      //     }
 			}
 		}
 	}
