@@ -144,22 +144,19 @@ public class GamePanel {
 		//hier werden alle Objekte gezeichnet 
 		// die Objekte sind in einer Liste von Listen gespeichert(gameObjects)
 		for (int i = 0; i < GameObjects.gameObjects.size(); i++) {
-			for (int j = 0; j < GameObjects.gameObjects.get(i).size(); j++) {
-				
-				Entities obj= GameObjects.gameObjects.get(i).get(j);
-				obj.update();
-			if(obj.getDeath() && obj.isPlayer()) {
+			for (int j = 0; j < GameObjects.gameObjects.get(i).size(); j++) {				
+			     Entities obj= GameObjects.gameObjects.get(i).get(j);
+			     obj.update();
+			     if(obj.getDeath() && obj.isPlayer()) {
 				gameOver=true;
-			System.out.println("GameOver");
-			System.exit(0);
-			}
-			if(!obj.getDeath()) {
-				obj.drawImage(gc);
-				}
-
+			        System.out.println("GameOver");
+		             // System.exit(0);
+			     }
+			     if(!obj.getDeath()) {
+				 obj.drawImage(gc);
+			     }
 			}
 		}
-
 	}
 
 
