@@ -51,21 +51,19 @@ public boolean getDeath() {
 }
 
 
-	
-
-
-
 @Override
 public void update() {
-	// TODO Auto-generated method stub
 
 	if(!isFreeExplosion(this.x,this.y)) {
 		this.dead=true;
-	GameObjects.bomberObjects.remove(this);
-	}
-	 int v=isItem(this.x, this.y);
+		this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
+	}else if(this.dead) {
+	         GameObjects.bomberObjects.remove(this);
+	      }
+	
+	int v=isItem(this.x, this.y);
 	 
-		   switch(v) {
+        switch(v) {
 	       case 0:{	// Hertz
 	    	   HealthUp();
 	       	break;
