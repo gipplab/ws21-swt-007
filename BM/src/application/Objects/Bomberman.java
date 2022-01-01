@@ -5,7 +5,7 @@ import application.Ressourcen;
 
 public class Bomberman extends Character{
 String Name="";
-	
+int timeExplosion = 0 ;	
 	
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
@@ -55,11 +55,18 @@ public boolean getDeath() {
 public void update() {
 
 	if(!isFreeExplosion(this.x,this.y)) {
-		this.dead=true;
+		timeExplosion++;
+		if(timeExplosion%62 == 0) {
+			   this.gethit();
+			   timeExplosion = 0 ;			  
+		}
 		this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
-	}else if(this.dead) {
-	         GameObjects.bomberObjects.remove(this);
-	      }
+	}
+	else { 
+	        if(this.dead) {
+	           GameObjects.bomberObjects.remove(this);
+	        }
+	}
 	
 	int v=isItem(this.x, this.y);
 	 
