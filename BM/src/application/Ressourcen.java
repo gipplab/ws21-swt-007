@@ -67,7 +67,7 @@ public class Ressourcen {
 			file[0] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
 			file[1] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
 			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
-		 
+		 // Verschiedene Animation entsprechend der Laufrichtung des Bombercharakters
 		       for (int i = 0; i < 4; i++) {
 		             IMAGES.playerRight[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (4*GamePanel.SQUARE_SIZE)+4, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		             IMAGES.playerLeft[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (3*GamePanel.SQUARE_SIZE)-8, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
