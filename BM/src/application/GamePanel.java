@@ -144,22 +144,19 @@ public class GamePanel {
 		//hier werden alle Objekte gezeichnet 
 		// die Objekte sind in einer Liste von Listen gespeichert(gameObjects)
 		for (int i = 0; i < GameObjects.gameObjects.size(); i++) {
-			for (int j = 0; j < GameObjects.gameObjects.get(i).size(); j++) {
-				
-				Entities obj= GameObjects.gameObjects.get(i).get(j);
-				obj.update();
-			if(obj.getDeath() && obj.isPlayer()) {
+			for (int j = 0; j < GameObjects.gameObjects.get(i).size(); j++) {				
+			     Entities obj= GameObjects.gameObjects.get(i).get(j);
+			     obj.update();
+			     if(obj.getDeath() && obj.isPlayer()) {
 				gameOver=true;
-			System.out.println("GameOver");
-			System.exit(0);
-			}
-			if(!obj.getDeath()) {
-				obj.drawImage(gc);
-				}
-
+			        System.out.println("GameOver");
+		             // System.exit(0);
+			     }
+		      //     if(!obj.getDeath()) {
+				 obj.drawImage(gc);
+		      //     }
 			}
 		}
-
 	}
 
 
@@ -216,9 +213,9 @@ public class GamePanel {
                         break;
 
                     case ("1"):     // Player 1
-                    GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
-		 // GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0],true);
-                    GameObjects.spawn(GamePanel.player);                    
+                //   GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
+		     GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0],true);
+                     GameObjects.spawn(GamePanel.player);                    
                     break;
                     case ("B"):     // Soft wall zerstoerbar
                         Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
