@@ -49,23 +49,25 @@ public class Ressourcen {
 	
 	 public static void readFiles() throws IOException {
 		 
-	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
-		        IMAGES.BOMBERMANMATRIX.image = new Image(Ressourcen.class.getResource("img/CharacterImages/bombermanmatrix.png").toString());
+	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/bombermanmatrix.png").toString());
+		    IMAGES.BOMBERMANMATRIX.image = new Image(Ressourcen.class.getResource("img/CharacterImages/bombermanmatrix.png").toString());
 			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
 			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
-			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/Bigflame.jpg").toString());
+			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/FlammeItem.jpeg").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
-			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/laufschuhe.PNG").toString());
-			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/Bombentascheoriganl.jpg").toString());
-			IMAGES.EXPLOSION.image= new Image(Ressourcen.class.getResource("img/danny.jpg").toString());
+			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/SpeedItem.jpeg").toString());
+			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/BombItem.jpeg").toString());
+			IMAGES.EXPLOSION.image= new Image(Ressourcen.class.getResource("img/pngegg.png").toString());
 			IMAGES.Map[0] = new Image(Ressourcen.class.getResource("img/Frame 3.png").toString());
 			IMAGES.Map[1] = new Image(Ressourcen.class.getResource("img/landscape-mountains-minimalist-o7.jpg").toString());
 			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/BG.png").toString());
 			IMAGES.Map[3] = new Image(Ressourcen.class.getResource("img/BACKG.jpg").toString());
 			IMAGES.BOT.image= new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
 			file[0] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
-			file[1] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
+			file[1] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map1.csv"));
+			file[2] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map2.csv"));
+			file[3] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map3.csv"));
 			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
 		 
 		       for (int i = 0; i < 4; i++) {

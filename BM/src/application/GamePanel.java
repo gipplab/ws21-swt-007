@@ -135,7 +135,7 @@ public class GamePanel {
 	private void drawBackground(GraphicsContext gc) {
 	  for(int i=0 ; i<ROWS; i++) 
 		for(int j=0;j<COLUMNS;j++) {
-			gc.setFill(Color.WHITE);
+			gc.setFill(Color.BLACK);
 			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);}
 					
 	}
@@ -171,7 +171,7 @@ public class GamePanel {
 	
 	 private static void loadMapFile()  {
 		
-        bufferedReader = new BufferedReader(Ressourcen.file[0]);
+        bufferedReader = new BufferedReader(Ressourcen.file[2]);
 	    mapLayout = new ArrayList<>();
 	 
         try {
