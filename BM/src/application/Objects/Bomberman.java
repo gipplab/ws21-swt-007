@@ -56,13 +56,13 @@ public void update() {
 
 	if(!isFreeExplosion(this.x,this.y)) {
 		timeExplosion++;
-		if(timeExplosion%62 == 0) {
+		if(timeExplosion == 50) {
 			   this.gethit();
 			   timeExplosion = 0 ;			  
 		}
 		this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
 	}
-	else { 
+	else {  timeExplosion = 0 ;
 	        if(this.dead) {
 	           GameObjects.bomberObjects.remove(this);
 	        }
