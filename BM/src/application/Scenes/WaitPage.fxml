@@ -4,9 +4,64 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<<<<<<< Updated upstream
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WaitPageController">
    <children>
       <Label fx:id="infoRoom" layoutX="225.0" layoutY="31.0" text="Label" />
       <Button fx:id="test" layoutX="426.0" layoutY="271.0" mnemonicParsing="false" onAction="#testAction" text="Button" />
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="404.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneControllers.WaitPageController">
+   <children>
+      <ImageView fitHeight="404.0" fitWidth="583.0" layoutX="-2.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/image_processing20210907-11610-c37q1q.gif" />
+         </image>
+      </ImageView>
+      <Label fx:id="infoRoom" layoutX="221.0" layoutY="37.0" text="Label">
+         <font>
+            <Font name="Ravie" size="22.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.7799999713897705" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.31963470319634696">
+                     <color>
+                        <Color red="0.8953866362571716" green="0.8956682085990906" blue="0.9122806787490845" opacity="0.7799999713897705" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9210526347160339" green="0.23026315867900848" blue="0.8404605388641357" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+      <Button fx:id="test" layoutX="387.0" layoutY="272.0" mnemonicParsing="false" onAction="#testAction" stylesheets="@CSS/BUTTON.css" text="Back">
+         <font>
+            <Font name="Ravie" size="22.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.8643532867311303">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8374837636947632" green="0.04727095365524292" blue="0.8508771657943726" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill></Button>
+>>>>>>> Stashed changes
    </children>
 </AnchorPane>
