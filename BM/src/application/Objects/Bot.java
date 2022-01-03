@@ -38,14 +38,13 @@ public class Bot extends Character {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
 		if(!isFreeExplosion(this.x,this.y)) {
 			this.dead=true;
-			GameObjects.bomberObjects.remove(this);
-			}
-		
-			moveRandom();
-		
+			this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
+		}else if(this.dead) {
+		         GameObjects.bomberObjects.remove(this);
+		      }else
+	 			moveRandom();		
 	}
 void moveRandom(){
 	

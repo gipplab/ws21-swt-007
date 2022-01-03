@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
+import javafx.scene.control.Alert;
+
 public class Server {
 	private static final int PORT = 1234;
 	private static ArrayList<Room> roomsList = new ArrayList<>();
@@ -38,8 +40,8 @@ public class Server {
 				//System.out.println(messageIn);
 				if(message[0].equals("Host")) 
 				{
-					PlayerInfos host = new PlayerInfos(message[1]); 
-					Room rm = new Room(message[1],Integer.parseInt(message[2]));
+					PlayerInfos host = new PlayerInfos(message[2]); 
+					Room rm = new Room(message[1],Integer.parseInt(message[3]));
 					rm.AddPlayerToRoom(host);
 					roomsList.add(rm);
 					System.out.print(" : ");
@@ -72,7 +74,7 @@ public class Server {
 										found=true;
 										messageOut= "Added";
 										break;
-									}					
+									}
 								}
 							}
 							if(!found) 
@@ -100,6 +102,7 @@ public class Server {
 									for(PlayerInfos player : room.players) 
 									{
 										messageOut=messageOut+"-"+player.getName();
+										System.out.println("txt"+messageOut);
 									}
 									
 									break;
@@ -153,4 +156,5 @@ public class Server {
 			datagramSocket.close();
 		}
 	}
+
 }          

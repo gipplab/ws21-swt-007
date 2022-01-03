@@ -36,7 +36,7 @@ public void update() {
 	}
 
 void createItem(){
-	   int poweruptype = (int) Math.round(Math.random() * 4);
+	   int poweruptype = (int) Math.round(Math.random() * 3);
        Image imageItem = Ressourcen.IMAGES.HERZITEM.getImage();
        switch(poweruptype) {
        case 0:{
@@ -51,7 +51,7 @@ void createItem(){
        }
        case 2:{
 
-       	this.img =Ressourcen.IMAGES.FLAMMEITEM.getImage();
+       imageItem =Ressourcen.IMAGES.FLAMMEITEM.getImage();
        	break;
        }
        case 3:{

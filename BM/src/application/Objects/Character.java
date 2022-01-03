@@ -198,74 +198,70 @@ protected void speedUp() {
 		else if(speed==7)
 			speed=7;
 }
+	
 public void moveRight() {
 	
 	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )) {
-	 	 if( isFree(this.x+  this.speed,this.y))
-	 	  this.x= this.x+  this.speed;
-	 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) ) {
-	 		  this.y= this.y+  (this.speed/4);	
-	 		}
-	 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) {
-	 		  this.y= this.y-  (this.speed/4);	
-	 		 
-	 	 }
-	 
-		
-	         this.img = Ressourcen.IMAGES.playerRight[indexAnimPlayer()];
-
-    } 
-	
+	 	 if(isFree(this.x+  this.speed,this.y)){
+	 	    this.x= this.x+  this.speed;
+		 }
+	 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65)) {
+	 		 this.y= this.y+  (this.speed/4);	
+	 	      }
+	 	 else if((this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)) {
+	 		  this.y= this.y-  (this.speed/4);		 		 
+	 	      }
+        } 
+	this.img = Ressourcen.IMAGES.playerRight[indexAnimPlayer()];	
 }
 
 public void moveLeft() {
+	
 	if((this.x >GamePanel.SQUARE_SIZE)) {
-	 	 if(isFree(this.x- this.speed ,this.y))
-	 		 this.x=this.x- this.speed;
-		 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) ) {
-		 		  this.y= this.y+  (this.speed/4);	
-		 		}
-		 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) {
-		 		  this.y= this.y-  (this.speed/4);	
-		 		 
-		 	 }
-	 
-		
-	         this.img = Ressourcen.IMAGES.playerLeft[indexAnimPlayer()];
-	 	  
+	 	 if(isFree(this.x- this.speed ,this.y)){
+	            this.x=this.x- this.speed;
+		 }
+		 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65)) {
+		 	 this.y= this.y+  (this.speed/4);	
+		      }
+		      else if((this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)) {
+		 	       this.y= this.y-  (this.speed/4);			 		 
+		           }			 	  
 	}
+	this.img = Ressourcen.IMAGES.playerLeft[indexAnimPlayer()];
 }
 
 public void moveUp() {
+	
 	if((this.y >GamePanel.SQUARE_SIZE)) {
-		if(isFree(this.x ,this.y - this.speed))
-				   this.y=this.y - this.speed;
-		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) )
-		 		  this.x= this.x+  (this.speed/4);	
-		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
-		 		  this.x= this.x-  (this.speed/4);	
-		
-	
-		
-	        this.img = Ressourcen.IMAGES.playerUp[indexAnimPlayer()];
-		 	 
+		if(isFree(this.x ,this.y - this.speed)) {
+		   this.y=this.y - this.speed;
 		}
-	
+		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65)){
+		 	this.x= this.x+  (this.speed/4);
+		     }
+		     else if((this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)) {
+		 	      this.x= this.x-  (this.speed/4);	
+		          }
+	}
+	this.img = Ressourcen.IMAGES.playerUp[indexAnimPlayer()];	
 }
 
 public void moveDown() {
+	
 	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)) {
-		if(isFree(this.x ,this.y+ this.speed))
-			 this.y=this.y+ this.speed;
-		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65) )
-	 		  this.x= this.x+  (this.speed/4);	
-		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35) ) 
+		if(isFree(this.x ,this.y+ this.speed)) {
+		   this.y=this.y+ this.speed;
+		}
+		else if(this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65)) {
+	 		this.x= this.x+  (this.speed/4);
+		     }
+		else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)) {
 	 		  this.x= this.x-  (this.speed/4);	
-		
-	        this.img = Ressourcen.IMAGES.playerDown[indexAnimPlayer()];
-	 	  
+		     }	 	  
 	}
-	}
+	this.img = Ressourcen.IMAGES.playerDown[indexAnimPlayer()];
+}
 
 	
 }

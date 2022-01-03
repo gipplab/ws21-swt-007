@@ -25,6 +25,7 @@ public class Ressourcen {
 		public static Image[] playerDown = new Image[4];
 		public static Image[] playerRight = new Image[4];
 		public static Image[] playerLeft = new Image[4];
+		public static Image[] playerDead = new Image[4];
 		
 		static Image Map[] = new Image[4];
 		
@@ -72,6 +73,7 @@ public class Ressourcen {
 		             IMAGES.playerLeft[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (3*GamePanel.SQUARE_SIZE)-8, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		             IMAGES.playerDown[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*( GamePanel.SQUARE_SIZE-3), GamePanel.SQUARE_SIZE+12, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		             IMAGES.playerUp[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), 0, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
+			     IMAGES.playerDead[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (5*GamePanel.SQUARE_SIZE)+18, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		    }
 			
 	 }

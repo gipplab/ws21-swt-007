@@ -1,11 +1,11 @@
 package application.Objects;
 import javafx.scene.image.Image;
-
+import application.Ressourcen;
 
 
 public class Bomberman extends Character{
 String Name="";
-	
+int timeExplosion = 0 ;	
 	
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
@@ -51,21 +51,25 @@ public boolean getDeath() {
 }
 
 
-	
-
-
-
 @Override
 public void update() {
-	// TODO Auto-generated method stub
 
 	if(!isFreeExplosion(this.x,this.y)) {
-		this.dead=true;
-	GameObjects.bomberObjects.remove(this);
+		timeExplosion++;
+		if(timeExplosion == 50) {
+			   this.gethit();		  
+		}
+		this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
 	}
-	 int v=isItem(this.x, this.y);
+	else {  timeExplosion = 0 ;
+	        if(this.dead) {
+	           GameObjects.bomberObjects.remove(this);
+	        }
+	}
+	
+	int v=isItem(this.x, this.y);
 	 
-		   switch(v) {
+        switch(v) {
 	       case 0:{	// Hertz
 	    	   HealthUp();
 	       	break;
