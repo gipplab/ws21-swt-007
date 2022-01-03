@@ -214,7 +214,7 @@ public class GamePanel {
 
                     case ("1"):     // Player 1
                 //   GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
-		     GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0],true);
+                    	GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0],true);
                      GameObjects.spawn(GamePanel.player);                    
                     break;
                     case ("B"):     // Soft wall zerstoerbar

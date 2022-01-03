@@ -211,7 +211,10 @@ public void moveRight() {
 	 	 else if((this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)) {
 	 		  this.y= this.y-  (this.speed/4);		 		 
 	 	      }
-        } 
+        } //die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
+	// und nicht immer auf Ressourcen greifen 
+	// die Player Matrix wird ein Teil des class  Charackter werden
+
 	this.img = Ressourcen.IMAGES.playerRight[indexAnimPlayer()];	
 }
 
