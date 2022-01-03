@@ -57,8 +57,7 @@ public void update() {
 	if(!isFreeExplosion(this.x,this.y)) {
 		timeExplosion++;
 		if(timeExplosion == 50) {
-			   this.gethit();
-			   timeExplosion = 0 ;			  
+			   this.gethit();		  
 		}
 		this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
 	}
