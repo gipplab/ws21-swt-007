@@ -29,7 +29,6 @@ public class GamePanelOnline {
 	public static final int ROWS = 16;
 	public static final int COLUMNS = ROWS;
 	public static final int SQUARE_SIZE = WIDTH / ROWS;
-
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
 	private GraphicsContext gc;
@@ -254,12 +253,14 @@ public class GamePanelOnline {
                     case ("1"):     // Player 1
                     	GamePanelOnline.player[0]= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
                     	GamePanelOnline.player[0].setName(Client.players.get(0));
+                     	GamePanelOnline.player[0].setPlayerFarbe(0);
                     	GameObjects.spawn(GamePanelOnline.player[0]);                    
                     break;
                     case ("2"):     // Player 2
                     	GamePanelOnline.player[1] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
                     	GamePanelOnline.player[1].setName(Client.players.get(1));
-                        GameObjects.spawn(GamePanelOnline.player[1]);                    
+                        GameObjects.spawn(GamePanelOnline.player[1]);   
+                        GamePanelOnline.player[0].setPlayerFarbe(1);
                         break;
                     /*case ("3"):     // Player 3
                     	GamePanelOnline.player[2] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());

@@ -14,7 +14,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -23,8 +25,27 @@ public class SinglePlayPanelController  implements Initializable{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
-    @FXML
+    public static int playerFarbe;
+	@FXML
+    
     private Button BackButton;
+
+    @FXML
+    private RadioButton BluePlayersRadioButton;
+    @FXML
+    private RadioButton BlackPlayersRadioButton;
+    @FXML
+    private ToggleGroup FarbeGroup;
+
+
+    @FXML
+    private RadioButton RedPlayersRadioButton;
+
+    @FXML
+    private Button VorMapbutton;
+
+    @FXML
+    private RadioButton WhitePlayersRadioButton;
 
     @FXML
     private TextField PlayerNicknameTextField;
@@ -49,6 +70,8 @@ public class SinglePlayPanelController  implements Initializable{
     void RunRoomButtonIsClicked(ActionEvent event) throws IOException {
     		//	player.SetAddress("192.168.1.107");
     		    
+    	setPlayerFarbe();
+    	
     			GamePanel game= new GamePanel();
     			game.init();
     			stage =(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -57,14 +80,27 @@ public class SinglePlayPanelController  implements Initializable{
     		    stage.setResizable(false);
     		    stage.show();
     			
-    	}
+    }
 
-    
+  	void setPlayerFarbe() {
+  		
+  		if(    RedPlayersRadioButton.isSelected())
+  			playerFarbe=2;
+  		else if(  WhitePlayersRadioButton.isSelected())
+  			playerFarbe=0;
+  			else if(  BluePlayersRadioButton.isSelected())
+  				playerFarbe=3;
+  				else if(  BlackPlayersRadioButton.isSelected())
+  					playerFarbe=1;
+  			System.out.println(playerFarbe+"DFFGSFASFASF");
+
+  	}
 
     @FXML
     void nextMap(ActionEvent event) {
     counter= (counter +1)%4;
     MapImage.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
+    GamePanel.mapIndex=counter;
   
     }
 
@@ -75,6 +111,7 @@ public class SinglePlayPanelController  implements Initializable{
     	   if(counter <0) 
     		 counter=3;
     	   MapImage.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
+    	    GamePanel.mapIndex=counter;
     }
 
 	@Override

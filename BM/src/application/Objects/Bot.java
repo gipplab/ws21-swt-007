@@ -20,9 +20,8 @@ public class Bot extends Character {
 		// TODO Auto-generated constructor stub
 			this.speed=1.25;//2.5, 5, 7 ,8,75 
 	
-	
 		
-		}
+	}
 	void placeBomb() {
 		if(bombanzahl>0) 
 		{
@@ -40,7 +39,7 @@ public class Bot extends Character {
 		// TODO Auto-generated method stub
 		if(!isFreeExplosion(this.x,this.y)) {
 			this.dead=true;
-			this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
+			this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
 		}else if(this.dead) {
 		         GameObjects.bomberObjects.remove(this);
 		      }else

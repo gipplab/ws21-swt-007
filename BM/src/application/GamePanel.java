@@ -11,8 +11,9 @@ import application.Objects.Bot;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
 import application.Objects.Wall;
+import application.SceneControllers.SinglePlayPanelController;
 import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
@@ -42,7 +43,7 @@ public class GamePanel {
 	public static double imageX = 4, imageY = 4;
 	public static Bomberman player;
 	public static ArrayList<ArrayList<String>> mapLayout;
-
+	public static int mapIndex=0;
 	
 
 	public GamePanel() {
@@ -135,8 +136,9 @@ public class GamePanel {
 	private void drawBackground(GraphicsContext gc) {
 	  for(int i=0 ; i<ROWS; i++) 
 		for(int j=0;j<COLUMNS;j++) {
-			gc.setFill(Color.BLACK);
-			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);}
+			gc.setFill(Color.WHITE);
+			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);
+			}
 					
 	}
 
@@ -171,7 +173,7 @@ public class GamePanel {
 	
 	 private static void loadMapFile()  {
 		
-        bufferedReader = new BufferedReader(Ressourcen.file[2]);
+        bufferedReader = new BufferedReader(Ressourcen.file[mapIndex]);
 	    mapLayout = new ArrayList<>();
 	 
         try {
@@ -214,8 +216,10 @@ public class GamePanel {
 
                     case ("1"):     // Player 1
                 //   GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
-                    	GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0],true);
-                     GameObjects.spawn(GamePanel.player);                    
+                
+                    	GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[SinglePlayPanelController.playerFarbe][0],true);
+                   		GamePanel.player.setPlayerFarbe(SinglePlayPanelController.playerFarbe);
+                    	GameObjects.spawn(GamePanel.player);                    
                     break;
                     case ("B"):     // Soft wall zerstoerbar
                         Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);

@@ -22,12 +22,15 @@ public class Ressourcen {
 		,FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, PLAYERBLACK,PLAYERROT,PLAYERBLUE ;
 		// Alle Player in einem Feld Speichern und Farben anhand zahlen als Farben intepretieren
 		//das muss gemacht werden 
-		public static Image[] PlayerFarbe= new Image[4];
-		public static Image[] playerUp = new Image[4];
-		public static Image[] playerDown = new Image[4];
-		public static Image[] playerRight = new Image[4];
-		public static Image[] playerLeft = new Image[4];
-		public static Image[] playerDead = new Image[4];
+		
+		
+		// Matrix für Farbe und Richtung
+		public static Image[] PlayerFarbe= new Image[4] ;
+		public static Image[][] playerUp = new Image[4][4];
+		public static Image[][] playerDown = new Image[4][4];
+		public static Image[][] playerRight = new Image[4][4];
+		public static Image[][] playerLeft = new Image[4][4];
+		public static Image[][] playerDead = new Image[4][4];
 		
 		static Image Map[] = new Image[4];
 		
@@ -50,7 +53,7 @@ public class Ressourcen {
     }
 	
 	 public static void readFiles() throws IOException {
-		 
+		 // 0  White , 1 Black , 2 Rot, 3 Blue 
 	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/WhitePlayer.png").toString());
 		    IMAGES.PlayerFarbe[0] = new Image(Ressourcen.class.getResource("img/CharacterImages/WhitePlayer.png").toString());
 		    IMAGES.PlayerFarbe[1] = new Image(Ressourcen.class.getResource("img/CharacterImages/BlackPlayer.png").toString());
@@ -74,16 +77,17 @@ public class Ressourcen {
 			file[2] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map2.csv"));
 			file[3] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map3.csv"));
 			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
-		 // istt noch nicht fertig
-			
-			  for (int i = 0; i < 4; i++) {
-		             IMAGES.playerRight[i]= teilImage(IMAGES.PlayerFarbe[farbe], i*(GamePanel.SQUARE_SIZE-3), (4*GamePanel.SQUARE_SIZE)+4, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
-		             IMAGES.playerLeft[i]= teilImage(IMAGES.PlayerFarbe[farbe], i*(GamePanel.SQUARE_SIZE-3), (3*GamePanel.SQUARE_SIZE)-8, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
-		             IMAGES.playerDown[i]= teilImage(IMAGES.PlayerFarbe[farbe], i*( GamePanel.SQUARE_SIZE-3), GamePanel.SQUARE_SIZE+12, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
-		             IMAGES.playerUp[i]= teilImage(IMAGES.PlayerFarbe[farbe], i*(GamePanel.SQUARE_SIZE-3), 0, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
-		             IMAGES.playerDead[i]= teilImage(IMAGES.PlayerFarbe[farbe], i*(GamePanel.SQUARE_SIZE-3), (5*GamePanel.SQUARE_SIZE)+18, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
+
+			// 0  White , 1 Black , 2 Rot, 3 Blue 
+			// i ist die Farbe und j ist die richtung
+			  for (int i = 0; i < 4; i++) 
+			  for(int j=0;j<4;j++){
+		             IMAGES.playerRight[i][j]= teilImage(IMAGES.PlayerFarbe[i], j*(GamePanel.SQUARE_SIZE-3), (4*GamePanel.SQUARE_SIZE)+4, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
+		             IMAGES.playerLeft[i][j]= teilImage(IMAGES.PlayerFarbe[i], j*(GamePanel.SQUARE_SIZE-3), (3*GamePanel.SQUARE_SIZE)-8, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
+		             IMAGES.playerDown[i][j]= teilImage(IMAGES.PlayerFarbe[i], j*( GamePanel.SQUARE_SIZE-3), GamePanel.SQUARE_SIZE+12, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
+		             IMAGES.playerUp[i][j]= teilImage(IMAGES.PlayerFarbe[i], j*(GamePanel.SQUARE_SIZE-3), 0, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
+		             IMAGES.playerDead[i][j]= teilImage(IMAGES.PlayerFarbe[i], j*(GamePanel.SQUARE_SIZE-3), (5*GamePanel.SQUARE_SIZE)+18, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		    }
-			
 			
 	 }
 	 }

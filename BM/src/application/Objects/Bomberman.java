@@ -1,15 +1,21 @@
 package application.Objects;
+
 import javafx.scene.image.Image;
 import application.Ressourcen;
 
 
-public class Bomberman extends Character{
+
+public class Bomberman extends Character {
 String Name="";
 int timeExplosion = 0 ;	
-	
+
+
+
+
+
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
-	this.speed=2.5;//2.5, 5, 7 ,8,75 
+	this.speed=2.5;//2.5, 5, 7 ,8,75
 
 		}
 	
@@ -59,7 +65,7 @@ public void update() {
 		if(timeExplosion == 50) {
 			   this.gethit();		  
 		}
-		this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
+		this.img = Ressourcen.IMAGES.playerDead[this.PlayerFarbe][indexAnimPlayer()];
 	}
 	else {  timeExplosion = 0 ;
 	        if(this.dead) {
@@ -103,6 +109,10 @@ protected int getItemtype() {
 	// TODO Auto-generated method stub
 	return -1;
 }
+
+
+
+
 	
 
 

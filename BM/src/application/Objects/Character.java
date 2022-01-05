@@ -15,7 +15,7 @@ public abstract class Character extends Entities {
 	boolean dead ;
 	Boolean Player= false;
 	int framePlayer = 0, intervalPlayer = 5, indexAnimPlayer = 0;
-	
+	public int PlayerFarbe;
 public Character(double x, double y,Image img, Boolean isPlayer) {
 	super(x,y,img);
 	// TODO Auto-generated constructor stub
@@ -24,9 +24,17 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	 explosion=1;
 	 health=1;
 	 dead=false ;
-	
+
 }
-	
+public int getPlayerFarbe() {
+	return PlayerFarbe;
+}
+
+
+
+public void setPlayerFarbe(int playerFarbe) {
+	PlayerFarbe = playerFarbe;
+}
 	public  boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
@@ -215,7 +223,7 @@ public void moveRight() {
 	// und nicht immer auf Ressourcen greifen 
 	// die Player Matrix wird ein Teil des class  Charackter werden
 
-	this.img = Ressourcen.IMAGES.playerRight[indexAnimPlayer()];	
+	this.img = Ressourcen.IMAGES.playerRight[this.PlayerFarbe][indexAnimPlayer()];	
 }
 
 public void moveLeft() {
@@ -231,7 +239,7 @@ public void moveLeft() {
 		 	       this.y= this.y-  (this.speed/4);			 		 
 		           }			 	  
 	}
-	this.img = Ressourcen.IMAGES.playerLeft[indexAnimPlayer()];
+	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
 }
 
 public void moveUp() {
@@ -247,7 +255,7 @@ public void moveUp() {
 		 	      this.x= this.x-  (this.speed/4);	
 		          }
 	}
-	this.img = Ressourcen.IMAGES.playerUp[indexAnimPlayer()];	
+	this.img = Ressourcen.IMAGES.playerUp[this.PlayerFarbe][indexAnimPlayer()];	
 }
 
 public void moveDown() {
@@ -263,7 +271,7 @@ public void moveDown() {
 	 		  this.x= this.x-  (this.speed/4);	
 		     }	 	  
 	}
-	this.img = Ressourcen.IMAGES.playerDown[indexAnimPlayer()];
+	this.img = Ressourcen.IMAGES.playerDown[this.PlayerFarbe][indexAnimPlayer()];
 }
 
 	
