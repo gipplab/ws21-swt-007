@@ -53,6 +53,7 @@ public void BombCollision(double x1, double y1) {
 		}
 }
 
+
 public double getX() {return this.x;}
 
 public double getY() {return this.y;}

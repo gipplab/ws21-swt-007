@@ -88,6 +88,5 @@ public class Ressourcen {
 		             IMAGES.playerUp[i][j]= teilImage(IMAGES.PlayerFarbe[i], j*(GamePanel.SQUARE_SIZE-3), 0, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		             IMAGES.playerDead[i][j]= teilImage(IMAGES.PlayerFarbe[i], j*(GamePanel.SQUARE_SIZE-3), (5*GamePanel.SQUARE_SIZE)+18, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		    }
-			
 	 }
 	 }

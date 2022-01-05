@@ -3,23 +3,15 @@ package application.Objects;
 import javafx.scene.image.Image;
 import application.Ressourcen;
 
-
-
 public class Bomberman extends Character {
 String Name="";
 int timeExplosion = 0 ;	
-
-
-
-
 
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
 	this.speed=2.5;//2.5, 5, 7 ,8,75
 
 		}
-	
-
 
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
 public void gethit() {

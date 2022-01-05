@@ -73,6 +73,7 @@ public class GameHostPageController {
     	scene = new Scene(root);
     	stage.setScene(scene);
     	stage.show();
+    	
     }
 	
 	@FXML
