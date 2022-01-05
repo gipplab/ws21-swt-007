@@ -70,7 +70,8 @@ public class GamePanel {
 		
 		 Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
 			try {
-				update();
+				//if(!gameOver)
+					update();
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -192,7 +193,7 @@ public class GamePanel {
             System.out.println(e + "Error beim LoadMapFile()");
             e.printStackTrace();
         }
-       
+      
 	 }
 	 
 
@@ -216,7 +217,7 @@ public class GamePanel {
 
                     case ("1"):     // Player 1
                 //   GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
-                
+                               
                     	GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[SinglePlayPanelController.playerFarbe][0],true);
                    		GamePanel.player.setPlayerFarbe(SinglePlayPanelController.playerFarbe);
                     	GameObjects.spawn(GamePanel.player);                    

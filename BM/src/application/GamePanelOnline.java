@@ -10,6 +10,7 @@ import application.Objects.Bomberman;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
 import application.Objects.Wall;
+import application.SceneControllers.SinglePlayPanelController;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -151,7 +152,6 @@ public class GamePanelOnline {
 
 	}
 
-
 	private void drawBomb(GraphicsContext gc) {
 		// draw Player in Anfangscoordinate
 		for (Bomb i : Objekte) {
@@ -198,13 +198,8 @@ public class GamePanelOnline {
 	                        break;
 	                }
 				}
-			
 			}
-			
-			
 		}
-		
-		
 }
 	
 	 private static void loadMapFile()  {
@@ -219,22 +214,17 @@ public class GamePanelOnline {
                if (currentLine.isEmpty()) {
                   continue;
                }
-
                 mapLayout.add(new ArrayList<>(Arrays.asList(currentLine.split(","))));
-             
             }   
           
         } catch (IOException | NullPointerException e) {
             System.out.println(e + "Error beim LoadMapFile()");
             e.printStackTrace();
         }
-       
 	 }
-	 
 
 	private void generateMap() {
 	      
-    
         for (int y = 0; y < ROWS; y++) {
             for (int x = 0; x < ROWS; x++) {
                 switch (mapLayout.get(y).get(x)) {
@@ -243,7 +233,6 @@ public class GamePanelOnline {
                     if(soft!=null) 
                     GameObjects.spawn(soft);
                         break;
-
                     case ("H"):    
                     	Wall hard= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL.getImage());
                     if(hard!=null)
@@ -251,16 +240,16 @@ public class GamePanelOnline {
                         break;
 
                     case ("1"):     // Player 1
-                    	GamePanelOnline.player[0]= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
+                    	GamePanelOnline.player[0]= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0][0],true);
                     	GamePanelOnline.player[0].setName(Client.players.get(0));
                      	GamePanelOnline.player[0].setPlayerFarbe(0);
                     	GameObjects.spawn(GamePanelOnline.player[0]);                    
                     break;
                     case ("2"):     // Player 2
-                    	GamePanelOnline.player[1] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
+                    	GamePanelOnline.player[1] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[1][0],true);
                     	GamePanelOnline.player[1].setName(Client.players.get(1));
                         GameObjects.spawn(GamePanelOnline.player[1]);   
-                        GamePanelOnline.player[0].setPlayerFarbe(1);
+                        GamePanelOnline.player[1].setPlayerFarbe(1);
                         break;
                     /*case ("3"):     // Player 3
                     	GamePanelOnline.player[2] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
