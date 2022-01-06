@@ -44,7 +44,7 @@ public class GamePanel {
 	public static Bomberman player;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static int mapIndex=0;
-	
+
 
 	public GamePanel() {
 		System.out.println(SQUARE_SIZE);
