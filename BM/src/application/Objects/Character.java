@@ -32,6 +32,7 @@ public int getPlayerFarbe() {
 public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
+//Hier wird geprüft, ob das Block frei(ein Weg) ist.
 	public  boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
@@ -64,6 +65,8 @@ public void setPlayerFarbe(int playerFarbe) {
 	 	  }
 	      	return frei;
 	 }
+	//Hier wird geprüft, ob es in diesem Block eine Bombe gibt.
+	@SuppressWarnings("unused")
 	private  boolean isFreeBomb(double nextX, double nextY) {
 	     Entities obje;
 	     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
@@ -88,7 +91,7 @@ public void setPlayerFarbe(int playerFarbe) {
 	 	  }
 	      	return true;
 	 }
-
+	//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
 	public boolean isFreeExplosion(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -132,17 +135,19 @@ public void setPlayerFarbe(int playerFarbe) {
 	public int getExplosion(){
 		return this.explosion;
 	}
+	//Bombenanzahl erhöhen.
 	public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
-
+	//Bombenanzahl reduzieren.
 	public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
-
+//Explosion reichweite erhöhen.  
 public void ExplosionUp(){
 	this.explosion++;
 }
+//Health erhöhen.
 public void HealthUp(){
 	this.health++;
 }
@@ -161,7 +166,7 @@ public int indexAnimPlayer() {
 	        return indexAnimPlayer;
 	 }
 	 
-	 
+//Hier wird geprüft, ob es in diesem Block ein Item gibt.
 		public int isItem(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -194,7 +199,7 @@ public int indexAnimPlayer() {
 			  }
 		    	return -1;
 		} 
-	
+//Geschwindigkeit erhöhen.		
 protected void speedUp() {
 		if(speed ==2.5)
 			speed=5;
@@ -203,7 +208,7 @@ protected void speedUp() {
 		else if(speed==7)
 			speed=7;
 }
-	
+//Rechts laufen.	
 public void moveRight() {
 	
 	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )) {
@@ -222,7 +227,7 @@ public void moveRight() {
 
 	this.img = Ressourcen.IMAGES.playerRight[this.PlayerFarbe][indexAnimPlayer()];	
 }
-
+//Links laufen.
 public void moveLeft() {
 	
 	if((this.x >GamePanel.SQUARE_SIZE)) {
@@ -238,7 +243,7 @@ public void moveLeft() {
 	}
 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
 }
-
+//nach Oben laufen.
 public void moveUp() {
 	
 	if((this.y >GamePanel.SQUARE_SIZE)) {
@@ -254,7 +259,7 @@ public void moveUp() {
 	}
 	this.img = Ressourcen.IMAGES.playerUp[this.PlayerFarbe][indexAnimPlayer()];	
 }
-
+//nach Unten laufen.
 public void moveDown() {
 	
 	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)) {

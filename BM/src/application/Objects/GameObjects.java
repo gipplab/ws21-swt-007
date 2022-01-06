@@ -13,22 +13,22 @@ public class GameObjects {
 		 public static List<List<? extends Entities>> gameObjects;
 
 		    public static ArrayList<TileObjects> tileObjects;// Wand Kisten Item Bomb
-		    public static ArrayList<Explosion> explosionObjects;
-		    public static ArrayList<Character> bomberObjects;
+		    public static ArrayList<Explosion> explosionObjects;//Explosion
+		    public static ArrayList<Character> bomberObjects;//Spieler und Bot
 
-	
+		    //Listen für verschiedene Objekttypen erstellen.
 		    public static void init() {
 		        gameObjects = new ArrayList<>();
 		        tileObjects = new ArrayList<>();
 		        explosionObjects = new ArrayList<>();
 		        bomberObjects = new ArrayList<>();
 
-		        gameObjects.add(tileObjects);
-		        gameObjects.add(explosionObjects);
-		        gameObjects.add(bomberObjects);
+		        gameObjects.add(tileObjects);//tileObjects zur gameObjekts Liste hinzufügen.
+		        gameObjects.add(explosionObjects);//explosionObjects zur gameObjekts Liste hinzufügen.
+		        gameObjects.add(bomberObjects);//bomberObjects zur gameObjekts Liste hinzufügen.
 	
 		    }
-
+		  //hier werden alle Game Objekte gezeichnet.
 		    public static void spawn(TileObjects spawnObj) {
 		        tileObjects.add(spawnObj);
 		    }

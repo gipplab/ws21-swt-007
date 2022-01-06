@@ -15,7 +15,7 @@ public  class Wall extends TileObjects{
 		death=false;
 	}
 	
-	
+	//hier werden zerstörbare Wände zerstört, wenn sie eine Explosion treffen.
 	public void onDestroy() {
 		if(zerstoerbar) 
 			GameObjects.tileObjects.remove(this);

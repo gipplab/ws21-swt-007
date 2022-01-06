@@ -31,7 +31,7 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	}
 
 
-
+//die Bombe im richtigen Block platzieren 
 public void BombCollision(double x1, double y1) {
 	
 	int a = (int) (x1 % GamePanel.SQUARE_SIZE);
@@ -58,6 +58,7 @@ public double getX() {return this.x;}
 
 public double getY() {return this.y;}
 
+//Bombezustand und Bombeanzahl aktualisieren.
 public void update() {
 	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
 		death=true;
@@ -74,7 +75,7 @@ public void update() {
 			player.BombanzahlUp();
 	}
 }
-
+//prüft, ob in einem Block mehrere Bomben gibt
 private Boolean BombeDuplikate() {
 	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
 		   if(this.x==(GameObjects.tileObjects.get(i).getX()) && this.y==(GameObjects.tileObjects.get(i).getY())) 
@@ -93,6 +94,8 @@ public boolean isPlayer() {
 	// TODO Auto-generated method stub
 	return false;
 }
+
+//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
 public boolean isFreeExplosion() {
 	// TODO Auto-generated method stub
 	 Entities obje;

@@ -17,6 +17,7 @@ public abstract class Entities {
 		
 	
 	}
+	//Prüfen, ob das Objekt Character ist.
 	static Boolean isBomber(int x, int y){
 		
 		for(int i=0;i< GameObjects.bomberObjects.size();i++)
@@ -27,7 +28,7 @@ public abstract class Entities {
 				}
 		return false;
 	}
-	
+	//Prüfen, ob das Objekt eine Wand ist.
 	static int isWall(int x, int y){
 		
 		for(int i=0;i< GameObjects.tileObjects.size();i++) {
@@ -57,7 +58,7 @@ public abstract class Entities {
 	public Image getEntityImage() {
 		return this.img;
 	}
-	
+	//Objekte auf Map zeigen.
 	public void drawImage(GraphicsContext gc) {
 	
 		gc.drawImage(this.img,this.x, this.y, GamePanel.SQUARE_SIZE,GamePanel.SQUARE_SIZE);

@@ -11,7 +11,7 @@ public class Explotionart //extends Entities
 	public int radius;
 	public int x, y;
 	Explosion[] explosions;
-	Explosion explosions0;
+	Explosion explosions0;//Mittelpunkt der Explosion.
 	public Explotionart(int x, int y) {
 		explosions0= new Explosion(x, y,  Ressourcen.IMAGES.EXPLOSION.getImage());
 	}
@@ -24,7 +24,7 @@ public class Explotionart //extends Entities
 		explosions = new Explosion[ berechneDistance() ];
 		createExplosions();
 		
-	}
+	}//Reichweite der Explosion berechnen. 
 	int berechneDistance() {
 		int radius = 0;
 		int x1 = this.x;
@@ -40,10 +40,10 @@ public class Explotionart //extends Entities
 			if(Entities.isBomber(x1, y1)) ++radius; //Bot oder Spieler getroffen
 			
 			int k=Entities.isWall(x1, y1);
-			if(k==1) {
+			if(k==1) {//Wände getroffen.
 				break;
 				}
-			else if(k==0) {
+			else if(k==0) {//keine Wände getroffen.
 						radius++;
 						break;
 							}
@@ -53,6 +53,7 @@ public class Explotionart //extends Entities
 		return radius;
 		
 	}
+	//Explosion in verschiedenen Richtungen erstellen.
 	void createExplosions() {
 		boolean last = false;
 		int x =(int) this.x;

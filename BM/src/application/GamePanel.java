@@ -24,7 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 
-
+//Koordinaten und wichtige Attribute des Spieles intialisieren. 
 public class GamePanel {
 	public static final int WIDTH = 560;
 	public static final int HEIGHT = 560;
@@ -65,8 +65,8 @@ public class GamePanel {
 		GameObjects.init();
 		Playerspeed = 0.15;
 		loadMapFile();
-		generateMap();
-		run();
+		generateMap();//Map erstellen
+		run();//Spiel starten
 		
 		 Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
 			try {
@@ -126,7 +126,7 @@ public class GamePanel {
 	public void run() {
 		drawObjekte(gc);
 	}
-
+	//Aktualisierung der Objekte im Spiel.
 	private void update() throws InterruptedException {
 		InputManager.handlePlayerMovements(player);
 		drawBackground(gc);
@@ -164,14 +164,14 @@ public class GamePanel {
 
 
 	private void drawBomb(GraphicsContext gc) {
-		// draw Player in Anfangscoordinate
+		// draw Bombe in der richtigen Koordinaten.
 		for (Bomb i : Objekte) {
 			gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(), SQUARE_SIZE * i.getX(), SQUARE_SIZE * i.getY(),
 					SQUARE_SIZE, SQUARE_SIZE);
 		}
 	}
 	 
-	
+	//ausgewählte Map importieren.
 	 private static void loadMapFile()  {
 		
         bufferedReader = new BufferedReader(Ressourcen.file[mapIndex]);
@@ -196,7 +196,7 @@ public class GamePanel {
       
 	 }
 	 
-
+	//Map mit allen Objekten erstellen.
 	private void generateMap() {
 	      
     
@@ -209,7 +209,7 @@ public class GamePanel {
                     GameObjects.spawn(soft);
                         break;
 
-                    case ("H"):    
+                    case ("H"):   //Hardwall.
                     	Wall hard= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL.getImage());
                     if(hard!=null)
                     GameObjects.spawn(hard);                    
@@ -222,7 +222,7 @@ public class GamePanel {
                    		GamePanel.player.setPlayerFarbe(SinglePlayPanelController.playerFarbe);
                     	GameObjects.spawn(GamePanel.player);                    
                     break;
-                    case ("B"):     // Soft wall zerstoerbar
+                    case ("B"):     // BOT
                         Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
                        if(bot!=null) 
                        GameObjects.spawn(bot);

@@ -23,6 +23,7 @@ public class Bot extends Character {
 	
 		
 	}
+	//Bombenanzahl prüfen aund eine Bombe Platzieren.
 	void placeBomb() {
 		if(bombanzahl>0) 
 		{
@@ -34,7 +35,7 @@ public class Bot extends Character {
 			
 		}
 }
-	
+	//wenn der Bot die Explosion trifft, entweder muss sterben oder Health reduzieren.
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
@@ -46,6 +47,7 @@ public class Bot extends Character {
 		      }else
 	 			moveRandom();		
 	}
+//Hier bewegt sich der Bot random. 
 void moveRandom(){
 	
 	isFreeBot();
@@ -65,7 +67,7 @@ void moveRandom(){
 }
 
 
-
+//die nächste Bewegung des Botes stimmen.
 void isFreeBot(){
 		
 	
@@ -128,7 +130,7 @@ void isFreeBot(){
 	
 	
 }
-
+//wenn der Bot einem Wall begegnet, wechselt er die Richtung.
 void isWall() {
 	lastRichtung = (int) Math.round(Math.random() * 3);
 	
@@ -161,6 +163,7 @@ public double getX(){
 public double getY(){
 	return this.y;
 }
+//geprüft je nach Health, ob der Bot sterben muss.
 boolean death() {
 	if(health>0) {
 		return false;
