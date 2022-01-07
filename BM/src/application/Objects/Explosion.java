@@ -51,7 +51,7 @@ void createItem(){
        }
        case 2:{
 
-       	this.img =Ressourcen.IMAGES.FLAMMEITEM.getImage();
+       imageItem =Ressourcen.IMAGES.FLAMMEITEM.getImage();
        	break;
        }
        case 3:{
