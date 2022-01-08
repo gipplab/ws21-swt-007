@@ -1,6 +1,7 @@
 package application.Objects;
 
 import application.Client;
+import application.Objects.*;
 import application.GamePanel;
 import application.Main;
 import application.Ressourcen;
