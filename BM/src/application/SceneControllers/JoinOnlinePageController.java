@@ -58,6 +58,11 @@ public class JoinOnlinePageController {
 		FillTableView();		
     }
 	// Event Listener on Button[#JOINID].onAction
+	
+	
+	
+	
+	
 	@FXML
 	public void JoinButtonOnClick(ActionEvent event) throws IOException {
 	    // Überprüfen ob der Name der Spieler leer oder '-' beinhaltet

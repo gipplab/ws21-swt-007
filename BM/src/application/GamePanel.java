@@ -11,11 +11,14 @@ import application.Objects.Bot;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
 import application.Objects.Wall;
+import application.SceneControllers.SinglePlayPanelController;
 import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -23,18 +26,18 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 
-
+//Koordinaten und wichtige Attribute des Spieles intialisieren. 
 public class GamePanel {
 	public static final int WIDTH = 560;
 	public static final int HEIGHT = 560;
 	public static final int ROWS = 16;
 	public static final int COLUMNS = ROWS;
 	public static final int SQUARE_SIZE = WIDTH / ROWS;
-
+	long timeofDeath;
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
 	private GraphicsContext gc;
-	private boolean gameOver=false;
+	private int gameOver=0;
 	private Scene scene;
 	Canvas canvas;
 	Group root;
@@ -42,9 +45,9 @@ public class GamePanel {
 	public static double imageX = 4, imageY = 4;
 	public static Bomberman player;
 	public static ArrayList<ArrayList<String>> mapLayout;
-
-	
-
+	public static int mapIndex=0;
+	 Timeline timeline;
+	 boolean EndofGame=false;
 	public GamePanel() {
 		System.out.println(SQUARE_SIZE);
 
@@ -64,44 +67,48 @@ public class GamePanel {
 		GameObjects.init();
 		Playerspeed = 0.15;
 		loadMapFile();
-		generateMap();
-		run();
+		generateMap();//Map erstellen
+		run();//Spiel starten
 		
-		 Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
+		  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
 			try {
-				update();
+				if(gameOver==0&& timeofDeath+2000 < System.currentTimeMillis())
+					update();
+				else  {
+					EndOfGame();
+				
+				}
+				if(EndofGame)
+					if(System.currentTimeMillis()>timeofDeath+5000) {
+						System.exit(0);}
+					
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}));
 	        timeline.setCycleCount(Animation.INDEFINITE);
+	     
 	        timeline.play();
-		
-//		AnimationTimer timeline = new AnimationTimer() {
-//
-//			
-//			@Override
-//			public void handle(long arg0) {
-//				try {
-//					if(!gameOver)
-//					{
-//
-//					update();
-//					Thread.sleep(100);
-//					}
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//
-//		};
-//		timeline.start();
+	      
 
 	};
 
-	public Bomberman getPlayer() {
+void 	EndOfGame() throws InterruptedException {
+		
+		GameObjects.gameObjects.clear();
+		update();
+		if(gameOver == 1) {
+			gc.drawImage(Ressourcen.IMAGES.GAMEOVER.getImage(),0,0, HEIGHT, WIDTH);
+		}
+		else if (gameOver == 2) {
+			gc.drawImage(Ressourcen.IMAGES.WIN.getImage(),0,0, HEIGHT, WIDTH);
+		}
+
+		EndofGame=true;
+	}
+
+public Bomberman getPlayer() {
 		return player;
 	}
 
@@ -124,7 +131,7 @@ public class GamePanel {
 	public void run() {
 		drawObjekte(gc);
 	}
-
+	//Aktualisierung der Objekte im Spiel.
 	private void update() throws InterruptedException {
 		InputManager.handlePlayerMovements(player);
 		drawBackground(gc);
@@ -136,7 +143,8 @@ public class GamePanel {
 	  for(int i=0 ; i<ROWS; i++) 
 		for(int j=0;j<COLUMNS;j++) {
 			gc.setFill(Color.WHITE);
-			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);}
+			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);
+			}
 					
 	}
 
@@ -148,30 +156,38 @@ public class GamePanel {
 			     Entities obj= GameObjects.gameObjects.get(i).get(j);
 			     obj.update();
 			     if(obj.getDeath() && obj.isPlayer()) {
-				gameOver=true;
-			        System.out.println("GameOver");
-		             // System.exit(0);
+			    	 gameOver=1;
+			    	 timeofDeath= System.currentTimeMillis();
+			    	 System.out.println("GameOver");
+			     }else if(obj instanceof Bot) {
+			    	if( GameObjects.bomberObjects.size()==1 ) {
+			    		 timeofDeath= System.currentTimeMillis();
+			    		 gameOver=2;
+			    	
+			    	}
+			    	 
 			     }
-		      //     if(!obj.getDeath()) {
+			     
+		       if(!obj.getDeath()) {
 				 obj.drawImage(gc);
-		      //     }
+		          }
 			}
 		}
 	}
 
 
 	private void drawBomb(GraphicsContext gc) {
-		// draw Player in Anfangscoordinate
+		// draw Bombe in der richtigen Koordinaten.
 		for (Bomb i : Objekte) {
 			gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(), SQUARE_SIZE * i.getX(), SQUARE_SIZE * i.getY(),
 					SQUARE_SIZE, SQUARE_SIZE);
 		}
 	}
 	 
-	
+	//ausgewählte Map importieren.
 	 private static void loadMapFile()  {
 		
-        bufferedReader = new BufferedReader(Ressourcen.file[0]);
+        bufferedReader = new BufferedReader(Ressourcen.file[mapIndex]);
 	    mapLayout = new ArrayList<>();
 	 
         try {
@@ -190,10 +206,10 @@ public class GamePanel {
             System.out.println(e + "Error beim LoadMapFile()");
             e.printStackTrace();
         }
-       
+      
 	 }
 	 
-
+	//Map mit allen Objekten erstellen.
 	private void generateMap() {
 	      
     
@@ -206,7 +222,7 @@ public class GamePanel {
                     GameObjects.spawn(soft);
                         break;
 
-                    case ("H"):    
+                    case ("H"):   //Hardwall.
                     	Wall hard= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL.getImage());
                     if(hard!=null)
                     GameObjects.spawn(hard);                    
@@ -214,10 +230,12 @@ public class GamePanel {
 
                     case ("1"):     // Player 1
                 //   GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
-		     GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0],true);
-                     GameObjects.spawn(GamePanel.player);                    
+                               
+                    	GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[SinglePlayPanelController.playerFarbe][0],true);
+                   		GamePanel.player.setPlayerFarbe(SinglePlayPanelController.playerFarbe);
+                    	GameObjects.spawn(GamePanel.player);                    
                     break;
-                    case ("B"):     // Soft wall zerstoerbar
+                    case ("B"):     // BOT
                         Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
                        if(bot!=null) 
                        GameObjects.spawn(bot);

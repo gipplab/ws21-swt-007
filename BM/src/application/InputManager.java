@@ -15,7 +15,7 @@ public class InputManager {
    public static void handlePlayerMovements(Bomberman player) throws InterruptedException{
 	  
        List<?> keyboardInputs = KeysHandler.getInputList();
-	   
+       //nach Oben bewegen.
        if(keyboardInputs.contains(KeyCode.UP) || keyboardInputs.contains(KeyCode.W)){
 	 if(!player.getDeath())
          player.moveUp();
@@ -24,7 +24,7 @@ public class InputManager {
  	
  	   		}
        }
-       
+     //nach Unten bewegen.
        if(keyboardInputs.contains(KeyCode.DOWN) || keyboardInputs.contains(KeyCode.S)){
 	  if(!player.getDeath())
     	  player.moveDown();
@@ -34,7 +34,7 @@ public class InputManager {
 	 		   }
     	
        }
-       
+       //nach Links bewegen.
        if(keyboardInputs.contains(KeyCode.LEFT) || keyboardInputs.contains(KeyCode.A)){
 	  if(!player.getDeath())
     	  player.moveLeft();
@@ -42,7 +42,7 @@ public class InputManager {
 		   	Client.updateString =Client.updateString+"LEFT/";
 		   	   }
        }
-       
+     //nach Rechts bewegen.
        if(keyboardInputs.contains(KeyCode.RIGHT) || keyboardInputs.contains(KeyCode.D)){
 	   if(!player.getDeath())
     	   player.moveRight();  
@@ -52,8 +52,8 @@ public class InputManager {
 	 	   }
        }
 
-     
-       //Drop bomb
+       //Drop bomb, wenn die Taste Space gedrückt werden.
+       
        if(KeysHandler.SPACEPRESSED){
            if((player.getBombanzahl()>0)&&!player.getDeath()) {
         	   System.out.println("Bombe");

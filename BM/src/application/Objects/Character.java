@@ -1,8 +1,5 @@
 package application.Objects;
-
-import application.Client;
 import application.GamePanel;
-import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
@@ -15,7 +12,7 @@ public abstract class Character extends Entities {
 	boolean dead ;
 	Boolean Player= false;
 	int framePlayer = 0, intervalPlayer = 5, indexAnimPlayer = 0;
-	
+	public int PlayerFarbe;
 public Character(double x, double y,Image img, Boolean isPlayer) {
 	super(x,y,img);
 	// TODO Auto-generated constructor stub
@@ -24,9 +21,18 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	 explosion=1;
 	 health=1;
 	 dead=false ;
-	
+
 }
-	
+public int getPlayerFarbe() {
+	return PlayerFarbe;
+}
+
+
+
+public void setPlayerFarbe(int playerFarbe) {
+	PlayerFarbe = playerFarbe;
+}
+//Hier wird geprüft, ob das Block frei(ein Weg) ist.
 	public  boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
@@ -59,6 +65,8 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	 	  }
 	      	return frei;
 	 }
+	//Hier wird geprüft, ob es in diesem Block eine Bombe gibt.
+	@SuppressWarnings("unused")
 	private  boolean isFreeBomb(double nextX, double nextY) {
 	     Entities obje;
 	     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
@@ -83,7 +91,7 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	 	  }
 	      	return true;
 	 }
-
+	//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
 	public boolean isFreeExplosion(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -127,17 +135,19 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	public int getExplosion(){
 		return this.explosion;
 	}
+	//Bombenanzahl erhöhen.
 	public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
-
+	//Bombenanzahl reduzieren.
 	public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
-
+//Explosion reichweite erhöhen.  
 public void ExplosionUp(){
 	this.explosion++;
 }
+//Health erhöhen.
 public void HealthUp(){
 	this.health++;
 }
@@ -156,7 +166,7 @@ public int indexAnimPlayer() {
 	        return indexAnimPlayer;
 	 }
 	 
-	 
+//Hier wird geprüft, ob es in diesem Block ein Item gibt.
 		public int isItem(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -189,7 +199,7 @@ public int indexAnimPlayer() {
 			  }
 		    	return -1;
 		} 
-	
+//Geschwindigkeit erhöhen.		
 protected void speedUp() {
 		if(speed ==2.5)
 			speed=5;
@@ -198,7 +208,7 @@ protected void speedUp() {
 		else if(speed==7)
 			speed=7;
 }
-	
+//Rechts laufen.	
 public void moveRight() {
 	
 	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )) {
@@ -211,10 +221,13 @@ public void moveRight() {
 	 	 else if((this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)) {
 	 		  this.y= this.y-  (this.speed/4);		 		 
 	 	      }
-        } 
-	this.img = Ressourcen.IMAGES.playerRight[indexAnimPlayer()];	
-}
+        } //die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
+	// und nicht immer auf Ressourcen greifen 
+	// die Player Matrix wird ein Teil des class  Charackter werden
 
+	this.img = Ressourcen.IMAGES.playerRight[this.PlayerFarbe][indexAnimPlayer()];	
+}
+//Links laufen.
 public void moveLeft() {
 	
 	if((this.x >GamePanel.SQUARE_SIZE)) {
@@ -228,9 +241,9 @@ public void moveLeft() {
 		 	       this.y= this.y-  (this.speed/4);			 		 
 		           }			 	  
 	}
-	this.img = Ressourcen.IMAGES.playerLeft[indexAnimPlayer()];
+	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
 }
-
+//nach Oben laufen.
 public void moveUp() {
 	
 	if((this.y >GamePanel.SQUARE_SIZE)) {
@@ -244,9 +257,9 @@ public void moveUp() {
 		 	      this.x= this.x-  (this.speed/4);	
 		          }
 	}
-	this.img = Ressourcen.IMAGES.playerUp[indexAnimPlayer()];	
+	this.img = Ressourcen.IMAGES.playerUp[this.PlayerFarbe][indexAnimPlayer()];	
 }
-
+//nach Unten laufen.
 public void moveDown() {
 	
 	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)) {
@@ -260,7 +273,7 @@ public void moveDown() {
 	 		  this.x= this.x-  (this.speed/4);	
 		     }	 	  
 	}
-	this.img = Ressourcen.IMAGES.playerDown[indexAnimPlayer()];
+	this.img = Ressourcen.IMAGES.playerDown[this.PlayerFarbe][indexAnimPlayer()];
 }
 
 	

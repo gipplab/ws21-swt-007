@@ -5,8 +5,8 @@ import application.Ressourcen;
 import javafx.scene.image.Image;
 
 public class Explosion extends Entities{
-	double time;
-	double timeToExplosion;
+	double time;//aktuelle Zeit.
+	double timeToExplosion;//bleibende Zeit zu explodieren.
 	Boolean death;
 	 
 	Explosion(double x, double y, Image img){
@@ -19,7 +19,7 @@ public class Explosion extends Entities{
 	}
 	
 
-	
+//Explosion aktualisieren und prüft, ob hier ein Item auftaucht.	
 public void update() {
 		if(System.currentTimeMillis()-time>=timeToExplosion && !death) {
 			death=true;
@@ -34,7 +34,7 @@ public void update() {
 		
 		}
 	}
-
+//Erstellung eines neuen Items.
 void createItem(){
 	   int poweruptype = (int) Math.round(Math.random() * 3);
        Image imageItem = Ressourcen.IMAGES.HERZITEM.getImage();
