@@ -1,7 +1,6 @@
 package application.Objects;
 
 import application.Client;
-import application.Objects.*;
 import application.GamePanel;
 import application.Main;
 import application.Ressourcen;
@@ -177,7 +176,7 @@ public int indexAnimPlayer() {
 		    for (int i = 0; i < GameObjects.tileObjects.size(); i++) {	
 		 	    obje = GameObjects.tileObjects.get(i);
 		 	    
-			        if(obje instanceof Items) {
+		 	   if(obje instanceof Items) {
 				      if((obje.getEntityX()==nextX_1*GamePanel.SQUARE_SIZE  && obje.getEntityY()==nextY_1* GamePanel.SQUARE_SIZE)||
 				            (obje.getEntityX()==nextX_2* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_2* GamePanel.SQUARE_SIZE)||
 					        (obje.getEntityX()==nextX_3* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_3* GamePanel.SQUARE_SIZE)||

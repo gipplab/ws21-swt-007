@@ -65,7 +65,7 @@ void createItem(){
        
        }
        Items item= new Items(this.x,this.y, imageItem,poweruptype);
-	GameObjects.spawn(item);
+       GameObjects.spawn(item);
 }
 
 
