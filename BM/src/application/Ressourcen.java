@@ -54,10 +54,10 @@ public class Ressourcen {
 			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
 			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
-			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/Bigflame.jpg").toString());
+			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/power_bomb.png").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
-			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/laufschuhe.PNG").toString());
-			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/Bombentascheoriganl.jpg").toString());
+			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/power_fireup.png").toString());
+			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/power_bomb.png").toString());
 			IMAGES.EXPLOSION.image= new Image(Ressourcen.class.getResource("img/danny.jpg").toString());
 			IMAGES.Map[0] = new Image(Ressourcen.class.getResource("img/Frame 3.png").toString());
 			IMAGES.Map[1] = new Image(Ressourcen.class.getResource("img/landscape-mountains-minimalist-o7.jpg").toString());
