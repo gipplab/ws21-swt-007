@@ -9,7 +9,7 @@ public class Bomb extends TileObjects {
 	Character player;
 	int power;
 	double time;
-	final double timeToExplosion=5000;
+	final double timeToExplosion=3000;
 	 Boolean death;
 	
 public Bomb(double x2, double y2,int power, Image image,Character p)  {

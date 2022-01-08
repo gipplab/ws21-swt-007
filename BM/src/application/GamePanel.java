@@ -16,7 +16,9 @@ import javafx.animation.Animation;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -31,11 +33,11 @@ public class GamePanel {
 	public static final int ROWS = 16;
 	public static final int COLUMNS = ROWS;
 	public static final int SQUARE_SIZE = WIDTH / ROWS;
-
+	long timeofDeath;
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
 	private GraphicsContext gc;
-	private boolean gameOver=false;
+	private int gameOver=0;
 	private Scene scene;
 	Canvas canvas;
 	Group root;
@@ -44,8 +46,8 @@ public class GamePanel {
 	public static Bomberman player;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static int mapIndex=0;
-
-
+	 Timeline timeline;
+	 boolean EndofGame=false;
 	public GamePanel() {
 		System.out.println(SQUARE_SIZE);
 
@@ -68,42 +70,45 @@ public class GamePanel {
 		generateMap();//Map erstellen
 		run();//Spiel starten
 		
-		 Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
+		  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
 			try {
-				//if(!gameOver)
+				if(gameOver==0&& timeofDeath+2000 < System.currentTimeMillis())
 					update();
+				else  {
+					EndOfGame();
+				
+				}
+				if(EndofGame)
+					if(System.currentTimeMillis()>timeofDeath+5000) {
+						System.exit(0);}
+					
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}));
 	        timeline.setCycleCount(Animation.INDEFINITE);
+	     
 	        timeline.play();
-		
-//		AnimationTimer timeline = new AnimationTimer() {
-//
-//			
-//			@Override
-//			public void handle(long arg0) {
-//				try {
-//					if(!gameOver)
-//					{
-//
-//					update();
-//					Thread.sleep(100);
-//					}
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//
-//		};
-//		timeline.start();
+	      
 
 	};
 
-	public Bomberman getPlayer() {
+void 	EndOfGame() throws InterruptedException {
+		
+		GameObjects.gameObjects.clear();
+		update();
+		if(gameOver == 1) {
+			gc.drawImage(Ressourcen.IMAGES.GAMEOVER.getImage(),0,0, HEIGHT, WIDTH);
+		}
+		else if (gameOver == 2) {
+			gc.drawImage(Ressourcen.IMAGES.WIN.getImage(),0,0, HEIGHT, WIDTH);
+		}
+
+		EndofGame=true;
+	}
+
+public Bomberman getPlayer() {
 		return player;
 	}
 
@@ -151,13 +156,21 @@ public class GamePanel {
 			     Entities obj= GameObjects.gameObjects.get(i).get(j);
 			     obj.update();
 			     if(obj.getDeath() && obj.isPlayer()) {
-				gameOver=true;
-			        System.out.println("GameOver");
-		             // System.exit(0);
+			    	 gameOver=1;
+			    	 timeofDeath= System.currentTimeMillis();
+			    	 System.out.println("GameOver");
+			     }else if(obj instanceof Bot) {
+			    	if( GameObjects.bomberObjects.size()==1 ) {
+			    		 timeofDeath= System.currentTimeMillis();
+			    		 gameOver=2;
+			    	
+			    	}
+			    	 
 			     }
-		      //     if(!obj.getDeath()) {
+			     
+		       if(!obj.getDeath()) {
 				 obj.drawImage(gc);
-		      //     }
+		          }
 			}
 		}
 	}

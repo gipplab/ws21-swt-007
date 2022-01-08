@@ -19,7 +19,7 @@ public class Ressourcen {
 	
 	public enum IMAGES{
 		BACKGROUND, BOMBE, SOFTWALL, HARDWALL, PLAYER1, BOT, PLAYER2, BOMBITEM, HERZITEM, SPEEDITEM
-		,FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, PLAYERBLACK,PLAYERROT,PLAYERBLUE ;
+		,FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, PLAYERBLACK,PLAYERROT,PLAYERBLUE,GAMEOVER,WIN;
 		// Alle Player in einem Feld Speichern und Farben anhand zahlen als Farben intepretieren
 		//das muss gemacht werden 
 		
@@ -72,6 +72,8 @@ public class Ressourcen {
 			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/BG.png").toString());
 			IMAGES.Map[3] = new Image(Ressourcen.class.getResource("img/BACKG.jpg").toString());
 			IMAGES.BOT.image= new Image(Ressourcen.class.getResource("img/CharacterImages/RotPlayer.png").toString());
+			IMAGES.GAMEOVER.image = new Image(Ressourcen.class.getResource("img/GameOver.png").toString());
+		    IMAGES.WIN.image = new Image(Ressourcen.class.getResource("img/Win.png").toString());
 			file[0] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
 			file[1] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map1.csv"));
 			file[2] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map2.csv"));
