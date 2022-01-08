@@ -26,6 +26,8 @@ public class Ressourcen {
 		public static Image[] playerRight = new Image[4];
 		public static Image[] playerLeft = new Image[4];
 		public static Image[] playerDead = new Image[4];
+		public static Image[] playerbomb = new Image [16];
+		
 		
 		static Image Map[] = new Image[4];
 		
@@ -53,7 +55,8 @@ public class Ressourcen {
 		        IMAGES.BOMBERMANMATRIX.image = new Image(Ressourcen.class.getResource("img/CharacterImages/bombermanmatrix.png").toString());
 			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
 			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
-			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
+			//IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/bomb.png").toString());
+			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/bombe.gif").toString());
 			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/power_bomb.png").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/power_fireup.png").toString());
@@ -75,6 +78,10 @@ public class Ressourcen {
 		             IMAGES.playerUp[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), 0, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 			     IMAGES.playerDead[i]= teilImage(IMAGES.BOMBERMANMATRIX.getImage(), i*(GamePanel.SQUARE_SIZE-3), (5*GamePanel.SQUARE_SIZE)+18, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		    }
+	
+		     //  for (int i = 0; i < 16; i++) {
+		  //           IMAGES.playerbomb[i]= teilImage(IMAGES.BOMBE.getImage() ,i*(GamePanel.SQUARE_SIZE-3), 0, (GamePanel.SQUARE_SIZE-20), (GamePanel.SQUARE_SIZE-20));
+		  //  }
 			
 	 }
 	 }
