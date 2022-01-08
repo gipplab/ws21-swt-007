@@ -38,7 +38,7 @@ public static void main(String[] args)
      }
    public static String accessServer(String message)
 { 
-	   String response="";
+	   String response="Disconnected";
 try
   {
     	datagramSocket=new DatagramSocket();
@@ -50,9 +50,13 @@ try
          outPacket=new DatagramPacket(message.getBytes(),message.length(),host,PORT);
          System.out.println(" \n sent msg--<<" +message+">> 1 "+host);
          datagramSocket.send(outPacket);
+         datagramSocket.setSoTimeout( 2000 );
+         System.out.println(" \n sent msg--<<" +message+">> 3 "+host);
          buffer=new byte[256];
          inPacket=new DatagramPacket(buffer,buffer.length);
-         datagramSocket.receive(inPacket);
+         System.out.println(" \n sent msg--<<" +message+">> 4 "+host);        
+         datagramSocket.receive(inPacket);        
+         System.out.println(" \n sent msg--<<" +message+">> 5 "+host);
          response=new String(inPacket.getData(),0,inPacket.getLength());
           System.out.println(" \n SERVER-->>" +response);
           datagramSocket.close();

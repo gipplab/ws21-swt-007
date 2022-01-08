@@ -19,6 +19,7 @@ import javafx.scene.text.Text;
 
 
 import java.io.IOException;
+import java.net.InetAddress;
 
 import application.Client;
 import javafx.beans.property.SimpleStringProperty;
@@ -60,7 +61,7 @@ public class JoinOnlinePageController {
 	// Event Listener on Button[#JOINID].onAction
 	@FXML
 	public void JoinButtonOnClick(ActionEvent event) throws IOException {
-	    // Überprüfen ob der Name der Spieler leer oder '-' beinhaltet
+	    // ï¿½berprï¿½fen ob der Name der Spieler leer oder '-' beinhaltet
 			if(validate()==true) {
 			TablePosition pos = hostTableView.getSelectionModel().getSelectedCells().get(0);
 			int row = pos.getRow();
@@ -117,6 +118,10 @@ public class JoinOnlinePageController {
 	 	String msg = "Player-AllHosts";
 		String resp;
 		resp = Client.accessServer(msg);
+		if(resp.equals("Disconnected")) {
+			System.out.println("************* Connexion lost *************");
+		}else
+		{
 		String[] hosts = resp.split("-");
 		data.clear();
 		if(hosts.length %2 == 0) 
@@ -153,7 +158,8 @@ public class JoinOnlinePageController {
                 }
             }
         });
-		hostTableView.setItems(data);		
+		hostTableView.setItems(data);
+		}
 	}
 
 
