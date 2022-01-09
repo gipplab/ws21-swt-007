@@ -19,7 +19,7 @@ public class Server {
 			datagramSocket = new DatagramSocket(PORT);
 		} catch (SocketException sockEx) {
 			System.out.println("unable to open ");
-			System.exit(1);
+			System.exit(1); 
 		}
 		handleClient();
 	}

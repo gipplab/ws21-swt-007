@@ -55,12 +55,7 @@ try
          outPacket=new DatagramPacket(message.getBytes(),message.length(),host,PORT);
          //System.out.println(" \n sent msg--<<" +message+">> 1 "+host);
          datagramSocket.send(outPacket);
-<<<<<<< HEAD
-         datagramSocket.setSoTimeout( 2000 );
-         System.out.println(" \n sent msg--<<" +message+">> 3 "+host);
-=======
          datagramSocket.setSoTimeout( 2000 ) ;
->>>>>>> Yazan-Main
          buffer=new byte[256];
          inPacket=new DatagramPacket(buffer,buffer.length);
          System.out.println(" \n sent msg--<<" +message+">> 4 "+host);        

@@ -24,7 +24,7 @@ public class Ressourcen {
 		//das muss gemacht werden 
 		
 		
-		// Matrix für Farbe und Richtung
+		// Matrix fï¿½r Farbe und Richtung
 		public static Image[] PlayerFarbe= new Image[4] ;
 		public static Image[][] playerUp = new Image[4][4];
 		public static Image[][] playerDown = new Image[4][4];
@@ -53,18 +53,12 @@ public class Ressourcen {
     }
 	
 	 public static void readFiles() throws IOException {
-<<<<<<< HEAD
-		 
-	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/player.jpg").toString());
-		    IMAGES.BOMBERMANMATRIX.image = new Image(Ressourcen.class.getResource("img/CharacterImages/bombermanmatrix.png").toString());
-=======
 		 // 0  White , 1 Black , 2 Rot, 3 Blue 
 	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/WhitePlayer.png").toString());
 		    IMAGES.PlayerFarbe[0] = new Image(Ressourcen.class.getResource("img/CharacterImages/WhitePlayer.png").toString());
 		    IMAGES.PlayerFarbe[1] = new Image(Ressourcen.class.getResource("img/CharacterImages/BlackPlayer.png").toString());
 		    IMAGES.PlayerFarbe[2] = new Image(Ressourcen.class.getResource("img/CharacterImages/RotPlayer.png").toString());
 		    IMAGES.PlayerFarbe[3] = new Image(Ressourcen.class.getResource("img/CharacterImages/BluePlayer.png").toString());
->>>>>>> Yazan-Main
 			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
 			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
