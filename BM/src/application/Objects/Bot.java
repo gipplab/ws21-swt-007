@@ -80,7 +80,7 @@ void isFreeBot(){
 				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))
 			{
 				lastRichtung=(int) Math.round(Math.random() * 3);
-				placeBomb();
+			//	placeBomb();
 				}
 			
 			break;
@@ -92,7 +92,7 @@ void isFreeBot(){
 		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))
 		{
 			lastRichtung=(int) Math.round(Math.random() * 3);
-				placeBomb();
+				//placeBomb();
 				}
 			
 		break;
@@ -105,7 +105,7 @@ void isFreeBot(){
 		{
 		lastRichtung=(int) Math.round(Math.random() * 3);
 		if((System.currentTimeMillis()-time>=timeToExplosion)) {
-			placeBomb();
+			//placeBomb();
 			time=System.currentTimeMillis();
 		}
 		
@@ -120,7 +120,9 @@ void isFreeBot(){
 					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))
 					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
 				lastRichtung=(int) Math.round(Math.random() * 3);
-				placeBomb();}
+				if((int) Math.round(Math.random() * 15)==2);
+			//	placeBomb();
+					}
 			break;
 		}
 		default:

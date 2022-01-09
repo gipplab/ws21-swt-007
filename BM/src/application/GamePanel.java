@@ -156,6 +156,8 @@ public Bomberman getPlayer() {
 			     Entities obj= GameObjects.gameObjects.get(i).get(j);
 			     obj.update();
 			     if(obj.getDeath() && obj.isPlayer()) {
+			    	 //
+
 			    	 gameOver=1;
 			    	 timeofDeath= System.currentTimeMillis();
 			    	 System.out.println("GameOver");
@@ -248,6 +250,7 @@ public Bomberman getPlayer() {
             }
         }
     }
+	
  
 
 }
