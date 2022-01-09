@@ -41,7 +41,8 @@ public class GamePanelOnline {
 	Group root;
 	double Playerspeed;
 	public static double imageX = 4, imageY = 4;
-	public static Bomberman[] player=new Bomberman[2];
+	
+    public static Bomberman[] player=new Bomberman[4];
 	public static int mainPlayerIndex=0;
 	public static ArrayList<ArrayList<String>> mapLayout;
 
@@ -188,34 +189,49 @@ void EndOfGame() throws InterruptedException {
 	void onlineUpdates(String resp) {
 		String[] message = resp.split("-");
 		for (int i=0;i< message.length;i+=2 ) {
-			for (int j=0;j< player.length;j++ )
+			for (int j=0;j< Client.players.size();j++ )
 			if(message[i].equals(player[j].getName())) {
-				String[] movesUpdates = message[i+1].split("/");
+				if(message[i+1].equals("Ónline"))
+				{
+					//System.out.println("IS ONLINE "+player[j].getName());
+					if(message[i+1].equals("NoUpdates"))
+					{
+						//System.out.println("HAS NO UPDATES "+player[j].getName());
+					}
+				}
+				String[] movesUpdates = message[i+2].split("/");
 			
-				for (int k=0;k< movesUpdates.length;k++ ) {
+				for (int k=0;k< movesUpdates.length;k=k+3 ) {
 				     switch (movesUpdates[k]) {
-	                    case ("UP"):    
+	                    case ("UP"):
+	                   player[j].setEntityX(Double.parseDouble(movesUpdates[k+1]));
+	                   player[j].setEntityY(Double.parseDouble(movesUpdates[k+2]));
 	                   player[j].moveUp();
 	                        break;
 
-	                    case ("RIGHT"):    
+	                    case ("RIGHT"): 
+	                    	player[j].setEntityX(Double.parseDouble(movesUpdates[k+1]));
+		                    player[j].setEntityY(Double.parseDouble(movesUpdates[k+2]));
 	                    	player[j].moveRight();                 
 	                        break;
 
-	                    case ("DOWN"):    
+	                    case ("DOWN"): 
+	                    	player[j].setEntityX(Double.parseDouble(movesUpdates[k+1]));
+		                    player[j].setEntityY(Double.parseDouble(movesUpdates[k+2]));
 	                    	player[j].moveDown();             
 	                    break;
-	                    case ("LEFT"):    
+	                    case ("LEFT"): 
+	                    	player[j].setEntityX(Double.parseDouble(movesUpdates[k+1]));
+		                    player[j].setEntityY(Double.parseDouble(movesUpdates[k+2]));
 	                    	player[j].moveLeft();              
 	                        break;
 	                    case ("BOMB"):  
 	                    		Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]),player[j].getExplosion() , Ressourcen.IMAGES.BOMBE.getImage(),player[j] );
 	             	   			b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
 	             	   			player[j].BombanzahlDown();
-	             	   			Client.updateString =Client.updateString+"BOMB/"+b.getX()+"/"+b.getY()+"/";
-	             	   			GameObjects.spawn(b);
-	             	   			k+=2;
-	             	   		       
+	             	   			//Client.updateString =Client.updateString+"BOMB/"+b.getX()+"/"+b.getY()+"/";
+	             	   		System.out.println("HAS NO UPDATES "+player[j].getName());
+	             	   			GameObjects.spawn(b);	             	   		       
 	                        break;
 	                        
 	                    default:
@@ -249,7 +265,8 @@ void EndOfGame() throws InterruptedException {
 	 }
 
 	private void generateMap() {
-	      
+		System.out.println( " nbr :"+Client.players.size());
+		System.out.println( " nbr :"+GamePanelOnline.player.length);
         for (int y = 0; y < ROWS; y++) {
             for (int x = 0; x < ROWS; x++) {
                 switch (mapLayout.get(y).get(x)) {
@@ -273,9 +290,28 @@ void EndOfGame() throws InterruptedException {
                     case ("2"):     // Player 2
                     	GamePanelOnline.player[1] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[1][0],true);
                     	GamePanelOnline.player[1].setName(Client.players.get(1));
+                    	GamePanelOnline.player[1].setPlayerFarbe(1);
                         GameObjects.spawn(GamePanelOnline.player[1]);   
-                        GamePanelOnline.player[1].setPlayerFarbe(1);
+                        
                         break;
+                    case ("3"):     // Player 3
+                    	if(Client.players.size()>2) {
+                    		GamePanelOnline.player[2] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[2][0],true);
+                    		GamePanelOnline.player[2].setName(Client.players.get(2));
+                    		GameObjects.spawn(GamePanelOnline.player[2]);   
+                    		GamePanelOnline.player[2].setPlayerFarbe(2);                    	
+                    	}
+                        break;
+                    case ("4"):     // Player 3
+                    	if(Client.players.size()>3) {
+                    		GamePanelOnline.player[3] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[3][0],true);
+                    		GamePanelOnline.player[3].setName(Client.players.get(3));
+                    		GameObjects.spawn(GamePanelOnline.player[3]);   
+                    		GamePanelOnline.player[3].setPlayerFarbe(3);                   	
+                    	}                   
+                        break;
+<<<<<<< HEAD
+=======
                     case ("3"):     // Player 3
                     	GamePanelOnline.player[2] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[1][0],true);
                         GamePanelOnline.player[2].setName(Client.players.get(2));
@@ -288,6 +324,7 @@ void EndOfGame() throws InterruptedException {
                         GameObjects.spawn(GamePanelOnline.player[3]);     
                         GamePanelOnline.player[3].setPlayerFarbe(3);
                         break;
+>>>>>>> main
                     default:
                         break;
                 }

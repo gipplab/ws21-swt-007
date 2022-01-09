@@ -7,7 +7,7 @@ public class PlayerInfos {
 	String name;
 	String gameUpdates="";
 	public PlayerInfos(String playerName) {
-		name = playerName;
+		name = playerName; 
 	}
 	public String getName() {
 		return name;
