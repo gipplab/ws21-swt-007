@@ -115,7 +115,7 @@ public class Server {
 					
 				}else if(message[0].equals("Play"))
 				{
-					messageOut="Noting";
+					messageOut="Nothing";
 					for(Room room : roomsList)
 					{
 						if(message[1].equals(room.getHostName()))
@@ -131,19 +131,20 @@ public class Server {
 									//}
 								}else 
 								{		if(message.length == 5)
+										{											
+											String updates=message[2]+"-Online-"+message[4];
+											player.AddUpdatesToPlayers(updates);
+											
+										}else if(message.length == 4)
 										{
-											
-												String updates=message[2]+"-"+message[4];
-												System.out.println("#2323213#"+updates);
-												player.AddUpdatesToPlayers(updates);
-											
-										}
-										
+											String updates=message[2]+"-Online-NoUpdates";
+											player.AddUpdatesToPlayers(updates);
+										}										
 								}
 							}
 						}
 					}
-					System.out.println("##"+messageOut);
+					
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
 				    datagramSocket.send(outPacket);
 				}
