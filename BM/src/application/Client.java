@@ -47,7 +47,7 @@ public static void main(String[] args)
 try
   {
     	//datagramSocket=new DatagramSocket();
-         System.out.println(InetAddress.getLocalHost()+"  enter message :");
+         //System.out.println(InetAddress.getLocalHost()+"  enter message :");
          //message=userEntry.nextLine();
          if(!message.equals("***CLOSE***"))
            {
@@ -58,9 +58,9 @@ try
          datagramSocket.setSoTimeout( 2000 ) ;
          buffer=new byte[256];
          inPacket=new DatagramPacket(buffer,buffer.length);
-         System.out.println(" \n sent msg--<<" +message+">> 4 "+host);        
+         //System.out.println(" \n sent msg--<<" +message+">> 4 "+host);        
          datagramSocket.receive(inPacket);        
-         System.out.println(" \n sent msg--<<" +message+">> 5 "+host);
+         //System.out.println(" \n sent msg--<<" +message+">> 5 "+host);
          response=new String(inPacket.getData(),0,inPacket.getLength());
           //System.out.println(" \n SERVER-->>" +response);
           //datagramSocket.close();
@@ -79,7 +79,7 @@ catch(IOException ioEx)
 
 finally
 {
-   System.out.println("\n close connection.... ");
+   //System.out.println("\n close connection.... ");
     //datagramSocket.close();
  }
 return response;

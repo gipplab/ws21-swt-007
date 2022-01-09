@@ -108,11 +108,11 @@ public class GamePanelOnline {
 	}
 
 	private void update() throws InterruptedException {
-		System.out.println("114GamePanel: "+Client.updateString);
+		//System.out.println("114GamePanel: "+Client.updateString);
 		String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-Updates-"+Client.updateString;
 		String resp= "";
 		resp=Client.accessServer(messageout);
-		System.out.println(resp);
+		//System.out.println(resp);
 		onlineUpdates(resp);
 		//druekeNachricht(resp);
 		Client.updateString="";
@@ -121,7 +121,7 @@ public class GamePanelOnline {
 		drawObjekte(gc);
 		drawBomb(gc);
 
-	}
+	} 
 	private void drawBackground(GraphicsContext gc) {
 	  for(int i=0 ; i<ROWS; i++) 
 		for(int j=0;j<COLUMNS;j++) {
@@ -204,8 +204,9 @@ public class GamePanelOnline {
 	                    		Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]),player[j].getExplosion() , Ressourcen.IMAGES.BOMBE.getImage(),player[j] );
 	             	   			b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
 	             	   			player[j].BombanzahlDown();
-	             	   			//Client.updateString =Client.updateString+"BOMB/"+b.getX()+"/"+b.getY()+"/";
-	             	   		System.out.println("HAS NO UPDATES "+player[j].getName());
+	             	   			Client.updateString =Client.updateString+"BOMB/"+b.getX()+"/"+b.getY()+"/";
+	             	   		System.out.println("resp.... "+resp);
+	             	   			System.out.println(player[j].getName()+" BOMB/"+b.getX()+"/"+b.getY()+"/");
 	             	   			GameObjects.spawn(b);	             	   		       
 	                        break;
 	                        

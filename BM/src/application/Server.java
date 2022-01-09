@@ -36,8 +36,9 @@ public class Server {
 				clientAddress = inPacket.getAddress();
 				clientPort = inPacket.getPort();
 				messageIn = new String(inPacket.getData(), 0, inPacket.getLength());
+				System.out.println(messageIn);
 				String[] message = messageIn.split("-");
-				//System.out.println(messageIn);
+				
 				if(message[0].equals("Host")) 
 				{
 					PlayerInfos host = new PlayerInfos(message[2]); 
@@ -102,7 +103,7 @@ public class Server {
 									for(PlayerInfos player : room.players) 
 									{
 										messageOut=messageOut+"-"+player.getName();
-										System.out.println("txt"+messageOut);
+										//System.out.println("txt"+messageOut);
 									}
 									
 									break;
@@ -127,14 +128,17 @@ public class Server {
 									//if(!player.GetUpdates().equals(""))
 									//{
 									messageOut=player.GetUpdates();
+									System.out.println("txt "+messageOut);
 									player.SetUpdates("");
-									//}
+									
+									//} 
 								}else 
 								{		if(message.length == 5)
 										{											
 											String updates=message[2]+"-Online-"+message[4];
 											player.AddUpdatesToPlayers(updates);
-											
+											System.out.println(messageIn);
+											System.out.println(message[0]+" "+message[1]+" "+message[2]+" "+message[3]+" "+message[4]);
 										}else if(message.length == 4)
 										{
 											String updates=message[2]+"-Online-NoUpdates";
