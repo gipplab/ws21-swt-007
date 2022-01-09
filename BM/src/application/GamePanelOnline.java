@@ -33,7 +33,9 @@ public class GamePanelOnline {
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
 	private GraphicsContext gc;
-	private boolean gameOver=false;
+	private int gameOver=0;
+	long timeofDeath;
+	boolean EndofGame=false;
 	private Scene scene;
 	Canvas canvas;
 	Group root;
@@ -68,8 +70,17 @@ public class GamePanelOnline {
 		run();
 		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
 			try {
+				if(gameOver==0 && timeofDeath+3000 < System.currentTimeMillis())
+					update();
+				else  {
+					EndOfGame();
 				
-				update();				
+				}
+				if(EndofGame)
+					if(System.currentTimeMillis()>timeofDeath+5000) {
+						System.exit(0);
+						}
+								
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -81,6 +92,21 @@ public class GamePanelOnline {
 	
 
 	};
+	
+void EndOfGame() throws InterruptedException {
+	GameObjects.gameObjects.clear();
+	update();
+	if(this.getPlayer().death()) {
+		gc.drawImage(Ressourcen.IMAGES.GAMEOVER.getImage(),0,0, HEIGHT, COLUMNS);
+	}
+	else {
+		gc.drawImage(Ressourcen.IMAGES.WIN.getImage(),0,0, HEIGHT, COLUMNS);
+	}
+	
+	EndofGame=true;
+	
+	
+} 
 
 	public Bomberman getPlayer() {
 		return player[mainPlayerIndex];
@@ -107,7 +133,6 @@ public class GamePanelOnline {
 	}
 
 	private void update() throws InterruptedException {
-		System.out.println("114GamePanel: "+Client.updateString);
 		String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-Updates-"+Client.updateString;
 		String resp= "";
 		resp=Client.accessServer(messageout);
@@ -137,11 +162,11 @@ public class GamePanelOnline {
 				
 				Entities obj= GameObjects.gameObjects.get(i).get(j);
 				obj.update();
-			if(obj.getDeath() && obj instanceof Bomberman) {
-				gameOver=true;
+			if(this.getPlayer().death()) {
+				gameOver=1;
+				timeofDeath=System.currentTimeMillis();
 			System.out.println("GameOber");
-			System.exit(0);
-		
+			
 			}
 			if(!obj.getDeath()) {
 			
@@ -251,18 +276,25 @@ public class GamePanelOnline {
                         GameObjects.spawn(GamePanelOnline.player[1]);   
                         GamePanelOnline.player[1].setPlayerFarbe(1);
                         break;
-                    /*case ("3"):     // Player 3
-                    	GamePanelOnline.player[2] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage());
+                    case ("3"):     // Player 3
+                    	GamePanelOnline.player[2] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[1][0],true);
                         GamePanelOnline.player[2].setName(Client.players.get(2));
-                        GameObjects.spawn(GamePanelOnline.player[2]);                    
-                        break;*/
+                        GameObjects.spawn(GamePanelOnline.player[2]);     
+                        GamePanelOnline.player[2].setPlayerFarbe(2);
+                        break;
+                    case ("4"):     // Player 3
+                    	GamePanelOnline.player[3] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[1][0],true);
+                        GamePanelOnline.player[3].setName(Client.players.get(3));
+                        GameObjects.spawn(GamePanelOnline.player[3]);     
+                        GamePanelOnline.player[3].setPlayerFarbe(3);
+                        break;
                     default:
-                    	
                         break;
                 }
             }
         }
     }
+	
 
 }
 
