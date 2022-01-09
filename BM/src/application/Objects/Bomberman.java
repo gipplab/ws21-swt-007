@@ -1,19 +1,17 @@
 package application.Objects;
+
 import javafx.scene.image.Image;
 import application.Ressourcen;
 
-
-public class Bomberman extends Character{
+public class Bomberman extends Character {
 String Name="";
 int timeExplosion = 0 ;	
-	
+
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
-	this.speed=2.5;//2.5, 5, 7 ,8,75 
+	this.speed=2.5;//2.5, 5, 7 ,8,75
 
 		}
-	
-
 
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
 public void gethit() {
@@ -41,7 +39,7 @@ public void setName(String name) {
 public boolean getDeath() {
 	return this.dead;
 }
-
+//geprüft je nach Health, ob der Spieler sterben muss.
  public boolean death() {
 	if(health>0) {
 		return false;
@@ -50,7 +48,7 @@ public boolean getDeath() {
 			
 }
 
-
+//wenn der Spieler die Explosion trifft, entweder muss sterben oder Health reduzieren.
 @Override
 public void update() {
 
@@ -59,12 +57,12 @@ public void update() {
 		if(timeExplosion == 50) {
 			   this.gethit();		  
 		}
-		this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
+		this.img = Ressourcen.IMAGES.playerDead[this.PlayerFarbe][indexAnimPlayer()];
 	}
 	else {  timeExplosion = 0 ;
 	        if(this.dead) {
 	           GameObjects.bomberObjects.remove(this);
-	        }
+	        }//verschiedene Items auftauchen können.
 	}
 	
 	int v=isItem(this.x, this.y);
@@ -103,6 +101,10 @@ protected int getItemtype() {
 	// TODO Auto-generated method stub
 	return -1;
 }
+
+
+
+
 	
 
 

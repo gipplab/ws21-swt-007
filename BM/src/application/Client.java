@@ -18,7 +18,11 @@ private static byte[] buffer;
 public void SetAddress(String addr){
 	 try {
 		host = InetAddress.getByName(addr);
+		datagramSocket=new DatagramSocket();
 	} catch (UnknownHostException e) {
+		// TODO Auto-generated catch block 
+		e.printStackTrace();
+	} catch (SocketException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
@@ -28,6 +32,7 @@ public static void main(String[] args)
     try
       {
          host=InetAddress.getByName("localhost");
+         
       }
       catch(UnknownHostException uhEx)
       {
@@ -41,27 +46,36 @@ public static void main(String[] args)
 	   String response="Disconnected";
 try
   {
-    	datagramSocket=new DatagramSocket();
+    	//datagramSocket=new DatagramSocket();
          System.out.println(InetAddress.getLocalHost()+"  enter message :");
          //message=userEntry.nextLine();
          if(!message.equals("***CLOSE***"))
            {
-        	 System.out.println(" \n sent msg--<<" +message+">>  "+host);
+        	 //System.out.println(" \n sent msg--<<" +message+">>  "+host);
          outPacket=new DatagramPacket(message.getBytes(),message.length(),host,PORT);
-         System.out.println(" \n sent msg--<<" +message+">> 1 "+host);
+         //System.out.println(" \n sent msg--<<" +message+">> 1 "+host);
          datagramSocket.send(outPacket);
+<<<<<<< HEAD
          datagramSocket.setSoTimeout( 2000 );
          System.out.println(" \n sent msg--<<" +message+">> 3 "+host);
+=======
+         datagramSocket.setSoTimeout( 2000 ) ;
+>>>>>>> Yazan-Main
          buffer=new byte[256];
          inPacket=new DatagramPacket(buffer,buffer.length);
          System.out.println(" \n sent msg--<<" +message+">> 4 "+host);        
          datagramSocket.receive(inPacket);        
          System.out.println(" \n sent msg--<<" +message+">> 5 "+host);
          response=new String(inPacket.getData(),0,inPacket.getLength());
-          System.out.println(" \n SERVER-->>" +response);
-          datagramSocket.close();
+          //System.out.println(" \n SERVER-->>" +response);
+          //datagramSocket.close();
           return response;          
       }
+}
+catch(SocketTimeoutException s)
+{
+	System.out.println("NoConnexion");
+	return "NoConnexion";
 }
 catch(IOException ioEx)
 {
@@ -71,11 +85,11 @@ catch(IOException ioEx)
 finally
 {
    System.out.println("\n close connection.... ");
-    datagramSocket.close();
+    //datagramSocket.close();
  }
 return response;
 }
-   public static String serverUpdates(String message)
+  /* public static String serverUpdates(String message)
 { 
 	   String response="";
 try
@@ -110,7 +124,7 @@ finally
     datagramSocket.close();
  }
 return response;
-}
+}*/ 
 public static void addPlayer(String player) {
 	// TODO Auto-generated method stub
     players.add(player);

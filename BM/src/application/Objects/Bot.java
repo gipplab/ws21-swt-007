@@ -12,17 +12,18 @@ public class Bot extends Character {
 	 List<?> keyboardInputs = KeysHandler.getInputList();
 
 	int lastRichtung=0;
-	
-	
+	long time;
+	int timeToExplosion=10000;
 	Image Bombimag= Ressourcen.IMAGES.BOMBE.getImage();
 	public Bot(double x, double y, Image img, Boolean p) {
 		super(x, y, img,p);
 		// TODO Auto-generated constructor stub
 			this.speed=1.25;//2.5, 5, 7 ,8,75 
-	
+			time= System.currentTimeMillis();
 	
 		
-		}
+	}
+	//Bombenanzahl prüfen aund eine Bombe Platzieren.
 	void placeBomb() {
 		if(bombanzahl>0) 
 		{
@@ -34,18 +35,19 @@ public class Bot extends Character {
 			
 		}
 }
-	
+	//wenn der Bot die Explosion trifft, entweder muss sterben oder Health reduzieren.
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
 		if(!isFreeExplosion(this.x,this.y)) {
 			this.dead=true;
-			this.img = Ressourcen.IMAGES.playerDead[indexAnimPlayer()];
+			this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
 		}else if(this.dead) {
 		         GameObjects.bomberObjects.remove(this);
 		      }else
 	 			moveRandom();		
 	}
+//Hier bewegt sich der Bot random. 
 void moveRandom(){
 	
 	isFreeBot();
@@ -65,17 +67,18 @@ void moveRandom(){
 }
 
 
-
+//die nächste Bewegung des Botes stimmen.
 void isFreeBot(){
 		
-		int a = (int) (this.x % GamePanel.SQUARE_SIZE);
-		int b= (int) (this.y % GamePanel.SQUARE_SIZE);
 	
 		switch(lastRichtung) {
 		case 0:// Up
 		{
 			if((isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))==0 
-					||isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)==1) {
+				|| isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)==1 
+				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)
+				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))
+			{
 				lastRichtung=(int) Math.round(Math.random() * 3);
 				placeBomb();
 				}
@@ -84,8 +87,11 @@ void isFreeBot(){
 		}
 		case 1: // right
 		{	if((isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))==0 
-		||isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)==1) {
-				lastRichtung=(int) Math.round(Math.random() * 3);
+		||isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)==1
+		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)
+		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))
+		{
+			lastRichtung=(int) Math.round(Math.random() * 3);
 				placeBomb();
 				}
 			
@@ -93,9 +99,16 @@ void isFreeBot(){
 		}
 		case 2:// Left
 		{if((isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))==0 
-		||isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)==1){
+			||isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)==1
+			|| !isFreeExplosion((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)
+			|| !isFreeExplosion((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))
+		{
 		lastRichtung=(int) Math.round(Math.random() * 3);
-		placeBomb();
+		if((System.currentTimeMillis()-time>=timeToExplosion)) {
+			placeBomb();
+			time=System.currentTimeMillis();
+		}
+		
 		}
 			
 		break;
@@ -103,7 +116,9 @@ void isFreeBot(){
 		case 3:// Down
 		{
 			if((isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
-					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1) {
+					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1
+					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))
+					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
 				lastRichtung=(int) Math.round(Math.random() * 3);
 				placeBomb();}
 			break;
@@ -115,7 +130,7 @@ void isFreeBot(){
 	
 	
 }
-
+//wenn der Bot einem Wall begegnet, wechselt er die Richtung.
 void isWall() {
 	lastRichtung = (int) Math.round(Math.random() * 3);
 	
@@ -148,6 +163,7 @@ public double getX(){
 public double getY(){
 	return this.y;
 }
+//geprüft je nach Health, ob der Bot sterben muss.
 boolean death() {
 	if(health>0) {
 		return false;
