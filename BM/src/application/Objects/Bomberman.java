@@ -5,7 +5,7 @@ import application.Ressourcen;
 
 public class Bomberman extends Character {
 String Name="";
-int timeExplosion = 0 ;	
+
 
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
@@ -15,10 +15,11 @@ public Bomberman(double x, double y,Image img, Boolean p) {
 
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
 public void gethit() {
-		this.health--;
-		if(health<=0)
-			dead=true;
-		else dontMove=false;
+		;
+		if(--this.health>0)
+			this.dead=true;
+		
+		dontMove=false;
 		
 	}
 	
@@ -41,32 +42,30 @@ public boolean getDeath() {
 	return this.dead;
 }
 //geprüft je nach Health, ob der Spieler sterben muss.
- public boolean death() {
-	return this.dead;
-			
-}
+
 
 //wenn der Spieler die Explosion trifft, entweder muss sterben oder Health reduzieren.
 @Override
 public void update() {
 
-	if(!isFreeExplosion(this.x,this.y)||dontMove) {
+	if(!isFreeExplosion(this.x,this.y) || dontMove) {
+		
 		this.dontMove=true;
-		timeExplosion++;
-		if(timeExplosion == 50) {
+		if((System.currentTimeMillis()-time>=timeToExplosion && !dead))
+		{
 		this.gethit();
-	}
+		}
 	
 		this.img = Ressourcen.IMAGES.playerDead[this.PlayerFarbe][indexAnimPlayer()];
 	}
 	else if(!dontMove) { 
-		timeExplosion=0;
+		time= System.currentTimeMillis();
 	        if(this.dead) {
 	           GameObjects.bomberObjects.remove(this);
 	        }//verschiedene Items auftauchen können.
 	}
-	
-	int v=isItem(this.x, this.y);
+
+int v=isItem(this.x, this.y);
 	 
         switch(v) {
 	       case 0:{	// Hertz
@@ -91,7 +90,7 @@ public void update() {
 	       default:
 	       	break;
 	       
-	       };
+	       }
 	
 }
 

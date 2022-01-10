@@ -5,11 +5,13 @@ import javafx.scene.image.Image;
 
 public abstract class Character extends Entities {
 
-	int bombanzahl;
-	double speed;
-	int explosion;
-	int health;
+	public int bombanzahl;
+	public double speed;
+	public int explosion;
+	public int health;
 	boolean dead ;
+	double time;
+	final double timeToExplosion=1200;
 	protected boolean dontMove=false;
 	Boolean Player= false;
 	int framePlayer = 0, intervalPlayer = 5, indexAnimPlayer = 0;
@@ -127,6 +129,79 @@ public boolean isFreeExplosion(double x,  double y) {
 				 ||
 				 (GameObjects.explosionObjects.get(i).getEntityX() == x+(GamePanel.SQUARE_SIZE-restX ) &&
 				 GameObjects.explosionObjects.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY )))
+		 {
+			 System.out.println(this.x +", " +this.y);
+			return false;}
+	}
+		
+	}
+	
+	
+	
+	
+	return true;
+	
+}
+
+
+public boolean isFreeExplosionbot(double x,  double y) {
+	
+	double restX= x% GamePanel.SQUARE_SIZE;
+	double restY= y% GamePanel.SQUARE_SIZE;
+	
+	if(restX==0 && restY==0) {
+		for(int i=0; i < GameObjects.explosionObjectsbot.size(); i++) {
+			if(GameObjects.explosionObjectsbot.get(i).getEntityX()==x&& GameObjects.explosionObjectsbot.get(i).getEntityY()==y) {
+				 System.out.println(this.x +", " +this.y);
+				return false;}
+			
+		}
+	}
+	
+	else if(restX==0 && restY!=0) {
+		for(int i=0; i < GameObjects.explosionObjectsbot.size(); i++) {
+		 if((GameObjects.explosionObjectsbot.get(i).getEntityX() == x &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y-restY)
+				 ||
+				 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY ))) {
+			 System.out.println(this.x +", " +this.y);
+			 return false;}
+		 }
+		
+	}
+	
+	if(restX!=0 && restY==0) {
+		
+		for(int i=0; i < GameObjects.explosionObjectsbot.size(); i++) {
+			
+			 if((GameObjects.explosionObjectsbot.get(i).getEntityX() == x-restX &&
+					 GameObjects.explosionObjectsbot.get(i).getEntityY() == y)
+					 ||
+					 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x+(GamePanel.SQUARE_SIZE- restX)
+							 &&
+					 GameObjects.explosionObjectsbot.get(i).getEntityY() == y ))
+			 {
+				 System.out.println(this.x +", " +this.y);
+				return false;}
+		}
+			}
+	
+	else if(restX!=0 && restY!=0) {
+		
+	for(int i=0; i < GameObjects.explosionObjectsbot.size(); i++) {
+	
+		 if(	(GameObjects.explosionObjectsbot.get(i).getEntityX() == x-restX &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y-restY)
+				 ||
+				 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x-restX &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() ==y+(GamePanel.SQUARE_SIZE- restY ))
+				 ||
+				 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x+(GamePanel.SQUARE_SIZE-restX ) &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y-restY)
+				 ||
+				 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x+(GamePanel.SQUARE_SIZE-restX ) &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY )))
 		 {
 			 System.out.println(this.x +", " +this.y);
 			return false;}

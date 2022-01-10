@@ -26,6 +26,7 @@ public class SinglePlayPanelController  implements Initializable{
 	private Scene scene;
 	private Parent root;
     public static int playerFarbe;
+    public static String name = null;
 	@FXML
     
     private Button BackButton;
@@ -69,7 +70,7 @@ public class SinglePlayPanelController  implements Initializable{
     @FXML
     void RunRoomButtonIsClicked(ActionEvent event) throws IOException {
     		//	player.SetAddress("192.168.1.107");
-    		    
+    	  name = PlayerNicknameTextField.getText();
     	setPlayerFarbe();
     	
     			GamePanel game= new GamePanel();

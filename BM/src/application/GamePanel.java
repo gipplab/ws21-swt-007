@@ -28,11 +28,11 @@ import javafx.util.Duration;
 
 //Koordinaten und wichtige Attribute des Spieles intialisieren. 
 public class GamePanel {
+	public static final int HEIGHT = 595;
 	public static final int WIDTH = 560;
-	public static final int HEIGHT = 560;
-	public static final int ROWS = 16;
-	public static final int COLUMNS = ROWS;
-	public static final int SQUARE_SIZE = WIDTH / ROWS;
+	public static final int ROWS = 17;
+	public static final int COLUMNS = 16;
+	public static final int SQUARE_SIZE = WIDTH / COLUMNS;
 	long timeofDeath;
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
@@ -44,6 +44,8 @@ public class GamePanel {
 	double Playerspeed;
 	public static double imageX = 4, imageY = 4;
 	public static Bomberman player;
+	SinglePlayPanelController pname;
+	public static Bot bot;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static int mapIndex=0;
 	 Timeline timeline;
@@ -137,6 +139,7 @@ public Bomberman getPlayer() {
 		drawBackground(gc);
 		drawObjekte(gc);
 		drawBomb(gc);
+		getScore(gc);
 
 	}
 	private void drawBackground(GraphicsContext gc) {
@@ -147,7 +150,33 @@ public Bomberman getPlayer() {
 			}
 					
 	}
+	
 
+
+	private void getScore(GraphicsContext gc) {
+		  gc.setFill(Color.BLACK); 
+		  
+		  gc.drawImage(Ressourcen.IMAGES.BOT.getImage(),0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+		   gc.fillText("Welcome Back \n" + pname.name,40, 15	);
+		  
+		  gc.drawImage(Ressourcen.IMAGES.HERZITEM.getImage(),4*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+	    	gc.fillText(Integer.toString(player.health),185, 21);
+	    	
+	     gc.drawImage(Ressourcen.IMAGES.BOMBITEM.getImage(),6*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+	       gc.fillText(Integer.toString(player.bombanzahl),255, 21);
+	    	
+	     gc.drawImage(Ressourcen.IMAGES.SPEEDITEM.getImage(),8*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+	 		gc.fillText(Double.toString(player.speed),325,21);
+		
+	 		 gc.drawImage(Ressourcen.IMAGES.FLAMMEITEM.getImage(),10*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+		 		gc.fillText(Integer.toString(player.explosion),395,21);
+				
+		
+		gc.fillText("SCORE : " +  Integer.toString(bot.killbot),440, 21);
+	
+		
+	}
+	 
 	private void drawObjekte(GraphicsContext gc) {
 		//hier werden alle Objekte gezeichnet 
 		// die Objekte sind in einer Liste von Listen gespeichert(gameObjects)
@@ -215,9 +244,9 @@ public Bomberman getPlayer() {
 	private void generateMap() {
 	      
     
-        for (int y = 0; y < ROWS; y++) {
-            for (int x = 0; x < ROWS; x++) {
-                switch (mapLayout.get(y).get(x)) {
+	    for (int y = 0; y < ROWS	; y++) {
+            for (int x = 0; x < COLUMNS; x++) {
+           switch (mapLayout.get(y).get(x)) {
                     case ("S"):     // Soft wall zerstoerbar
                      Wall soft= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL.getImage());
                     if(soft!=null) 

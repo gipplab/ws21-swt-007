@@ -3,11 +3,13 @@ package application;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
+import javafx.scene.media.Media;
 
 
 public class Ressourcen {
@@ -17,6 +19,7 @@ public class Ressourcen {
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static String[] fields;
 	
+
 	public enum IMAGES{
 		BACKGROUND, BOMBE, SOFTWALL, HARDWALL, PLAYER1, BOT, PLAYER2, BOMBITEM, HERZITEM, SPEEDITEM
 		,FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, PLAYERBLACK,PLAYERROT,PLAYERBLUE,GAMEOVER,WIN;
@@ -44,6 +47,10 @@ public class Ressourcen {
 			return this.image;
 		}
 	}
+	
+	
+	
+	
 	public Ressourcen() {}
 	
 	public static Image teilImage(Image img, int stratX , int startY,int x , int y) throws IOException {	           
@@ -67,6 +74,7 @@ public class Ressourcen {
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/SpeedItem.jpeg").toString());
 			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/BombItem.jpeg").toString());
 			IMAGES.EXPLOSION.image= new Image(Ressourcen.class.getResource("img/pngegg.png").toString());
+
 			IMAGES.Map[0] = new Image(Ressourcen.class.getResource("img/Frame 3.png").toString());
 			IMAGES.Map[1] = new Image(Ressourcen.class.getResource("img/landscape-mountains-minimalist-o7.jpg").toString());
 			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/BG.png").toString());

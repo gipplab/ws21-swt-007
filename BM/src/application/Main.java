@@ -1,4 +1,5 @@
 package application;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,17 +17,17 @@ public class Main extends Application {
 		try {
 			player.SetAddress("localhost"); 
 			Ressourcen.readFiles();
-			//GamePanel game= new GamePanel();
-			//game.init();
-		   Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
 		    Scene scene = new Scene(root);
 			primaryStage.setTitle("Bomberman");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
-			
+
 		} catch(Exception e) {
+			
 			e.printStackTrace();
+			
 		}
 	}
 	

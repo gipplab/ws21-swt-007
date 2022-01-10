@@ -14,11 +14,10 @@ public class Bomb extends TileObjects {
 	
 public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	super(x2,y2,image);
-	
 	this.x=x2;
 	this.y=y2;
+	
 	time= System.currentTimeMillis();
-
 	death=false;
 	this.power=power;
 	player=p;
@@ -60,6 +59,7 @@ public double getY() {return this.y;}
 
 //Bombezustand und Bombeanzahl aktualisieren.
 public void update() {
+	
 	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
 		death=true;
 		GameObjects.tileObjects.remove(this);

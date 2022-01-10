@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 public class Bot extends Character {
 	 List<?> keyboardInputs = KeysHandler.getInputList();
 
+	public static int killbot = 0;
 	int lastRichtung=0;
 	long time;
 	int timeToExplosion=10000;
@@ -21,14 +22,13 @@ public class Bot extends Character {
 			this.speed=1.25;//2.5, 5, 7 ,8,75 
 			time= System.currentTimeMillis();
 	
-		
 	}
 	//Bombenanzahl prüfen aund eine Bombe Platzieren.
 	void placeBomb() {
 		if(bombanzahl>0) 
 		{
 		
-			Bomb b= new Bomb( this.x , this.y, explosion , Bombimag, this );
+			BotBomb b= new BotBomb( this.x , this.y, explosion , Bombimag, this );
 			b.BombCollision(this.x,this.y);
 				bombanzahl--;
 				GameObjects.spawn(b);
@@ -42,10 +42,17 @@ public class Bot extends Character {
 		if(!isFreeExplosion(this.x,this.y)) {
 			this.dead=true;
 			this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
-		}else if(this.dead) {
-		         GameObjects.bomberObjects.remove(this);
+		    GameObjects.bomberObjects.remove(this);
+	         killbot+=10;
+				System.out.println("killed bot : " + killbot);
+		}
+		     
+	 		else if(!isFreeExplosionbot(this.x,this.y)) {
+			this.dead=true;
+			this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
+		     GameObjects.bomberObjects.remove(this);	
 		      }else
-	 			moveRandom();		
+	 			moveRandom();	
 	}
 //Hier bewegt sich der Bot random. 
 void moveRandom(){
@@ -80,7 +87,7 @@ void isFreeBot(){
 				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))
 			{
 				lastRichtung=(int) Math.round(Math.random() * 3);
-			//	placeBomb();
+				placeBomb();
 				}
 			
 			break;
@@ -92,7 +99,7 @@ void isFreeBot(){
 		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))
 		{
 			lastRichtung=(int) Math.round(Math.random() * 3);
-				//placeBomb();
+				placeBomb();
 				}
 			
 		break;
@@ -105,7 +112,7 @@ void isFreeBot(){
 		{
 		lastRichtung=(int) Math.round(Math.random() * 3);
 		if((System.currentTimeMillis()-time>=timeToExplosion)) {
-			//placeBomb();
+			placeBomb();
 			time=System.currentTimeMillis();
 		}
 		
@@ -121,7 +128,7 @@ void isFreeBot(){
 					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
 				lastRichtung=(int) Math.round(Math.random() * 3);
 				if((int) Math.round(Math.random() * 15)==2);
-			//	placeBomb();
+			placeBomb();
 					}
 			break;
 		}
