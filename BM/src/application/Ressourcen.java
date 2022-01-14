@@ -15,7 +15,7 @@ import javafx.scene.media.Media;
 public class Ressourcen {
 	
 	public static int farbe=3;
-	public static InputStreamReader file[]=new InputStreamReader[5] ,file_Server;
+	public static InputStreamReader file[]=new InputStreamReader[5] ,file_Server[]=new InputStreamReader[5];
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static String[] fields;
 	
@@ -79,19 +79,25 @@ public static void readFiles() throws IOException
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/SpeedItem.jpeg").toString());
 			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/BombItem.jpeg").toString());
 			IMAGES.EXPLOSION.image= new Image(Ressourcen.class.getResource("img/pngegg.png").toString());
-			IMAGES.Map[0] = new Image(Ressourcen.class.getResource("img/Frame 3.png").toString());
-			IMAGES.Map[1] = new Image(Ressourcen.class.getResource("img/landscape-mountains-minimalist-o7.jpg").toString());
-			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/BG.png").toString());
-			IMAGES.Map[3] = new Image(Ressourcen.class.getResource("img/BACKG.jpg").toString());
+			IMAGES.Map[0] = new Image(Ressourcen.class.getResource("img/map1.png").toString());
+			IMAGES.Map[1] = new Image(Ressourcen.class.getResource("img/map2.png").toString());
+			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/map3.png").toString());
+			IMAGES.Map[3] = new Image(Ressourcen.class.getResource("img/map4.png").toString());
+			IMAGES.Map[4] = new Image(Ressourcen.class.getResource("img/map5.png").toString());
 			IMAGES.BOT.image= new Image(Ressourcen.class.getResource("img/CharacterImages/RotPlayer.png").toString());
 			IMAGES.GAMEOVER.image = new Image(Ressourcen.class.getResource("img/GameOver.png").toString());
 		    IMAGES.WIN.image = new Image(Ressourcen.class.getResource("img/Win.png").toString());
-			file[0] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map.csv"));
-			file[1] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map1.csv"));
-			file[2] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map2.csv"));
-			file[3] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map3.csv"));
-			file[4] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map3.csv"));
-			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
+			file[0] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map1.csv"));
+			file[1] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map2.csv"));
+			file[2] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map3.csv"));
+			file[3] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map4.csv"));
+			file[4] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map5.csv"));
+			file_Server[0] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map1server.csv"));
+			file_Server[1] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map2server.csv"));
+			file_Server[2] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map3server.csv"));
+			file_Server[3] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map4server.csv"));
+			file_Server[4] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map5server.csv"));
+			
 
 			// 0  White , 1 Black , 2 Rot, 3 Blue 
 			// i ist die Farbe und j ist die richtung

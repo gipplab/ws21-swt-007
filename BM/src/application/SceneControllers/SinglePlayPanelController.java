@@ -26,7 +26,7 @@ public class SinglePlayPanelController  implements Initializable{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
-    public static int playerFarbe;
+    public static int playerFarbe=0;
     public static String name = null;
 	@FXML
     
@@ -71,10 +71,10 @@ public class SinglePlayPanelController  implements Initializable{
     @FXML
     void RunRoomButtonIsClicked(ActionEvent event) throws IOException {
     		//	player.SetAddress("192.168.1.107");
+    	setPlayerFarbe();
     	if(validate()) 
     	{
     			name = PlayerNicknameTextField.getText();
-    			setPlayerFarbe();
     			GamePanel game= new GamePanel();
     			game.init();
     			stage =(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -92,6 +92,11 @@ public boolean validate() {
 	    // Confirm mandatory fields are filled out
 	    if (PlayerNicknameTextField.getText().trim().isEmpty()) {
 	         errors.append("- Please enter your name.\n");
+	    }
+	 
+	    if (playerFarbe==0 && !WhitePlayersRadioButton.isSelected()) {
+	 
+	         errors.append("- Please choose your color.\n");
 	    }
 	   
 	    
@@ -112,7 +117,7 @@ public boolean validate() {
 
   	void setPlayerFarbe() {
   		
-  		if(    RedPlayersRadioButton.isSelected())
+  		if( RedPlayersRadioButton.isSelected())
   			playerFarbe=2;
   		else if(  WhitePlayersRadioButton.isSelected())
   			playerFarbe=0;
@@ -120,13 +125,12 @@ public boolean validate() {
   				playerFarbe=3;
   				else if(  BlackPlayersRadioButton.isSelected())
   					playerFarbe=1;
-  			System.out.println(playerFarbe+"DFFGSFASFASF");
-
+  		
   	}
 
     @FXML
     void nextMap(ActionEvent event) {
-    counter= (counter +1)%6;
+    counter= (counter +1)%5;
     MapImage.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
     GamePanel.mapIndex=counter;
   
@@ -135,9 +139,9 @@ public boolean validate() {
     @FXML
     void vorMap(ActionEvent event) {
     	
-    	   counter= (counter-1)%6;
+    	   counter= (counter-1)%5;
     	   if(counter <0) 
-    		 counter=5;
+    		 counter=4;
     	   MapImage.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
     	    GamePanel.mapIndex=counter;
     }

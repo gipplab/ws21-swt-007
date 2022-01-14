@@ -56,6 +56,7 @@ public void update() {
 //Hier bewegt sich der Bot random. 
 void moveRandom(){
 	
+	
 	isFreeBot();
     if (lastRichtung == 0) {
         moveUp();
@@ -72,7 +73,8 @@ void moveRandom(){
 }
 
 //die nächste Bewegung des Botes stimmen.
-void isFreeBot(){
+void isFreeBot()
+{
 	
 		switch(lastRichtung) {
 		case 0:// Up

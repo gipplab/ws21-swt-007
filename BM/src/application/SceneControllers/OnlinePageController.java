@@ -56,27 +56,5 @@ public class OnlinePageController {
 		stage.show();
 		
 	}
-public boolean validate() {
-		
-		StringBuilder errors = new StringBuilder();
-	
-	    // Confirm mandatory fields are filled out
-	    if (PlayerNicknameTextField.getText().trim().isEmpty()) {
-	         errors.append("- Please enter your name.\n");
-	    }
-	   
-	    
-	    // If any missing information is found, show the error messages and return false
-	    if (errors.length() > 0) {
-	        Alert alert = new Alert(Alert.AlertType.WARNING);
-	        alert.setTitle("Warning");
-	        alert.setHeaderText("Required Fields Empty");
-	        alert.setContentText(errors.toString());
-	        alert.showAndWait();
-	            return false;
-	     }
-	
-	    // No errors
-	        return true;
-	    }
+
 }

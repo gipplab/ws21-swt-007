@@ -5,7 +5,8 @@ import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
-public class Bomb extends TileObjects {
+public class Bomb extends TileObjects 
+{
 	Character player;
 	int power;
 	double time;
@@ -31,7 +32,8 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 
 
 //die Bombe im richtigen Block platzieren 
-public void BombCollision(double x1, double y1) {
+public void BombCollision(double x1, double y1) 
+{
 	
 	int a = (int) (x1 % GamePanel.SQUARE_SIZE);
 	int b= (int) (y1 % GamePanel.SQUARE_SIZE);
@@ -57,7 +59,8 @@ public double getX() {return this.x;}
 
 public double getY() {return this.y;}
 
-public boolean isFreeExplosion() {
+public boolean isFreeExplosion() 
+{
 	// TODO Auto-generated method stub
 	 Entities obje;
 	    
@@ -89,7 +92,8 @@ public boolean isFreeExplosion() {
 	}
 
 //Bombezustand und Bombeanzahl aktualisieren.
-public void update() {
+public void update() 
+{
 	
 	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
 		death=true;
@@ -101,7 +105,8 @@ public void update() {
 		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
 		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
 		}
-		else if(player instanceof Bot){
+		else if(player instanceof Bot)
+		{
 			Explosionbot ex0= new Explosionbot((int)this.x,(int) this.y);
 			Explosionbot ex1= new Explosionbot((int)this.x,(int) this.y, 0, this.power);
 			Explosionbot ex2= new Explosionbot((int)this.x,(int) this.y, 1, this.power);
@@ -112,35 +117,35 @@ public void update() {
 	}
 }
 //prüft, ob in einem Block mehrere Bomben gibt
-private Boolean BombeDuplikate() {
+private Boolean BombeDuplikate() 
+{
 	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
 		   if(this.x==(GameObjects.tileObjects.get(i).getX()) && this.y==(GameObjects.tileObjects.get(i).getY())) 
 			   return true;
 	   return false;
 	   
 }
-public boolean getDeath() {
+public boolean getDeath() 
+{
 	return death;
 }
 
 
 
 @Override
-public boolean isPlayer() {
+public boolean isPlayer() 
+{
 	// TODO Auto-generated method stub
 	return false;
 }
 
 //Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
-
-
-
-
 @Override
-protected int getItemtype() {
-	// TODO Auto-generated method stub
+protected int getItemtype() 
+{
 	return -1;
 } 
+
 
 }
 

@@ -1,6 +1,6 @@
 W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W
 H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H
-H,1,W,W,S,W,S,W,W,S,W,S,W,W,B,H
+H,1,W,W,S,W,S,W,W,S,W,S,W,W,2,H
 H,W,H,W,H,W,H,W,W,H,W,H,W,H,W,H
 H,S,W,W,S,S,S,W,W,S,S,S,W,W,S,H
 H,W,H,W,H,W,H,W,W,H,W,H,W,H,W,H
@@ -13,5 +13,5 @@ H,S,W,W,W,W,W,W,W,W,W,W,W,W,S,H
 H,W,H,W,H,W,H,W,W,H,W,H,W,H,W,H
 H,S,W,W,S,S,S,W,W,S,S,S,W,W,S,H
 H,W,H,W,H,W,H,W,W,H,W,H,W,H,W,H
-H,B,W,W,S,W,S,W,W,S,W,S,W,W,B,H
+H,4,W,W,S,W,S,W,W,S,W,S,W,W,3,H
 H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H

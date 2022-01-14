@@ -103,10 +103,10 @@ void EndOfGame() throws InterruptedException {
 		GameObjects.gameObjects.clear();
 		update();
 		if(gameOver == 1) {
-			gc.drawImage(Ressourcen.IMAGES.GAMEOVER.getImage(),0,0, ROWS*SQUARE_SIZE, COLUMNS*SQUARE_SIZE);
+			gc.drawImage(Ressourcen.IMAGES.GAMEOVER.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
 		}
 		else if (gameOver == 2) {
-			gc.drawImage(Ressourcen.IMAGES.WIN.getImage(),0,0, HEIGHT, WIDTH);
+			gc.drawImage(Ressourcen.IMAGES.WIN.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
 		}
 
 		EndofGame=true;
@@ -145,16 +145,16 @@ private void update() throws InterruptedException {
 		
 
 	}
-private void drawBackground(GraphicsContext gc) {
+private void drawBackground(GraphicsContext gc) 
+{
 	  for(int i=0 ; i<ROWS; i++) 
 		for(int j=0;j<COLUMNS;j++) {
 			gc.setFill(Color.WHITE);
+			//EFE4B0
 			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);
 			}
 					
-	}
-	
-
+}
 
 private void getScore(GraphicsContext gc) {
 		  gc.setFill(Color.BLACK); 
