@@ -109,7 +109,8 @@ public class GamePanelOnline {
 
 	private void update() throws InterruptedException {
 		//System.out.println("114GamePanel: "+Client.updateString);
-		String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-Updates-"+Client.updateString;
+		String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-GetUpdates-"+player[mainPlayerIndex].getEntityX()+"-"+player[mainPlayerIndex].getEntityY();
+		System.out.println(messageout);
 		String resp= "";
 		resp=Client.accessServer(messageout);
 		//System.out.println(resp);
@@ -162,60 +163,58 @@ public class GamePanelOnline {
 	}
 	
 	void onlineUpdates(String resp) {
+		System.out.println(resp);
 		String[] message = resp.split("-");
-		for (int i=0;i< message.length;i+=2 ) {
-			for (int j=0;j< Client.players.size();j++ )
-			if(message[i].equals(player[j].getName())) {
-				if(message[i+1].equals("Ónline"))
-				{
-					//System.out.println("IS ONLINE "+player[j].getName());
-					if(message[i+1].equals("NoUpdates"))
-					{
-						//System.out.println("HAS NO UPDATES "+player[j].getName());
-					}
-				}
-				String[] movesUpdates = message[i+2].split("/");
-			
-				for (int k=0;k< movesUpdates.length;k=k+3 ) {
-				     switch (movesUpdates[k]) {
-	                    case ("UP"):
-	                   player[j].setEntityX(Double.parseDouble(movesUpdates[k+1]));
-	                   player[j].setEntityY(Double.parseDouble(movesUpdates[k+2]));
-	                   player[j].moveUp();
-	                        break;
-
-	                    case ("RIGHT"): 
-	                    	player[j].setEntityX(Double.parseDouble(movesUpdates[k+1]));
-		                    player[j].setEntityY(Double.parseDouble(movesUpdates[k+2]));
-	                    	player[j].moveRight();                 
-	                        break;
-
-	                    case ("DOWN"): 
-	                    	player[j].setEntityX(Double.parseDouble(movesUpdates[k+1]));
-		                    player[j].setEntityY(Double.parseDouble(movesUpdates[k+2]));
-	                    	player[j].moveDown();             
-	                    break;
-	                    case ("LEFT"): 
-	                    	player[j].setEntityX(Double.parseDouble(movesUpdates[k+1]));
-		                    player[j].setEntityY(Double.parseDouble(movesUpdates[k+2]));
-	                    	player[j].moveLeft();              
-	                        break;
-	                    case ("BOMB"):  
-	                    		Bomb b= new Bomb( Double.parseDouble(movesUpdates[k+1]) , Double.parseDouble(movesUpdates[k+2]),player[j].getExplosion() , Ressourcen.IMAGES.BOMBE.getImage(),player[j] );
-	             	   			b.BombCollision(Double.parseDouble(movesUpdates[k+1]),Double.parseDouble(movesUpdates[k+2]));
-	             	   			player[j].BombanzahlDown();
-	             	   			Client.updateString =Client.updateString+"BOMB/"+b.getX()+"/"+b.getY()+"/";
-	             	   		System.out.println("resp.... "+resp);
-	             	   			System.out.println(player[j].getName()+" BOMB/"+b.getX()+"/"+b.getY()+"/");
-	             	   			GameObjects.spawn(b);	             	   		       
-	                        break;
-	                        
-	                    default:
-	                    	
-	                        break;
-	                }
-				}
+		int i =0;
+		while(i < message.length){
+			switch(message[i]) {
+			case "PLAYER":
+				for(int j=0; j< Client.players.size();j++) {
+					if( message[i+1].equals(player[j].getName()) ){
+						if(message[i+2].equals("NACTIF")) {
+							i=i+3;
+						}else {
+							switch(message[i+2]) {
+							case "UP": 
+								player[j].moveUp();
+								player[j].setEntityX(Double.parseDouble( message[i+3]));
+								player[j].setEntityY(Double.parseDouble( message[i+4]));
+								i=i+5;
+								break;
+							case "DOWN": 
+								player[j].moveDown();
+								player[j].setEntityX(Double.parseDouble( message[i+3]));
+								player[j].setEntityY(Double.parseDouble( message[i+4]));
+								i=i+5;
+								break;
+							case "RIGHT": 
+								player[j].moveRight();
+								player[j].setEntityX(Double.parseDouble( message[i+3]));
+								player[j].setEntityY(Double.parseDouble( message[i+4]));
+								i=i+5;
+								break;
+							case "LEFT": 
+								player[j].moveLeft();
+								player[j].setEntityX(Double.parseDouble( message[i+3]));
+								player[j].setEntityY(Double.parseDouble( message[i+4]));
+								i=i+5;
+								break;
+							case "STOP": 
+								player[j].setEntityX(Double.parseDouble( message[i+3]));
+								player[j].setEntityY(Double.parseDouble( message[i+4]));
+								i=i+5;
+								break;
+							}						
+							
+							
+						}
+						
+						break;
+					}					
+				}							
+				break;
 			}
+			i++;
 		}
 }
 	

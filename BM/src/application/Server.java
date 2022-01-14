@@ -30,7 +30,7 @@ public class Server {
 			InetAddress clientAddress = null;
 			int clientPort;
 			do {
-				buffer = new byte[256];
+				buffer = new byte[2560];
 				inPacket = new DatagramPacket(buffer, buffer.length);
 				datagramSocket.receive(inPacket);
 				clientAddress = inPacket.getAddress();
@@ -51,7 +51,7 @@ public class Server {
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
 					datagramSocket.send(outPacket);
 				}else if(message[0].equals("Player")){
-					if(message[1].equals("AllHosts")) 
+					if(message[1].equals("AllHosts"))
 					{
 						messageOut= "";
 						for(Room room : roomsList)
@@ -121,32 +121,41 @@ public class Server {
 					{
 						if(message[1].equals(room.getHostName()))
 						{
-							for(PlayerInfos player : room.players)
-							{
-								if(message[2].equals(player.getName())) 
-								{
-									//if(!player.GetUpdates().equals(""))
-									//{
-									messageOut=player.GetUpdates();
-									System.out.println("txt "+messageOut);
-									player.SetUpdates("");
+							if(message[3].equals("SetUpdates")) {
+								for(PlayerInfos player : room.players) {
+									if(message[2].equals(player.getName())) {
+										player.setAction("ACTIF");
+										if(message[4].equals("BOMB")) {
+											player.setBomb(message[4]+"-"+message[5]+"-"+message[6]);
+										}else { 
+											player.setPosition(message[4]+"-"+message[5]+"-"+message[6]);
+											System.out.println(player.getName()+":"+player.getPosition());
+										}
+										messageOut="SuccessUpdate";
+										break;
+									}
 									
-									//} 
-								}else 
-								{		if(message.length == 5)
-										{											
-											String updates=message[2]+"-Online-"+message[4];
-											player.AddUpdatesToPlayers(updates);
-											System.out.println(messageIn);
-											System.out.println(message[0]+" "+message[1]+" "+message[2]+" "+message[3]+" "+message[4]);
-										}else if(message.length == 4)
-										{
-											String updates=message[2]+"-Online-NoUpdates";
-											player.AddUpdatesToPlayers(updates);
-										}										
+								}																
+							}else if(message[3].equals("GetUpdates")) {
+								messageOut="ServerUpdates";
+								for(PlayerInfos player : room.players) {
+									if(!message[2].equals(player.getName())) {
+										if(player.action.equals("ACTIF")) {
+											messageOut=messageOut+"-PLAYER-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb();
+											player.action = "NACTIF";
+										}else {
+											messageOut=messageOut+"-PLAYER-"+player.getName()+"-NACTIF";
+										}
+									}else {
+										player.setPosition("STOP-"+message[4]+"-"+message[5]);
+										player.action = "ACTIF";
+									}
 								}
 							}
+						
 						}
+						
+						break;
 					}
 					
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
