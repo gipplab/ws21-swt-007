@@ -26,7 +26,7 @@ public void update() {
 			GameObjects.explosionObjectsbot.remove(this);
 			for(int i=0;i<GameObjects.tileObjects.size();i++)
 				if(GameObjects.tileObjects.get(i).getEntityX()==this.x &&
-				GameObjects.tileObjects.get(i).getEntityY()==this.y ) {
+					GameObjects.tileObjects.get(i).getEntityY()==this.y ) {
 					GameObjects.tileObjects.remove(i);
 					if( Math.round(Math.random())<0.5)
 					createItem();
@@ -40,28 +40,23 @@ void createItem(){
        Image 	imageItem =Ressourcen.IMAGES.SOFTWALL.getImage();
        switch(poweruptype) {
        case 0:{
-       	
        	imageItem =Ressourcen.IMAGES.HERZITEM.getImage();
-       	break;
+       		break;
        }
        case 1:{
-       	
        	imageItem =Ressourcen.IMAGES.BOMBITEM.getImage();
-       	break;
+       		break;
        }
        case 2:{
-
        	this.img =Ressourcen.IMAGES.FLAMMEITEM.getImage();
-       	break;
+       		break;
        }
        case 3:{
-
        	imageItem = Ressourcen.IMAGES.SPEEDITEM.getImage();
-       	break;
+       		break;
        }
        default:
-
-       	break;
+       		break;
        
        }
 	Items item= new Items(this.x,this.y, imageItem,poweruptype);

@@ -15,12 +15,13 @@ import javafx.scene.media.Media;
 public class Ressourcen {
 	
 	public static int farbe=3;
-	public static InputStreamReader file[]=new InputStreamReader[4] ,file_Server;
+	public static InputStreamReader file[]=new InputStreamReader[5] ,file_Server;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static String[] fields;
 	
 
-	public enum IMAGES{
+public enum IMAGES
+{
 		BACKGROUND, BOMBE, SOFTWALL, HARDWALL, PLAYER1, BOT, PLAYER2, BOMBITEM, HERZITEM, SPEEDITEM
 		,FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, PLAYERBLACK,PLAYERROT,PLAYERBLUE,GAMEOVER,WIN;
 		// Alle Player in einem Feld Speichern und Farben anhand zahlen als Farben intepretieren
@@ -35,31 +36,35 @@ public class Ressourcen {
 		public static Image[][] playerLeft = new Image[4][4];
 		public static Image[][] playerDead = new Image[4][4];
 		
-		static Image Map[] = new Image[4];
+		static Image Map[] = new Image[5];
 		
 		 Image image;
 		 
-		  public Image getMap(int index) {
+		  public Image getMap(int index) 
+		  {
 				return IMAGES.Map[index];
 				
-			}
-    public Image getImage() {
+		  }
+		  public Image getImage() 
+		  {
 			return this.image;
-		}
-	}
+		  }
+}
 	
 	
 	
 	
-	public Ressourcen() {}
+public Ressourcen() {}
 	
-	public static Image teilImage(Image img, int stratX , int startY,int x , int y) throws IOException {	           
+public static Image teilImage(Image img, int stratX , int startY,int x , int y) throws IOException 
+{	           
           PixelReader reader = img.getPixelReader();
           WritableImage newImage = new WritableImage(reader, stratX, startY, x, y);	         
           return newImage;
-    }
+}
 	
-	 public static void readFiles() throws IOException {
+public static void readFiles() throws IOException 
+{
 		 // 0  White , 1 Black , 2 Rot, 3 Blue 
 	        IMAGES.PLAYER1.image = new Image(Ressourcen.class.getResource("img/CharacterImages/WhitePlayer.png").toString());
 		    IMAGES.PlayerFarbe[0] = new Image(Ressourcen.class.getResource("img/CharacterImages/WhitePlayer.png").toString());
@@ -74,7 +79,6 @@ public class Ressourcen {
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/SpeedItem.jpeg").toString());
 			IMAGES.BOMBITEM.image= new Image(Ressourcen.class.getResource("img/BombItem.jpeg").toString());
 			IMAGES.EXPLOSION.image= new Image(Ressourcen.class.getResource("img/pngegg.png").toString());
-
 			IMAGES.Map[0] = new Image(Ressourcen.class.getResource("img/Frame 3.png").toString());
 			IMAGES.Map[1] = new Image(Ressourcen.class.getResource("img/landscape-mountains-minimalist-o7.jpg").toString());
 			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/BG.png").toString());
@@ -86,6 +90,7 @@ public class Ressourcen {
 			file[1] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map1.csv"));
 			file[2] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map2.csv"));
 			file[3] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map3.csv"));
+			file[4] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map3.csv"));
 			file_Server = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"));
 
 			// 0  White , 1 Black , 2 Rot, 3 Blue 
@@ -98,5 +103,7 @@ public class Ressourcen {
 		             IMAGES.playerUp[i][j]= teilImage(IMAGES.PlayerFarbe[i], j*(GamePanel.SQUARE_SIZE-3), 0, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		             IMAGES.playerDead[i][j]= teilImage(IMAGES.PlayerFarbe[i], j*(GamePanel.SQUARE_SIZE-3), (5*GamePanel.SQUARE_SIZE)+18, GamePanel.SQUARE_SIZE-4, GamePanel.SQUARE_SIZE+12);
 		    }
-	 }
-	 }
+}
+	 
+
+}

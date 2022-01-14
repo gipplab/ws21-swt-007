@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -70,9 +71,10 @@ public class SinglePlayPanelController  implements Initializable{
     @FXML
     void RunRoomButtonIsClicked(ActionEvent event) throws IOException {
     		//	player.SetAddress("192.168.1.107");
-    	  name = PlayerNicknameTextField.getText();
-    	setPlayerFarbe();
-    	
+    	if(validate()) 
+    	{
+    			name = PlayerNicknameTextField.getText();
+    			setPlayerFarbe();
     			GamePanel game= new GamePanel();
     			game.init();
     			stage =(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -81,7 +83,32 @@ public class SinglePlayPanelController  implements Initializable{
     		    stage.setResizable(false);
     		    stage.show();
     			
-    }
+    	}
+   	}
+public boolean validate() {
+		
+		StringBuilder errors = new StringBuilder();
+	
+	    // Confirm mandatory fields are filled out
+	    if (PlayerNicknameTextField.getText().trim().isEmpty()) {
+	         errors.append("- Please enter your name.\n");
+	    }
+	   
+	    
+	    // If any missing information is found, show the error messages and return false
+	    if (errors.length() > 0) {
+	        Alert alert = new Alert(Alert.AlertType.WARNING);
+	        alert.setTitle("Warning");
+	        alert.setHeaderText("Required Fields Empty");
+	        alert.setContentText(errors.toString());
+	        alert.showAndWait();
+	            return false;
+	     }
+	
+	    // No errors
+	        return true;
+	    }
+
 
   	void setPlayerFarbe() {
   		
@@ -99,7 +126,7 @@ public class SinglePlayPanelController  implements Initializable{
 
     @FXML
     void nextMap(ActionEvent event) {
-    counter= (counter +1)%4;
+    counter= (counter +1)%6;
     MapImage.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
     GamePanel.mapIndex=counter;
   
@@ -108,9 +135,9 @@ public class SinglePlayPanelController  implements Initializable{
     @FXML
     void vorMap(ActionEvent event) {
     	
-    	   counter= (counter-1)%4;
+    	   counter= (counter-1)%6;
     	   if(counter <0) 
-    		 counter=3;
+    		 counter=5;
     	   MapImage.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
     	    GamePanel.mapIndex=counter;
     }

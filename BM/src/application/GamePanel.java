@@ -1,6 +1,5 @@
 package application;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-
 
 //Koordinaten und wichtige Attribute des Spieles intialisieren. 
 public class GamePanel {
@@ -61,7 +59,7 @@ public class GamePanel {
 
 	}
 
-	public void init() throws IOException {
+public void init() throws IOException {
 		
 		Ressourcen.readFiles();
 		GameObjects.init();
@@ -70,38 +68,42 @@ public class GamePanel {
 		generateMap();//Map erstellen
 		run();//Spiel starten
 		
-		  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
+		  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> 
+		  {
 			try {
-				if(gameOver==0&& timeofDeath+2000 < System.currentTimeMillis()) {
+				if(gameOver==0&& timeofDeath+2000 < System.currentTimeMillis()) 
+				{
 					update();
 					time=System.currentTimeMillis();
-					}
-				else if(System.currentTimeMillis()-time>=timeToEnd)  {
+				}
+				else if(System.currentTimeMillis()-time>=timeToEnd)  
+				{
 					EndOfGame();
 				
 				}
-				if(EndofGame)
-					if(System.currentTimeMillis()>timeofDeath+5000) {
-						System.exit(0);}
-					
+				if(EndofGame) 
+				{
+					if(System.currentTimeMillis()>timeofDeath+5000) 
+					{
+						System.exit(0);
+					}
+				}
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}));
 	        timeline.setCycleCount(Animation.INDEFINITE);
-	     
-	        timeline.play();
-	      
+	        timeline.play(); 
 
-	};
+}
 
-void 	EndOfGame() throws InterruptedException {
+void EndOfGame() throws InterruptedException {
 		
 		GameObjects.gameObjects.clear();
 		update();
 		if(gameOver == 1) {
-			gc.drawImage(Ressourcen.IMAGES.GAMEOVER.getImage(),0,0, HEIGHT, WIDTH);
+			gc.drawImage(Ressourcen.IMAGES.GAMEOVER.getImage(),0,0, ROWS*SQUARE_SIZE, COLUMNS*SQUARE_SIZE);
 		}
 		else if (gameOver == 2) {
 			gc.drawImage(Ressourcen.IMAGES.WIN.getImage(),0,0, HEIGHT, WIDTH);
@@ -114,27 +116,27 @@ public Bomberman getPlayer() {
 		return player;
 	}
 
-	public Scene getScene() {
+public Scene getScene() {
 		return scene;
 	}
 
-	public double getSQUARE_SIZE() {
+public double getSQUARE_SIZE() {
 		return SQUARE_SIZE;
 	}
 
-	public double getWidth() {
+public double getWidth() {
 		return WIDTH;
 	}
 
-	public double getHeight() {
+public double getHeight() {
 		return HEIGHT;
 	}
 
-	public void run() {
+public void run() {
 		drawObjekte(gc);
 	}
 	//Aktualisierung der Objekte im Spiel.
-	private void update() throws InterruptedException {
+private void update() throws InterruptedException {
 		InputManager.handlePlayerMovements(player);
 		drawBackground(gc);
 		drawObjekte(gc);
@@ -143,7 +145,7 @@ public Bomberman getPlayer() {
 		
 
 	}
-	private void drawBackground(GraphicsContext gc) {
+private void drawBackground(GraphicsContext gc) {
 	  for(int i=0 ; i<ROWS; i++) 
 		for(int j=0;j<COLUMNS;j++) {
 			gc.setFill(Color.WHITE);
@@ -154,7 +156,7 @@ public Bomberman getPlayer() {
 	
 
 
-	private void getScore(GraphicsContext gc) {
+private void getScore(GraphicsContext gc) {
 		  gc.setFill(Color.BLACK); 
 		  
 		  gc.drawImage(Ressourcen.IMAGES.BOT.getImage(),0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
@@ -178,7 +180,7 @@ public Bomberman getPlayer() {
 		
 	}
 	 
-	private void drawObjekte(GraphicsContext gc) {
+private void drawObjekte(GraphicsContext gc) {
 		//hier werden alle Objekte gezeichnet 
 		// die Objekte sind in einer Liste von Listen gespeichert(gameObjects)
 		for (int i = 0; i < GameObjects.gameObjects.size(); i++) {
@@ -208,7 +210,7 @@ public Bomberman getPlayer() {
 	}
 
 
-	private void drawBomb(GraphicsContext gc) {
+private void drawBomb(GraphicsContext gc) {
 		// draw Bombe in der richtigen Koordinaten.
 		for (Bomb i : Objekte) {
 			gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(), SQUARE_SIZE * i.getX(), SQUARE_SIZE * i.getY(),
@@ -217,7 +219,7 @@ public Bomberman getPlayer() {
 	}
 	 
 	//ausgewählte Map importieren.
-	 private static void loadMapFile()  {
+private static void loadMapFile()  {
 		
         bufferedReader = new BufferedReader(Ressourcen.file[mapIndex]);
 	    mapLayout = new ArrayList<>();
@@ -229,7 +231,6 @@ public Bomberman getPlayer() {
                if (currentLine.isEmpty()) {
                   continue;
                }
-
                 mapLayout.add(new ArrayList<>(Arrays.asList(currentLine.split(","))));
              
             }   
