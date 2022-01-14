@@ -41,15 +41,13 @@ public class GamePanel {
 	private Scene scene;
 	Canvas canvas;
 	Group root;
-	double Playerspeed;
-	public static double imageX = 4, imageY = 4;
 	public static Bomberman player;
-	SinglePlayPanelController pname;
-	public static Bot bot;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static int mapIndex=0;
-	 Timeline timeline;
-	 boolean EndofGame=false;
+	Timeline timeline;
+	long time;
+	long timeToEnd=3000;
+	boolean EndofGame=false;
 	public GamePanel() {
 		System.out.println(SQUARE_SIZE);
 
@@ -67,16 +65,18 @@ public class GamePanel {
 		
 		Ressourcen.readFiles();
 		GameObjects.init();
-		Playerspeed = 0.15;
+	
 		loadMapFile();
 		generateMap();//Map erstellen
 		run();//Spiel starten
 		
 		  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> {
 			try {
-				if(gameOver==0&& timeofDeath+2000 < System.currentTimeMillis())
+				if(gameOver==0&& timeofDeath+2000 < System.currentTimeMillis()) {
 					update();
-				else  {
+					time=System.currentTimeMillis();
+					}
+				else if(System.currentTimeMillis()-time>=timeToEnd)  {
 					EndOfGame();
 				
 				}
@@ -140,6 +140,7 @@ public Bomberman getPlayer() {
 		drawObjekte(gc);
 		drawBomb(gc);
 		getScore(gc);
+		
 
 	}
 	private void drawBackground(GraphicsContext gc) {
@@ -157,7 +158,7 @@ public Bomberman getPlayer() {
 		  gc.setFill(Color.BLACK); 
 		  
 		  gc.drawImage(Ressourcen.IMAGES.BOT.getImage(),0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-		   gc.fillText("Welcome Back \n" + pname.name,40, 15	);
+		   gc.fillText("Welcome Back \n" + SinglePlayPanelController.name,40, 15	);
 		  
 		  gc.drawImage(Ressourcen.IMAGES.HERZITEM.getImage(),4*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
 	    	gc.fillText(Integer.toString(player.health),185, 21);
@@ -172,7 +173,7 @@ public Bomberman getPlayer() {
 		 		gc.fillText(Integer.toString(player.explosion),395,21);
 				
 		
-		gc.fillText("SCORE : " +  Integer.toString(bot.killbot),440, 21);
+		gc.fillText("SCORE : " +  Integer.toString(Bot.killbot),440, 21);
 	
 		
 	}

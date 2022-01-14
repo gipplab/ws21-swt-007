@@ -31,24 +31,24 @@ public class Explosionbot
 		int y1 = this.y;
 		while(radius < this.radius) {
 			if(this.direction == 0) y1-=GamePanel.SQUARE_SIZE;
-			if(this.direction == 1) x1+=GamePanel.SQUARE_SIZE;
-			if(this.direction == 2) y1+=GamePanel.SQUARE_SIZE;
-			if(this.direction == 3) x1-=GamePanel.SQUARE_SIZE;
+			else if(this.direction == 1) x1+=GamePanel.SQUARE_SIZE;
+			else if(this.direction == 2) y1+=GamePanel.SQUARE_SIZE;
+			else if(this.direction == 3) x1-=GamePanel.SQUARE_SIZE;
 			
-			
+			int k=Entities.isWall(x1, y1);
 			
 			if(Entities.isBomber(x1, y1)) ++radius; //Bot oder Spieler getroffen
 			
-			int k=Entities.isWall(x1, y1);
-			if(k==1) {
+			
+			else if(k==1) {//Wände getroffen.
 				break;
 				}
-			else if(k==0) {
+			else if(k==0) {//keine Wände getroffen.
 						radius++;
 						break;
 							}
 			
-			++radius;
+			else ++radius;
 		}
 		return radius;
 		

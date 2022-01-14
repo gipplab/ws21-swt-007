@@ -15,12 +15,11 @@ public Bomberman(double x, double y,Image img, Boolean p) {
 
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
 public void gethit() {
-		;
-		if(--this.health>0)
+	
+		if(--this.health>=0)
 			this.dead=true;
-		
+		if(!this.dead)
 		dontMove=false;
-		
 	}
 	
 
@@ -48,19 +47,21 @@ public boolean getDeath() {
 @Override
 public void update() {
 
-	if(!isFreeExplosion(this.x,this.y) || dontMove) {
+	if(!isFreeExplosion(this.x,this.y)) {
 		
 		this.dontMove=true;
 		if((System.currentTimeMillis()-time>=timeToExplosion && !dead))
 		{
+		time= System.currentTimeMillis();
 		this.gethit();
 		}
 	
 		this.img = Ressourcen.IMAGES.playerDead[this.PlayerFarbe][indexAnimPlayer()];
 	}
 	else if(!dontMove) { 
+		if(!dead)
 		time= System.currentTimeMillis();
-	        if(this.dead) {
+	        if(this.dead&&(System.currentTimeMillis()-time>=timeToExplosion)) {
 	           GameObjects.bomberObjects.remove(this);
 	        }//verschiedene Items auftauchen können.
 	}

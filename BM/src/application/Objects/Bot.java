@@ -28,7 +28,7 @@ public class Bot extends Character {
 		if(bombanzahl>0) 
 		{
 		
-			BotBomb b= new BotBomb( this.x , this.y, explosion , Bombimag, this );
+			Bomb b= new Bomb( this.x , this.y, explosion , Bombimag, this );
 			b.BombCollision(this.x,this.y);
 				bombanzahl--;
 				GameObjects.spawn(b);
