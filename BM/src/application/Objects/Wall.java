@@ -6,13 +6,15 @@ import javafx.scene.image.Image;
 public  class Wall extends TileObjects{
 	boolean zerstoerbar;
 	Boolean death;
-	public Wall(double x,double y,Image img) {
+	public Wall(double x,double y,Image img,boolean breakable) {
 		// TODO Auto-generated constructor stub
 		super(x,y,img);
-		if(img.equals(Ressourcen.IMAGES.SOFTWALL.getImage()))
-			zerstoerbar=true;
-		else zerstoerbar=false;
+		zerstoerbar=breakable;
 		death=false;
+	}
+	public boolean isBreakable() 
+	{
+		return zerstoerbar;
 	}
 	
 	//hier werden zerstörbare Wände zerstört, wenn sie eine Explosion treffen.

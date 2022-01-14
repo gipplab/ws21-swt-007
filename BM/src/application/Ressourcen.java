@@ -22,8 +22,10 @@ public class Ressourcen {
 
 public enum IMAGES
 {
-		BACKGROUND, BOMBE, SOFTWALL, HARDWALL, PLAYER1, BOT, PLAYER2, BOMBITEM, HERZITEM, SPEEDITEM
-		,FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, PLAYERBLACK,PLAYERROT,PLAYERBLUE,GAMEOVER,WIN;
+		BACKGROUND, BOMBE, SOFTWALL,SOFTWALL1,SOFTWALL2,SOFTWALL3,SOFTWALL4, 
+		HARDWALL,HARDWALL1,HARDWALL2,HARDWALL3, HARDWALL4, PLAYER1, BOT, PLAYER2, 
+		BOMBITEM, HERZITEM, SPEEDITEM, FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, 
+		PLAYERBLACK,PLAYERROT,PLAYERBLUE,GAMEOVER,WIN;
 		// Alle Player in einem Feld Speichern und Farben anhand zahlen als Farben intepretieren
 		//das muss gemacht werden 
 		
@@ -72,7 +74,15 @@ public static void readFiles() throws IOException
 		    IMAGES.PlayerFarbe[2] = new Image(Ressourcen.class.getResource("img/CharacterImages/RotPlayer.png").toString());
 		    IMAGES.PlayerFarbe[3] = new Image(Ressourcen.class.getResource("img/CharacterImages/BluePlayer.png").toString());
 			IMAGES.HARDWALL.image= new Image(Ressourcen.class.getResource("img/hardWall.jpg").toString());
+			IMAGES.HARDWALL1.image= new Image(Ressourcen.class.getResource("img/Tree.png").toString());
 			IMAGES.SOFTWALL.image= new Image(Ressourcen.class.getResource("img/softWall.jpg").toString());
+			IMAGES.SOFTWALL1.image= new Image(Ressourcen.class.getResource("img/pail.png").toString());
+			IMAGES.HARDWALL2.image= new Image(Ressourcen.class.getResource("img/Hard2-1.png").toString());
+			IMAGES.SOFTWALL2.image= new Image(Ressourcen.class.getResource("img/Soft2.png").toString());
+			IMAGES.HARDWALL3.image= new Image(Ressourcen.class.getResource("img/Hard3.png").toString());
+			IMAGES.SOFTWALL3.image= new Image(Ressourcen.class.getResource("img/Soft3.png").toString());
+			IMAGES.HARDWALL4.image= new Image(Ressourcen.class.getResource("img/Hard4.png").toString());
+			IMAGES.SOFTWALL4.image= new Image(Ressourcen.class.getResource("img/Soft4.png").toString());
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
 			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/FlammeItem.jpeg").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());

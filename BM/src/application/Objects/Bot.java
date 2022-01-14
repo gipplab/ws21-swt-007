@@ -7,7 +7,6 @@ import application.Ressourcen;
 import javafx.scene.image.Image;
 
 
-
 public class Bot extends Character {
 	List<?> keyboardInputs = KeysHandler.getInputList();
 	public static int killbot = 0;
@@ -73,6 +72,67 @@ void moveRandom(){
 }
 
 //die nächste Bewegung des Botes stimmen.
+//void isFreeBot()
+//{
+//	
+//		switch(lastRichtung) {
+//		case 0:// Up
+//		{
+//			if((isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))==0 
+//				|| isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)==1 
+//				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)
+//				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))
+//			{
+//				lastRichtung=(int) Math.round(Math.random() * 3);
+//				placeBomb();
+//				}
+//			break;
+//		}
+//		case 1: // right
+//		{	if((isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))==0 
+//		||isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)==1
+//		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)
+//		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))
+//		{
+//			lastRichtung=(int) Math.round(Math.random() * 3);
+//				placeBomb();
+//				}
+//			
+//		break;
+//		}
+//		case 2:// Left
+//		{if((isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))==0 
+//			||isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)==1
+//			|| !isFreeExplosion((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)
+//			|| !isFreeExplosion((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))
+//		{
+//		lastRichtung=(int) Math.round(Math.random() * 3);
+//		if((System.currentTimeMillis()-time>=timeToExplosion)) {
+//			placeBomb();
+//			time=System.currentTimeMillis();
+//		}
+//		
+//		}
+//			
+//		break;
+//		}
+//		case 3:// Down
+//		{
+//			if((isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
+//					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1
+//					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))
+//					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
+//				lastRichtung=(int) Math.round(Math.random() * 3);
+//				if((int) Math.round(Math.random() * 15)==2)
+//						placeBomb();
+//					}
+//			break;
+//		}
+//		default:
+//			break;
+//		}
+//}
+
 void isFreeBot()
 {
 	
@@ -133,6 +193,10 @@ void isFreeBot()
 			break;
 		}
 }
+
+
+
+
 //wenn der Bot einem Wall begegnet, wechselt er die Richtung.
 void isWall() {
 	lastRichtung = (int) Math.round(Math.random() * 3);

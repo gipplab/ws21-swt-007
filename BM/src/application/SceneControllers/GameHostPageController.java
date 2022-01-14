@@ -96,7 +96,7 @@ public class GameHostPageController {
 	@FXML
 	void RunRoomButtonIsClicked(ActionEvent event) throws IOException {
 	   // check the empty fields
-		if (validate()== true){
+		
 			String msg = "Host-"+RoomNameTextField.getText()+"-"+PlayerNicknameTextField.getText();
 			if(FourPlayersRadioButton.isSelected()) {
 				msg = msg+"-4";	
@@ -123,7 +123,7 @@ public class GameHostPageController {
 	    stage.setScene(scene);		
 	    stage.show();
 		}
-	}
+	
 	
 	@FXML
 	void playersButton(ActionEvent event) throws IOException {}

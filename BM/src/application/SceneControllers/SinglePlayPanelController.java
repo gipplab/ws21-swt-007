@@ -80,7 +80,7 @@ public class SinglePlayPanelController  implements Initializable{
     			stage =(Stage)((Node)event.getSource()).getScene().getWindow();
     		    stage.setTitle("Bomberman");
     		    stage.setScene(game.getScene());
-    		    stage.setResizable(false);
+    		    stage.setResizable(true);
     		    stage.show();
     			
     	}

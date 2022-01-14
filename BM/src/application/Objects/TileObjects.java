@@ -15,6 +15,7 @@ public abstract class TileObjects extends Entities{
 		
 	}
 
+	public  abstract boolean isBreakable();
 	public abstract  void update();
 
 	public double getX() {

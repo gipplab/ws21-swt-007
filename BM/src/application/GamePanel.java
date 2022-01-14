@@ -17,11 +17,13 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 //Koordinaten und wichtige Attribute des Spieles intialisieren. 
@@ -86,12 +88,19 @@ public void init() throws IOException {
 					if(System.currentTimeMillis()>timeofDeath+5000) 
 					{
 						System.exit(0);
+//						Stage primaryStage= new Stage();
+//					 	root = FXMLLoader.load(getClass().getResource("Scenes/SinglePlayPanel.fxml"));
+//				    	scene = new Scene(root);
+//				    	primaryStage.setScene(scene);
+//						primaryStage.setResizable(false);
+//						primaryStage.show();
+						
 					}
 				}
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}
+			} 
 		}));
 	        timeline.setCycleCount(Animation.INDEFINITE);
 	        timeline.play(); 
@@ -147,13 +156,11 @@ private void update() throws InterruptedException {
 	}
 private void drawBackground(GraphicsContext gc) 
 {
-	  for(int i=0 ; i<ROWS; i++) 
-		for(int j=0;j<COLUMNS;j++) {
-			gc.setFill(Color.WHITE);
-			//EFE4B0
-			gc.fillRect(i*SQUARE_SIZE,j*SQUARE_SIZE , SQUARE_SIZE, SQUARE_SIZE);
-			}
-					
+	// Meer  #b1e8fe
+	//ORANGE
+	//
+			gc.setFill(Color.valueOf("#b1e8fe"));
+			gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);		
 }
 
 private void getScore(GraphicsContext gc) {
@@ -250,17 +257,61 @@ private static void loadMapFile()  {
             for (int x = 0; x < COLUMNS; x++) {
            switch (mapLayout.get(y).get(x)) {
                     case ("S"):     // Soft wall zerstoerbar
-                     Wall soft= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL.getImage());
+                     Wall soft= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL.getImage(),true);
                     if(soft!=null) 
                     GameObjects.spawn(soft);
                         break;
 
                     case ("H"):   //Hardwall.
-                    	Wall hard= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL.getImage());
+                    	Wall hard= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL.getImage(),false);
                     if(hard!=null)
                     GameObjects.spawn(hard);                    
                         break;
-
+                    case ("P"):     // Soft wall zerstoerbar
+                        Wall soft1= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL1.getImage(),true);
+                       if(soft1!=null) 
+                       GameObjects.spawn(soft1);
+                           break;
+                           
+                    case ("T"):   //Hardwall.
+                       	Wall hard1= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL1.getImage(),false);
+                       if(hard1!=null)
+                       GameObjects.spawn(hard1);                    
+                           break;
+                           
+                    case ("E"):     // Soft wall zerstoerbar
+                        Wall soft2= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL2.getImage(),true);
+                       if(soft2!=null) 
+                       GameObjects.spawn(soft2);
+                           break;
+                           
+                    case ("K"):   //Hardwall.
+                       	Wall hard2= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL2.getImage(),false);
+                       if(hard2!=null)
+                       GameObjects.spawn(hard2);                    
+                           break;
+                    case ("A"):     // Soft wall zerstoerbar
+                        Wall soft3= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL3.getImage(),true);
+                       if(soft3!=null) 
+                       GameObjects.spawn(soft3);
+                           break;
+                           
+                    case ("L"):   //Hardwall.
+                       	Wall hard3= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL3.getImage(),false);
+                       if(hard3!=null)
+                       GameObjects.spawn(hard3);                    
+                           break;
+                    case ("Q"):     // Soft wall zerstoerbar
+                        Wall soft4= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL4.getImage(),true);
+                       if(soft4!=null) 
+                       GameObjects.spawn(soft4);
+                           break;
+                           
+                    case ("U"):   //Hardwall.
+                       	Wall hard4= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL4.getImage(),false);
+                       if(hard4!=null)
+                       GameObjects.spawn(hard4);                    
+                           break;
                     case ("1"):     // Player 1
                 //   GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
                                
@@ -269,9 +320,9 @@ private static void loadMapFile()  {
                     	GameObjects.spawn(GamePanel.player);                    
                     break;
                     case ("B"):     // BOT
-                        Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
-                       if(bot!=null) 
-                       GameObjects.spawn(bot);
+//                        Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
+//                       if(bot!=null) 
+//                       GameObjects.spawn(bot);
                            break;
                
                     default:
