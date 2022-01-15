@@ -12,18 +12,13 @@ import application.Objects.GameObjects;
 import application.Objects.Wall;
 import application.SceneControllers.SinglePlayPanelController;
 import javafx.animation.Animation;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 //Koordinaten und wichtige Attribute des Spieles intialisieren. 
@@ -158,9 +153,17 @@ private void drawBackground(GraphicsContext gc)
 {
 	// Meer  #b1e8fe
 	//ORANGE
-	//
-			gc.setFill(Color.valueOf("#b1e8fe"));
-			gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);		
+	if(mapIndex==0||mapIndex==4)
+		gc.setFill(Color.WHITE);
+	
+	else if(mapIndex==1)
+		gc.setFill(Color.valueOf("#FFFBD3"));
+	else if (mapIndex==2||mapIndex==3)
+		gc.setFill(Color.valueOf("#b1e8fe"));
+
+	
+			gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);	
+	//gc.drawImage(Ressourcen.IMAGES.BG5.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
 }
 
 private void getScore(GraphicsContext gc) {
@@ -312,6 +315,17 @@ private static void loadMapFile()  {
                        if(hard4!=null)
                        GameObjects.spawn(hard4);                    
                            break;
+                    case ("M"):     // Soft wall zerstoerbar
+                        Wall soft5= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL5.getImage(),true);
+                       if(soft5!=null) 
+                       GameObjects.spawn(soft5);
+                           break;
+                           
+                    case ("R"):   //Hardwall.
+                       	Wall hard5= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL5.getImage(),false);
+                       if(hard5!=null)
+                       GameObjects.spawn(hard5);     
+                       break;
                     case ("1"):     // Player 1
                 //   GamePanel.player= new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.PLAYER1.getImage(),true);
                                

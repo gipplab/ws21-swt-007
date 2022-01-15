@@ -1,15 +1,10 @@
 package application;
-
-
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
-
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
-import javafx.scene.media.Media;
 
 
 public class Ressourcen {
@@ -22,8 +17,8 @@ public class Ressourcen {
 
 public enum IMAGES
 {
-		BACKGROUND, BOMBE, SOFTWALL,SOFTWALL1,SOFTWALL2,SOFTWALL3,SOFTWALL4, 
-		HARDWALL,HARDWALL1,HARDWALL2,HARDWALL3, HARDWALL4, PLAYER1, BOT, PLAYER2, 
+		BACKGROUND, BOMBE, SOFTWALL,SOFTWALL1,SOFTWALL2,SOFTWALL3,SOFTWALL4,SOFTWALL5, 
+		HARDWALL,HARDWALL1,HARDWALL2,HARDWALL3, HARDWALL4,HARDWALL5,BG5, PLAYER1, BOT, PLAYER2, 
 		BOMBITEM, HERZITEM, SPEEDITEM, FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, 
 		PLAYERBLACK,PLAYERROT,PLAYERBLUE,GAMEOVER,WIN;
 		// Alle Player in einem Feld Speichern und Farben anhand zahlen als Farben intepretieren
@@ -83,6 +78,9 @@ public static void readFiles() throws IOException
 			IMAGES.SOFTWALL3.image= new Image(Ressourcen.class.getResource("img/Soft3.png").toString());
 			IMAGES.HARDWALL4.image= new Image(Ressourcen.class.getResource("img/Hard4.png").toString());
 			IMAGES.SOFTWALL4.image= new Image(Ressourcen.class.getResource("img/Soft4.png").toString());
+			IMAGES.HARDWALL5.image= new Image(Ressourcen.class.getResource("img/Hard5.png").toString());
+			IMAGES.SOFTWALL5.image= new Image(Ressourcen.class.getResource("img/Soft5.png").toString());
+			IMAGES.BG5.image= new Image(Ressourcen.class.getResource("img/BG555.png").toString());
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
 			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/FlammeItem.jpeg").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
