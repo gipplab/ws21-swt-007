@@ -35,10 +35,10 @@ public abstract class Entities {
 			if(GameObjects.tileObjects.get(i).getEntityX()==(double)x &&
 				GameObjects.tileObjects.get(i).getEntityY()==(double)y)
 			{	
-				if(GameObjects.tileObjects.get(i).img.equals(Ressourcen.IMAGES.SOFTWALL.getImage())) {
+				if(GameObjects.tileObjects.get(i) instanceof Wall && GameObjects.tileObjects.get(i).isBreakable()) {
 					//GameObjects.tileObjects.get(i).onDestroy();
 					return 0;
-				}else if(GameObjects.tileObjects.get(i).img.equals(Ressourcen.IMAGES.HARDWALL.getImage()))
+				}else if(GameObjects.tileObjects.get(i) instanceof Wall && !GameObjects.tileObjects.get(i).isBreakable())
 						return 1;
 			}
 

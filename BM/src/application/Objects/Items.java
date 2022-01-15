@@ -1,6 +1,5 @@
 package application.Objects;
 
-import application.Ressourcen;
 import javafx.scene.image.Image;
 
 public class Items extends TileObjects {
@@ -28,7 +27,6 @@ public class Items extends TileObjects {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
 	}
 
 
@@ -41,6 +39,12 @@ public class Items extends TileObjects {
 
 	@Override
 	public boolean isPlayer() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isBreakable() {
 		// TODO Auto-generated method stub
 		return false;
 	}

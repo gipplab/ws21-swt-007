@@ -68,7 +68,11 @@ public class Room {
 	}
 private void loadMapFile()  {
 		
+<<<<<<< HEAD
 		BufferedReader br =new BufferedReader(new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map_Server.csv"))); 
+=======
+		BufferedReader br =new BufferedReader(new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map1server.csv"))); 
+>>>>>>> Yazan-Main
 		
 	    mapLayout = new ArrayList<>();
 	 
