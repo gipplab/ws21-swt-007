@@ -114,13 +114,15 @@ public class GamePanelOnline {
 		String resp= "";
 		resp=Client.accessServer(messageout);
 		//System.out.println(resp);
-		onlineUpdates(resp);
+		
 		//druekeNachricht(resp);
 		Client.updateString="";
 		InputManager.handlePlayerMovements(player[mainPlayerIndex]);
+		onlineUpdates(resp);
 		drawBackground(gc);
 		drawObjekte(gc);
 		drawBomb(gc);
+		
 
 	} 
 	private void drawBackground(GraphicsContext gc) {
@@ -141,7 +143,7 @@ public class GamePanelOnline {
 				obj.update();
 			if(obj.getDeath() && obj instanceof Bomberman) {
 				gameOver=true;
-			System.out.println("GameOber");
+			System.out.println("GameOver");
 			System.exit(0);
 		
 			}
@@ -204,7 +206,20 @@ public class GamePanelOnline {
 								player[j].setEntityY(Double.parseDouble( message[i+4]));
 								i=i+5;
 								break;
-							}						
+							}
+							System.out.println(message[i]+"/i"+i);
+							if(message[i].equals("BOMB")) {
+								System.out.println(message[i]+"/i"+i);
+								if(player[j].getBombanzahl()>0) {
+									Bomb bmb = new Bomb(Double.parseDouble(message[i+1]), Double.parseDouble(message[i+2]),1,Ressourcen.IMAGES.BOMBE.getImage(),player[j]);
+									player[j].BombanzahlDown();
+									GameObjects.spawn(bmb);							
+								}
+								//gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(), SQUARE_SIZE * Double.parseDouble( message[i+1]), SQUARE_SIZE * Double.parseDouble( message[i+2]),										SQUARE_SIZE, SQUARE_SIZE);								
+								i=i+2;
+							}else {							
+								i=i+1;								
+							}
 							
 							
 						}

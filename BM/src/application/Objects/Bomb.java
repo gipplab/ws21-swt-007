@@ -1,5 +1,6 @@
 package application.Objects;
 
+import application.Client;
 import application.GamePanel;
 import application.Main;
 import application.Ressourcen;
@@ -14,7 +15,7 @@ public class Bomb extends TileObjects {
 	
 public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	super(x2,y2,image);
-	
+	 
 	this.x=x2;
 	this.y=y2;
 	time= System.currentTimeMillis();
@@ -69,13 +70,18 @@ public void update() {
 		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, this.power);
 		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
 		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
-		if(Main.online)
-			player.BombanzahlUp();
-		else
-			player.BombanzahlUp();
+		player.BombanzahlUp();
+		if(Main.online) {			
+			Client.updateString ="NOBOMB";
+	 	    String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+			String resp= "";
+		    resp=Client.accessServer(messageout);
+			System.out.println(resp);
+		}			
+		
 	}
 }
-//prüft, ob in einem Block mehrere Bomben gibt
+//prï¿½ft, ob in einem Block mehrere Bomben gibt
 private Boolean BombeDuplikate() {
 	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
 		   if(this.x==(GameObjects.tileObjects.get(i).getX()) && this.y==(GameObjects.tileObjects.get(i).getY())) 
@@ -95,7 +101,7 @@ public boolean isPlayer() {
 	return false;
 }
 
-//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
+//Hier wird geprï¿½ft, ob es in diesem Block eine Explosion gibt.
 public boolean isFreeExplosion() {
 	// TODO Auto-generated method stub
 	 Entities obje;

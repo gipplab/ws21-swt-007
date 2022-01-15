@@ -39,7 +39,7 @@ public void setName(String name) {
 public boolean getDeath() {
 	return this.dead;
 }
-//geprüft je nach Health, ob der Spieler sterben muss.
+//geprï¿½ft je nach Health, ob der Spieler sterben muss.
  public boolean death() {
 	if(health>0) {
 		return false;
@@ -62,7 +62,7 @@ public void update() {
 	else {  timeExplosion = 0 ;
 	        if(this.dead) {
 	           GameObjects.bomberObjects.remove(this);
-	        }//verschiedene Items auftauchen können.
+	        }//verschiedene Items auftauchen kï¿½nnen.
 	}
 	
 	int v=isItem(this.x, this.y);

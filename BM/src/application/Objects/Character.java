@@ -20,7 +20,7 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	bombanzahl=1;
 	 explosion=1;
 	 health=1;
-	 dead=false ;
+	 dead=false ; 
 
 }
 public int getPlayerFarbe() {
@@ -32,7 +32,7 @@ public int getPlayerFarbe() {
 public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
-//Hier wird geprüft, ob das Block frei(ein Weg) ist.
+//Hier wird geprï¿½ft, ob das Block frei(ein Weg) ist.
 	public  boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
@@ -65,7 +65,7 @@ public void setPlayerFarbe(int playerFarbe) {
 	 	  }
 	      	return frei;
 	 }
-	//Hier wird geprüft, ob es in diesem Block eine Bombe gibt.
+	//Hier wird geprï¿½ft, ob es in diesem Block eine Bombe gibt.
 	@SuppressWarnings("unused")
 	private  boolean isFreeBomb(double nextX, double nextY) {
 	     Entities obje;
@@ -91,7 +91,7 @@ public void setPlayerFarbe(int playerFarbe) {
 	 	  }
 	      	return true;
 	 }
-	//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
+	//Hier wird geprï¿½ft, ob es in diesem Block eine Explosion gibt.
 	public boolean isFreeExplosion(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -135,7 +135,7 @@ public void setPlayerFarbe(int playerFarbe) {
 	public int getExplosion(){
 		return this.explosion;
 	}
-	//Bombenanzahl erhöhen.
+	//Bombenanzahl erhï¿½hen.
 	public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
@@ -143,11 +143,11 @@ public void setPlayerFarbe(int playerFarbe) {
 	public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
-//Explosion reichweite erhöhen.  
+//Explosion reichweite erhï¿½hen.  
 public void ExplosionUp(){
 	this.explosion++;
 }
-//Health erhöhen.
+//Health erhï¿½hen.
 public void HealthUp(){
 	this.health++;
 }
@@ -166,7 +166,7 @@ public int indexAnimPlayer() {
 	        return indexAnimPlayer;
 	 }
 	 
-//Hier wird geprüft, ob es in diesem Block ein Item gibt.
+//Hier wird geprï¿½ft, ob es in diesem Block ein Item gibt.
 		public int isItem(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -199,7 +199,7 @@ public int indexAnimPlayer() {
 			  }
 		    	return -1;
 		} 
-//Geschwindigkeit erhöhen.		
+//Geschwindigkeit erhï¿½hen.		
 protected void speedUp() {
 		if(speed ==2.5)
 			speed=5;
@@ -221,7 +221,7 @@ public void moveRight() {
 	 	 else if((this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)) {
 	 		  this.y= this.y-  (this.speed/4);		 		 
 	 	      }
-        } //die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
+        } //die Pixel verteilung kï¿½nnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
 	// und nicht immer auf Ressourcen greifen 
 	// die Player Matrix wird ein Teil des class  Charackter werden
 

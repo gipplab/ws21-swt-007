@@ -127,9 +127,12 @@ public class Server {
 										player.setAction("ACTIF");
 										if(message[4].equals("BOMB")) {
 											player.setBomb(message[4]+"-"+message[5]+"-"+message[6]);
-										}else { 
+										}else if(message[4].equals("NOBOMB")) {
+											player.setBomb(message[4]);
+										}
+										else { 
 											player.setPosition(message[4]+"-"+message[5]+"-"+message[6]);
-											System.out.println(player.getName()+":"+player.getPosition());
+											
 										}
 										messageOut="SuccessUpdate";
 										break;
