@@ -34,7 +34,7 @@ public void setName(String name) {
 
 public void update() {
 
-	if(!isFreeExplosion(this.x,this.y)) {
+	if(!isFreeExplosion(this.x,this.y)||dontMove) {
 		this.dontMove=true;
 		if((System.currentTimeMillis()-time>=timeToExplosion && !dead))
 		{

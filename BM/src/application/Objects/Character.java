@@ -313,9 +313,9 @@ public void gethit() {
 	--this.health;
 	if(this.health<=0)
 		this.dead=true;
-if(!dead)
-	dontMove=false;
-
+	
+	
+dontMove=false;
 this.x=startX;
 this.y=startY;
 }
@@ -341,10 +341,12 @@ public void BombanzahlDown(){
 	}
 //Explosion reichweite erhöhen.  
 public void ExplosionUp(){
+	if(explosion<3)
 	this.explosion++;
 }
 //Health erhöhen.
 public void HealthUp(){
+	if(health<3)
 	this.health++;
 }
 public int getHealth(){
@@ -435,7 +437,6 @@ public void moveRight() {
 		 } 
 	 	 else if(this.x % GamePanel.SQUARE_SIZE !=0) {
 	 		 this.x+= GamePanel.SQUARE_SIZE - (this.x % GamePanel.SQUARE_SIZE);
-	 		 
 	 	 }
 	 	 
 	 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];

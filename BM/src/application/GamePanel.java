@@ -290,13 +290,13 @@ private static void loadMapFile()  {
                        if(hard2!=null)
                        GameObjects.spawn(hard2);                    
                            break;
-                    case ("A"):     // Soft wall zerstoerbar
+                    case ("L"):     // Soft wall zerstoerbar
                         Wall soft3= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL3.getImage(),true);
                        if(soft3!=null) 
                        GameObjects.spawn(soft3);
                            break;
                            
-                    case ("L"):   //Hardwall.
+                    case ("A"):   //Hardwall.
                        	Wall hard3= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL3.getImage(),false);
                        if(hard3!=null)
                        GameObjects.spawn(hard3);                    
