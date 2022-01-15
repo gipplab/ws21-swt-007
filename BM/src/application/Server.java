@@ -19,7 +19,7 @@ public class Server {
 			datagramSocket = new DatagramSocket(PORT);
 		} catch (SocketException sockEx) {
 			System.out.println("unable to open ");
-			System.exit(1);
+			System.exit(1); 
 		}
 		handleClient();
 	}
@@ -30,14 +30,15 @@ public class Server {
 			InetAddress clientAddress = null;
 			int clientPort;
 			do {
-				buffer = new byte[256];
+				buffer = new byte[2560];
 				inPacket = new DatagramPacket(buffer, buffer.length);
 				datagramSocket.receive(inPacket);
 				clientAddress = inPacket.getAddress();
 				clientPort = inPacket.getPort();
 				messageIn = new String(inPacket.getData(), 0, inPacket.getLength());
+				System.out.println(messageIn);
 				String[] message = messageIn.split("-");
-				//System.out.println(messageIn);
+				
 				if(message[0].equals("Host")) 
 				{
 					PlayerInfos host = new PlayerInfos(message[2]); 
@@ -50,7 +51,7 @@ public class Server {
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
 					datagramSocket.send(outPacket);
 				}else if(message[0].equals("Player")){
-					if(message[1].equals("AllHosts")) 
+					if(message[1].equals("AllHosts"))
 					{
 						messageOut= "";
 						for(Room room : roomsList)
@@ -102,7 +103,7 @@ public class Server {
 									for(PlayerInfos player : room.players) 
 									{
 										messageOut=messageOut+"-"+player.getName();
-										System.out.println("txt"+messageOut);
+										//System.out.println("txt"+messageOut);
 									}
 									
 									break;
@@ -120,29 +121,39 @@ public class Server {
 					{
 						if(message[1].equals(room.getHostName()))
 						{
-							for(PlayerInfos player : room.players)
-							{
-								if(message[2].equals(player.getName())) 
-								{
-									//if(!player.GetUpdates().equals(""))
-									//{
-									messageOut=player.GetUpdates();
-									player.SetUpdates("");
-									//}
-								}else 
-								{		if(message.length == 5)
-										{											
-											String updates=message[2]+"-Online-"+message[4];
-											player.AddUpdatesToPlayers(updates);
+							if(message[3].equals("SetUpdates")) {
+								for(PlayerInfos player : room.players) {
+									if(message[2].equals(player.getName())) {
+										player.setAction(message[4]);
+										if(message[5].equals("BOMB")) {
+											player.setBomb(message[5]+"-"+message[6]+"-"+message[7]);
+										}else if(message[5].equals("NOBOMB")) {
+											player.setBomb(message[5]);
+										}
+										else { 
+											player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);
 											
-										}else if(message.length == 4)
-										{
-											String updates=message[2]+"-Online-NoUpdates";
-											player.AddUpdatesToPlayers(updates);
-										}										
+										}
+										messageOut="SuccessUpdate";
+										break;
+									}
+									
+								}																
+							}else if(message[3].equals("GetUpdates")) {
+								messageOut="ServerUpdates";
+								for(PlayerInfos player : room.players) {
+									if(!message[2].equals(player.getName())) {										
+											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb();		
+									}else {
+										player.setPosition("STOP-"+message[5]+"-"+message[6]);
+										player.action = message[4];
+									}
 								}
 							}
+						
 						}
+						
+						break;
 					}
 					
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);

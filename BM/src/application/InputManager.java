@@ -69,10 +69,32 @@ public class InputManager {
 	 	   }
        }
 
-   
-    
+       //Drop bomb, wenn die Taste Space gedr�ckt werden.
+       
+       if(KeysHandler.SPACEPRESSED){
+           if((player.getBombanzahl()>0)&&!player.getDeath()) {
+        	   System.out.println("Bombe");
+        
+        	   Bomb b= new Bomb( player.getEntityX() , player.getEntityY() ,player.getExplosion(), Ressourcen.IMAGES.BOMBE.getImage(), player);
+        	   b.BombCollision(player.getEntityX(),player.getEntityY());
+        	   player.BombanzahlDown();
+        	   if(Main.online) {
+        		   Client.updateString =System.currentTimeMillis()+"-BOMB-"+b.getX()+"-"+b.getY();
+            	   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+        		   	String resp= "";
+        			resp=Client.accessServer(messageout);
+        			System.out.println(resp);
+        	   }        	  
+        	   GameObjects.spawn(b);
         	   
-        }
-} 
+        	   }
+        	   KeysHandler.setSPACEPRESSED();
+        	   
+           					}
+          			}
+       
+       
+       		}
+   
 
 
