@@ -58,9 +58,9 @@ public class InputManager {
            if((player.getBombanzahl()>0)&&!player.getDeath()) {
         	   System.out.println("Bombe");
         
+        	   player.BombanzahlDown();
         	   Bomb b= new Bomb( player.getEntityX() , player.getEntityY() ,player.getExplosion(), Ressourcen.IMAGES.BOMBE.getImage(), player);
         	   b.BombCollision(player.getEntityX(),player.getEntityY());
-        	   player.BombanzahlDown();
         	   if(Main.online)
         	   Client.updateString =Client.updateString+"BOMB/"+b.getX()+"/"+b.getY()+"/";
         	   GameObjects.spawn(b);

@@ -11,6 +11,8 @@ public abstract class Character extends Entities {
 	public int health;
 	boolean dead ;
 	double time;
+	protected double startX;
+	protected double startY;
 	final double timeToExplosion=1200;
 	protected boolean dontMove=false;
 	Boolean Player= false;
@@ -20,7 +22,8 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	super(x,y,img);
 	// TODO Auto-generated constructor stub
 	this.Player=isPlayer;
-	
+	startX=x;
+	startY=y;
 	bombanzahl=1;
 	 explosion=1;
 	 health=1;
@@ -302,27 +305,38 @@ case 3:
 }
 
 
+public boolean getDeath() {
+	return this.dead;
+}
+//Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
+public void gethit() {
+	--this.health;
+	if(this.health<=0)
+		this.dead=true;
+if(!dead)
+	dontMove=false;
 
+this.x=startX;
+this.y=startY;
+}
 
-
-
-	public boolean isPlayer() {
+public boolean isPlayer() {
 		return Player;
 		
 	}
-	public int getBombanzahl(){
+public int getBombanzahl(){
 		return this.bombanzahl;
 	}
 
-	public int getExplosion(){
+public int getExplosion(){
 		return this.explosion;
 	}
 	//Bombenanzahl erhöhen.
-	public void BombanzahlUp(){
+public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
 	//Bombenanzahl reduzieren.
-	public void BombanzahlDown(){
+public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
 //Explosion reichweite erhöhen.  
@@ -333,8 +347,27 @@ public void ExplosionUp(){
 public void HealthUp(){
 	this.health++;
 }
+public int getHealth(){
+	return this.health;
+}
+public Image getImage(){	
+	return img;
+}
 double getSpeed(){
 	return this.speed;
+}
+
+public double getX(){
+	return this.x;
+}
+
+public double getY(){
+	return this.y;
+}
+@Override
+protected int getItemtype() {
+	// TODO Auto-generated method stub
+	return -1;
 }
 public int indexAnimPlayer() {
 		 framePlayer++;

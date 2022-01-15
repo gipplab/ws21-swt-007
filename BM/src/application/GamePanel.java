@@ -155,14 +155,12 @@ private void drawBackground(GraphicsContext gc)
 	//ORANGE
 	if(mapIndex==0||mapIndex==4)
 		gc.setFill(Color.WHITE);
-	
 	else if(mapIndex==1)
 		gc.setFill(Color.valueOf("#FFFBD3"));
 	else if (mapIndex==2||mapIndex==3)
 		gc.setFill(Color.valueOf("#b1e8fe"));
-
 	
-			gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);	
+	gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);	
 	//gc.drawImage(Ressourcen.IMAGES.BG5.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
 }
 
@@ -334,9 +332,9 @@ private static void loadMapFile()  {
                     	GameObjects.spawn(GamePanel.player);                    
                     break;
                     case ("B"):     // BOT
-//                        Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
-//                       if(bot!=null) 
-//                       GameObjects.spawn(bot);
+                       Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
+                       if(bot!=null) 
+                       GameObjects.spawn(bot);
                            break;
                
                     default:

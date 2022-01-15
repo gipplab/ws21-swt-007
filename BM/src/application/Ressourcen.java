@@ -18,7 +18,7 @@ public class Ressourcen {
 public enum IMAGES
 {
 		BACKGROUND, BOMBE, SOFTWALL,SOFTWALL1,SOFTWALL2,SOFTWALL3,SOFTWALL4,SOFTWALL5, 
-		HARDWALL,HARDWALL1,HARDWALL2,HARDWALL3, HARDWALL4,HARDWALL5,BG5, PLAYER1, BOT, PLAYER2, 
+		HARDWALL,HARDWALL1,HARDWALL2,HARDWALL3, HARDWALL4,HARDWALL5,BG1,BG5, PLAYER1, BOT, PLAYER2, 
 		BOMBITEM, HERZITEM, SPEEDITEM, FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, 
 		PLAYERBLACK,PLAYERROT,PLAYERBLUE,GAMEOVER,WIN;
 		// Alle Player in einem Feld Speichern und Farben anhand zahlen als Farben intepretieren
@@ -80,6 +80,7 @@ public static void readFiles() throws IOException
 			IMAGES.SOFTWALL4.image= new Image(Ressourcen.class.getResource("img/Soft4.png").toString());
 			IMAGES.HARDWALL5.image= new Image(Ressourcen.class.getResource("img/Hard5.png").toString());
 			IMAGES.SOFTWALL5.image= new Image(Ressourcen.class.getResource("img/Soft5.png").toString());
+			IMAGES.BG1.image= new Image(Ressourcen.class.getResource("img/BG1.png").toString());
 			IMAGES.BG5.image= new Image(Ressourcen.class.getResource("img/BG555.png").toString());
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
 			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/FlammeItem.jpeg").toString());
