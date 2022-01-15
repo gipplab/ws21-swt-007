@@ -103,7 +103,8 @@ public boolean isFreeExplosion(double x,  double y) {
 	
 	if(restX!=0 && restY==0) {
 		
-		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
+		for(int i=0; i < GameObjects.explosionObjects.size(); i++) 
+		{
 			
 			 if((GameObjects.explosionObjects.get(i).getEntityX() == x-restX &&
 					 GameObjects.explosionObjects.get(i).getEntityY() == y)
@@ -112,10 +113,9 @@ public boolean isFreeExplosion(double x,  double y) {
 							 &&
 					 GameObjects.explosionObjects.get(i).getEntityY() == y ))
 			 {
-				 System.out.println(this.x +", " +this.y);
 				return false;}
 		}
-			}
+			 }
 	
 	else if(restX!=0 && restY!=0) {
 		
