@@ -50,7 +50,6 @@ public class Main extends Application {
 		mediaPlayer.setVolume(volumen);
 	
 		
-		
 	}
 	static void  stopmusic() {
 		mediaPlayer.stop();

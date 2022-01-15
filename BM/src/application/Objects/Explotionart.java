@@ -60,7 +60,7 @@ public class Explotionart //extends Entities
 		int y =(int) this.y;
 		for (int i = 0; i < explosions.length; i++) {
 			//last = i == explosions.length -1 ? true : false;
-			
+		
 			switch (direction) {
 				case 0:{ 
 					y-=GamePanel.SQUARE_SIZE;

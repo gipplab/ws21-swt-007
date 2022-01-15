@@ -18,8 +18,6 @@ public class Explosionb extends Entities{
 		
 	}
 	
-
-	
 public void update() {
 		if(System.currentTimeMillis()-time>=timeToExplosion && !death) {
 			death=true;

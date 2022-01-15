@@ -55,68 +55,6 @@ void moveRandom(){
     }
 }
 
-//die nächste Bewegung des Botes stimmen.
-//void isFreeBot()
-//{
-//	
-//		switch(lastRichtung) {
-//		case 0:// Up
-//		{
-//			if((isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))==0 
-//				|| isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)==1 
-//				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)
-//				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))
-//			{
-//				lastRichtung=(int) Math.round(Math.random() * 3);
-//				placeBomb();
-//				}
-//			break;
-//		}
-//		case 1: // right
-//		{	if((isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))==0 
-//		||isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)==1
-//		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)
-//		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))
-//		{
-//			lastRichtung=(int) Math.round(Math.random() * 3);
-//				placeBomb();
-//				}
-//			
-//		break;
-//		}
-//		case 2:// Left
-//		{if((isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))==0 
-//			||isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)==1
-//			|| !isFreeExplosion((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)
-//			|| !isFreeExplosion((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))
-//		{
-//		lastRichtung=(int) Math.round(Math.random() * 3);
-//		if((System.currentTimeMillis()-time>=timeToExplosion)) {
-//			placeBomb();
-//			time=System.currentTimeMillis();
-//		}
-//		
-//		}
-//			
-//		break;
-//		}
-//		case 3:// Down
-//		{
-//			if((isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
-//					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1
-//					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))
-//					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
-//				lastRichtung=(int) Math.round(Math.random() * 3);
-//				if((int) Math.round(Math.random() * 15)==2)
-//						placeBomb();
-//					}
-//			break;
-//		}
-//		default:
-//			break;
-//		}
-//}
-
 void isFreeBot()
 {
 	
@@ -191,17 +129,14 @@ public void update() {
 		this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
 	    GameObjects.bomberObjects.remove(this);
         killbot+=100;
-        System.out.println("###### "+GameObjects.bomberObjects.size()+"  #######");
 	}else if(!isFreeExplosionbot(this.x,this.y)) {
 		
 		gethit();
 		this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
 	    GameObjects.bomberObjects.remove(this);	
-	    System.out.println("###### "+GameObjects.bomberObjects.size()+"  #######");
 	      }else
  			moveRandom();
-    System.out.println("###### "+"Update Bot"+this.x/GamePanel.SQUARE_SIZE+"###"+this.y/GamePanel.SQUARE_SIZE);
-    System.out.println("###### "+this.dead);
+
 }
 
 }

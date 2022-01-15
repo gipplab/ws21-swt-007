@@ -62,6 +62,7 @@ public class KeysHandler {
 	    @Override
 	    public void handle(KeyEvent evt) {
 	     
+	    
 	        KeyCode code = evt.getCode();
 	       
 	        if ( !KeysHandler.inputList.contains(code) )

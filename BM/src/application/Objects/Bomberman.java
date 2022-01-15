@@ -17,7 +17,6 @@ public Bomberman(double x, double y,Image img, Boolean p) {
 		}
 
 
-
 public String getName() {
 
 	return Name;
@@ -27,15 +26,10 @@ public void setName(String name) {
 	Name = name;
 }
 
-
-
-
-
-
-
 //wenn der Spieler die Explosion trifft, entweder muss sterben oder Health reduzieren.
 
-public void update() {
+public void update() 
+{
 
 	if(!isFreeExplosion(this.x,this.y)||dontMove) {
 		this.dontMove=true;
@@ -79,15 +73,8 @@ int v=isItem(this.x, this.y);
 	       default:
 	       	break;
 	       
-	       }
-	
+	       }	
 }
 
 }
-
-
-
-
-
-
 

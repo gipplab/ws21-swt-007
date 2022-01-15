@@ -210,9 +210,9 @@ private void drawObjekte(GraphicsContext gc) {
 			    	 
 			     
 			     
-		       //if(!obj.getDeath()) {
+		       if(!obj.getDeath()) {
 				 obj.drawImage(gc);
-		         // }
+		         }
 			}
 		}
 	}
