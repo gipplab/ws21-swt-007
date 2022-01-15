@@ -30,7 +30,7 @@ public class Server {
 			InetAddress clientAddress = null;
 			int clientPort;
 			do {
-				buffer = new byte[2560];
+				buffer = new byte[4096];
 				inPacket = new DatagramPacket(buffer, buffer.length);
 				datagramSocket.receive(inPacket);
 				clientAddress = inPacket.getAddress();

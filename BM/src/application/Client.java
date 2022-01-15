@@ -56,7 +56,7 @@ try
          //System.out.println(" \n sent msg--<<" +message+">> 1 "+host);
          datagramSocket.send(outPacket);
          datagramSocket.setSoTimeout( 2000 ) ;
-         buffer=new byte[2560];
+         buffer=new byte[4096];
          inPacket=new DatagramPacket(buffer,buffer.length);
          //System.out.println(" \n sent msg--<<" +message+">> 4 "+host);        
          datagramSocket.receive(inPacket);        

@@ -237,33 +237,35 @@ void onlineUpdates(String resp) {
 			case "PLAYER":
 				for(int j=0; j< Client.players.size();j++) {
 					if( message[i+2].equals(player[j].getName()) ){
+						System.out.println(player[j].getName()+":"+i);
 						if(System.currentTimeMillis()-Double.parseDouble(message[i+1])>3000) {
 							System.out.println("Player:"+player[j].getName()+" is disconnected");
 						}else {
+							System.out.println(player[j].getName()+":"+message[i+3]);
 							switch(message[i+3]) {
 							case "UP": 
 								player[j].moveUp();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
-								i=i+5;
+								i=i+6;
 								break;
 							case "DOWN": 
 								player[j].moveDown();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
-								i=i+5;
+								i=i+6;
 								break;
 							case "RIGHT": 
 								player[j].moveRight();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
-								i=i+5;
+								i=i+6;
 								break;
 							case "LEFT": 
 								player[j].moveLeft();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
-								i=i+5;
+								i=i+6;
 								break;
 							case "STOP": 
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
