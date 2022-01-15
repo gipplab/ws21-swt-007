@@ -60,7 +60,6 @@ public void init() throws IOException {
 		
 		Ressourcen.readFiles();
 		GameObjects.init();
-	
 		loadMapFile();
 		generateMap();//Map erstellen
 		run();//Spiel starten

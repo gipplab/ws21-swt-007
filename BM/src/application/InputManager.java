@@ -20,8 +20,12 @@ public class InputManager {
 	 if(!player.getDeath())
          player.moveUp();
      	if(Main.online) {
- 		   	Client.updateString =Client.updateString+"UP/"+player.getEntityX()+"/"+player.getEntityY()+"/";
- 	
+ 		   	Client.updateString =System.currentTimeMillis()+"-UP-"+player.getEntityX()+"-"+player.getEntityY();
+ 		   	String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+ 		   	String resp= "";
+ 			resp=Client.accessServer(messageout);
+ 			System.out.println(resp);
+ 			
  	   		}
        }
      //nach Unten bewegen.
@@ -29,8 +33,12 @@ public class InputManager {
 	  if(!player.getDeath())
     	  player.moveDown();
     	   if(Main.online) {
-	 		   Client.updateString =Client.updateString+"DOWN/"+player.getEntityX()+"/"+player.getEntityY()+"/";
-	 		   // Client.accessServer("Play-DOWN");
+	 		   Client.updateString =System.currentTimeMillis()+"-DOWN-"+player.getEntityX()+"-"+player.getEntityY();
+	 		   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+	 		   	String resp= "";
+	 		   System.out.println(messageout);
+	 			resp=Client.accessServer(messageout);
+	 			System.out.println(resp);
 	 		   }
     	
        }
@@ -39,7 +47,11 @@ public class InputManager {
 	  if(!player.getDeath())
     	  player.moveLeft();
    	   if(Main.online) {
-		   	Client.updateString =Client.updateString+"LEFT/"+player.getEntityX()+"/"+player.getEntityY()+"/";
+		   	Client.updateString =System.currentTimeMillis()+"-LEFT-"+player.getEntityX()+"-"+player.getEntityY();
+		   	String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+ 		   	String resp= "";
+ 			resp=Client.accessServer(messageout);
+ 			System.out.println(resp);
 		   	   }
        }
      //nach Rechts bewegen.
@@ -47,32 +59,20 @@ public class InputManager {
 	   if(!player.getDeath())
     	   player.moveRight();  
     	   if(Main.online) {
-	 		   Client.updateString =Client.updateString+"RIGHT/"+player.getEntityX()+"/"+player.getEntityY()+"/";
+	 		   Client.updateString =System.currentTimeMillis()+"-RIGHT-"+player.getEntityX()+"-"+player.getEntityY(); 
+	 		   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+	 		   	
+	 		   String resp= "";
+	 			resp=Client.accessServer(messageout);
+	 			System.out.println(resp);
 	 	
 	 	   }
        }
 
-       //Drop bomb, wenn die Taste Space gedr�ckt werden.
-       
-       if(KeysHandler.SPACEPRESSED){
-           if((player.getBombanzahl()>0)&&!player.getDeath()) {
-        	   System.out.println("Bombe");
-        
-        	   player.BombanzahlDown();
-        	   Bomb b= new Bomb( player.getEntityX() , player.getEntityY() ,player.getExplosion(), Ressourcen.IMAGES.BOMBE.getImage(), player);
-        	   b.BombCollision(player.getEntityX(),player.getEntityY());
-        	   if(Main.online)
-        	   Client.updateString =Client.updateString+"BOMB/"+b.getX()+"/"+b.getY()+"/";
-        	   GameObjects.spawn(b);
-        	   
-        	   }
-        	   KeysHandler.setSPACEPRESSED();
-        	   
-           					}
-          			}
-       
-       
-       		}
    
+    
+        	   
+        }
+} 
 
 
