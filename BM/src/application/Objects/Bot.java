@@ -18,8 +18,10 @@ public Bot(double x, double y, Image img, Boolean p)
 {
 		super(x, y, img,p);
 		// TODO Auto-generated constructor stub
-			this.speed=1.25;//2.5, 5, 7 ,8,75 
+
+		this.speed=1.25;//2.5, 5, 7 ,8,75 
 			time= System.currentTimeMillis();
+			
 	
 }
 	//Bombenanzahl prüfen aund eine Bombe Platzieren.
@@ -185,18 +187,21 @@ void isFreeBot()
 public void update() {
 	// TODO Auto-generated method stub
 	if(!isFreeExplosion(this.x,this.y)) {
-		this.dead=true;
+		gethit();
 		this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
 	    GameObjects.bomberObjects.remove(this);
-         killbot+=100;
-	}
-	     
- 		else if(!isFreeExplosionbot(this.x,this.y)) {
-		this.dead=true;
+        killbot+=100;
+        System.out.println("###### "+GameObjects.bomberObjects.size()+"  #######");
+	}else if(!isFreeExplosionbot(this.x,this.y)) {
+		
+		gethit();
 		this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
-	     GameObjects.bomberObjects.remove(this);	
+	    GameObjects.bomberObjects.remove(this);	
+	    System.out.println("###### "+GameObjects.bomberObjects.size()+"  #######");
 	      }else
- 			moveRandom();	
+ 			moveRandom();
+    System.out.println("###### "+"Update Bot"+this.x/GamePanel.SQUARE_SIZE+"###"+this.y/GamePanel.SQUARE_SIZE);
+    System.out.println("###### "+this.dead);
 }
 
 }

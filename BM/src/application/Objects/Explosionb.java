@@ -13,9 +13,9 @@ public class Explosionb extends Entities{
 		super(x,y,img);
 		time= System.currentTimeMillis();
 		GameObjects.spawn(this);
-		timeToExplosion=1000;
+		timeToExplosion=1200;
 		death=false;
-		System.out.println("bot Ex");
+		
 	}
 	
 

@@ -72,11 +72,7 @@ public abstract class Entities {
 		
 	}
 	public abstract  void update();
-	public Boolean isDestroyed() {
-		return false;
 	
-		
-	}
 	public abstract boolean getDeath();
 	public void gethit() {}
 	public abstract boolean isPlayer();

@@ -138,7 +138,7 @@ public void update()
 	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
 		death=true;
 		GameObjects.tileObjects.remove(this);
-		if(player instanceof Bomberman) {
+		if(player instanceof Bomberman) { 
 		Explotionart ex0= new Explotionart((int)this.x,(int) this.y);
 		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, this.power);
 		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, this.power);

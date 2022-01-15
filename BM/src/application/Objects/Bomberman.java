@@ -5,10 +5,13 @@ import application.Ressourcen;
 
 public class Bomberman extends Character {
 String Name="";
-
+public static double startX;
+public static double startY;
 
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
+	startX=x;
+	startY=y;
 	this.speed=2.5;//2.5, 5, 7 ,8,75
 
 		}

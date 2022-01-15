@@ -15,7 +15,7 @@ public class Explosion extends Entities{
 		GameObjects.spawn(this);
 		timeToExplosion=1200;
 		death=false;
-		System.out.println("erzeuge Ex");
+		
 	}
 	
 
@@ -31,9 +31,10 @@ public void update() {
 					if( Math.round(Math.random())<0.5)
 					createItem();
 					}
+}
 		
 		}
-	}
+	
 //Erstellung eines neuen Items.
 void createItem(){
 	   int poweruptype = (int) Math.round(Math.random() * 3);
@@ -55,7 +56,6 @@ void createItem(){
        	break;
        }
        case 3:{
-
        	imageItem = Ressourcen.IMAGES.SPEEDITEM.getImage();
        	break;
        }

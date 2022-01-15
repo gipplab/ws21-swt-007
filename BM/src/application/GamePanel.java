@@ -139,6 +139,7 @@ public void run() {
 		drawObjekte(gc);
 		Main.playmusic();
 	}
+
 	//Aktualisierung der Objekte im Spiel.
 private void update() throws InterruptedException {
 		InputManager.handlePlayerMovements(player);
@@ -151,8 +152,7 @@ private void update() throws InterruptedException {
 	}
 private void drawBackground(GraphicsContext gc) 
 {
-	// Meer  #b1e8fe
-	//ORANGE
+	
 	if(mapIndex==0||mapIndex==4)
 		gc.setFill(Color.WHITE);
 	else if(mapIndex==1)
@@ -196,23 +196,23 @@ private void drawObjekte(GraphicsContext gc) {
 			     Entities obj= GameObjects.gameObjects.get(i).get(j);
 			     obj.update();
 			     if(obj.getDeath() && obj.isPlayer()) {
-			    	 //
-
 			    	 gameOver=1;
 			    	 timeofDeath= System.currentTimeMillis();
-			    	 System.out.println("GameOver");
-			     }else if(obj instanceof Bot) {
-			    	if( GameObjects.bomberObjects.size()==1 ) {
+			    	 System.out.println("GameOver"
+			    	 		+ "### der Spieler ist tot ###");
+			     }else if( GameObjects.bomberObjects.size()==1) {
+			    		System.out.println("###Alle BOTS sind Tot ausser der Spieler ###");
 			    		 timeofDeath= System.currentTimeMillis();
 			    		 gameOver=2;
 			    	
 			    	}
+			 
 			    	 
-			     }
 			     
-		       if(!obj.getDeath()) {
+			     
+		       //if(!obj.getDeath()) {
 				 obj.drawImage(gc);
-		          }
+		         // }
 			}
 		}
 	}

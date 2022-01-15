@@ -11,8 +11,7 @@ public abstract class Character extends Entities {
 	public int health;
 	boolean dead ;
 	double time;
-	protected double startX;
-	protected double startY;
+
 	final double timeToExplosion=1200;
 	protected boolean dontMove=false;
 	Boolean Player= false;
@@ -22,8 +21,7 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	super(x,y,img);
 	// TODO Auto-generated constructor stub
 	this.Player=isPlayer;
-	startX=x;
-	startY=y;
+
 	bombanzahl=1;
 	 explosion=1;
 	 health=1;
@@ -33,7 +31,6 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 public int getPlayerFarbe() {
 	return PlayerFarbe;
 }
-
 
 
 public void setPlayerFarbe(int playerFarbe) {
@@ -82,12 +79,10 @@ public boolean isFreeExplosion(double x,  double y) {
 	if(restX==0 && restY==0) {
 		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
 			if(GameObjects.explosionObjects.get(i).getEntityX()==x&& GameObjects.explosionObjects.get(i).getEntityY()==y) {
-				 System.out.println(this.x +", " +this.y);
-				return false;}
-			
+				return false;
+				}
 		}
 	}
-	
 	else if(restX==0 && restY!=0) {
 		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
 		 if((GameObjects.explosionObjects.get(i).getEntityX() == x &&
@@ -95,7 +90,7 @@ public boolean isFreeExplosion(double x,  double y) {
 				 ||
 				 (GameObjects.explosionObjects.get(i).getEntityX() == x &&
 				 GameObjects.explosionObjects.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY ))) {
-			 System.out.println(this.x +", " +this.y);
+
 			 return false;}
 		 }
 		
@@ -138,9 +133,6 @@ public boolean isFreeExplosion(double x,  double y) {
 	}
 		
 	}
-	
-	
-	
 	
 	return true;
 	
@@ -315,9 +307,13 @@ public void gethit() {
 		this.dead=true;
 	
 	
+	
 dontMove=false;
-this.x=startX;
-this.y=startY;
+if(this instanceof Bomberman) {
+this.x=Bomberman.startX;
+this.y=Bomberman.startY;
+}
+System.out.println("###### getroffen");
 }
 
 public boolean isPlayer() {
