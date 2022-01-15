@@ -16,16 +16,25 @@ public class KeysHandler {
 	
 	    public static ArrayList<KeyCode> inputList = new ArrayList<KeyCode>();
 	    public static boolean SPACEPRESSED=false;
+	    public static boolean playMusik=true;
 	    public static void attachEventHandlers(Scene scene){
 	        keyReleaseHanlder released = new keyReleaseHanlder();
 	        keyPressedHandler pressed = new keyPressedHandler();
 	        scene.setOnKeyReleased(released);
 	        scene.setOnKeyPressed(pressed);
 	    }
-
-	    public static boolean getSPACEPRESSED() {
-	    	return SPACEPRESSED;
+	    
+	    public static void setplayMusik() {
+	    	if(playMusik) {
+	    		Main.playmusic();
+	    		playMusik=true;}
+	    	else {
+	    		Main.stopmusic();
+	    		playMusik=false;
+	    		}
+	    	
 	    }
+	 
 	    public static void setSPACEPRESSED() {
 	    	if(SPACEPRESSED)
 	    	SPACEPRESSED=false;
@@ -60,6 +69,14 @@ public class KeysHandler {
 	        if(code==KeyCode.SPACE) {
 	        	KeysHandler.SPACEPRESSED=true;
 	        }
+	        if(code==KeyCode.NUMBER_SIGN) {
+
+	        	if(KeysHandler.playMusik)
+	        		KeysHandler.playMusik=false;
+	        	else KeysHandler.playMusik=true;
+	        	KeysHandler.setplayMusik();
+	        }
+	        
 	    }
 	}
 

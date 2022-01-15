@@ -281,8 +281,6 @@ void onlineUpdates(String resp) {
 								}
 								//gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(), SQUARE_SIZE * Double.parseDouble( message[i+1]), SQUARE_SIZE * Double.parseDouble( message[i+2]),										SQUARE_SIZE, SQUARE_SIZE);								
 								i=i+2;
-							}else {							
-								i=i+1;								
 							}
 						}
 						

@@ -40,20 +40,39 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	MediaPlayer mediaPlayer;
+	static MediaPlayer mediaPlayer;
+	static double volumen=0.50;;
 	public void music() {
 		String s = "src/application/music/BG.mp3";
 		Media h = new Media(Paths.get(s).toUri().toString());
 		mediaPlayer = new MediaPlayer(h);
+		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+		mediaPlayer.setVolume(volumen);
+	
 		
 		
 	}
-	void stopmusic() {
+	static void  stopmusic() {
 		mediaPlayer.stop();
 	}
 	
-	void playmusic() {
+	static void playmusic() {
+		
 		mediaPlayer.play();
+	}
+	static void volumeUp() {
+		if(volumen<=0.95)
+		volumen+=0.005;
+		else volumen=1;
+		mediaPlayer.setVolume(volumen);
+		 System.out.println(volumen);
+	}
+	static void volumeDown() {
+		if(volumen>=0.05)
+		volumen-=0.005;
+		else volumen=0;
+		mediaPlayer.setVolume(volumen);
+		 System.out.println(volumen);
 	}
 
 }

@@ -91,10 +91,23 @@ public class InputManager {
         	   KeysHandler.setSPACEPRESSED();
         	   
            					}
-          			}
+          			
        
        
-       		}
+   // Sounds Controllers
+   if(keyboardInputs.contains(KeyCode.MINUS) ){
+	   Main.volumeDown();
+   }
+   
+   if(keyboardInputs.contains(KeyCode.PLUS) ){
+	   Main.volumeUp();
+	  }
+  
+   
+   }
+   }		
+
+
    
 
 

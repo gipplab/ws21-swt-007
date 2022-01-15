@@ -137,6 +137,7 @@ public double getHeight() {
 
 public void run() {
 		drawObjekte(gc);
+		Main.playmusic();
 	}
 	//Aktualisierung der Objekte im Spiel.
 private void update() throws InterruptedException {
