@@ -23,7 +23,7 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	this.power=power;
 	player=p;
 	
-	if (BombeDuplikate()) {
+	if (BombeDuplikate()||ExDuplikate()) {
 		player.BombanzahlUp();
 		death=true;
 		GameObjects.tileObjects.remove(this);
@@ -97,6 +97,14 @@ private Boolean BombeDuplikate()
 {
 	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
 		   if(this.x==(GameObjects.tileObjects.get(i).getX()) && this.y==(GameObjects.tileObjects.get(i).getY())) 
+			   return true;
+	   return false;
+	   
+}
+private Boolean ExDuplikate() 
+{
+	   for(int i=0; i< GameObjects.explosionObjects.size(); i++) 
+		   if(this.x==(GameObjects.explosionObjects.get(i).getEntityX()) && this.y==(GameObjects.tileObjects.get(i).getEntityY())) 
 			   return true;
 	   return false;
 	   

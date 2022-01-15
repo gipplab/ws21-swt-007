@@ -42,7 +42,7 @@ public class Server {
 				if(message[0].equals("Host")) 
 				{
 					PlayerInfos host = new PlayerInfos(message[2]); 
-					Room rm = new Room(message[1],Integer.parseInt(message[3]));
+					Room rm = new Room(message[1],Integer.parseInt(message[3]),Integer.parseInt(message[4]));
 					rm.AddPlayerToRoom(host);
 					roomsList.add(rm);
 					System.out.print(" : ");
@@ -99,13 +99,12 @@ public class Server {
 									break;
 								}else if(room.GetPlayersNumber() == room.getHowManyPlayers()) {
 									
-									messageOut="Complited";
+									messageOut="Complited-"+room.mapIndex;
 									for(PlayerInfos player : room.players) 
 									{
 										messageOut=messageOut+"-"+player.getName();
 										//System.out.println("txt"+messageOut);
 									}
-									
 									break;
 								}
 							}
@@ -143,7 +142,10 @@ public class Server {
 								messageOut="ServerUpdates";
 								for(PlayerInfos player : room.players) {
 									if(!message[2].equals(player.getName())) {										
-											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb();		
+											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb()+"-MAP-";
+											for(String[] mp : room.map) {
+												messageOut=messageOut+mp[0]+"/"+mp[1]+"/";
+											}
 									}else {
 										player.setPosition("STOP-"+message[5]+"-"+message[6]);
 										player.action = message[4];

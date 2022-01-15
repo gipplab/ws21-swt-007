@@ -1,13 +1,12 @@
 package application;
 
-import java.util.ArrayList;
 
 public class PlayerInfos {
 		
 	String name;
 	String position;
 	String bomb="NOBOMB";
-	public String action="ACTIF"; 
+	public String action="0"; 
 	public String getPosition() {
 		return position;
 	}

@@ -43,10 +43,11 @@ public class WaitPageController {
 						 
 						
 						if(message[0].equals("Complited")) {
-							for(int i=1 ;i<message.length;i++) 
+							GamePanelOnline.mapIndex = Integer.parseInt(message[1]);
+							for(int i=2 ;i<message.length;i++) 
 							{
 								if(Client.playerpseudo.equals(message[i])) {
-									GamePanelOnline.mainPlayerIndex=i-1;
+									GamePanelOnline.mainPlayerIndex=i-2;
 								}
 
 								Client.addPlayer(message[i]);

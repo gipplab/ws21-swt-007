@@ -109,13 +109,13 @@ public class GameHostPageController implements Initializable{
 		
 			String msg = "Host-"+RoomNameTextField.getText()+"-"+PlayerNicknameTextField.getText();
 			if(FourPlayersRadioButton.isSelected()) {
-				msg = msg+"-4";	
+				msg = msg+"-4-"+counter;	
 			}
 			else if(threePlayersRadioButton.isSelected()){
-				msg = msg+"-3";	
+				msg = msg+"-3-"+counter;	
 			}
 			else if(TowPlayersRadioButton.isSelected()){
-				msg = msg+"-2";	
+				msg = msg+"-2-"+counter;	
 			}
 	    			
 	   //TextRecieved.setText(player.accessServer(msg));

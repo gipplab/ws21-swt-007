@@ -233,6 +233,7 @@ void onlineUpdates(String resp) {
 		String[] message = resp.split("-");
 		int i =1;
 		while(i < message.length){
+			System.out.println(message[i]+" :i "+i);
 			switch(message[i]) {
 			case "PLAYER":
 				for(int j=0; j< Client.players.size();j++) {
@@ -279,12 +280,11 @@ void onlineUpdates(String resp) {
 								if(player[j].getBombanzahl()>0) {
 									Bomb bmb = new Bomb(Double.parseDouble(message[i+1]), Double.parseDouble(message[i+2]),1,Ressourcen.IMAGES.BOMBE.getImage(),player[j]);
 									player[j].BombanzahlDown();
-									GameObjects.spawn(bmb);							
+									GameObjects.spawn(bmb);	
+									i=i+3;
 								}
 								//gc.drawImage(Ressourcen.IMAGES.BOMBE.getImage(), SQUARE_SIZE * Double.parseDouble( message[i+1]), SQUARE_SIZE * Double.parseDouble( message[i+2]),										SQUARE_SIZE, SQUARE_SIZE);								
-								i=i+2;
-							}else {							
-								i=i+1;								
+								
 							}
 						}
 						
@@ -292,13 +292,53 @@ void onlineUpdates(String resp) {
 					}					
 				}							
 				break;
+			case "MAP":
+				String[] map = message[i+1].split("/");
+				int k=0;
+				while(k < map.length) {
+					 switch (mapIndex) {
+	                    case 0:     // Soft wall zerstoerbar
+	                    	Wall soft= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL.getImage(),true);
+	                    	if(soft!=null) 
+	                    		GameObjects.spawn(soft);
+	                        break;
+	                    case 1:     // Soft wall zerstoerbar
+	                        Wall soft1= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL1.getImage(),true);
+	                       	if(soft1!=null) 
+	                       		GameObjects.spawn(soft1);
+	                           break;
+	                    case 2:     // Soft wall zerstoerbar
+	                        Wall soft2= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL2.getImage(),true);
+	                       	if(soft2!=null) 
+	                       		GameObjects.spawn(soft2);
+	                           break;
+	                    case 3:     // Soft wall zerstoerbar
+	                        Wall soft3= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL3.getImage(),true);
+	                       	if(soft3!=null) 
+	                       		
+	                       		GameObjects.spawn(soft3);
+	                           break;
+	                    case 4:     // Soft wall zerstoerbar
+	                        Wall soft4= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL4.getImage(),true);
+	                       	if(soft4!=null) 
+	                       		GameObjects.spawn(soft4);
+	                           break;
+	                    case 5:     // Soft wall zerstoerbar
+	                        Wall soft5= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL5.getImage(),true);
+	                       	if(soft5!=null) 
+	                       		GameObjects.spawn(soft5);
+	                           break;
+					 }
+						
+	            		k=k+2;
+				}				            	
 			}
 			i++;
 		}
 }
 	 private static void loadMapFile()  {
 		
-        bufferedReader = new BufferedReader(Ressourcen.file_Server[0]);
+        bufferedReader = new BufferedReader(Ressourcen.file_Server[mapIndex]);
 	    mapLayout = new ArrayList<>();
 	 
         try {
@@ -323,21 +363,43 @@ void onlineUpdates(String resp) {
         for (int y = 0; y < ROWS; y++) {
             for (int x = 0; x < COLUMNS; x++) {
                 switch (mapLayout.get(y).get(x)) {
-                    case ("S"):     // Soft wall zerstoerbar
+                    /*case ("S"):     // Soft wall zerstoerbar
                     	Wall soft= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL.getImage(),true);
                     	if(soft!=null) 
                     		GameObjects.spawn(soft);
-                        break;
-                    case ("H"):    
-                    	Wall hard= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL.getImage(),false);
-                    	if(hard!=null)
-                    		GameObjects.spawn(hard);                    
                         break;
                     case ("P"):     // Soft wall zerstoerbar
                         Wall soft1= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL1.getImage(),true);
                        	if(soft1!=null) 
                        		GameObjects.spawn(soft1);
                            break;
+                    case ("E"):     // Soft wall zerstoerbar
+                        Wall soft2= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL2.getImage(),true);
+                       	if(soft2!=null) 
+                       		GameObjects.spawn(soft2);
+                           break;
+                    case ("A"):     // Soft wall zerstoerbar
+                        Wall soft3= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL3.getImage(),true);
+                       	if(soft3!=null) 
+                       		GameObjects.spawn(soft3);
+                           break;
+                    case ("Q"):     // Soft wall zerstoerbar
+                        Wall soft4= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL4.getImage(),true);
+                       	if(soft4!=null) 
+                       		GameObjects.spawn(soft4);
+                           break;
+                    case ("M"):     // Soft wall zerstoerbar
+                        Wall soft5= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL5.getImage(),true);
+                       	if(soft5!=null) 
+                       		GameObjects.spawn(soft5);
+                           break;*/
+                           
+                    case ("H"):    
+                    	Wall hard= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL.getImage(),false);
+                    	if(hard!=null)
+                    		GameObjects.spawn(hard);                    
+                        break;
+                    
                            
                     case ("T"):   //Hardwall.
                        	Wall hard1= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL1.getImage(),false);
@@ -345,44 +407,28 @@ void onlineUpdates(String resp) {
                     		GameObjects.spawn(hard1);                    
                            break;
                            
-                    case ("E"):     // Soft wall zerstoerbar
-                        Wall soft2= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL2.getImage(),true);
-                       	if(soft2!=null) 
-                       		GameObjects.spawn(soft2);
-                           break;
+                   
                            
                     case ("K"):   //Hardwall.
                        	Wall hard2= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL2.getImage(),false);
                        	if(hard2!=null)
                        		GameObjects.spawn(hard2);                    
                            break;
-                    case ("A"):     // Soft wall zerstoerbar
-                        Wall soft3= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL3.getImage(),true);
-                       	if(soft3!=null) 
-                       		GameObjects.spawn(soft3);
-                           break;
+                    
                            
                     case ("L"):   //Hardwall.
                        	Wall hard3= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL3.getImage(),false);
                        	if(hard3!=null)
                        		GameObjects.spawn(hard3);                    
                            break;
-                    case ("Q"):     // Soft wall zerstoerbar
-                        Wall soft4= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL4.getImage(),true);
-                       	if(soft4!=null) 
-                       		GameObjects.spawn(soft4);
-                           break;
+                   
                            
                     case ("U"):   //Hardwall.
                        	Wall hard4= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL4.getImage(),false);
                     	if(hard4!=null)
                     		GameObjects.spawn(hard4);                    
                            break;
-                    case ("M"):     // Soft wall zerstoerbar
-                        Wall soft5= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL5.getImage(),true);
-                       	if(soft5!=null) 
-                       		GameObjects.spawn(soft5);
-                           break;
+                   
                            
                     case ("R"):   //Hardwall.
                        	Wall hard5= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL5.getImage(),false);
@@ -414,7 +460,7 @@ void onlineUpdates(String resp) {
                     case ("4"):     // Player 3
                     	if(Client.players.size()>3) {
                     		GamePanelOnline.player[3] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[3][0],true);
-                    		GamePanelOnline.player[3].setName(Client.players.get(3));
+                    		GamePanelOnline.player[3].setName(Client.players.get(3));           
                     		GameObjects.spawn(GamePanelOnline.player[3]);   
                     		GamePanelOnline.player[3].setPlayerFarbe(3);                   	
                     	}                   
