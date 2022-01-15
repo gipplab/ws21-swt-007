@@ -274,7 +274,6 @@ void onlineUpdates(String resp) {
 								i=i+6;
 								break;
 							}
-							System.out.println(message[i]+"/i"+i);
 							if(message[i].equals("BOMB")) {
 								System.out.println(message[i]+"/i"+i);
 								if(player[j].getBombanzahl()>0) {
@@ -315,7 +314,7 @@ void onlineUpdates(String resp) {
 	                    case 3:     // Soft wall zerstoerbar
 	                        Wall soft3= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL3.getImage(),true);
 	                       	if(soft3!=null) 
-	                       		
+	                       		System.out.println();
 	                       		GameObjects.spawn(soft3);
 	                           break;
 	                    case 4:     // Soft wall zerstoerbar

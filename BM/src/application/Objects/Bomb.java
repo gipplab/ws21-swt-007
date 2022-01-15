@@ -1,5 +1,6 @@
 package application.Objects;
 
+import application.Client;
 import application.GamePanel;
 import application.Main;
 import application.Ressourcen;
@@ -152,6 +153,13 @@ public void update()
 		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, this.power);
 		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
 		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
+		if(Main.online) {
+			Client.updateString =System.currentTimeMillis()+"-NOBOMB";
+     	    String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+ 		   	String resp= "";
+ 			resp=Client.accessServer(messageout);
+ 			System.out.println(resp);
+		}
 		}
 		else if(player instanceof Bot)
 		{
@@ -161,6 +169,7 @@ public void update()
 			Explosionbot ex3= new Explosionbot((int)this.x, (int)this.y, 2, this.power);
 			Explosionbot ex4= new Explosionbot((int)this.x,(int) this.y, 3, this.power);
 		}
+		    
 			player.BombanzahlUp();
 	}
 }
