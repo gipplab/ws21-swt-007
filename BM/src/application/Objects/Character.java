@@ -27,7 +27,7 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	bombanzahl=1;
 	 explosion=1;
 	 health=1;
-	 dead=false ; 
+	 dead=false ;
 
 }
 public int getPlayerFarbe() {
@@ -39,7 +39,7 @@ public int getPlayerFarbe() {
 public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
-//Hier wird gepr�ft, ob das Block frei(ein Weg) ist.
+//Hier wird geprüft, ob das Block frei(ein Weg) ist.
 	public  boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
@@ -72,16 +72,7 @@ public void setPlayerFarbe(int playerFarbe) {
 	     
 	      	return frei;
 	 }
-<<<<<<< HEAD
-	//Hier wird gepr�ft, ob es in diesem Block eine Bombe gibt.
-	@SuppressWarnings("unused")
-	private  boolean isFreeBomb(double nextX, double nextY) {
-	     Entities obje;
-	     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
-	     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
-=======
 	
->>>>>>> Yazan-Main
 
 public boolean isFreeExplosion(double x,  double y) {
 	
@@ -156,27 +147,7 @@ public boolean isFreeExplosion(double x,  double y) {
 }
 
 
-<<<<<<< HEAD
-	     int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	     int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
-	   
-	     for (int i = 0; i < GameObjects.tileObjects.size(); i++) {	
-	    	   
-	   	    obje = GameObjects.tileObjects.get(i);
-	   	    
-	 	        if((obje.getEntityImage().equals(Ressourcen.IMAGES.BOMBE.getImage()))) {
-	 		    	  		return false;
-	 		    }             
-	 	  }
-	      	return true;
-	 }
-	//Hier wird gepr�ft, ob es in diesem Block eine Explosion gibt.
-	public boolean isFreeExplosion(double nextX, double nextY) {
-		// TODO Auto-generated method stub
-		  Entities obje;
-=======
 public boolean isFreeExplosionbot(double x,  double y) {
->>>>>>> Yazan-Main
 	
 	double restX= x% GamePanel.SQUARE_SIZE;
 	double restY= y% GamePanel.SQUARE_SIZE;
@@ -360,24 +331,19 @@ public int getBombanzahl(){
 public int getExplosion(){
 		return this.explosion;
 	}
-<<<<<<< HEAD
-	//Bombenanzahl erh�hen.
-	public void BombanzahlUp(){
-=======
-	//Bombenanzahl erh�hen.
+	//Bombenanzahl erhöhen.
 public void BombanzahlUp(){
->>>>>>> Yazan-Main
 		 this.bombanzahl++;
 	}
 	//Bombenanzahl reduzieren.
 public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
-//Explosion reichweite erh�hen.  
+//Explosion reichweite erhöhen.  
 public void ExplosionUp(){
 	this.explosion++;
 }
-//Health erh�hen.
+//Health erhöhen.
 public void HealthUp(){
 	this.health++;
 }
@@ -415,7 +381,7 @@ public int indexAnimPlayer() {
 	        return indexAnimPlayer;
 	 }
 	 
-//Hier wird gepr�ft, ob es in diesem Block ein Item gibt.
+//Hier wird geprüft, ob es in diesem Block ein Item gibt.
 		public int isItem(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -435,7 +401,7 @@ public int indexAnimPlayer() {
 		    for (int i = 0; i < GameObjects.tileObjects.size(); i++) {	
 		 	    obje = GameObjects.tileObjects.get(i);
 		 	    
-		 	   if(obje instanceof Items) {
+			        if(obje instanceof Items) {
 				      if((obje.getEntityX()==nextX_1*GamePanel.SQUARE_SIZE  && obje.getEntityY()==nextY_1* GamePanel.SQUARE_SIZE)||
 				            (obje.getEntityX()==nextX_2* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_2* GamePanel.SQUARE_SIZE)||
 					        (obje.getEntityX()==nextX_3* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_3* GamePanel.SQUARE_SIZE)||
@@ -448,7 +414,7 @@ public int indexAnimPlayer() {
 			  }
 		    	return -1;
 		} 
-//Geschwindigkeit erh�hen.		
+//Geschwindigkeit erhöhen.		
 protected void speedUp() {
 		if(speed ==2.5)
 			speed=5;
@@ -466,16 +432,6 @@ public void moveRight() {
 	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&&!dontMove) {
 	 	 if(isFree(this.x+  this.speed,this.y)&& isFreeBomb(this.x,this.y,1)){
 	 	    this.x= this.x+  this.speed;
-<<<<<<< HEAD
-		 }
-	 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65)) {
-	 		 this.y= this.y+  (this.speed/4);	
-	 	      }
-	 	 else if((this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)) {
-	 		  this.y= this.y-  (this.speed/4);		 		 
-	 	      }
-        } //die Pixel verteilung k�nnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
-=======
 		 } 
 	 	 else if(this.x % GamePanel.SQUARE_SIZE !=0) {
 	 		 this.x+= GamePanel.SQUARE_SIZE - (this.x % GamePanel.SQUARE_SIZE);
@@ -484,8 +440,7 @@ public void moveRight() {
 	 	 
 	 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
 
-        } //die Pixel verteilung k�nnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
->>>>>>> Yazan-Main
+        } //die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
 	// und nicht immer auf Ressourcen greifen 
 	// die Player Matrix wird ein Teil des class  Charackter werden
 

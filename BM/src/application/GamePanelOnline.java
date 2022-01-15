@@ -141,29 +141,6 @@ void EndOfGame() throws InterruptedException {
 		drawObjekte(gc);
 	}
 
-<<<<<<< HEAD
-	private void update() throws InterruptedException {
-		//System.out.println("114GamePanel: "+Client.updateString);
-		String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-GetUpdates-"+System.currentTimeMillis()+"-"+player[mainPlayerIndex].getEntityX()+"-"+player[mainPlayerIndex].getEntityY();
-		System.out.println(messageout);
-		String resp= "";
-		resp=Client.accessServer(messageout);
-		//System.out.println(resp);
-		
-		//druekeNachricht(resp);
-		Client.updateString="";
-		InputManager.handlePlayerMovements(player[mainPlayerIndex]);
-		onlineUpdates(resp);
-		drawBackground(gc);
-		drawObjekte(gc);
-		drawBomb(gc);
-		
-
-	} 
-	private void drawBackground(GraphicsContext gc) {
-	  for(int i=0 ; i<ROWS; i++) 
-		for(int j=0;j<COLUMNS;j++) {
-=======
 void update() throws InterruptedException {
 			//System.out.println("114GamePanel: "+Client.updateString);
 			String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-GetUpdates-"+System.currentTimeMillis()+"-"+player[mainPlayerIndex].getEntityX()+"-"+player[mainPlayerIndex].getEntityY();
@@ -186,7 +163,6 @@ void update() throws InterruptedException {
 		// Meer  #b1e8fe
 		//ORANGE
 		if(mapIndex==0||mapIndex==4)
->>>>>>> Yazan-Main
 			gc.setFill(Color.WHITE);
 		else if(mapIndex==1)
 			gc.setFill(Color.valueOf("#FFFBD3"));
@@ -229,19 +205,11 @@ void update() throws InterruptedException {
 				
 				Entities obj= GameObjects.gameObjects.get(i).get(j);
 				obj.update();
-<<<<<<< HEAD
-			if(obj.getDeath() && obj instanceof Bomberman) {
-				gameOver=true;
-			System.out.println("GameOver");
-			System.exit(0);
-		
-=======
 			if(this.getPlayer().getDeath()) {
 				gameOver=1;
 				timeofDeath=System.currentTimeMillis();
 				System.out.println("GameOver");
 			
->>>>>>> Yazan-Main
 			}
 			if(!obj.getDeath()) {
 			
@@ -260,11 +228,7 @@ void update() throws InterruptedException {
 		}
 	}
 	
-<<<<<<< HEAD
-	void onlineUpdates(String resp) {
-=======
 void onlineUpdates(String resp) {
->>>>>>> Yazan-Main
 		System.out.println(resp);
 		String[] message = resp.split("-");
 		int i =1;
@@ -320,11 +284,6 @@ void onlineUpdates(String resp) {
 							}else {							
 								i=i+1;								
 							}
-<<<<<<< HEAD
-							
-							
-=======
->>>>>>> Yazan-Main
 						}
 						
 						break;

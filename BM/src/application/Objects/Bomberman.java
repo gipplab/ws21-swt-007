@@ -25,25 +25,10 @@ public void setName(String name) {
 }
 
 
-<<<<<<< HEAD
-@Override
-public boolean getDeath() {
-	return this.dead;
-}
-//geprï¿½ft je nach Health, ob der Spieler sterben muss.
- public boolean death() {
-	if(health>0) {
-		return false;
-	}else 
-		return true;
-			
-}
-=======
 
 
 
 
->>>>>>> Yazan-Main
 
 //wenn der Spieler die Explosion trifft, entweder muss sterben oder Health reduzieren.
 
@@ -63,13 +48,9 @@ public void update() {
 		time= System.currentTimeMillis();
 	    if(this.dead&&(System.currentTimeMillis()-time>=timeToExplosion)) {
 	           GameObjects.bomberObjects.remove(this);
-<<<<<<< HEAD
-	        }//verschiedene Items auftauchen kï¿½nnen.
-=======
 	        }
->>>>>>> Yazan-Main
 	}
-//verschiedene Items auftauchen können.
+//verschiedene Items auftauchen kÃ¶nnen.
 int v=isItem(this.x, this.y);
 	 
         switch(v) {

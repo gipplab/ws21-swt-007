@@ -1,6 +1,5 @@
 package application.Objects;
 
-import application.Client;
 import application.GamePanel;
 import application.Main;
 import application.Ressourcen;
@@ -16,10 +15,6 @@ public class Bomb extends TileObjects
 	
 public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	super(x2,y2,image);
-<<<<<<< HEAD
-	 
-=======
->>>>>>> Yazan-Main
 	this.x=x2;
 	this.y=y2;
 	
@@ -64,55 +59,8 @@ public double getX() {return this.x;}
 
 public double getY() {return this.y;}
 
-<<<<<<< HEAD
-//Bombezustand und Bombeanzahl aktualisieren.
-public void update() {
-	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
-		death=true;
-		GameObjects.tileObjects.remove(this);
-		System.out.println("remove Bome "+this.x+", "+ this.y);
-		Explotionart ex0= new Explotionart((int)this.x,(int) this.y);
-		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, this.power);
-		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, this.power);
-		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
-		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
-		player.BombanzahlUp();
-		if(Main.online) {			
-			Client.updateString ="NOBOMB";
-	 	    String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+System.currentTimeMillis()+"-"+Client.updateString;
-			String resp= "";
-		    resp=Client.accessServer(messageout);
-			System.out.println(resp);
-		}			
-		
-	}
-}
-//prï¿½ft, ob in einem Block mehrere Bomben gibt
-private Boolean BombeDuplikate() {
-	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
-		   if(this.x==(GameObjects.tileObjects.get(i).getX()) && this.y==(GameObjects.tileObjects.get(i).getY())) 
-			   return true;
-	   return false;
-	   
-}
-public boolean getDeath() {
-	return death;
-}
-
-
-
-@Override
-public boolean isPlayer() {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-//Hier wird geprï¿½ft, ob es in diesem Block eine Explosion gibt.
-public boolean isFreeExplosion() {
-=======
 public boolean isFreeExplosion() 
 {
->>>>>>> Yazan-Main
 	// TODO Auto-generated method stub
 	 Entities obje;
 	    
@@ -144,7 +92,7 @@ public boolean isFreeExplosion()
 	}
 
 
-//prüft, ob in einem Block mehrere Bomben gibt
+//prÃ¼ft, ob in einem Block mehrere Bomben gibt
 private Boolean BombeDuplikate() 
 {
 	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
@@ -167,7 +115,7 @@ public boolean isPlayer()
 	return false;
 }
 
-//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
+//Hier wird geprÃ¼ft, ob es in diesem Block eine Explosion gibt.
 @Override
 protected int getItemtype() 
 {

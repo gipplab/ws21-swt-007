@@ -150,10 +150,10 @@ public class Server {
 									}
 								}
 							}
-						
+							break;
 						}
 						
-						break;
+						
 					}
 					
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
