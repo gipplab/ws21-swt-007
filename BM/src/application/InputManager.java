@@ -20,7 +20,7 @@ public class InputManager {
 	 if(!player.getDeath())
          player.moveUp();
      	if(Main.online) {
- 		   	Client.updateString ="UP-"+player.getEntityX()+"-"+player.getEntityY();
+ 		   	Client.updateString =System.currentTimeMillis()+"-UP-"+player.getEntityX()+"-"+player.getEntityY();
  		   	String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
  		   	String resp= "";
  			resp=Client.accessServer(messageout);
@@ -33,7 +33,7 @@ public class InputManager {
 	  if(!player.getDeath())
     	  player.moveDown();
     	   if(Main.online) {
-	 		   Client.updateString ="DOWN-"+player.getEntityX()+"-"+player.getEntityY();
+	 		   Client.updateString =System.currentTimeMillis()+"-DOWN-"+player.getEntityX()+"-"+player.getEntityY();
 	 		   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
 	 		   	String resp= "";
 	 		   System.out.println(messageout);
@@ -47,7 +47,7 @@ public class InputManager {
 	  if(!player.getDeath())
     	  player.moveLeft();
    	   if(Main.online) {
-		   	Client.updateString ="LEFT-"+player.getEntityX()+"-"+player.getEntityY();
+		   	Client.updateString =System.currentTimeMillis()+"-LEFT-"+player.getEntityX()+"-"+player.getEntityY();
 		   	String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
  		   	String resp= "";
  			resp=Client.accessServer(messageout);
@@ -59,7 +59,7 @@ public class InputManager {
 	   if(!player.getDeath())
     	   player.moveRight();  
     	   if(Main.online) {
-	 		   Client.updateString ="RIGHT-"+player.getEntityX()+"-"+player.getEntityY(); 
+	 		   Client.updateString =System.currentTimeMillis()+"-RIGHT-"+player.getEntityX()+"-"+player.getEntityY(); 
 	 		   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
 	 		   	
 	 		   String resp= "";
@@ -78,12 +78,13 @@ public class InputManager {
         	   Bomb b= new Bomb( player.getEntityX() , player.getEntityY() ,player.getExplosion(), Ressourcen.IMAGES.BOMBE.getImage(), player);
         	   b.BombCollision(player.getEntityX(),player.getEntityY());
         	   player.BombanzahlDown();
-        	   if(Main.online)
-        	   Client.updateString ="BOMB-"+b.getX()+"-"+b.getY();
-        	   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
-    		   	String resp= "";
-    			resp=Client.accessServer(messageout);
-    			System.out.println(resp);
+        	   if(Main.online) {
+        		   Client.updateString =System.currentTimeMillis()+"-BOMB-"+b.getX()+"-"+b.getY();
+            	   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+        		   	String resp= "";
+        			resp=Client.accessServer(messageout);
+        			System.out.println(resp);
+        	   }        	  
         	   GameObjects.spawn(b);
         	   
         	   }

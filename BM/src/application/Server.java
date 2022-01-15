@@ -124,14 +124,14 @@ public class Server {
 							if(message[3].equals("SetUpdates")) {
 								for(PlayerInfos player : room.players) {
 									if(message[2].equals(player.getName())) {
-										player.setAction("ACTIF");
-										if(message[4].equals("BOMB")) {
-											player.setBomb(message[4]+"-"+message[5]+"-"+message[6]);
-										}else if(message[4].equals("NOBOMB")) {
-											player.setBomb(message[4]);
+										player.setAction(message[4]);
+										if(message[5].equals("BOMB")) {
+											player.setBomb(message[5]+"-"+message[6]+"-"+message[7]);
+										}else if(message[5].equals("NOBOMB")) {
+											player.setBomb(message[5]);
 										}
 										else { 
-											player.setPosition(message[4]+"-"+message[5]+"-"+message[6]);
+											player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);
 											
 										}
 										messageOut="SuccessUpdate";
@@ -142,16 +142,11 @@ public class Server {
 							}else if(message[3].equals("GetUpdates")) {
 								messageOut="ServerUpdates";
 								for(PlayerInfos player : room.players) {
-									if(!message[2].equals(player.getName())) {
-										if(player.action.equals("ACTIF")) {
-											messageOut=messageOut+"-PLAYER-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb();
-											player.action = "NACTIF";
-										}else {
-											messageOut=messageOut+"-PLAYER-"+player.getName()+"-NACTIF";
-										}
+									if(!message[2].equals(player.getName())) {										
+											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb();		
 									}else {
-										player.setPosition("STOP-"+message[4]+"-"+message[5]);
-										player.action = "ACTIF";
+										player.setPosition("STOP-"+message[5]+"-"+message[6]);
+										player.action = message[4];
 									}
 								}
 							}

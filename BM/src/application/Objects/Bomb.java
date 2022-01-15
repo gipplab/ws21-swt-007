@@ -73,7 +73,7 @@ public void update() {
 		player.BombanzahlUp();
 		if(Main.online) {			
 			Client.updateString ="NOBOMB";
-	 	    String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+	 	    String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+System.currentTimeMillis()+"-"+Client.updateString;
 			String resp= "";
 		    resp=Client.accessServer(messageout);
 			System.out.println(resp);
