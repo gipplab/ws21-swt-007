@@ -71,7 +71,7 @@ public void init() throws IOException {
 	generateMap();//Map erstellen
 	run();//Spiel starten
 	
-	  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/60), e -> 
+	  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/30), e -> 
 	  {
 		try {
 			if(gameOver==0&& timeofDeath+2000 < System.currentTimeMillis()) 
