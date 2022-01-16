@@ -20,7 +20,7 @@ public class InputManager {
 	 if(!player.getDeath())
          player.moveUp();
      	if(Main.online) {
- 		   	Client.updateString =Client.updateString+"UP/"+player.getEntityX()+"/"+player.getEntityY()+"/";
+ 		   	Client.updateString =Client.updateString+"UP/";
  	
  	   		}
        }
@@ -29,7 +29,7 @@ public class InputManager {
 	  if(!player.getDeath())
     	  player.moveDown();
     	   if(Main.online) {
-	 		   Client.updateString =Client.updateString+"DOWN/"+player.getEntityX()+"/"+player.getEntityY()+"/";
+	 		   Client.updateString =Client.updateString+"DOWN/";
 	 		   // Client.accessServer("Play-DOWN");
 	 		   }
     	
@@ -39,7 +39,7 @@ public class InputManager {
 	  if(!player.getDeath())
     	  player.moveLeft();
    	   if(Main.online) {
-		   	Client.updateString =Client.updateString+"LEFT/"+player.getEntityX()+"/"+player.getEntityY()+"/";
+		   	Client.updateString =Client.updateString+"LEFT/";
 		   	   }
        }
      //nach Rechts bewegen.
@@ -47,12 +47,12 @@ public class InputManager {
 	   if(!player.getDeath())
     	   player.moveRight();  
     	   if(Main.online) {
-	 		   Client.updateString =Client.updateString+"RIGHT/"+player.getEntityX()+"/"+player.getEntityY()+"/";
+	 		   Client.updateString =Client.updateString+"RIGHT/";
 	 	
 	 	   }
        }
 
-       //Drop bomb, wenn die Taste Space gedrï¿½ckt werden.
+       //Drop bomb, wenn die Taste Space gedrückt werden.
        
        if(KeysHandler.SPACEPRESSED){
            if((player.getBombanzahl()>0)&&!player.getDeath()) {
@@ -62,7 +62,7 @@ public class InputManager {
         	   b.BombCollision(player.getEntityX(),player.getEntityY());
         	   player.BombanzahlDown();
         	   if(Main.online)
-        	   Client.updateString =Client.updateString+"BOMB/"+b.getX()+"/"+b.getY()+"/";
+        	   Client.updateString =Client.updateString+"/BOMB/"+b.getX()+"/"+b.getY();
         	   GameObjects.spawn(b);
         	   
         	   }

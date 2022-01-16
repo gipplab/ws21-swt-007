@@ -14,7 +14,7 @@ public class Main extends Application {
 	
 		
 		try {
-			player.SetAddress("localhost"); 
+			player.SetAddress("localhost");
 			Ressourcen.readFiles();
 			//GamePanel game= new GamePanel();
 			//game.init();

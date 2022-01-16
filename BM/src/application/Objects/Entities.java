@@ -17,7 +17,7 @@ public abstract class Entities {
 		
 	
 	}
-	//Prï¿½fen, ob das Objekt Character ist.
+	//Prüfen, ob das Objekt Character ist.
 	static Boolean isBomber(int x, int y){
 		
 		for(int i=0;i< GameObjects.bomberObjects.size();i++)
@@ -28,7 +28,7 @@ public abstract class Entities {
 				}
 		return false;
 	}
-	//Prï¿½fen, ob das Objekt eine Wand ist.
+	//Prüfen, ob das Objekt eine Wand ist.
 	static int isWall(int x, int y){
 		
 		for(int i=0;i< GameObjects.tileObjects.size();i++) {
@@ -53,13 +53,6 @@ public abstract class Entities {
 	
 	public double getEntityY() {
 		return this.y;
-        }
-	public void setEntityX(double xpos) {
-		this.x= xpos;
-        }
-	
-	public void setEntityY(double ypos) {
-		 this.y=ypos;
         }
 	
 	public Image getEntityImage() {

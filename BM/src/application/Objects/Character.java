@@ -10,7 +10,7 @@ public abstract class Character extends Entities {
 	int explosion;
 	int health;
 	boolean dead ;
-	protected boolean dontMove=false;
+	boolean dontMove=false;
 	Boolean Player= false;
 	int framePlayer = 0, intervalPlayer = 5, indexAnimPlayer = 0;
 	public int PlayerFarbe;
@@ -68,6 +68,62 @@ public void setPlayerFarbe(int playerFarbe) {
 	      	return frei;
 	 }
 	
+
+//	private  boolean isFreeBomb(double nextX, double nextY) {
+//	     Entities obje;
+//	     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
+//	     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
+//
+//	     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+//	     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
+//
+//	     int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
+//	     int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+//
+//	     int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+//	     int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+//	   
+//	     for (int i = 0; i < GameObjects.tileObjects.size(); i++) {	
+//	    	   
+//	   	    obje = GameObjects.tileObjects.get(i);
+//	   	    
+//	 	        if(  obje instanceof Bomb ) {
+//	 		    	  		return false;
+//	 		    }             
+//	 	  }
+//	      	return true;
+//	 }
+	//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
+//public boolean isFreeExplosion(double nextX, double nextY) {
+//		// TODO Auto-generated method stub
+//		  Entities obje;
+//	
+//		     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
+//		     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
+//	
+//		     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+//		     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
+//		    
+//		     int nextX_3 = (int) (nextX / GamePanel.SQUARE_SIZE);
+//		     int nextY_3 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+//		 
+//		     int nextX_4 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+//		     int nextY_4 = (int) ((nextY + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
+//		  
+//		    for (int i = 0; i < GameObjects.explosionObjects.size(); i++) {	
+//		 	    obje = GameObjects.explosionObjects.get(i);
+//		 	    
+//			        if(obje.getEntityImage().equals(Ressourcen.IMAGES.EXPLOSION.getImage())) {
+//			        	
+//				    if((obje.getEntityX()==nextX_1*GamePanel.SQUARE_SIZE  && obje.getEntityY()==nextY_1* GamePanel.SQUARE_SIZE)||
+//				            (obje.getEntityX()==nextX_2* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_2* GamePanel.SQUARE_SIZE)||
+//					        (obje.getEntityX()==nextX_3* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_3* GamePanel.SQUARE_SIZE)||
+//					        (obje.getEntityX()==nextX_4* GamePanel.SQUARE_SIZE && obje.getEntityY()==nextY_4* GamePanel.SQUARE_SIZE))
+//					           return false;
+//				    }             
+//			  }
+//		    	return true;
+//		} 
 
 public boolean isFreeExplosion(double x,  double y) {
 	
@@ -330,7 +386,7 @@ public void moveRight() {
 	 		 
 	 	 }
 	 	 
-	 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
+	 	 
 
         } //die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
 	// und nicht immer auf Ressourcen greifen 

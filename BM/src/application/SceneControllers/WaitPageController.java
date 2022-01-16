@@ -29,7 +29,7 @@ public class WaitPageController {
 	private Label infoRoom;
 	@FXML
 	private Button test;
-    public void initialize() { 
+    public void initialize() {
     	Timer fall = new Timer();
 		TimerTask task = new TimerTask() {
 			public void run() {

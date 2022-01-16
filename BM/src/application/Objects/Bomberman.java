@@ -18,7 +18,6 @@ public void gethit() {
 		this.health--;
 		if(health<=0)
 			dead=true;
-		else dontMove=false;
 		
 	}
 	
@@ -42,7 +41,10 @@ public boolean getDeath() {
 }
 //geprüft je nach Health, ob der Spieler sterben muss.
  public boolean death() {
-	return this.dead;
+	if(health>0) {
+		return false;
+	}else 
+		return true;
 			
 }
 
@@ -50,17 +52,16 @@ public boolean getDeath() {
 @Override
 public void update() {
 
-	if(!isFreeExplosion(this.x,this.y)||dontMove) {
-		this.dontMove=true;
-		timeExplosion++;
-		if(timeExplosion == 50) {
+	if(!isFreeExplosion(this.x,this.y)) {
+		dontMove=true;
+	timeExplosion++;
+	if(timeExplosion == 50) {
 		this.gethit();
 	}
 	
 		this.img = Ressourcen.IMAGES.playerDead[this.PlayerFarbe][indexAnimPlayer()];
 	}
-	else if(!dontMove) { 
-		timeExplosion=0;
+	else { timeExplosion=0;
 	        if(this.dead) {
 	           GameObjects.bomberObjects.remove(this);
 	        }//verschiedene Items auftauchen können.
