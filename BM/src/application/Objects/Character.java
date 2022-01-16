@@ -36,8 +36,8 @@ public int getPlayerFarbe() {
 public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
-//Hier wird geprüft, ob das Block frei(ein Weg) ist.
-	public  boolean isFree(double nextX, double nextY) {
+//Hier wird geprÃ¼ft, ob das Block frei(ein Weg) ist.
+	public static boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
 	     
@@ -327,7 +327,7 @@ public int getBombanzahl(){
 public int getExplosion(){
 		return this.explosion;
 	}
-	//Bombenanzahl erhöhen.
+	//Bombenanzahl erhÃ¶hen.
 public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
@@ -335,12 +335,12 @@ public void BombanzahlUp(){
 public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
-//Explosion reichweite erhöhen.  
+//Explosion reichweite erhÃ¶hen.  
 public void ExplosionUp(){
 	if(explosion<3)
 	this.explosion++;
 }
-//Health erhöhen.
+//Health erhÃ¶hen.
 public void HealthUp(){
 	if(health<3)
 	this.health++;
@@ -379,7 +379,7 @@ public int indexAnimPlayer() {
 	        return indexAnimPlayer;
 	 }
 	 
-//Hier wird geprüft, ob es in diesem Block ein Item gibt.
+//Hier wird geprÃ¼ft, ob es in diesem Block ein Item gibt.
 		public int isItem(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -412,7 +412,7 @@ public int indexAnimPlayer() {
 			  }
 		    	return -1;
 		} 
-//Geschwindigkeit erhöhen.		
+//Geschwindigkeit erhÃ¶hen.		
 protected void speedUp() {
 		if(speed ==2.5)
 			speed=5;
@@ -437,7 +437,7 @@ public void moveRight() {
 	 	 
 	 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
 
-        } //die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
+        } //die Pixel verteilung kÃ¶nnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
 	// und nicht immer auf Ressourcen greifen 
 	// die Player Matrix wird ein Teil des class  Charackter werden
 
