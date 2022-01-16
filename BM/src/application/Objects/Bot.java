@@ -24,7 +24,7 @@ public Bot(double x, double y, Image img, Boolean p)
 			
 	
 }
-	//Bombenanzahl prüfen aund eine Bombe Platzieren.
+	//Bombenanzahl prÃ¼fen aund eine Bombe Platzieren.
 void placeBomb() 
 {
 //		if(bombanzahl>0) 
@@ -36,11 +36,30 @@ void placeBomb()
 //		}
 }
 
-//Hier bewegt sich der Bot random. 
-void moveRandom(){
-	
-	
+  public void moveRandom(){
 	isFreeBot();
+        for (int i = 0; i < GameObjects.bomberObjects.size(); i++) {		   
+	     Entities obje = GameObjects.bomberObjects.get(i);	   	    
+	     if(obje.isPlayer()) { 	        	
+	         if (Character.isFree(this.x , this.y - this.speed) && isFreeBomb(this.x,this.y ,0) && (this.y > obje.getEntityY())) { 
+	             moveUp();
+	         } else  if (Character.isFree(this.x + this.speed , this.y) && isFreeBomb(this.x ,this.y,1) && (this.x < obje.getEntityX())) {
+                            moveRight();
+                          } 
+                          else if (Character.isFree(this.x - this.speed , this.y) && isFreeBomb(this.x ,this.y,3)&& (this.x > obje.getEntityX())) {
+                                   moveLeft();		
+                                } 
+	                       else  if (Character.isFree(this.x , this.y + this.speed) &&  isFreeBomb(this.x,this.y ,2) && (this.y < obje.getEntityY()))  {
+		                         moveDown();
+	                             }  
+	   }  
+        }
+  }
+	
+//Hier bewegt sich der Bot random. void moveRandom(){
+	
+/*	
+   isFreeBot();
     if (lastRichtung == 0) {
         moveUp();
     }
@@ -54,7 +73,7 @@ void moveRandom(){
     	  moveDown();
     }
 }
-
+*/
 void isFreeBot()
 {
 	
