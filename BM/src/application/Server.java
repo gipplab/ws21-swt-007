@@ -154,14 +154,17 @@ public class Server {
 								messageOut="ServerUpdates";
 								for(PlayerInfos player : room.players) {
 									if(!message[2].equals(player.getName())) {										
-											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb()+"-MAP-"+room.getHowManyPlayers()+"-";
-											for(String[] mp : room.map) {
-												messageOut=messageOut+mp[0]+"/"+mp[1]+"/";
-											}
+											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb();
+											
 									}else {
 										player.setPosition("STOP-"+message[5]+"-"+message[6]);
 										player.action = message[4];
 									}
+								}
+							}else if(message[3].equals("GetMap")) {
+								messageOut="ServerUpdates-MAP-"+room.getHowManyPlayers()+"-";
+								for(String[] mp : room.map) {
+									messageOut=messageOut+mp[0]+"/"+mp[1]+"/";
 								}
 							}
 							break;

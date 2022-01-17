@@ -152,8 +152,16 @@ void update() throws InterruptedException {
 			//System.out.println(resp);
 			//druekeNachricht(resp);
 			Client.updateString="";
-			InputManager.handlePlayerMovements(player[mainPlayerIndex]);
 			onlineUpdates(resp);
+			messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-GetMap";
+			System.out.println(messageout);
+			resp= "";
+			resp=Client.accessServer(messageout);
+			//System.out.println(resp);
+			//druekeNachricht(resp);
+			Client.updateString="";
+			InputManager.handlePlayerMovements(player[mainPlayerIndex]);
+			onlineMapUpdates(resp);
 			drawBackground(gc);
 			drawObjekte(gc);
 			drawBomb(gc);
@@ -299,55 +307,62 @@ void onlineUpdates(String resp) {
 						break;
 					}					
 				}							
-				break;
-			case "MAP":
-				for(int l=0;l<GameObjects.tileObjects.size();l++)
-					if( GameObjects.tileObjects.get(i) instanceof Wall && GameObjects.tileObjects.get(i).isBreakable()) {
-						GameObjects.tileObjects.remove(i);
-						}
-				nbrOfPlayers=Integer.parseInt( message[i+1]);
-				String[] map = message[i+2].split("/");
-				int k=0;
-				while(k < map.length) {
-					 switch (mapIndex) {
-	                    case 0:     // Soft wall zerstoerbar
-	                    	Wall soft= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL.getImage(),true);
-	                    	if(soft!=null) 
-	                    		GameObjects.spawn(soft);
-	                        break;
-	                    case 1:     // Soft wall zerstoerbar
-	                        Wall soft1= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL1.getImage(),true);
-	                       	if(soft1!=null) 
-	                       		GameObjects.spawn(soft1);
-	                           break;
-	                    case 2:     // Soft wall zerstoerbar
-	                        Wall soft2= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL2.getImage(),true);
-	                       	if(soft2!=null) 
-	                       		GameObjects.spawn(soft2);
-	                           break;
-	                    case 3:     // Soft wall zerstoerbar
-	                        Wall soft3= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL3.getImage(),true);
-	                       	if(soft3!=null) 
-	                       		System.out.println();
-	                       		GameObjects.spawn(soft3);
-	                           break;
-	                    case 4:     // Soft wall zerstoerbar
-	                        Wall soft4= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL4.getImage(),true);
-	                       	if(soft4!=null) 
-	                       		GameObjects.spawn(soft4);
-	                           break;
-	                    case 5:     // Soft wall zerstoerbar
-	                        Wall soft5= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL5.getImage(),true);
-	                       	if(soft5!=null) 
-	                       		GameObjects.spawn(soft5);
-	                           break;
-					 }
-						
-	            		k=k+2;
-				}				            	
+				break;			            	
 			}
 			i++;
 		}
+}
+void onlineMapUpdates(String resp) {
+	System.out.println(resp);
+	String[] message = resp.split("-");
+		if(message[0].equals("ServerUpdates")) {
+			for(int l=0;l<GameObjects.tileObjects.size();l++)
+				if( GameObjects.tileObjects.get(l) instanceof Wall && GameObjects.tileObjects.get(l).isBreakable()) {
+					GameObjects.tileObjects.remove(l);
+					}
+			nbrOfPlayers=Integer.parseInt( message[2]);
+			String[] map = null;
+			if(message.length>3)
+				map = message[3].split("/");
+			int k=0;
+			while(k < map.length) {
+				 switch (mapIndex) {
+                    case 0:     // Soft wall zerstoerbar
+                    	Wall soft= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL.getImage(),true);
+                    	if(soft!=null) 
+                    		GameObjects.spawn(soft);
+                        break;
+                    case 1:     // Soft wall zerstoerbar
+                        Wall soft1= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL1.getImage(),true);
+                       	if(soft1!=null) 
+                       		GameObjects.spawn(soft1);
+                           break;
+                    case 2:     // Soft wall zerstoerbar
+                        Wall soft2= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL2.getImage(),true);
+                       	if(soft2!=null) 
+                       		GameObjects.spawn(soft2);
+                           break;
+                    case 3:     // Soft wall zerstoerbar
+                        Wall soft3= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL3.getImage(),true);
+                       	if(soft3!=null) 
+                       		System.out.println();
+                       		GameObjects.spawn(soft3);
+                           break;
+                    case 4:     // Soft wall zerstoerbar
+                        Wall soft4= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL4.getImage(),true);
+                       	if(soft4!=null) 
+                       		GameObjects.spawn(soft4);
+                           break;
+                    case 5:     // Soft wall zerstoerbar
+                        Wall soft5= new Wall(Double.parseDouble(map[k])* SQUARE_SIZE,Double.parseDouble(map[k+1])*SQUARE_SIZE,Ressourcen.IMAGES.SOFTWALL5.getImage(),true);
+                       	if(soft5!=null) 
+                       		GameObjects.spawn(soft5);
+                           break;
+				 }
+					
+            		k=k+2;
+			}				            	
+	}
 }
 	 private static void loadMapFile()  {
 		
