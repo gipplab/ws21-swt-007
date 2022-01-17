@@ -234,7 +234,6 @@ private static void loadMapFile()  {
 	 
         try {
             String currentLine;
-         int i=1;
             while ((currentLine = bufferedReader.readLine()) != null) {
                if (currentLine.isEmpty()) {
                   continue;

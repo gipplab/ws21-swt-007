@@ -1,7 +1,6 @@
 package application.Objects;
 
 import application.GamePanel;
-import application.Ressourcen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -10,7 +9,6 @@ public abstract class Entities {
 	Image img;
 
 public Entities(double x, double y, Image img) {
-		// TODO Auto-generated constructor stub
 		this.x=x;
 		this.y=y;
 		this.img=img;

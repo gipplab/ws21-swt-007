@@ -4,8 +4,6 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
-import javafx.scene.control.Alert;
-
 public class Server {
 	private static final int PORT = 1234;
 	private static ArrayList<Room> roomsList = new ArrayList<>();

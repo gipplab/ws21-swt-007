@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Client;
-import application.GamePanel;
 import application.GamePanelOnline;
 import application.Ressourcen;
 import javafx.event.ActionEvent;

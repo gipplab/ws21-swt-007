@@ -10,7 +10,6 @@ import application.Objects.Bomberman;
 import application.Objects.Bot;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
-import application.Objects.TileObjects;
 import application.Objects.Wall;
 import application.SceneControllers.SinglePlayPanelController;
 import javafx.animation.Animation;
@@ -371,7 +370,6 @@ void onlineMapUpdates(String resp) {
 	 
         try {
             String currentLine;
-         int i=1;
             while ((currentLine = bufferedReader.readLine()) != null) {
                if (currentLine.isEmpty()) {
                   continue;

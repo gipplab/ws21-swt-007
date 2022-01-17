@@ -148,10 +148,15 @@ public void update()
 		death=true;
 		GameObjects.tileObjects.remove(this);
 		if(player instanceof Bomberman) { 
+		@SuppressWarnings("unused")
 		Explotionart ex0= new Explotionart((int)this.x,(int) this.y);
+		@SuppressWarnings("unused")
 		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, this.power);
+		@SuppressWarnings("unused")
 		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, this.power);
+		@SuppressWarnings("unused")
 		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
+		@SuppressWarnings("unused")
 		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
 		if(Main.online) {
 			Client.updateString =System.currentTimeMillis()+"-NOBOMB";
@@ -163,10 +168,15 @@ public void update()
 		}
 		else if(player instanceof Bot)
 		{
+			@SuppressWarnings("unused")
 			Explosionbot ex0= new Explosionbot((int)this.x,(int) this.y);
+			@SuppressWarnings("unused")
 			Explosionbot ex1= new Explosionbot((int)this.x,(int) this.y, 0, this.power);
+			@SuppressWarnings("unused")
 			Explosionbot ex2= new Explosionbot((int)this.x,(int) this.y, 1, this.power);
+			@SuppressWarnings("unused")
 			Explosionbot ex3= new Explosionbot((int)this.x, (int)this.y, 2, this.power);
+			@SuppressWarnings("unused")
 			Explosionbot ex4= new Explosionbot((int)this.x,(int) this.y, 3, this.power);
 		}
 		    
