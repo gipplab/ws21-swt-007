@@ -7,50 +7,59 @@ import application.Ressourcen;
 import javafx.scene.image.Image;
 
 
-
 public class Bot extends Character {
-	 List<?> keyboardInputs = KeysHandler.getInputList();
-
+	List<?> keyboardInputs = KeysHandler.getInputList();
+	public static int killbot = 0;
 	int lastRichtung=0;
 	long time;
 	int timeToExplosion=10000;
 	Image Bombimag= Ressourcen.IMAGES.BOMBE.getImage();
-	public Bot(double x, double y, Image img, Boolean p) {
+public Bot(double x, double y, Image img, Boolean p)
+{
 		super(x, y, img,p);
 		// TODO Auto-generated constructor stub
-			this.speed=1.25;//2.5, 5, 7 ,8,75 
+
+		this.speed=1.25;//2.5, 5, 7 ,8,75 
 			time= System.currentTimeMillis();
-	
-		
-	}
-	//Bombenanzahl prüfen aund eine Bombe Platzieren.
-	void placeBomb() {
-		if(bombanzahl>0) 
-		{
-		
-			Bomb b= new Bomb( this.x , this.y, explosion , Bombimag, this );
-			b.BombCollision(this.x,this.y);
-				bombanzahl--;
-				GameObjects.spawn(b);
 			
-		}
-}
-	//wenn der Bot die Explosion trifft, entweder muss sterben oder Health reduzieren.
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		if(!isFreeExplosion(this.x,this.y)) {
-			this.dead=true;
-			this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
-		}else if(this.dead) {
-		         GameObjects.bomberObjects.remove(this);
-		      }else
-	 			moveRandom();		
-	}
-//Hier bewegt sich der Bot random. 
-void moveRandom(){
 	
+}
+	//Bombenanzahl prÃ¼fen aund eine Bombe Platzieren.
+void placeBomb() 
+{
+//		if(bombanzahl>0) 
+//		{
+//			Bomb b= new Bomb( this.x , this.y, explosion , Bombimag, this );
+//			b.BombCollision(this.x,this.y);
+//			bombanzahl--;
+//			GameObjects.spawn(b);
+//		}
+}
+
+  public void moveRandom(){
 	isFreeBot();
+        for (int i = 0; i < GameObjects.bomberObjects.size(); i++) {		   
+	     Entities obje = GameObjects.bomberObjects.get(i);	   	    
+	     if(obje.isPlayer()) { 	        	
+	         if (Character.isFree(this.x , this.y - this.speed) && isFreeBomb(this.x,this.y ,0) && (this.y > obje.getEntityY())) { 
+	             moveUp();
+	         } else  if (Character.isFree(this.x + this.speed , this.y) && isFreeBomb(this.x ,this.y,1) && (this.x < obje.getEntityX())) {
+                            moveRight();
+                          } 
+                          else if (Character.isFree(this.x - this.speed , this.y) && isFreeBomb(this.x ,this.y,3)&& (this.x > obje.getEntityX())) {
+                                   moveLeft();		
+                                } 
+	                       else  if (Character.isFree(this.x , this.y + this.speed) &&  isFreeBomb(this.x,this.y ,2) && (this.y < obje.getEntityY()))  {
+		                         moveDown();
+	                             }  
+	   }  
+        }
+  }
+	
+//Hier bewegt sich der Bot random. void moveRandom(){
+	
+/*	
+   isFreeBot();
     if (lastRichtung == 0) {
         moveUp();
     }
@@ -63,13 +72,10 @@ void moveRandom(){
     else if (lastRichtung == 3) {
     	  moveDown();
     }
-	
 }
-
-
-//die nächste Bewegung des Botes stimmen.
-void isFreeBot(){
-		
+*/
+void isFreeBot()
+{
 	
 		switch(lastRichtung) {
 		case 0:// Up
@@ -80,9 +86,8 @@ void isFreeBot(){
 				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))
 			{
 				lastRichtung=(int) Math.round(Math.random() * 3);
-			//	placeBomb();
+				placeBomb();
 				}
-			
 			break;
 		}
 		case 1: // right
@@ -92,7 +97,7 @@ void isFreeBot(){
 		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))
 		{
 			lastRichtung=(int) Math.round(Math.random() * 3);
-				//placeBomb();
+				placeBomb();
 				}
 			
 		break;
@@ -105,7 +110,7 @@ void isFreeBot(){
 		{
 		lastRichtung=(int) Math.round(Math.random() * 3);
 		if((System.currentTimeMillis()-time>=timeToExplosion)) {
-			//placeBomb();
+			placeBomb();
 			time=System.currentTimeMillis();
 		}
 		
@@ -120,64 +125,37 @@ void isFreeBot(){
 					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))
 					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
 				lastRichtung=(int) Math.round(Math.random() * 3);
-				if((int) Math.round(Math.random() * 15)==2);
-			//	placeBomb();
+				if((int) Math.round(Math.random() * 15)==2)
+						placeBomb();
 					}
 			break;
 		}
 		default:
 			break;
 		}
-	
-	
-	
-}
-//wenn der Bot einem Wall begegnet, wechselt er die Richtung.
-void isWall() {
-	lastRichtung = (int) Math.round(Math.random() * 3);
-	
-}
-	public void gethit() {
-		this.health--;
-		if(health<=0)
-			dead=true;
-		
-	}
-	
-
-public int getHealth(){
-	return this.health;
-}
-
-public Image getImage(){
-	
-	return img;
 }
 
 
+
+
+
+//wenn der Bot die Explosion trifft, entweder muss sterben oder Health reduzieren.
 @Override
-public boolean getDeath() {
-	return this.dead;
-}
-public double getX(){
-	return this.x;
-}
-public double getY(){
-	return this.y;
-}
-//geprüft je nach Health, ob der Bot sterben muss.
-boolean death() {
-	if(health>0) {
-		return false;
-	}else 
-		return true;
-			
-}
-
-
-@Override
-protected int getItemtype() {
+public void update() {
 	// TODO Auto-generated method stub
-	return -1;
+	if(!isFreeExplosion(this.x,this.y)) {
+		gethit();
+		this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
+	    GameObjects.bomberObjects.remove(this);
+        killbot+=100;
+	}else if(!isFreeExplosionbot(this.x,this.y)) {
+		
+		gethit();
+		this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
+	    GameObjects.bomberObjects.remove(this);	
+	      }else
+ 			moveRandom();
+
 }
-	}
+
+}

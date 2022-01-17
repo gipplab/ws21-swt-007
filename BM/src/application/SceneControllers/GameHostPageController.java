@@ -1,12 +1,17 @@
 package application.SceneControllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import application.Client;
+import application.GamePanel;
+import application.GamePanelOnline;
 import application.Ressourcen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,16 +21,15 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
-public class GameHostPageController {
+
+public class GameHostPageController implements Initializable{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
 	int counter;
+
     @FXML
     private RadioButton FourPlayersRadioButton;
 
@@ -64,6 +68,8 @@ public class GameHostPageController {
     
     @FXML
     private Label TextRecieved;
+    
+  
 
     @FXML
     void GameHostBackButtonIsClicked(ActionEvent event) throws IOException {
@@ -78,16 +84,20 @@ public class GameHostPageController {
 	
 	@FXML
 	void NextLevelButtonIsClicked(ActionEvent event) {
-		counter= (counter +1)%4;
+	    counter= (counter +1)%5;
 	    LevelImageView.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
+	    GamePanelOnline.mapIndex=counter;
+	    
 	}
 	
 	@FXML
 	void PreviousLevelButtonIsClicked(ActionEvent event) {
-		counter= (counter-1)%4;
-	    if(counter <0) 
-	    	counter=3;
-	    LevelImageView.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
+ 	   counter= (counter-1)%5;
+ 	   if(counter <0) 
+ 		   	counter=4;
+ 	   	LevelImageView.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
+ 	   	GamePanelOnline.mapIndex=counter;
+	  
 	}
 	
 	@FXML
@@ -96,7 +106,7 @@ public class GameHostPageController {
 	@FXML
 	void RunRoomButtonIsClicked(ActionEvent event) throws IOException {
 	   // check the empty fields
-		if (validate()== true){
+		
 			String msg = "Host-"+RoomNameTextField.getText()+"-"+PlayerNicknameTextField.getText();
 			if(FourPlayersRadioButton.isSelected()) {
 				msg = msg+"-4";	
@@ -123,36 +133,22 @@ public class GameHostPageController {
 	    stage.setScene(scene);		
 	    stage.show();
 		}
-	}
+	
 	
 	@FXML
 	void playersButton(ActionEvent event) throws IOException {}
 	    
-	public boolean validate() {
-	
-		StringBuilder errors = new StringBuilder();
-	
-	    // Confirm mandatory fields are filled out
-	    if (PlayerNicknameTextField.getText().trim().isEmpty()) {
-	         errors.append("- Please enter your name.\n");
-	    }
-	    if (RoomNameTextField.getText().trim().isEmpty()) {
-	         errors.append("- Please enter room name.\n");
-	    }
-	    
-	    // If any missing information is found, show the error messages and return false
-	    if (errors.length() > 0) {
-	        Alert alert = new Alert(Alert.AlertType.WARNING);
-	        alert.setTitle("Warning");
-	        alert.setHeaderText("Required Fields Empty");
-	        alert.setContentText(errors.toString());
-	
-	        alert.showAndWait();
-	            return false;
-	     }
-	
-	    // No errors
-	        return true;
-	    }
-
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+		try {
+			Ressourcen.readFiles();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		counter=0;
+		LevelImageView.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
+	}
+    
 }

@@ -5,11 +5,14 @@ import javafx.scene.image.Image;
 
 public abstract class Character extends Entities {
 
-	int bombanzahl;
-	double speed;
-	int explosion;
-	int health;
+	public int bombanzahl;
+	public double speed;
+	public int explosion;
+	public int health;
 	boolean dead ;
+	double time;
+
+	final double timeToExplosion=1200;
 	protected boolean dontMove=false;
 	Boolean Player= false;
 	int framePlayer = 0, intervalPlayer = 5, indexAnimPlayer = 0;
@@ -18,7 +21,7 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	super(x,y,img);
 	// TODO Auto-generated constructor stub
 	this.Player=isPlayer;
-	
+
 	bombanzahl=1;
 	 explosion=1;
 	 health=1;
@@ -30,12 +33,11 @@ public int getPlayerFarbe() {
 }
 
 
-
 public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
-//Hier wird geprüft, ob das Block frei(ein Weg) ist.
-	public  boolean isFree(double nextX, double nextY) {
+//Hier wird geprÃ¼ft, ob das Block frei(ein Weg) ist.
+	public static boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
 	     
@@ -77,12 +79,10 @@ public boolean isFreeExplosion(double x,  double y) {
 	if(restX==0 && restY==0) {
 		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
 			if(GameObjects.explosionObjects.get(i).getEntityX()==x&& GameObjects.explosionObjects.get(i).getEntityY()==y) {
-				 System.out.println(this.x +", " +this.y);
-				return false;}
-			
+				return false;
+				}
 		}
 	}
-	
 	else if(restX==0 && restY!=0) {
 		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
 		 if((GameObjects.explosionObjects.get(i).getEntityX() == x &&
@@ -90,7 +90,7 @@ public boolean isFreeExplosion(double x,  double y) {
 				 ||
 				 (GameObjects.explosionObjects.get(i).getEntityX() == x &&
 				 GameObjects.explosionObjects.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY ))) {
-			 System.out.println(this.x +", " +this.y);
+
 			 return false;}
 		 }
 		
@@ -98,7 +98,8 @@ public boolean isFreeExplosion(double x,  double y) {
 	
 	if(restX!=0 && restY==0) {
 		
-		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
+		for(int i=0; i < GameObjects.explosionObjects.size(); i++) 
+		{
 			
 			 if((GameObjects.explosionObjects.get(i).getEntityX() == x-restX &&
 					 GameObjects.explosionObjects.get(i).getEntityY() == y)
@@ -107,10 +108,9 @@ public boolean isFreeExplosion(double x,  double y) {
 							 &&
 					 GameObjects.explosionObjects.get(i).getEntityY() == y ))
 			 {
-				 System.out.println(this.x +", " +this.y);
 				return false;}
 		}
-			}
+			 }
 	
 	else if(restX!=0 && restY!=0) {
 		
@@ -127,6 +127,76 @@ public boolean isFreeExplosion(double x,  double y) {
 				 ||
 				 (GameObjects.explosionObjects.get(i).getEntityX() == x+(GamePanel.SQUARE_SIZE-restX ) &&
 				 GameObjects.explosionObjects.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY )))
+		 {
+			 System.out.println(this.x +", " +this.y);
+			return false;}
+	}
+		
+	}
+	
+	return true;
+	
+}
+
+
+public boolean isFreeExplosionbot(double x,  double y) {
+	
+	double restX= x% GamePanel.SQUARE_SIZE;
+	double restY= y% GamePanel.SQUARE_SIZE;
+	
+	if(restX==0 && restY==0) {
+		for(int i=0; i < GameObjects.explosionObjectsbot.size(); i++) {
+			if(GameObjects.explosionObjectsbot.get(i).getEntityX()==x&& GameObjects.explosionObjectsbot.get(i).getEntityY()==y) {
+				 System.out.println(this.x +", " +this.y);
+				return false;}
+			
+		}
+	}
+	
+	else if(restX==0 && restY!=0) {
+		for(int i=0; i < GameObjects.explosionObjectsbot.size(); i++) {
+		 if((GameObjects.explosionObjectsbot.get(i).getEntityX() == x &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y-restY)
+				 ||
+				 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY ))) {
+			 System.out.println(this.x +", " +this.y);
+			 return false;}
+		 }
+		
+	}
+	
+	if(restX!=0 && restY==0) {
+		
+		for(int i=0; i < GameObjects.explosionObjectsbot.size(); i++) {
+			
+			 if((GameObjects.explosionObjectsbot.get(i).getEntityX() == x-restX &&
+					 GameObjects.explosionObjectsbot.get(i).getEntityY() == y)
+					 ||
+					 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x+(GamePanel.SQUARE_SIZE- restX)
+							 &&
+					 GameObjects.explosionObjectsbot.get(i).getEntityY() == y ))
+			 {
+				 System.out.println(this.x +", " +this.y);
+				return false;}
+		}
+			}
+	
+	else if(restX!=0 && restY!=0) {
+		
+	for(int i=0; i < GameObjects.explosionObjectsbot.size(); i++) {
+	
+		 if(	(GameObjects.explosionObjectsbot.get(i).getEntityX() == x-restX &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y-restY)
+				 ||
+				 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x-restX &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() ==y+(GamePanel.SQUARE_SIZE- restY ))
+				 ||
+				 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x+(GamePanel.SQUARE_SIZE-restX ) &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y-restY)
+				 ||
+				 (GameObjects.explosionObjectsbot.get(i).getEntityX() == x+(GamePanel.SQUARE_SIZE-restX ) &&
+				 GameObjects.explosionObjectsbot.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY )))
 		 {
 			 System.out.println(this.x +", " +this.y);
 			return false;}
@@ -227,39 +297,75 @@ case 3:
 }
 
 
+public boolean getDeath() {
+	return this.dead;
+}
+//Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
+public void gethit() {
+	--this.health;
+	if(this.health<=0)
+		this.dead=true;
+	
+	
+	
+dontMove=false;
+if(this instanceof Bomberman) {
+this.x=Bomberman.startX;
+this.y=Bomberman.startY;
+}
+System.out.println("###### getroffen");
+}
 
-
-
-
-	public boolean isPlayer() {
+public boolean isPlayer() {
 		return Player;
 		
 	}
-	public int getBombanzahl(){
+public int getBombanzahl(){
 		return this.bombanzahl;
 	}
 
-	public int getExplosion(){
+public int getExplosion(){
 		return this.explosion;
 	}
-	//Bombenanzahl erhöhen.
-	public void BombanzahlUp(){
+	//Bombenanzahl erhÃ¶hen.
+public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
 	//Bombenanzahl reduzieren.
-	public void BombanzahlDown(){
+public void BombanzahlDown(){
 		 this.bombanzahl--;
 	}
-//Explosion reichweite erhöhen.  
+//Explosion reichweite erhÃ¶hen.  
 public void ExplosionUp(){
+	if(explosion<3)
 	this.explosion++;
 }
-//Health erhöhen.
+//Health erhÃ¶hen.
 public void HealthUp(){
+	if(health<3)
 	this.health++;
+}
+public int getHealth(){
+	return this.health;
+}
+public Image getImage(){	
+	return img;
 }
 double getSpeed(){
 	return this.speed;
+}
+
+public double getX(){
+	return this.x;
+}
+
+public double getY(){
+	return this.y;
+}
+@Override
+protected int getItemtype() {
+	// TODO Auto-generated method stub
+	return -1;
 }
 public int indexAnimPlayer() {
 		 framePlayer++;
@@ -273,7 +379,7 @@ public int indexAnimPlayer() {
 	        return indexAnimPlayer;
 	 }
 	 
-//Hier wird geprüft, ob es in diesem Block ein Item gibt.
+//Hier wird geprÃ¼ft, ob es in diesem Block ein Item gibt.
 		public int isItem(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -306,7 +412,7 @@ public int indexAnimPlayer() {
 			  }
 		    	return -1;
 		} 
-//Geschwindigkeit erhöhen.		
+//Geschwindigkeit erhÃ¶hen.		
 protected void speedUp() {
 		if(speed ==2.5)
 			speed=5;
@@ -327,12 +433,11 @@ public void moveRight() {
 		 } 
 	 	 else if(this.x % GamePanel.SQUARE_SIZE !=0) {
 	 		 this.x+= GamePanel.SQUARE_SIZE - (this.x % GamePanel.SQUARE_SIZE);
-	 		 
 	 	 }
 	 	 
 	 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
 
-        } //die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
+        } //die Pixel verteilung kÃ¶nnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
 	// und nicht immer auf Ressourcen greifen 
 	// die Player Matrix wird ein Teil des class  Charackter werden
 

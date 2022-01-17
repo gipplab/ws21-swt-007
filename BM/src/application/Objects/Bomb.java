@@ -1,11 +1,11 @@
 package application.Objects;
 
 import application.GamePanel;
-import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
-public class Bomb extends TileObjects {
+public class Bomb extends TileObjects 
+{
 	Character player;
 	int power;
 	double time;
@@ -14,11 +14,10 @@ public class Bomb extends TileObjects {
 	
 public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	super(x2,y2,image);
-	
 	this.x=x2;
 	this.y=y2;
+	
 	time= System.currentTimeMillis();
-
 	death=false;
 	this.power=power;
 	player=p;
@@ -32,7 +31,8 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 
 
 //die Bombe im richtigen Block platzieren 
-public void BombCollision(double x1, double y1) {
+public void BombCollision(double x1, double y1) 
+{
 	
 	int a = (int) (x1 % GamePanel.SQUARE_SIZE);
 	int b= (int) (y1 % GamePanel.SQUARE_SIZE);
@@ -58,45 +58,8 @@ public double getX() {return this.x;}
 
 public double getY() {return this.y;}
 
-//Bombezustand und Bombeanzahl aktualisieren.
-public void update() {
-	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
-		death=true;
-		GameObjects.tileObjects.remove(this);
-		System.out.println("remove Bome "+this.x+", "+ this.y);
-		Explotionart ex0= new Explotionart((int)this.x,(int) this.y);
-		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, this.power);
-		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, this.power);
-		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
-		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
-		if(Main.online)
-			player.BombanzahlUp();
-		else
-			player.BombanzahlUp();
-	}
-}
-//prüft, ob in einem Block mehrere Bomben gibt
-private Boolean BombeDuplikate() {
-	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
-		   if(this.x==(GameObjects.tileObjects.get(i).getX()) && this.y==(GameObjects.tileObjects.get(i).getY())) 
-			   return true;
-	   return false;
-	   
-}
-public boolean getDeath() {
-	return death;
-}
-
-
-
-@Override
-public boolean isPlayer() {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
-public boolean isFreeExplosion() {
+public boolean isFreeExplosion() 
+{
 	// TODO Auto-generated method stub
 	 Entities obje;
 	    
@@ -128,12 +91,70 @@ public boolean isFreeExplosion() {
 	}
 
 
+//prüft, ob in einem Block mehrere Bomben gibt
+private Boolean BombeDuplikate() 
+{
+	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
+		   if(this.x==(GameObjects.tileObjects.get(i).getX()) && this.y==(GameObjects.tileObjects.get(i).getY())) 
+			   return true;
+	   return false;
+	   
+}
+public boolean getDeath() 
+{
+	return death;
+}
+
+
 
 @Override
-protected int getItemtype() {
+public boolean isPlayer() 
+{
 	// TODO Auto-generated method stub
+	return false;
+}
+
+//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
+@Override
+protected int getItemtype() 
+{
 	return -1;
+}
+
+
+@Override
+public boolean isBreakable() {
+	// TODO Auto-generated method stub
+	return true;
 } 
+
+
+
+//Bombezustand und Bombeanzahl aktualisieren.
+public void update() 
+{
+	
+	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
+		death=true;
+		GameObjects.tileObjects.remove(this);
+		if(player instanceof Bomberman) { 
+		Explotionart ex0= new Explotionart((int)this.x,(int) this.y);
+		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, this.power);
+		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, this.power);
+		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
+		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
+		}
+		else if(player instanceof Bot)
+		{
+			Explosionbot ex0= new Explosionbot((int)this.x,(int) this.y);
+			Explosionbot ex1= new Explosionbot((int)this.x,(int) this.y, 0, this.power);
+			Explosionbot ex2= new Explosionbot((int)this.x,(int) this.y, 1, this.power);
+			Explosionbot ex3= new Explosionbot((int)this.x, (int)this.y, 2, this.power);
+			Explosionbot ex4= new Explosionbot((int)this.x,(int) this.y, 3, this.power);
+		}
+			player.BombanzahlUp();
+	}
+}
 
 }
 
