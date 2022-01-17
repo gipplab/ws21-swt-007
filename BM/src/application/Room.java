@@ -11,11 +11,11 @@ public class Room {
 	private int howManyPlayers;
 	int mapIndex;
 	ArrayList<String[]> map = new ArrayList<>();
-	public static  ArrayList<ArrayList<String>> mapLayout;
+	public static  ArrayList<ArrayList<String>> mapLayout; 
     ArrayList<PlayerInfos> players = new ArrayList<>();   
 	public Room(String hostName, int howManyPlayers, int mapIndex) {
 		this.hostName = hostName;
-		this.howManyPlayers = howManyPlayers;
+		this.howManyPlayers = howManyPlayers; 
 		loadMapFile(mapIndex);
 		int row=0;
 		int column=0;
@@ -59,8 +59,8 @@ public class Room {
 	public int getHowManyPlayers() { 
 		return howManyPlayers;
 	}
-	public void increasePlayernumber () {
-		this.howManyPlayers++;
+	public void decreasePlayernumber () {
+		this.howManyPlayers--;
 	}
 	public void AddPlayerToRoom(PlayerInfos player) {
 		this.players.add(player);

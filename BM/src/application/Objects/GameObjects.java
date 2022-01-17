@@ -18,7 +18,7 @@ public class GameObjects {
 		    public static ArrayList<Character> bomberObjects;
 
 	
-		    public static void init() {
+		    public static void init() { 
 		        gameObjects = new ArrayList<>();
 		        tileObjects = new ArrayList<>();
 		        explosionObjects = new ArrayList<>();

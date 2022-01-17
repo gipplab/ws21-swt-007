@@ -119,30 +119,42 @@ public class Server {
 					for(Room room : roomsList)
 					{
 						if(message[1].equals(room.getHostName()))
-						{
+						{ 
 							if(message[3].equals("SetUpdates")) {
-								for(PlayerInfos player : room.players) {
-									if(message[2].equals(player.getName())) {
-										player.setAction(message[4]);
-										if(message[5].equals("BOMB")) {
-											player.setBomb(message[5]+"-"+message[6]+"-"+message[7]);
-										}else if(message[5].equals("NOBOMB")) {
-											player.setBomb(message[5]);
-										}
-										else { 
-											player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);
-											
-										}
-										messageOut="SuccessUpdate";
-										break;
+								if(message[5].equals("WALL")) {
+									for(int i=0;i<room.map.size();i++) {
+										if(room.map.get(i)[0].equals(message[6]) && room.map.get(i)[1].equals(message[7]))
+											room.map.remove(i);
 									}
 									
-								}																
+								}else if(message[5].equals("DEAD")) {
+									room.decreasePlayernumber();
+									messageOut="SuccessUpdate";
+								}else {
+									for(PlayerInfos player : room.players) {									
+										if(message[2].equals(player.getName())) {
+											player.setAction(message[4]);
+											if(message[5].equals("BOMB")) {
+												player.setBomb(message[5]+"-"+message[6]+"-"+message[7]);
+											}else if(message[5].equals("NOBOMB")) {
+												player.setBomb(message[5]);
+											}
+											else { 
+												player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);
+												
+											}
+											messageOut="SuccessUpdate";
+											break;
+										}
+										
+									}
+								}
+																								
 							}else if(message[3].equals("GetUpdates")) {
 								messageOut="ServerUpdates";
 								for(PlayerInfos player : room.players) {
 									if(!message[2].equals(player.getName())) {										
-											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb()+"-MAP-";
+											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb()+"-MAP-"+room.getHowManyPlayers()+"-";
 											for(String[] mp : room.map) {
 												messageOut=messageOut+mp[0]+"/"+mp[1]+"/";
 											}

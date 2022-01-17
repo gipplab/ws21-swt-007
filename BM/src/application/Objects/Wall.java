@@ -1,5 +1,7 @@
 package application.Objects;
 
+import application.Client;
+import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
@@ -9,18 +11,22 @@ public  class Wall extends TileObjects{
 	public Wall(double x,double y,Image img,boolean breakable) {
 		// TODO Auto-generated constructor stub
 		super(x,y,img);
-		zerstoerbar=breakable;
+		zerstoerbar=breakable; 
 		death=false;
 	}
 	public boolean isBreakable() 
 	{
 		return zerstoerbar;
 	}
-	
-	//hier werden zerstörbare Wände zerstört, wenn sie eine Explosion treffen.
+	 
+	//hier werden zerstï¿½rbare Wï¿½nde zerstï¿½rt, wenn sie eine Explosion treffen.
 	public void onDestroy() {
-		if(zerstoerbar) 
+		if(zerstoerbar) {
 			GameObjects.tileObjects.remove(this);
+			
+		}
+			
+		
 		
 	}
 	public boolean getDeath() {

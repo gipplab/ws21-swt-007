@@ -15,7 +15,7 @@ public class Explotionart //extends Entities
 	public Explotionart(int x, int y) {
 		explosions0= new Explosion(x, y,  Ressourcen.IMAGES.EXPLOSION.getImage());
 	}
-	public Explotionart(int x, int y, int direction, int radius) {
+	public Explotionart(int x, int y, int direction, int radius) { 
 		// TODO Auto-generated constructor stub
 		this.x=x;
 		this.y=y;
@@ -40,10 +40,10 @@ public class Explotionart //extends Entities
 			if(Entities.isBomber(x1, y1)) ++radius; //Bot oder Spieler getroffen
 			
 			
-			else if(k==1) {//Wände getroffen.
+			else if(k==1) {//Wï¿½nde getroffen.
 				break;
 				}
-			else if(k==0) {//keine Wände getroffen.
+			else if(k==0) {//keine Wï¿½nde getroffen.
 						radius++;
 						break;
 							}

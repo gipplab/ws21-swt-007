@@ -110,7 +110,7 @@ private Boolean ExDuplikate()
 	   return false;
 	   
 }
-public boolean getDeath() 
+public boolean getDeath()  
 {
 	return death;
 }

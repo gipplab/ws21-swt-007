@@ -30,7 +30,7 @@ public class InputManager {
        }
      //nach Unten bewegen.
        if(keyboardInputs.contains(KeyCode.DOWN) || keyboardInputs.contains(KeyCode.S)){
-	  if(!player.getDeath())
+	  if(!player.getDeath()) 
     	  player.moveDown();
     	   if(Main.online) {
 	 		   Client.updateString =System.currentTimeMillis()+"-DOWN-"+player.getEntityX()+"-"+player.getEntityY();

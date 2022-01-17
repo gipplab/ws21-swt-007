@@ -1,5 +1,7 @@
 package application.Objects;
+import application.Client;
 import application.GamePanel;
+import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
@@ -138,7 +140,7 @@ public boolean isFreeExplosion(double x,  double y) {
 	}
 		
 	}
-	
+	 
 	
 	
 	
@@ -311,8 +313,9 @@ public boolean getDeath() {
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
 public void gethit() {
 	--this.health;
-	if(this.health<=0)
+	if(this.health<=0) 
 		this.dead=true;
+		
 if(!dead)
 	dontMove=false;
 

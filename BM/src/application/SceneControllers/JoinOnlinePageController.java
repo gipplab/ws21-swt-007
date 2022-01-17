@@ -68,8 +68,10 @@ public class JoinOnlinePageController {
 	public void JoinButtonOnClick(ActionEvent event) throws IOException {
 	    // �berpr�fen ob der Name der Spieler leer oder '-' beinhaltet
 			if(validate()==true) {
+				
 			TablePosition pos = hostTableView.getSelectionModel().getSelectedCells().get(0);
 			int row = pos.getRow();
+			System.out.println("selected:"+row);
 			// Item here is the table view type:
 			TableColumn col = pos.getTableColumn();
 			// this gives the value in the selected cell:
@@ -123,8 +125,13 @@ public class JoinOnlinePageController {
 	 	String msg = "Player-AllHosts";
 		String resp;
 		resp = Client.accessServer(msg);
-		if(resp.equals("Disconnected")) {
+		if(resp.equals("NoConnexion")) {
 			System.out.println("************* Connexion lost *************");
+			Alert alrt = new Alert(Alert.AlertType.WARNING);
+			alrt.setTitle("Warning");
+			alrt.setHeaderText("No conexion");
+			alrt.setContentText("You are not connected to the game server!");
+			alrt.showAndWait();
 		}else
 		{
 		String[] hosts = resp.split("-");
@@ -183,7 +190,11 @@ public class JoinOnlinePageController {
 				    if(valid_name.contains(seq)) {	
 				         errors.append("Your name must not contain a minus - sign\n");
 				    }
-		}
+		} 
+	    if(hostTableView.getSelectionModel().getSelectedItem() == null) {
+				
+		         errors.append("No room selected! please select a room\n");
+		 }
 	    
 	    
 	    // If any missing information is found, show the error messages and return false
@@ -192,7 +203,6 @@ public class JoinOnlinePageController {
 	        alert.setTitle("Warning");
 	        alert.setHeaderText("Required Fields Empty");
 	        alert.setContentText(errors.toString());
-	
 	        alert.showAndWait();
 	            return false;
 	     }

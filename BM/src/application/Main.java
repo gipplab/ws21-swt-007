@@ -21,7 +21,7 @@ public class Main extends Application {
 		
 		try {
 			music();
-			player.SetAddress("192.168.1.111"); 
+			player.SetAddress("localhost"); 
 			Ressourcen.readFiles();
 			Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
 		    Scene scene = new Scene(root);

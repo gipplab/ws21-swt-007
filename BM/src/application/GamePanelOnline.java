@@ -10,6 +10,7 @@ import application.Objects.Bomberman;
 import application.Objects.Bot;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
+import application.Objects.TileObjects;
 import application.Objects.Wall;
 import application.SceneControllers.SinglePlayPanelController;
 import javafx.animation.Animation;
@@ -33,7 +34,7 @@ public class GamePanelOnline {
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
 	private GraphicsContext gc;
-	private int gameOver=0;
+	private int gameOver=2;
 	long timeToEnd=3000;
 	long timeofDeath;
 	long time;
@@ -47,6 +48,7 @@ public class GamePanelOnline {
     public static Bomberman[] player=new Bomberman[4];
 	public static int mainPlayerIndex=0;
 	public static int mapIndex=0;
+	public static int nbrOfPlayers=2;
 	public static ArrayList<ArrayList<String>> mapLayout;
 
 	
@@ -74,7 +76,7 @@ public void init() throws IOException {
 	  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/30), e -> 
 	  {
 		try {
-			if(gameOver==0&& timeofDeath+2000 < System.currentTimeMillis()) 
+			if(nbrOfPlayers > 1) 
 			{
 				update();
 				time=System.currentTimeMillis();
@@ -86,7 +88,7 @@ public void init() throws IOException {
 			}
 			if(EndofGame) 
 			{
-				if(System.currentTimeMillis()>timeofDeath+5000) 
+				if(System.currentTimeMillis()-time>timeToEnd+4000) 
 				{
 					System.exit(0);
 					
@@ -206,10 +208,17 @@ void update() throws InterruptedException {
 				Entities obj= GameObjects.gameObjects.get(i).get(j);
 				obj.update();
 			if(this.getPlayer().getDeath()) {
-				gameOver=1;
-				timeofDeath=System.currentTimeMillis();
-				System.out.println("GameOver");
-			
+				if(gameOver==2) {
+					gameOver=1;	
+					Client.updateString =System.currentTimeMillis()+"-DEAD";
+					   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+					   	String resp= "";
+					   System.out.println(messageout);
+						resp=Client.accessServer(messageout);
+						System.out.println(resp);
+					timeofDeath=System.currentTimeMillis();
+					System.out.println("GameOver");
+				}		
 			}
 			if(!obj.getDeath()) {
 			
@@ -292,7 +301,12 @@ void onlineUpdates(String resp) {
 				}							
 				break;
 			case "MAP":
-				String[] map = message[i+1].split("/");
+				for(int l=0;l<GameObjects.tileObjects.size();l++)
+					if( GameObjects.tileObjects.get(i) instanceof Wall && GameObjects.tileObjects.get(i).isBreakable()) {
+						GameObjects.tileObjects.remove(i);
+						}
+				nbrOfPlayers=Integer.parseInt( message[i+1]);
+				String[] map = message[i+2].split("/");
 				int k=0;
 				while(k < map.length) {
 					 switch (mapIndex) {
@@ -450,6 +464,7 @@ void onlineUpdates(String resp) {
                         break;
                     case ("3"):     // Player 3
                     	if(Client.players.size()>2) {
+                    		nbrOfPlayers=3;
                     		GamePanelOnline.player[2] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[2][0],true);
                     		GamePanelOnline.player[2].setName(Client.players.get(2));
                     		GameObjects.spawn(GamePanelOnline.player[2]);   
@@ -458,6 +473,7 @@ void onlineUpdates(String resp) {
                         break;
                     case ("4"):     // Player 3
                     	if(Client.players.size()>3) {
+                    		nbrOfPlayers=4;
                     		GamePanelOnline.player[3] = new Bomberman(x*SQUARE_SIZE,y* SQUARE_SIZE,Ressourcen.IMAGES.playerDown[3][0],true);
                     		GamePanelOnline.player[3].setName(Client.players.get(3));           
                     		GameObjects.spawn(GamePanelOnline.player[3]);   
