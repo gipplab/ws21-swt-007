@@ -69,7 +69,7 @@ public class InputManager {
 	 	   }
        }
 
-       //Drop bomb, wenn die Taste Space gedr�ckt werden.
+       //Drop bomb, wenn die Taste Space gedrckt werden.
        
        if(KeysHandler.SPACEPRESSED){
            if((player.getBombanzahl()>0)&&!player.getDeath()) {
