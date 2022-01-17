@@ -42,9 +42,6 @@ public void update() {
 		{
 		time= System.currentTimeMillis();
 		this.gethit();
-		if(Main.online) {
-			 
-		}
 		}
 		this.img = Ressourcen.IMAGES.playerDead[this.PlayerFarbe][indexAnimPlayer()];
 	}
