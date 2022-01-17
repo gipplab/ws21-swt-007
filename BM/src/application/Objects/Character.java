@@ -42,7 +42,7 @@ public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
 //Hier wird geprüft, ob das Block frei(ein Weg) ist.
-	public  boolean isFree(double nextX, double nextY) {
+	public static  boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
 	     

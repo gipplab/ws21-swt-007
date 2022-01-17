@@ -41,17 +41,22 @@ void placeBomb()
         for (int i = 0; i < GameObjects.bomberObjects.size(); i++) {		   
 	     Entities obje = GameObjects.bomberObjects.get(i);	   	    
 	     if(obje.isPlayer()) { 	        	
-	         if (Character.isFree(this.x , this.y - this.speed) && isFreeBomb(this.x,this.y ,0) && (this.y > obje.getEntityY())) { 
-	             moveUp();
-	         } else  if (Character.isFree(this.x + this.speed , this.y) && isFreeBomb(this.x ,this.y,1) && (this.x < obje.getEntityX())) {
-                            moveRight();
-                          } 
-                          else if (Character.isFree(this.x - this.speed , this.y) && isFreeBomb(this.x ,this.y,3)&& (this.x > obje.getEntityX())) {
-                                   moveLeft();		
-                                } 
-	                       else  if (Character.isFree(this.x , this.y + this.speed) &&  isFreeBomb(this.x,this.y ,2) && (this.y < obje.getEntityY()))  {
-		                         moveDown();
-	                             }  
+	         try {
+				if (Character.isFree(this.x , this.y - this.speed) && isFreeBomb(this.x,this.y ,0) && (this.y > obje.getEntityY())) { 
+				     moveUp();
+				 } else  if (Character.isFree(this.x + this.speed , this.y) && isFreeBomb(this.x ,this.y,1) && (this.x < obje.getEntityX())) {
+				                moveRight();
+				              } 
+				              else if (Character.isFree(this.x - this.speed , this.y) && isFreeBomb(this.x ,this.y,3)&& (this.x > obje.getEntityX())) {
+				                       moveLeft();		
+				                    } 
+				               else  if (Character.isFree(this.x , this.y + this.speed) &&  isFreeBomb(this.x,this.y ,2) && (this.y < obje.getEntityY()))  {
+				                     moveDown();
+				                     }
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}  
 	   }  
         }
   }
