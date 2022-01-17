@@ -162,5 +162,14 @@ public void update() {
  			moveRandom();
 
 }
+public void gethit() {
+	--this.health;
+	if(this.health<=0) 
+		this.dead=true;
+		
+if(!dead)
+	dontMove=false;
+
+}
 
 }

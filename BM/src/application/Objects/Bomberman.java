@@ -7,8 +7,8 @@ import application.Ressourcen;
 
 public class Bomberman extends Character {
 String Name="";
-public static double startX;
-public static double startY;
+private  double startX;
+private  double startY;
 
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
@@ -77,6 +77,16 @@ int v=isItem(this.x, this.y);
 	       
 	       }	
 }
+public void gethit() {
+	--this.health;
+	if(this.health<=0) 
+		this.dead=true;
+		
+if(!dead)
+	dontMove=false;
 
+this.x=startX;
+this.y=startY;
+}
 }
 

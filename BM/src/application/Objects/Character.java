@@ -13,8 +13,7 @@ public abstract class Character extends Entities {
 	public int health;
 	boolean dead ;
 	double time;
-	protected double startX;
-	protected double startY;
+
 	final double timeToExplosion=1200;
 	protected boolean dontMove=false;
 	Boolean Player= false;
@@ -24,8 +23,7 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	super(x,y,img);
 	// TODO Auto-generated constructor stub
 	this.Player=isPlayer;
-	startX=x;
-	startY=y;
+
 	bombanzahl=1;
 	 explosion=1;
 	 health=1;
@@ -311,17 +309,7 @@ public boolean getDeath() {
 	return this.dead;
 }
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
-public void gethit() {
-	--this.health;
-	if(this.health<=0) 
-		this.dead=true;
-		
-if(!dead)
-	dontMove=false;
 
-this.x=startX;
-this.y=startY;
-}
 
 public boolean isPlayer() {
 		return Player;
