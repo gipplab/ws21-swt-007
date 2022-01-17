@@ -19,6 +19,7 @@ import javafx.scene.text.Text;
 
 
 import java.io.IOException;
+import java.net.InetAddress;
 
 import application.Client;
 import javafx.beans.property.SimpleStringProperty;
@@ -65,10 +66,12 @@ public class JoinOnlinePageController {
 	
 	@FXML
 	public void JoinButtonOnClick(ActionEvent event) throws IOException {
-	    // Überprüfen ob der Name der Spieler leer oder '-' beinhaltet
+	    // ï¿½berprï¿½fen ob der Name der Spieler leer oder '-' beinhaltet
 			if(validate()==true) {
+				
 			TablePosition pos = hostTableView.getSelectionModel().getSelectedCells().get(0);
 			int row = pos.getRow();
+			System.out.println("selected:"+row);
 			// Item here is the table view type:
 			TableColumn col = pos.getTableColumn();
 			// this gives the value in the selected cell:
@@ -122,6 +125,15 @@ public class JoinOnlinePageController {
 	 	String msg = "Player-AllHosts";
 		String resp;
 		resp = Client.accessServer(msg);
+		if(resp.equals("NoConnexion")) {
+			System.out.println("************* Connexion lost *************");
+			Alert alrt = new Alert(Alert.AlertType.WARNING);
+			alrt.setTitle("Warning");
+			alrt.setHeaderText("No conexion");
+			alrt.setContentText("You are not connected to the game server!");
+			alrt.showAndWait();
+		}else
+		{
 		String[] hosts = resp.split("-");
 		data.clear();
 		if(hosts.length %2 == 0) 
@@ -158,7 +170,8 @@ public class JoinOnlinePageController {
                 }
             }
         });
-		hostTableView.setItems(data);		
+		hostTableView.setItems(data);
+		}
 	}
 
 
@@ -177,7 +190,11 @@ public class JoinOnlinePageController {
 				    if(valid_name.contains(seq)) {	
 				         errors.append("Your name must not contain a minus - sign\n");
 				    }
-		}
+		} 
+	    if(hostTableView.getSelectionModel().getSelectedItem() == null) {
+				
+		         errors.append("No room selected! please select a room\n");
+		 }
 	    
 	    
 	    // If any missing information is found, show the error messages and return false
@@ -186,7 +203,6 @@ public class JoinOnlinePageController {
 	        alert.setTitle("Warning");
 	        alert.setHeaderText("Required Fields Empty");
 	        alert.setContentText(errors.toString());
-	
 	        alert.showAndWait();
 	            return false;
 	     }

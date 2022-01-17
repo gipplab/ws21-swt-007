@@ -1,5 +1,7 @@
 package application.Objects;
+import application.Client;
 import application.GamePanel;
+import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
@@ -11,7 +13,8 @@ public abstract class Character extends Entities {
 	public int health;
 	boolean dead ;
 	double time;
-
+	protected double startX;
+	protected double startY;
 	final double timeToExplosion=1200;
 	protected boolean dontMove=false;
 	Boolean Player= false;
@@ -21,7 +24,8 @@ public Character(double x, double y,Image img, Boolean isPlayer) {
 	super(x,y,img);
 	// TODO Auto-generated constructor stub
 	this.Player=isPlayer;
-
+	startX=x;
+	startY=y;
 	bombanzahl=1;
 	 explosion=1;
 	 health=1;
@@ -33,11 +37,12 @@ public int getPlayerFarbe() {
 }
 
 
+
 public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
 //Hier wird geprüft, ob das Block frei(ein Weg) ist.
-	public static boolean isFree(double nextX, double nextY) {
+	public  boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
 	     
@@ -79,10 +84,12 @@ public boolean isFreeExplosion(double x,  double y) {
 	if(restX==0 && restY==0) {
 		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
 			if(GameObjects.explosionObjects.get(i).getEntityX()==x&& GameObjects.explosionObjects.get(i).getEntityY()==y) {
-				return false;
-				}
+				 System.out.println(this.x +", " +this.y);
+				return false;}
+			
 		}
 	}
+	
 	else if(restX==0 && restY!=0) {
 		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
 		 if((GameObjects.explosionObjects.get(i).getEntityX() == x &&
@@ -90,7 +97,7 @@ public boolean isFreeExplosion(double x,  double y) {
 				 ||
 				 (GameObjects.explosionObjects.get(i).getEntityX() == x &&
 				 GameObjects.explosionObjects.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY ))) {
-
+			 System.out.println(this.x +", " +this.y);
 			 return false;}
 		 }
 		
@@ -133,6 +140,9 @@ public boolean isFreeExplosion(double x,  double y) {
 	}
 		
 	}
+	 
+	
+	
 	
 	return true;
 	
@@ -303,17 +313,14 @@ public boolean getDeath() {
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
 public void gethit() {
 	--this.health;
-	if(this.health<=0)
+	if(this.health<=0) 
 		this.dead=true;
-	
-	
-	
-dontMove=false;
-if(this instanceof Bomberman) {
-this.x=Bomberman.startX;
-this.y=Bomberman.startY;
-}
-System.out.println("###### getroffen");
+		
+if(!dead)
+	dontMove=false;
+
+this.x=startX;
+this.y=startY;
 }
 
 public boolean isPlayer() {
@@ -337,12 +344,10 @@ public void BombanzahlDown(){
 	}
 //Explosion reichweite erhöhen.  
 public void ExplosionUp(){
-	if(explosion<3)
 	this.explosion++;
 }
 //Health erhöhen.
 public void HealthUp(){
-	if(health<3)
 	this.health++;
 }
 public int getHealth(){
@@ -433,6 +438,7 @@ public void moveRight() {
 		 } 
 	 	 else if(this.x % GamePanel.SQUARE_SIZE !=0) {
 	 		 this.x+= GamePanel.SQUARE_SIZE - (this.x % GamePanel.SQUARE_SIZE);
+	 		 
 	 	 }
 	 	 
 	 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];

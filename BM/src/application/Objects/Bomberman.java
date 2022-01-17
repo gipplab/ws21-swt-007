@@ -1,6 +1,8 @@
 package application.Objects;
 
 import javafx.scene.image.Image;
+import application.Client;
+import application.Main;
 import application.Ressourcen;
 
 public class Bomberman extends Character {
@@ -47,7 +49,7 @@ public void update()
 	           GameObjects.bomberObjects.remove(this);
 	        }
 	}
-//verschiedene Items auftauchen können.
+//verschiedene Items auftauchen kÃ¶nnen.
 int v=isItem(this.x, this.y);
 	 
         switch(v) {

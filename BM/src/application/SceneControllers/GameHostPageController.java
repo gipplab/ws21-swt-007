@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -109,13 +110,13 @@ public class GameHostPageController implements Initializable{
 		
 			String msg = "Host-"+RoomNameTextField.getText()+"-"+PlayerNicknameTextField.getText();
 			if(FourPlayersRadioButton.isSelected()) {
-				msg = msg+"-4";	
+				msg = msg+"-4-"+counter;	
 			}
 			else if(threePlayersRadioButton.isSelected()){
-				msg = msg+"-3";	
+				msg = msg+"-3-"+counter;	
 			}
 			else if(TowPlayersRadioButton.isSelected()){
-				msg = msg+"-2";	
+				msg = msg+"-2-"+counter;	
 			}
 	    			
 	   //TextRecieved.setText(player.accessServer(msg));
@@ -125,13 +126,21 @@ public class GameHostPageController implements Initializable{
 	    	Client.playerpseudo=PlayerNicknameTextField.getText();
 	    	Client.roomToJoin=RoomNameTextField.getText();	
 	    	TextRecieved.setText(resp);
+	    	root = FXMLLoader.load(getClass().getResource("../Scenes/WaitPage.fxml"));
+		    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		    scene = new Scene(root);
+		    stage.setScene(scene);		
+		    stage.show();
+	    }else if(resp.equals("NoConnexion")) {
+	    	System.out.println("************* Connexion lost *************");
+			Alert alrt = new Alert(Alert.AlertType.WARNING);
+			alrt.setTitle("Warning");
+			alrt.setHeaderText("No conexion");
+			alrt.setContentText("You are not connected to the game server!");
+			alrt.showAndWait();
 	    }
 	    		
-	    root = FXMLLoader.load(getClass().getResource("../Scenes/WaitPage.fxml"));
-	    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-	    scene = new Scene(root);
-	    stage.setScene(scene);		
-	    stage.show();
+	    
 		}
 	
 	
