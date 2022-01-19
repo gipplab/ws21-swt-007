@@ -1,6 +1,5 @@
 package application;
 
-import java.nio.file.Paths;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -42,10 +41,9 @@ public class Main extends Application {
 	}
 	MediaPlayer mediaPlayer;
 	public void music() {
-		String s = "src/application/music/BG.mp3";
-		Media h = new Media(Paths.get(s).toUri().toString());
+		Media h = new Media(getClass().getResource("music/BG.mp3").toExternalForm());
 		mediaPlayer = new MediaPlayer(h);
-		
+		playmusic();
 		
 	}
 	void stopmusic() {

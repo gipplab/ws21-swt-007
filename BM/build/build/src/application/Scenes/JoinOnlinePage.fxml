@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneControllers.JoinOnlinePageController">
+   <children>
+      <ImageView fx:id="warning" fitHeight="685.0" fitWidth="628.0">
+         <image>
+            <Image url="@../img/BG2.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="270.0" layoutY="60.0" text="Your pseudoname">
+         <font>
+            <Font name="Ravie" size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8947368264198303" green="0.24853801727294922" blue="0.8408869504928589" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect></Label>
+      <Button fx:id="JOINID" layoutX="291.0" layoutY="589.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#JoinButtonOnClick" prefHeight="43.0" prefWidth="118.0" stylesheets="@CSS/BUTTON.css" text="Join">
+         <font>
+            <Font name="Ravie" size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="0.16203702986240387" blue="0.9162036776542664" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect></Button>
+      <Button fx:id="REF" layoutX="54.0" layoutY="403.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#RefreshButtonOnClick" prefHeight="53.0" prefWidth="158.0" stylesheets="@CSS/BUTTON.css" text="Refresh">
+         <font>
+            <Font name="Ravie" size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9868420958518982" green="0.09594298154115677" blue="0.9422971606254578" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect></Button>
+      <TableView fx:id="hostTableView" layoutX="35.0" layoutY="83.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.71" prefHeight="297.0" prefWidth="197.0" stylesheets="@CSS/Tableviewtest.css">
+        <columns>
+          <TableColumn fx:id="hostsTableColumn" editable="false" prefWidth="121.0" text="Hosts" />
+          <TableColumn fx:id="roomTableColumn" editable="false" prefWidth="77.0" text="Statue" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <opaqueInsets>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </opaqueInsets>
+      </TableView>
+      <TextField fx:id="pseudoName" layoutX="277.0" layoutY="102.0" prefHeight="43.0" prefWidth="187.0" stylesheets="@CSS/textfild.css">
+         <font>
+            <Font name="Ravie" size="12.0" />
+         </font>
+      </TextField>
+      <Button fx:id="BackButton" layoutX="436.0" layoutY="589.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#BackButtonClicked" prefHeight="43.0" prefWidth="118.0" stylesheets="@CSS/BUTTON.css" text="Back">
+         <font>
+            <Font name="Ravie" size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9459876418113708" green="0.18981482088565826" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>

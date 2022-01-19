@@ -22,7 +22,7 @@ public Bot(double x, double y, Image img, Boolean p)
 			time= System.currentTimeMillis();
 	
 }
-	//Bombenanzahl prüfen aund eine Bombe Platzieren.
+	//Bombenanzahl prfen aund eine Bombe Platzieren.
 void placeBomb() 
 {
 //		if(bombanzahl>0) 
@@ -53,7 +53,7 @@ void moveRandom(){
     }
 }
 
-//die nächste Bewegung des Botes stimmen.
+//die nchste Bewegung des Botes stimmen.
 //void isFreeBot()
 //{
 //	

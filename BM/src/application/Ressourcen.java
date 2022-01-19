@@ -82,7 +82,7 @@ public static void readFiles() throws IOException
 			IMAGES.SOFTWALL5.image= new Image(Ressourcen.class.getResource("img/Soft5.png").toString());
 			IMAGES.BG1.image= new Image(Ressourcen.class.getResource("img/BG1.png").toString());
 			IMAGES.BG5.image= new Image(Ressourcen.class.getResource("img/BG555.png").toString());
-			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
+			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/bombe.gif").toString());
 			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/FlammeItem.jpeg").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/SpeedItem.jpeg").toString());
