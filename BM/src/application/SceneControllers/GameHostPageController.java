@@ -87,6 +87,7 @@ public class GameHostPageController implements Initializable{
 	    counter= (counter +1)%5;
 	    LevelImageView.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
 	    GamePanelOnline.mapIndex=counter;
+	    System.out.println("map index init ..."+GamePanelOnline.mapIndex);
 	    
 	}
 	

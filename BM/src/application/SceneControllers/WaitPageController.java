@@ -42,6 +42,7 @@ public class WaitPageController {
 						
 						if(message[0].equals("Complited")) {
 							GamePanelOnline.mapIndex = Integer.parseInt(message[1]);
+							System.out.println("map index wait ..."+GamePanelOnline.mapIndex);
 							for(int i=2 ;i<message.length;i++) 
 							{
 								if(Client.playerpseudo.equals(message[i])) {
