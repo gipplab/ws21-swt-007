@@ -1,7 +1,6 @@
 package application.Objects;
 
 import application.GamePanel;
-import application.Ressourcen;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 

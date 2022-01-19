@@ -40,10 +40,10 @@ public class Explosionbot
 			if(Entities.isBomber(x1, y1)) ++radius; //Bot oder Spieler getroffen
 			
 			
-			else if(k==1) {//Wände getroffen.
+			else if(k==1) {//Wnde getroffen.
 				break;
 				}
-			else if(k==0) {//keine Wände getroffen.
+			else if(k==0) {//keine Wnde getroffen.
 						radius++;
 						break;
 							}

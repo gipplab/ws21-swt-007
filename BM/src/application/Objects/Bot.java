@@ -24,7 +24,11 @@ public Bot(double x, double y, Image img, Boolean p)
 			
 	
 }
+<<<<<<< HEAD
 	//Bombenanzahl prüfen aund eine Bombe Platzieren.
+=======
+	//Bombenanzahl prfen aund eine Bombe Platzieren.
+>>>>>>> Marouan
 void placeBomb() 
 {
 //		if(bombanzahl>0) 
@@ -78,7 +82,73 @@ void placeBomb()
     	  moveDown();
     }
 }
+<<<<<<< HEAD
 */
+=======
+
+//die nchste Bewegung des Botes stimmen.
+//void isFreeBot()
+//{
+//	
+//		switch(lastRichtung) {
+//		case 0:// Up
+//		{
+//			if((isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))==0 
+//				|| isWall((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)==1 
+//				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE)
+//				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))
+//			{
+//				lastRichtung=(int) Math.round(Math.random() * 3);
+//				placeBomb();
+//				}
+//			break;
+//		}
+//		case 1: // right
+//		{	if((isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))==0 
+//		||isWall((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)==1
+//		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y)
+//		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))
+//		{
+//			lastRichtung=(int) Math.round(Math.random() * 3);
+//				placeBomb();
+//				}
+//			
+//		break;
+//		}
+//		case 2:// Left
+//		{if((isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))==0 
+//			||isWall((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)==1
+//			|| !isFreeExplosion((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y)
+//			|| !isFreeExplosion((int)this.x-(GamePanel.SQUARE_SIZE),(int)this.y))
+//		{
+//		lastRichtung=(int) Math.round(Math.random() * 3);
+//		if((System.currentTimeMillis()-time>=timeToExplosion)) {
+//			placeBomb();
+//			time=System.currentTimeMillis();
+//		}
+//		
+//		}
+//			
+//		break;
+//		}
+//		case 3:// Down
+//		{
+//			if((isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE)))==0 
+//					||isWall((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))==1
+//					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))
+//					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
+//				lastRichtung=(int) Math.round(Math.random() * 3);
+//				if((int) Math.round(Math.random() * 15)==2)
+//						placeBomb();
+//					}
+//			break;
+//		}
+//		default:
+//			break;
+//		}
+//}
+
+>>>>>>> Marouan
 void isFreeBot()
 {
 	

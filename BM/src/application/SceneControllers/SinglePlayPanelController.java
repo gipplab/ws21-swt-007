@@ -60,7 +60,7 @@ public class SinglePlayPanelController  implements Initializable{
 
     @FXML
     void BackButton(ActionEvent event) throws IOException {
-    	root = FXMLLoader.load(getClass().getResource("../Scenes/LandingPage.fxml"));
+    	root = FXMLLoader.load(getClass().getResource("/application/Scenes/LandingPage.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

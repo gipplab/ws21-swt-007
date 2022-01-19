@@ -21,7 +21,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
-//Koordinaten und wichtige Attribute des Spieles intialisieren. 
+//Koordinaten und wichtige Attribute Spieles intialisieren. 
 public class GamePanel {
 	public static final int HEIGHT = 595;
 	public static final int WIDTH = 560;
@@ -226,7 +226,7 @@ private void drawBomb(GraphicsContext gc) {
 		}
 	}
 	 
-	//ausgewählte Map importieren.
+	//ausgehlte Map importieren.
 private static void loadMapFile()  {
 		
         bufferedReader = new BufferedReader(Ressourcen.file[mapIndex]);
@@ -234,7 +234,7 @@ private static void loadMapFile()  {
 	 
         try {
             String currentLine;
-         int i=1;
+
             while ((currentLine = bufferedReader.readLine()) != null) {
                if (currentLine.isEmpty()) {
                   continue;
