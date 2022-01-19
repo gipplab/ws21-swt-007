@@ -24,11 +24,9 @@ public Bot(double x, double y, Image img, Boolean p)
 			
 	
 }
-<<<<<<< HEAD
-	//Bombenanzahl prüfen aund eine Bombe Platzieren.
-=======
+
 	//Bombenanzahl prfen aund eine Bombe Platzieren.
->>>>>>> Marouan
+
 void placeBomb() 
 {
 //		if(bombanzahl>0) 
@@ -84,7 +82,7 @@ void placeBomb()
 }
 <<<<<<< HEAD
 */
-=======
+
 
 //die nchste Bewegung des Botes stimmen.
 //void isFreeBot()
@@ -148,7 +146,7 @@ void placeBomb()
 //		}
 //}
 
->>>>>>> Marouan
+
 void isFreeBot()
 {
 	

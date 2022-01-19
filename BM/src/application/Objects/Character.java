@@ -37,13 +37,11 @@ public int getPlayerFarbe() {
 public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
-<<<<<<< HEAD
-//Hier wird geprüft, ob das Block frei(ein Weg) ist.
-	public static  boolean isFree(double nextX, double nextY) {
-=======
+
+
+
 //Hier wird geprft, ob das Block frei(ein Weg) ist.
-	public  boolean isFree(double nextX, double nextY) {
->>>>>>> Marouan
+public static boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
 	     

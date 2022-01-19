@@ -44,14 +44,8 @@ public class Main extends Application {
 	public void music() {
 		Media h = new Media(getClass().getResource("music/BG.mp3").toExternalForm());
 		mediaPlayer = new MediaPlayer(h);
-<<<<<<< HEAD
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-		mediaPlayer.setVolume(volumen);
-	
-=======
-		playmusic();
->>>>>>> Marouan
-		
+		mediaPlayer.setVolume(volumen);		
 	}
 	static void  stopmusic() {
 		mediaPlayer.stop();
