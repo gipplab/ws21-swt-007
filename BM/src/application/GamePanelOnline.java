@@ -140,6 +140,7 @@ void EndOfGame() throws InterruptedException {
 
 	public void run() {
 		drawObjekte(gc);
+		Main.playmusic();
 	}
 
 void update() throws InterruptedException {
@@ -401,10 +402,10 @@ void onlineMapUpdates(String resp) {
                            break;
                     
                            
-                    case ("L"):   //Hardwall.
+                    case ("A"):   //Hardwall.
                        	Wall hard3= new Wall(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.HARDWALL3.getImage(),false);
-                       	if(hard3!=null)
-                       		GameObjects.spawn(hard3);                    
+                       if(hard3!=null)
+                       GameObjects.spawn(hard3);                    
                            break;
                    
                     case ("U"):   //Hardwall.

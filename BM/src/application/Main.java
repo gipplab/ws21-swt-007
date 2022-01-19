@@ -19,6 +19,7 @@ public class Main extends Application {
 	
 		
 		try {
+			
 			music();
 			player.SetAddress("localhost"); 
 			Ressourcen.readFiles();
@@ -30,12 +31,9 @@ public class Main extends Application {
 			primaryStage.show();
 
 		} catch(Exception e) {
-			
 			e.printStackTrace();
-			
 		}
 	}
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -50,9 +48,7 @@ public class Main extends Application {
 	static void  stopmusic() {
 		mediaPlayer.stop();
 	}
-	
 	static void playmusic() {
-		
 		mediaPlayer.play();
 	}
 	static void volumeUp() {
