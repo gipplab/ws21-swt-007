@@ -37,8 +37,11 @@ public int getPlayerFarbe() {
 public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
-//Hier wird geprüft, ob das Block frei(ein Weg) ist.
-	public static  boolean isFree(double nextX, double nextY) {
+
+
+
+//Hier wird geprft, ob das Block frei(ein Weg) ist.
+public static boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
 	     
@@ -320,7 +323,7 @@ public int getBombanzahl(){
 public int getExplosion(){
 		return this.explosion;
 	}
-	//Bombenanzahl erhöhen.
+	//Bombenanzahl erhhen.
 public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
@@ -332,7 +335,7 @@ public void BombanzahlDown(){
 public void ExplosionUp(){
 	this.explosion++;
 }
-//Health erhöhen.
+//Health erhhen.
 public void HealthUp(){
 	this.health++;
 }
@@ -370,7 +373,7 @@ public int indexAnimPlayer() {
 	        return indexAnimPlayer;
 	 }
 	 
-//Hier wird geprüft, ob es in diesem Block ein Item gibt.
+//Hier wird geprft, ob es in diesem Block ein Item gibt.
 		public int isItem(double nextX, double nextY) {
 		// TODO Auto-generated method stub
 		  Entities obje;
@@ -403,7 +406,7 @@ public int indexAnimPlayer() {
 			  }
 		    	return -1;
 		} 
-//Geschwindigkeit erhöhen.		
+//Geschwindigkeit erhhen.		
 protected void speedUp() {
 		if(speed ==2.5)
 			speed=5;

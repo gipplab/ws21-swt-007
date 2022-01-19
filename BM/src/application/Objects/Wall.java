@@ -15,7 +15,7 @@ public  class Wall extends TileObjects{
 		return zerstoerbar;
 	}
 	 
-	//hier werden zerst�rbare W�nde zerst�rt, wenn sie eine Explosion treffen.
+	//hier werden zersbarede zersrt, wenn sie eine Explosion treffen.
 	public void onDestroy() {
 		if(zerstoerbar) {
 			GameObjects.tileObjects.remove(this);
