@@ -25,7 +25,7 @@ public class LandingPageController {
 	private Button GuideButton;
 	@FXML
 	private Button ExitButton;
-	public static int languageIndex=3;
+	public static int languageIndex=1;
 
 	// Event Listener on Button[#SinglePlayButton].onAction
 	@FXML

@@ -304,18 +304,14 @@ case 3:
 	
 	return true;	
 }
-
-
 public boolean getDeath() {
 	return this.dead;
 }
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
-
-
 public boolean isPlayer() {
-		return Player;
-		
+		return Player;	
 	}
+
 public int getBombanzahl(){
 		return this.bombanzahl;
 	}
@@ -323,7 +319,8 @@ public int getBombanzahl(){
 public int getExplosion(){
 		return this.explosion;
 	}
-	//Bombenanzahl erhhen.
+
+//Bombenanzahl erhhen.
 public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
