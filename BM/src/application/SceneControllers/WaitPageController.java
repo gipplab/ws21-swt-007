@@ -7,6 +7,7 @@ import java.util.TimerTask;
 import application.Client;
 import application.GamePanelOnline;
 import application.Main;
+import application.Ressourcen;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,7 +76,7 @@ public class WaitPageController {
 							
 							
 						}else {
-							infoRoom.setText("wait "+resp);
+							infoRoom.setText(Ressourcen.language.get(24).get(LandingPageController.languageIndex)+"... "+resp);
 						}
 												
 					}

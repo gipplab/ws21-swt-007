@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import application.Ressourcen;
 import javafx.event.ActionEvent;
 
 public class LandingPageController {
@@ -24,6 +25,7 @@ public class LandingPageController {
 	private Button GuideButton;
 	@FXML
 	private Button ExitButton;
+	public static int languageIndex=3;
 
 	// Event Listener on Button[#SinglePlayButton].onAction
 	@FXML
@@ -34,6 +36,12 @@ public class LandingPageController {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+	}
+	public void initialize() {
+		SinglePlayButton.setText(Ressourcen.language.get(1).get(languageIndex));
+		OnlineButton.setText(Ressourcen.language.get(2).get(languageIndex));
+		GuideButton.setText(Ressourcen.language.get(3).get(languageIndex));
+		ExitButton.setText(Ressourcen.language.get(4).get(languageIndex));		
 	}
 	// Event Listener on Button[#OnlineButton].onAction
 	@FXML
