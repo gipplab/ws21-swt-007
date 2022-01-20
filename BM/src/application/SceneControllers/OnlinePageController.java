@@ -25,7 +25,7 @@ public class OnlinePageController {
 	private Button OnlineBackButton;
 
 	// Event Listener on Button[#createGameButten].onAction
-	@FXML
+	
 	public void initialize() {
 		createGameButten.setText(Ressourcen.language.get(21).get(LandingPageController.languageIndex));
 		JoinGameButton.setText(Ressourcen.language.get(22).get(LandingPageController.languageIndex));
