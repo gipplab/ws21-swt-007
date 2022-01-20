@@ -25,12 +25,8 @@
                   <Image url="@../img/BG2.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="MapImage" fitHeight="268.0" fitWidth="269.0" layoutX="180.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/Frame%203.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="RunRoomButton" layoutX="347.0" layoutY="603.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#RunRoomButtonIsClicked" prefHeight="37.0" prefWidth="118.0" stylesheets="@CSS/BUTTON.css" text="Run">
+            <ImageView fx:id="MapImage" fitHeight="268.0" fitWidth="269.0" layoutX="180.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="RunRoomButton" layoutX="300.0" layoutY="603.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#RunRoomButtonIsClicked" prefHeight="43.0" prefWidth="152.0" stylesheets="@CSS/BUTTON.css" text="Run">
                <font>
                   <Font name="Ravie" size="22.0" />
                </font>
@@ -58,7 +54,7 @@
                   <String fx:value="button" />
                </styleClass>
             </Button>
-            <Button fx:id="BackButton" layoutX="477.0" layoutY="603.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#BackButton" prefHeight="37.0" prefWidth="118.0" stylesheets="@CSS/BUTTON.css" text="Back">
+            <Button fx:id="SingelPlayerBackButton" layoutX="462.0" layoutY="603.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#BackButton" prefHeight="43.0" prefWidth="141.0" stylesheets="@CSS/BUTTON.css" text="Back">
                <font>
                   <Font name="Ravie" size="22.0" />
                </font>
@@ -82,7 +78,7 @@
                   <Glow level="0.85" />
                </effect>
             </Button>
-            <Label layoutX="14.0" layoutY="141.0" text="Farbe : ">
+            <Label fx:id="SinglePlayColorLabel" layoutX="14.0" layoutY="141.0" text="Color : ">
                <font>
                   <Font name="Ravie" size="18.0" />
                </font>
@@ -103,7 +99,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Label layoutX="14.0" layoutY="48.0" prefHeight="23.0" prefWidth="217.0" text="Player nickname :">
+            <Label fx:id="SinglePlayNameLabel" layoutX="14.0" layoutY="48.0" prefHeight="23.0" prefWidth="312.0" text="Player nickname :">
                <font>
                   <Font name="Ravie" size="18.0" />
                </font>
@@ -124,7 +120,7 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <TextField fx:id="PlayerNicknameTextField" alignment="CENTER_RIGHT" layoutX="237.0" layoutY="38.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="170.0" stylesheets="@CSS/textfild.css">
+            <TextField fx:id="PlayerNicknameTextField" alignment="CENTER_RIGHT" layoutX="349.0" layoutY="38.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="170.0" stylesheets="@CSS/textfild.css">
                <font>
                   <Font name="Ravie" size="12.0" />
                </font>

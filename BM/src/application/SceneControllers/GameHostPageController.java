@@ -10,7 +10,6 @@ import application.Ressourcen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,7 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
-public class GameHostPageController implements Initializable{
+public class GameHostPageController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -32,9 +31,16 @@ public class GameHostPageController implements Initializable{
 
     @FXML
     private RadioButton FourPlayersRadioButton;
+    
+    
+    @FXML
+    private Label HostNameLabel;
 
     @FXML
     private Button GameHostBackButton;
+    
+    @FXML
+    private Label RoomNameLabel;
 
     @FXML
     private ImageView LevelImageView;
@@ -69,7 +75,24 @@ public class GameHostPageController implements Initializable{
     @FXML
     private Label TextRecieved;
     
-  
+    public void initialize() {
+		// TODO Auto-generated method stub
+    	FourPlayersRadioButton.setText(Ressourcen.language.get(13).get(LandingPageController.languageIndex));
+        HostNameLabel.setText(Ressourcen.language.get(10).get(LandingPageController.languageIndex));
+        GameHostBackButton.setText(Ressourcen.language.get(15).get(LandingPageController.languageIndex));
+        RoomNameLabel.setText(Ressourcen.language.get(9).get(LandingPageController.languageIndex));
+        RunRoomButton.setText(Ressourcen.language.get(14).get(LandingPageController.languageIndex));
+        TowPlayersRadioButton.setText(Ressourcen.language.get(11).get(LandingPageController.languageIndex));
+        threePlayersRadioButton.setText(Ressourcen.language.get(12).get(LandingPageController.languageIndex));
+		try {
+			Ressourcen.readFiles();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		counter=0;
+		LevelImageView.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
+	}
 
     @FXML
     void GameHostBackButtonIsClicked(ActionEvent event) throws IOException {
@@ -146,17 +169,6 @@ public class GameHostPageController implements Initializable{
 	@FXML
 	void playersButton(ActionEvent event) throws IOException {}
 	    
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
-		try {
-			Ressourcen.readFiles();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		counter=0;
-		LevelImageView.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
-	}
+	
     
 }

@@ -8,8 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -19,6 +20,7 @@ import java.io.IOException;
 
 
 import application.Client;
+import application.Ressourcen;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -37,6 +39,11 @@ public class JoinOnlinePageController {
 	private Parent root;
 	@FXML
 	private TextField pseudoName;
+	
+	@FXML
+	private Label jointNameLabel;
+	@FXML
+	ImageView warning;
 	@FXML
 	private TableView<String[]> hostTableView;
 	@FXML
@@ -51,7 +58,14 @@ public class JoinOnlinePageController {
 	@FXML
 	private Button BackButton;
 		
-	public void initialize(){		
+	public void initialize(){
+		jointNameLabel.setText(Ressourcen.language.get(16).get(LandingPageController.languageIndex));
+		hostsTableColumn.setText(Ressourcen.language.get(18).get(LandingPageController.languageIndex));
+		roomTableColumn.setText(Ressourcen.language.get(17).get(LandingPageController.languageIndex));
+		JOINID.setText(Ressourcen.language.get(20).get(LandingPageController.languageIndex));
+		REF.setText(Ressourcen.language.get(19).get(LandingPageController.languageIndex));
+		BackButton.setText(Ressourcen.language.get(8).get(LandingPageController.languageIndex));
+		
 		FillTableView();		
     }
 	// Event Listener on Button[#JOINID].onAction
@@ -62,7 +76,7 @@ public class JoinOnlinePageController {
 	
 	@FXML
 	public void JoinButtonOnClick(ActionEvent event) throws IOException {
-	    // �berpr�fen ob der Name der Spieler leer oder '-' beinhaltet
+	    // ueberpruefen ob der Name der Spieler leer oder '-' beinhaltet
 			if(validate()==true) {
 				
 			TablePosition pos = hostTableView.getSelectionModel().getSelectedCells().get(0);

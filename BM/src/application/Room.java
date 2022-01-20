@@ -16,6 +16,7 @@ public class Room {
 	public Room(String hostName, int howManyPlayers, int mapIndex) {
 		this.hostName = hostName;
 		this.howManyPlayers = howManyPlayers; 
+		this.mapIndex=mapIndex;
 		loadMapFile(mapIndex);
 		int row=0;
 		int column=0;

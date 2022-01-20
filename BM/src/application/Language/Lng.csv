@@ -1,0 +1,25 @@
+id,en,de,fr
+SinglePlayButton,Singelplayer,Einzelspieler,Joueur unique
+OnlineButton,Online,Online,En ligne
+GuideButton,Guide,Handbuch,Guide
+ExitButton,Exit,Ausgang,Sortir
+SinglePlayNameLabel,Player nickname,Spitzname des Spielers,Pseudonyme du joueur
+SinglePlayColorLabel,Color,Farbe,Couleur
+RunRoomButton,Run,Run,Lancer
+SingelPlayerBackButton,Back,zurück,Retour
+RoomNameLabel,Room name,Raumname,Nom de la chambre
+HostNameLabel,Player nickname,Spitzname des Spielers,Pseudonyme du joueur
+TowPlayersRadioButton,2 Players,2 Spieler,2 joueurs
+threePlayersRadioButton,3 Players,3 Spieler,3 joueurs
+FourPlayersRadioButton,4 Players,4 Spieler,4 joueurs
+RunRoomButton,Run,Run,Lancer
+GameHostBackButton,Back,zurück,Retour
+jointNameLabel,Player nickname,Spitzname des Spielers,Pseudonyme du joueur
+roomTableColumn,Status,Status,Statut
+hostsTableColumn,Rooms,Räume,Chambres
+REF,Refresh,Aktualisieren,Actualiser
+JOINID,Join,Beitreten,Joindre
+createGameButten,Create,Erstellen,Créer
+JoinGameButton,Join,Beitreten,Joindre
+OnlineBackButton,Back,zurück,Retour
+Wait,Wait, Warten,Attendre
