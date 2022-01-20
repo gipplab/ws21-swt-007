@@ -13,6 +13,11 @@ public class Bot extends Character {
 	int lastRichtung=0;
 	long time;
 	int timeToExplosion=10000;
+	int timeToRandom=2000;
+	boolean randBot1 = true ;
+	boolean randBot2 = true ;
+	boolean randBot3 = true ;
+	boolean randBot4 = true ;
 	Image Bombimag= Ressourcen.IMAGES.BOMBE.getImage();
 public Bot(double x, double y, Image img, Boolean p)
 {
@@ -38,34 +43,66 @@ void placeBomb()
 //		}
 }
 
-  public void moveRandom(){
+  public void moveBot(){
 	isFreeBot();
         for (int i = 0; i < GameObjects.bomberObjects.size(); i++) {		   
 	     Entities obje = GameObjects.bomberObjects.get(i);	   	    
 	     if(obje.isPlayer()) { 	        	
-	         try {
-				if (Character.isFree(this.x , this.y - this.speed) && isFreeBomb(this.x,this.y ,0) && (this.y > obje.getEntityY())) { 
-				     moveUp();
-				 } else  if (Character.isFree(this.x + this.speed , this.y) && isFreeBomb(this.x ,this.y,1) && (this.x < obje.getEntityX())) {
-				                moveRight();
-				              } 
-				              else if (Character.isFree(this.x - this.speed , this.y) && isFreeBomb(this.x ,this.y,3)&& (this.x > obje.getEntityX())) {
-				                       moveLeft();		
-				                    } 
-				               else  if (Character.isFree(this.x , this.y + this.speed) &&  isFreeBomb(this.x,this.y ,2) && (this.y < obje.getEntityY()))  {
-				                     moveDown();
-				                     }
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}  
+	         try { 
+		     if (randBot1 &&  Character.isFree(this.x , this.y - this.speed) && isFreeBomb(this.x,this.y ,0) && (this.y > obje.getEntityY())) { 
+		         moveUp();
+			 time= System.currentTimeMillis();
+		      } 	 
+		      else { 
+			    randBot1 = false ;
+	                   } 
+			 
+		      if (randBot2 &&  Character.isFree(this.x + this.speed , this.y) && isFreeBomb(this.x ,this.y,1) && (this.x < obje.getEntityX())) {
+			  moveRight();
+			  time= System.currentTimeMillis();
+		      } else { 
+			      randBot2 = false ;
+                             } 
+			 
+		      if (randBot3 &&  Character.isFree(this.x - this.speed , this.y) && isFreeBomb(this.x ,this.y,3)&& (this.x > obje.getEntityX())) {
+			  moveLeft();	
+			  time= System.currentTimeMillis();
+		      } else { 
+			      randBot3 = false ;
+                             } 
+			 
+		      if (randBot4 &&  Character.isFree(this.x , this.y + this.speed) &&  isFreeBomb(this.x,this.y ,2) && (this.y < obje.getEntityY()))  {
+			  moveDown();
+			  time= System.currentTimeMillis();   
+		      } 
+		      else { 
+			     randBot4 = false ;
+                           } 
+			 
+		      if(System.currentTimeMillis()-time <= timeToRandom && !randBot1 && !randBot2 && !randBot3 && !randBot4) {
+		         moveRandom();
+			 randBot1 = false ;
+			 randBot2 = false ;
+			 randBot3 = false ;
+			 randBot4 = false ;
+		      } 
+		      else  {
+			     randBot1 = true ;
+			     randBot2 = true ;
+			     randBot3 = true ;
+			     randBot4 = true ;
+			    } 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
 	   }  
         }
   }
 	
 //Hier bewegt sich der Bot random. void moveRandom(){
 	
-/*	
+ public void moveRandom(){
    isFreeBot();
     if (lastRichtung == 0) {
         moveUp();
@@ -80,8 +117,7 @@ void placeBomb()
     	  moveDown();
     }
 }
-<<<<<<< HEAD
-*/
+
 
 
 //die nchste Bewegung des Botes stimmen.
@@ -227,7 +263,7 @@ public void update() {
 		this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
 	    GameObjects.bomberObjects.remove(this);	
 	      }else
- 			moveRandom();
+ 			moveBot();
 
 }
 public void gethit() {
