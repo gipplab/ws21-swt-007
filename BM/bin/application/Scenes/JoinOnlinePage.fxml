@@ -22,7 +22,7 @@
             <Image url="@../img/BG2.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="270.0" layoutY="60.0" text="Your pseudoname">
+      <Label fx:id="jointNameLabel" layoutX="270.0" layoutY="60.0" text="Your pseudoname">
          <font>
             <Font name="Ravie" size="18.0" />
          </font>

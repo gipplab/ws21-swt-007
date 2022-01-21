@@ -12,10 +12,12 @@ import javafx.scene.image.WritableImage;
 
 public class Ressourcen {
 	
+	public static ArrayList<ArrayList<String>> language;
 	public static int farbe=3;
 	public static InputStreamReader file[]=new InputStreamReader[5] ,file_Server[]=new InputStreamReader[5];
 	public static ArrayList<ArrayList<String>> mapLayout;
-	public static ArrayList<ArrayList<String>> language;
+
+	
 	public static String[] fields;
 	
 

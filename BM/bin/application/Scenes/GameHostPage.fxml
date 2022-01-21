@@ -24,20 +24,20 @@
       </ImageView>
       <Pane layoutX="22.0" layoutY="37.0" opacity="0.95" prefHeight="432.0" prefWidth="735.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="37.0">
          <children>
-            <ImageView fitHeight="679.0" fitWidth="628.0" layoutX="-20.0" layoutY="-36.0">
+            <ImageView fx:id="LevelImageView" fitHeight="679.0" fitWidth="628.0" layoutX="-20.0" layoutY="-36.0">
                <image>
                   <Image url="@../img/BG2.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="RoomNameTextField" layoutX="209.0" layoutY="23.0" prefHeight="35.0" prefWidth="196.0" stylesheets="@CSS/textfild.css">
+            <TextField fx:id="RoomNameTextField" layoutX="346.0" layoutY="23.0" prefHeight="35.0" prefWidth="196.0" stylesheets="@CSS/textfild.css">
                <font>
                   <Font name="Ravie" size="12.0" />
                </font></TextField>
-            <TextField fx:id="PlayerNicknameTextField" layoutX="209.0" layoutY="65.0" prefHeight="35.0" prefWidth="196.0" stylesheets="@CSS/textfild.css">
+            <TextField fx:id="PlayerNicknameTextField" layoutX="346.0" layoutY="60.0" prefHeight="35.0" prefWidth="196.0" stylesheets="@CSS/textfild.css">
                <font>
                   <Font name="Ravie" size="12.0" />
                </font></TextField>
-            <Label layoutX="20.0" layoutY="29.0" prefHeight="23.0" prefWidth="161.0" text="Room name :">
+            <Label fx:id="RoomNameLabel" layoutX="20.0" layoutY="29.0" prefHeight="23.0" prefWidth="285.0" text="Room name :">
                <font>
                   <Font name="Ravie" size="18.0" />
                </font>
@@ -61,7 +61,7 @@
                   <Glow level="0.85" />
                </effect>
             </Label>
-            <Label layoutX="29.0" layoutY="66.0" text="Nickname:">
+            <Label fx:id="HostNameLabel" layoutX="29.0" layoutY="66.0" prefHeight="24.0" prefWidth="314.0" text="Nickname:">
                <font>
                   <Font name="Ravie" size="18.0" />
                </font>
@@ -156,10 +156,7 @@
                   </LinearGradient>
                </textFill>
             </RadioButton>
-            <ImageView fx:id="LevelImageView" fitHeight="208.0" fitWidth="260.0" layoutX="162.0" layoutY="238.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../img/Frame%203.png" />
-               </image></ImageView>
+            <ImageView fx:id="LevelImageView" fitHeight="208.0" fitWidth="260.0" layoutX="162.0" layoutY="238.0" pickOnBounds="true" />
             <Button fx:id="PreviousLevelButton" layoutX="111.0" layoutY="321.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#PreviousLevelButtonIsClicked" prefHeight="35.0" prefWidth="35.0" rotate="-90.0" styleClass="first-butten" stylesheets="@CSS/BUTTON2.css">
                <effect>
                   <Glow level="1.0">
@@ -190,28 +187,7 @@
                         <Glow />
                      </input></Glow>
                </effect></Button>
-            <Label fx:id="MapNumberLabel" layoutX="242.0" layoutY="187.0" text="Field: 1">
-               <font>
-                  <Font name="Ravie" size="22.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.9473684430122375" green="0.04385964944958687" blue="0.8720760345458984" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-            <Button fx:id="RunRoomButton" layoutX="294.0" layoutY="554.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#RunRoomButtonIsClicked" prefHeight="37.0" prefWidth="118.0" stylesheets="@CSS/BUTTON.css" text="Run">
+            <Button fx:id="RunRoomButton" layoutX="250.0" layoutY="554.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#RunRoomButtonIsClicked" prefHeight="43.0" prefWidth="147.0" stylesheets="@CSS/BUTTON.css" text="Run">
                <font>
                   <Font name="Ravie" size="22.0" />
                </font>
@@ -235,7 +211,7 @@
                   <Glow level="0.85" />
                </effect>
             </Button>
-            <Button fx:id="GameHostBackButton" layoutX="436.0" layoutY="554.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#GameHostBackButtonIsClicked" prefHeight="37.0" prefWidth="118.0" stylesheets="@CSS/BUTTON.css" text="Back">
+            <Button fx:id="GameHostBackButton" layoutX="402.0" layoutY="554.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#GameHostBackButtonIsClicked" prefHeight="43.0" prefWidth="147.0" stylesheets="@CSS/BUTTON.css" text="Back">
                <font>
                   <Font name="Ravie" size="22.0" />
                </font>
@@ -259,7 +235,7 @@
                   <Glow level="0.85" />
                </effect>
             </Button>
-            <Label fx:id="TextRecieved" layoutX="225.0" layoutY="471.0" prefHeight="43.0" prefWidth="118.0" text="Label">
+            <Label fx:id="TextRecieved" layoutX="225.0" layoutY="471.0" prefHeight="43.0" prefWidth="118.0">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
