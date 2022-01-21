@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane prefHeight="679.0" prefWidth="628.0">
+         <children>
+            <AnchorPane prefHeight="679.0" prefWidth="628.0">
+               <children>
+                  <ImageView fitHeight="679.0" fitWidth="332.0">
+                     <image>
+                        <Image url="@../img/BG2.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="162.0" fitWidth="169.0" layoutX="66.0" layoutY="198.0">
+                     <image>
+                        <Image url="@../img/WASD.png" />
+                     </image>
+                     <effect>
+                        <Glow level="0.85" />
+                     </effect>
+                  </ImageView>
+                  <AnchorPane layoutX="327.0" prefHeight="679.0" prefWidth="323.0">
+                     <children>
+                        <ImageView fitHeight="679.0" fitWidth="329.0" layoutX="-12.0">
+                           <image>
+                              <Image url="@../img/Backgraund.jpg" />
+                           </image>
+                           <effect>
+                              <Shadow>
+                                 <input>
+                                    <Glow level="0.85" />
+                                 </input>
+                              </Shadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="679.0" fitWidth="329.0" layoutX="3.0">
+                           <image>
+                              <Image url="@../img/Backgraund.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="162.0" fitWidth="197.0" layoutX="68.0" layoutY="178.0">
+                           <image>
+                              <Image url="@../img/Arrows.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.85" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="95.0" fitWidth="106.0" layoutX="112.0" layoutY="351.0">
+                           <image>
+                              <Image url="@../img/Enter.png" />
+                           </image>
+                           <effect>
+                              <Glow level="0.85" />
+                           </effect>
+                        </ImageView>
+                        <Text layoutX="35.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEFT --" wrappingWidth="72.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Shadow height="0.0" radius="0.0" width="0.0" />
+                           </effect>
+                        </Text>
+                        <Text layoutX="33.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEFT --" wrappingWidth="72.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Text>
+                        <Text layoutX="236.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-- RIGHT" wrappingWidth="83.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Shadow height="0.0" radius="0.0" width="0.0" />
+                           </effect>
+                        </Text>
+                        <Text layoutX="234.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-- RIGHT" wrappingWidth="83.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Text>
+                        <Text layoutX="113.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DROP BOMB" wrappingWidth="113.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Shadow height="4.895" radius="0.7237499999999999" width="0.0" />
+                           </effect>
+                        </Text>
+                        <Text layoutX="111.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DROP BOMB" wrappingWidth="113.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Text>
+                        <Text layoutX="155.0" layoutY="321.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-- " wrappingWidth="22.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Text>
+                        <Text layoutX="157.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UP" wrappingWidth="31.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Shadow height="0.0" radius="0.0" width="0.0" />
+                           </effect>
+                        </Text>
+                        <Text layoutX="154.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UP" wrappingWidth="31.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Glow level="0.85" />
+                           </effect>
+                        </Text>
+                        <Text layoutX="154.0" layoutY="217.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-- " wrappingWidth="22.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Text>
+                        <Text layoutX="155.0" layoutY="468.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-- " wrappingWidth="22.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Text>
+                        <Text layoutX="142.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOWN" wrappingWidth="61.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Shadow height="0.0" radius="0.0" width="0.0" />
+                           </effect>
+                        </Text>
+                        <Text layoutX="139.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOWN" wrappingWidth="61.0">
+                           <font>
+                              <Font name="Ravie" size="14.0" />
+                           </font>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </Text>
+                        <Button fx:id="BACKGUIDE" layoutX="137.0" layoutY="594.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="52.0" prefWidth="153.0" stylesheets="@CSS/BUTTON.css" text="Back">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.9800000190734863" green="0.274399995803833" blue="0.9757697582244873" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <font>
+                              <Font name="Ravie" size="22.0" />
+                           </font>
+                           <effect>
+                              <Glow level="0.83" />
+                           </effect>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <Text layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AIM OF " wrappingWidth="129.0">
+                     <font>
+                        <Font name="Ravie" size="24.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.007662835249042145">
+                                 <color>
+                                    <Color red="0.9078947305679321" green="0.033625729382038116" blue="0.5873294472694397" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Glow level="0.85" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="134.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE GAME" wrappingWidth="169.0">
+                     <font>
+                        <Font name="Ravie" size="24.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="0.3838862559241706" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.3443165421485901" green="0.07000000029802322" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Glow level="0.85" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="10.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEFT --" wrappingWidth="72.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Shadow height="0.0" radius="0.0" width="0.0" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="7.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEFT --" wrappingWidth="72.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Glow level="0.85" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="231.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-- RIGHT" wrappingWidth="83.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Shadow height="0.0" radius="0.0" width="0.0" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="228.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-- RIGHT" wrappingWidth="83.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Glow level="0.85" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="140.0" layoutY="377.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--" wrappingWidth="21.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Text>
+                  <Text layoutX="97.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DROP BOMB" wrappingWidth="113.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Shadow height="0.0" radius="0.0" width="0.0" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="94.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DROP BOMB" wrappingWidth="113.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Glow level="0.85" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="141.0" layoutY="194.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--" wrappingWidth="21.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Text>
+                  <Text layoutX="142.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UP" wrappingWidth="31.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Shadow height="0.0" radius="0.0" width="0.0" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="140.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UP" wrappingWidth="31.0">
+                     <font>
+                        <Font name="Ravie" size="14.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.0311281681060791" blue="0.0311281681060791" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Glow level="0.85" />
+                     </effect>
+                  </Text>
+                  <Text layoutX="33.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLOW UP YOUR OPPONENTS BEFORE THEY KILL YOU. YOU CAN CHOOSE EITHER 1,2,3 OPPONENS." wrappingWidth="268.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.007662835249042145">
+                                 <color>
+                                    <Color red="0.9078947305679321" green="0.033625729382038116" blue="0.5873294472694397" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Glow level="0.85" />
+                     </effect>
+                     <font>
+                        <Font name="Segoe Print" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="28.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU CAN PLAY A TWO PLAYER GAME WITH YOUR FRIENDS OR JUST AGAINST THE COMPUTER OPPONETS." wrappingWidth="277.0">
+                     <font>
+                        <Font name="Segoe Print" size="12.0" />
+                     </font>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.007662835249042145">
+                                 <color>
+                                    <Color red="0.9078947305679321" green="0.033625729382038116" blue="0.5873294472694397" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <Glow level="0.85" />
+                     </effect>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
