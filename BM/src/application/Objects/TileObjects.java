@@ -7,7 +7,7 @@ public abstract class TileObjects extends Entities{
 	TileObjects(double x, double y, Image img) {
 		// TODO Auto-generated constructor stub
 		super(x,y,img);
-	
+
 	}
 
 	public void onDestroy() {
@@ -15,6 +15,7 @@ public abstract class TileObjects extends Entities{
 		
 	}
 
+	public  abstract boolean isBreakable();
 	public abstract  void update();
 
 	public double getX() {

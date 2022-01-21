@@ -1,24 +1,28 @@
 package application.Objects;
 
-import application.Ressourcen;
 import javafx.scene.image.Image;
 
 public  class Wall extends TileObjects{
 	boolean zerstoerbar;
 	Boolean death;
-	public Wall(double x,double y,Image img) {
-		// TODO Auto-generated constructor stub
+	public Wall(double x,double y,Image img,boolean breakable) {
 		super(x,y,img);
-		if(img.equals(Ressourcen.IMAGES.SOFTWALL.getImage()))
-			zerstoerbar=true;
-		else zerstoerbar=false;
+		zerstoerbar=breakable; 
 		death=false;
 	}
-	
-	
+	public boolean isBreakable() 
+	{
+		return zerstoerbar;
+	}
+	 
+	//hier werden zersbarede zersrt, wenn sie eine Explosion treffen.
 	public void onDestroy() {
-		if(zerstoerbar)
+		if(zerstoerbar) {
 			GameObjects.tileObjects.remove(this);
+			
+		}
+			
+		
 		
 	}
 	public boolean getDeath() {
@@ -28,17 +32,20 @@ public  class Wall extends TileObjects{
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+	
 	}
 
 
 	@Override
 	public boolean isPlayer() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
 
-	
+	@Override
+	protected int getItemtype() {
+		return -1;
+	}
 
 }

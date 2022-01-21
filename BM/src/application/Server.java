@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
+
+
 public class Server {
 	private static final int PORT = 1234;
 	private static ArrayList<Room> roomsList = new ArrayList<>();
@@ -17,7 +19,7 @@ public class Server {
 			datagramSocket = new DatagramSocket(PORT);
 		} catch (SocketException sockEx) {
 			System.out.println("unable to open ");
-			System.exit(1);
+			System.exit(1); 
 		}
 		handleClient();
 	}
@@ -28,18 +30,19 @@ public class Server {
 			InetAddress clientAddress = null;
 			int clientPort;
 			do {
-				buffer = new byte[256];
+				buffer = new byte[4096];
 				inPacket = new DatagramPacket(buffer, buffer.length);
 				datagramSocket.receive(inPacket);
 				clientAddress = inPacket.getAddress();
 				clientPort = inPacket.getPort();
 				messageIn = new String(inPacket.getData(), 0, inPacket.getLength());
+				System.out.println(messageIn);
 				String[] message = messageIn.split("-");
-				//System.out.println(messageIn);
+				
 				if(message[0].equals("Host")) 
 				{
-					PlayerInfos host = new PlayerInfos(message[1]); 
-					Room rm = new Room(message[1],Integer.parseInt(message[2]));
+					PlayerInfos host = new PlayerInfos(message[2]); 
+					Room rm = new Room(message[1],Integer.parseInt(message[3]),Integer.parseInt(message[4]));
 					rm.AddPlayerToRoom(host);
 					roomsList.add(rm);
 					System.out.print(" : ");
@@ -48,7 +51,7 @@ public class Server {
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
 					datagramSocket.send(outPacket);
 				}else if(message[0].equals("Player")){
-					if(message[1].equals("AllHosts")) 
+					if(message[1].equals("AllHosts"))
 					{
 						messageOut= "";
 						for(Room room : roomsList)
@@ -72,7 +75,7 @@ public class Server {
 										found=true;
 										messageOut= "Added";
 										break;
-									}					
+									}
 								}
 							}
 							if(!found) 
@@ -96,12 +99,12 @@ public class Server {
 									break;
 								}else if(room.GetPlayersNumber() == room.getHowManyPlayers()) {
 									
-									messageOut="Complited";
+									messageOut="Complited-"+room.mapIndex;
 									for(PlayerInfos player : room.players) 
 									{
 										messageOut=messageOut+"-"+player.getName();
+										//System.out.println("txt"+messageOut);
 									}
-									
 									break;
 								}
 							}
@@ -112,36 +115,64 @@ public class Server {
 					
 				}else if(message[0].equals("Play"))
 				{
-					messageOut="Noting";
+					messageOut="Nothing";
 					for(Room room : roomsList)
 					{
 						if(message[1].equals(room.getHostName()))
-						{
-							for(PlayerInfos player : room.players)
-							{
-								if(message[2].equals(player.getName())) 
-								{
-									//if(!player.GetUpdates().equals(""))
-									//{
-									messageOut=player.GetUpdates();
-									player.SetUpdates("");
-									//}
-								}else 
-								{		if(message[3].equals("Updates"))
-										{
-											if(!player.GetUpdates().equals(""))
-											{
-												String updates=message[2]+"-"+message[4];
-												System.out.println("#2323213#"+updates);
-												player.AddUpdatesToPlayers(updates);
+						{ 
+							if(message[3].equals("SetUpdates")) {
+								if(message[5].equals("WALL")) {
+									for(int i=0;i<room.map.size();i++) {
+										if(room.map.get(i)[0].equals(message[6]) && room.map.get(i)[1].equals(message[7]))
+											room.map.remove(i);
+									}
+									
+								}else if(message[5].equals("DEAD")) {
+									room.decreasePlayernumber();
+									messageOut="SuccessUpdate";
+								}else {
+									for(PlayerInfos player : room.players) {									
+										if(message[2].equals(player.getName())) {
+											player.setAction(message[4]);
+											if(message[5].equals("BOMB")) {
+												player.setBomb(message[5]+"-"+message[6]+"-"+message[7]);
+											}else if(message[5].equals("NOBOMB")) {
+												player.setBomb(message[5]);
 											}
+											else { 
+												player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);
+												
+											}
+											messageOut="SuccessUpdate";
+											break;
 										}
 										
+									}
+								}
+																								
+							}else if(message[3].equals("GetUpdates")) {
+								messageOut="ServerUpdates";
+								for(PlayerInfos player : room.players) {
+									if(!message[2].equals(player.getName())) {										
+											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb();
+											
+									}else {
+										player.setPosition("STOP-"+message[5]+"-"+message[6]);
+										player.action = message[4];
+									}
+								}
+							}else if(message[3].equals("GetMap")) {
+								messageOut="ServerUpdates-MAP-"+room.getHowManyPlayers()+"-";
+								for(String[] mp : room.map) {
+									messageOut=messageOut+mp[0]+"/"+mp[1]+"/";
 								}
 							}
+							break;
 						}
+						
+						
 					}
-					System.out.println("##"+messageOut);
+					
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
 				    datagramSocket.send(outPacket);
 				}
@@ -154,4 +185,5 @@ public class Server {
 			datagramSocket.close();
 		}
 	}
+
 }          

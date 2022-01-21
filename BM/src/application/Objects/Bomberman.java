@@ -1,38 +1,20 @@
 package application.Objects;
 
-import application.Client;
-import application.GamePanel;
-import application.Main;
-import application.Ressourcen;
 import javafx.scene.image.Image;
+import application.Ressourcen;
 
-public class Bomberman extends Character{
+public class Bomberman extends Character {
+String Name="";
+private  double startX;
+private  double startY;
 
-	
-	
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
+	startX=x;
+	startY=y;
+	this.speed=2.5;//2.5, 5, 7 ,8,75
 
-	this.bombanzahl=2;
-	this.speed=5;// 5, 7 ,8,75 
-				// Rows= 15
-	this.explosion=3;
-	this.dead=false;
-	this.health=1;
 		}
-	
-
-
-//Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
-public void gethit() {
-		this.health--;
-		if(health<=0)
-			dead=true;
-		
-	}
-	
-
-
 
 
 public String getName() {
@@ -44,77 +26,65 @@ public void setName(String name) {
 	Name = name;
 }
 
+//wenn der Spieler die Explosion trifft, entweder muss sterben oder Health reduzieren.
 
-@Override
-public boolean getDeath() {
-	return this.dead;
-}
+public void update() 
+{
 
- public boolean death() {
-	if(health>0) {
-		return false;
-	}else 
-		return true;
-			
-}
-
-
-public void ExplosionUp(){
-	this.explosion++;
-}
-public void HealthUp(){
-	this.health++;
-}
-	
-	
-public void moveRight() {
-	
-	if(( this.x < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE )&& (isFree(this.x+  this.speed,this.y))) {
-	 	   if(Main.online)
-		Client.updateString =Client.updateString+"/RIGHT";
-		this.x= this.x+  this.speed;
-	// Client.accessServer("Play-RIGHT");
-}
-}
-
-public void moveLeft() {
-	if((this.x >GamePanel.SQUARE_SIZE)&& (isFree(this.x- this.speed ,this.y))) {
-		this.x=this.x- this.speed;
-	 	   if(Main.online)
-		Client.updateString =Client.updateString+"/LEFT";
-	//Client.accessServer("Play-LEFT");
+	if(!isFreeExplosion(this.x,this.y)||dontMove) {
+		this.dontMove=true;
+		if((System.currentTimeMillis()-time>=timeToExplosion && !dead))
+		{
+		time= System.currentTimeMillis();
+		this.gethit();
+		}
+		this.img = Ressourcen.IMAGES.playerDead[this.PlayerFarbe][indexAnimPlayer()];
 	}
-}
-
-public void moveUp() {
-	if((this.y >GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y - this.speed))) {
-		this.y=this.y - this.speed;
-	 	   if(Main.online)
-	Client.updateString =Client.updateString+"/UP";}
-	 //Client.accessServer("Play-UP");
+	else if(!dontMove) { 
+		if(!dead)
+		time= System.currentTimeMillis();
+	    if(this.dead&&(System.currentTimeMillis()-time>=timeToExplosion)) {
+	           GameObjects.bomberObjects.remove(this);
+	        }
+	}
+//verschiedene Items auftauchen können.
+int v=isItem(this.x, this.y);
+	 
+        switch(v) {
+	       case 0:{	// Hertz
+	    	   HealthUp();
+	       	break;
+	       }
+	       case 1:{ // Bomb
+	    		BombanzahlUp();
+	    
+	       	break;
+	       }
+	       case 2:{	// Flamme
+	    	   ExplosionUp();
 	
+	       	break;
+	       }
+	       case 3:{	// Speed
+	    	   speedUp();
+	       	break;
+	       }
+	
+	       default:
+	       	break;
+	       
+	       }	
 }
-
-public void moveDown() {
-	if((this.y < (GamePanel.ROWS-2)*GamePanel.SQUARE_SIZE)&& (isFree(this.x ,this.y+ this.speed))) {
-		this.y=this.y+ this.speed;
-	 	   if(Main.online)
-	 		   Client.updateString =Client.updateString+"/DOWN";
-	 	   // Client.accessServer("Play-DOWN");
-	}
-	}
-
-
-
-@Override
-public void update() {
-	// TODO Auto-generated method stub
-
-	if(!isFreeExplosion()) {
+public void gethit() {
+	--this.health;
+	if(this.health<=0) 
 		this.dead=true;
-	GameObjects.bomberObjects.remove(this);
-	}
-	
+		
+if(!dead)
+	dontMove=false;
+
+this.x=startX;
+this.y=startY;
 }
-	
 }
+
