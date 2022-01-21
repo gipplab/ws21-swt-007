@@ -43,8 +43,6 @@ public void update() {
 					 createItem();
 					GameObjects.tileObjects.remove(i);
 					}
-			
-		
 		}
 	}
 //Erstellung eines neuen Items.
