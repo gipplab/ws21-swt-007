@@ -559,6 +559,28 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Button fx:id="backButton" layoutX="536.0" layoutY="613.0" mnemonicParsing="false" onAction="#backButtonOnClick" text="Button" />
+      <Button fx:id="backButton" layoutX="497.0" layoutY="612.0" mnemonicParsing="false" onAction="#backButtonOnClick" stylesheets="@CSS/BUTTON.css" text="BACK">
+         <font>
+            <Font name="Ravie" size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9636690616607666" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <Glow level="0.85" />
+         </effect></Button>
    </children>
 </AnchorPane>
