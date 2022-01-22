@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 public abstract class Character extends Entities {
 
 	public int bombanzahl;
-	public static double speed;
+	public double speed;
 	public int explosion;
 	public int health;
 	boolean dead ;

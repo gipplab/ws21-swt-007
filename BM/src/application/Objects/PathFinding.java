@@ -58,16 +58,16 @@ public class PathFinding {
 			closeList.add(minNode);			
 			Node[] successors = new Node[4];	
 			
-		  if (Character.isFree(minNode.x*GamePanel.SQUARE_SIZE , minNode.y*GamePanel.SQUARE_SIZE - Bot.speed)) 
+		  if (Character.isFree(minNode.x*GamePanel.SQUARE_SIZE , minNode.y*GamePanel.SQUARE_SIZE - 1.25)) 
 			    successors[0] = new Node(minNode.x, minNode.y - 1, minNode.g +1, calculateH(minNode.x, minNode.y , goalX, goalY),minNode);	
 			
-			if (Character.isFree(minNode.x*GamePanel.SQUARE_SIZE + Bot.speed, minNode.y*GamePanel.SQUARE_SIZE ))
+			if (Character.isFree(minNode.x*GamePanel.SQUARE_SIZE + 1.25, minNode.y*GamePanel.SQUARE_SIZE ))
 				  successors[1] = new Node(minNode.x + 1, minNode.y, minNode.g + 1, calculateH(minNode.x , minNode.y, goalX, goalY),minNode);
 			
-			if (Character.isFree(minNode.x*GamePanel.SQUARE_SIZE, minNode.y*GamePanel.SQUARE_SIZE + Bot.speed))				
+			if (Character.isFree(minNode.x*GamePanel.SQUARE_SIZE, minNode.y*GamePanel.SQUARE_SIZE + 1.25))				
 			 	  successors[2] = new Node(minNode.x, minNode.y + 1, minNode.g + 1, calculateH(minNode.x, minNode.y , goalX, goalY),minNode);
 			
-		  if (Character.isFree ((minNode.x*GamePanel.SQUARE_SIZE -  Bot.speed) , minNode.y*GamePanel.SQUARE_SIZE))			
+		  if (Character.isFree ((minNode.x*GamePanel.SQUARE_SIZE -  1.25) , minNode.y*GamePanel.SQUARE_SIZE))			
 				  successors[3] = new Node(minNode.x - 1, minNode.y, minNode.g + 1, calculateH(minNode.x , minNode.y, goalX, goalY),minNode);	
 			
 			for (int i = 0; i < successors.length; i++) {
