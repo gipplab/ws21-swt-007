@@ -66,6 +66,7 @@ int v=isItem(this.x, this.y);
 	       	break;
 	       }
 	       case 3:{	// Speed
+	    	   
 	    	   speedUp();
 	       	break;
 	       }
