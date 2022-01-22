@@ -427,10 +427,26 @@ public void moveRight() {
 	 		 this.x+= GamePanel.SQUARE_SIZE - (this.x % GamePanel.SQUARE_SIZE);
 	 		 
 	 	 }
-	 	 
+	 	 else if((this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65))
+	 			 &&(this.y%GamePanel.SQUARE_SIZE)!=0
+	 			 &&isFree(this.x,this.y+ (this.speed/2))
+	 			 &&isFreeBomb(this.x,this.y,2)
+	 			
+	 			 ) {
+		 		  	this.y= this.y+  (this.speed/2);	
+		 		}
+		 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)
+				 &&(this.y%GamePanel.SQUARE_SIZE)!=0
+				 &&isFree(this.x,this.y- (this.speed/2))
+				 &&isFreeBomb(this.x,this.y,0)
+				 ) {
+		 		  this.y= this.y- (this.speed/2);	
+		 		 
+		 	 }
 	 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
 
-        } //die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
+        } 
+	//die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
 	// und nicht immer auf Ressourcen greifen 
 	// die Player Matrix wird ein Teil des class  Charackter werden
 
@@ -447,6 +463,18 @@ public void moveLeft() {
 	 		 this.x-= this.x % GamePanel.SQUARE_SIZE;
 	 		 
 	 	 }
+	 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65)
+	 			 &&(this.y%GamePanel.SQUARE_SIZE)!=0
+	 			 &&isFree(this.x,this.y+ (this.speed/2))
+		 		 &&isFreeBomb(this.x,this.y,2)) {
+	 		  	this.y= this.y+  (this.speed/2);	
+	 		}
+	 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)
+	 			&&(this.y%GamePanel.SQUARE_SIZE)!=0
+	 			&&isFree(this.x,this.y- (this.speed/2))
+	 			&&isFreeBomb(this.x,this.y,0)) {
+	 		  this.y= this.y- (this.speed/2);	 
+	 	 }
 	 	  
 	}
 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
@@ -461,6 +489,22 @@ public void moveUp() {
 		 else if(this.y % GamePanel.SQUARE_SIZE !=0) {
 			 this.y-= this.y % GamePanel.SQUARE_SIZE;
 	 		 
+	 	 }
+		 else if((this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65))
+				 &&((this.x%GamePanel.SQUARE_SIZE)!=0 )
+				 &&isFree(this.x+ (this.speed/2) ,this.y )
+				 &&isFreeBomb(this.x,this.y,1)) 
+	 	 {
+	 		  this.x= this.x+  (this.speed/2);	
+	 	 }
+		
+	 	 else if( ((this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35))
+	 			 &&((this.x%GamePanel.SQUARE_SIZE)!=0 ) 
+	 			 &&isFree(this.x-(this.speed/2) ,this.y )
+	 			 &&isFreeBomb(this.x,this.y,3)
+	 			 ) 
+	 	 {
+	 		  this.x= this.x-  (this.speed/2);	
 	 	 }
 
 	}
@@ -479,6 +523,21 @@ public void moveDown() {
 		 else if(this.y % GamePanel.SQUARE_SIZE !=0) {
 	 		 this.y+= GamePanel.SQUARE_SIZE - (this.y % GamePanel.SQUARE_SIZE);
 	 		 
+	 	 }
+		 else if((this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65))
+				 &&(this.x%GamePanel.SQUARE_SIZE!=0)
+				 &&isFree(this.x+ (this.speed/2) ,this.y )
+				 &&isFreeBomb(this.x,this.y,1)) 
+		 {
+	 		  this.x= this.x+(this.speed/2);	
+	 	 }
+		
+		 else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)
+				 &&(this.x%GamePanel.SQUARE_SIZE!=0)
+				 &&isFree(this.x-(this.speed/2) ,this.y )
+				 &&isFreeBomb(this.x,this.y,3)) 
+		 { 
+	 		  this.x= this.x-  (this.speed/2);	
 	 	 }
  	  
 	}

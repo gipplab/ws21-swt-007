@@ -96,7 +96,7 @@ public class SinglePlayPanelController{
     			stage =(Stage)((Node)event.getSource()).getScene().getWindow();
     		    stage.setTitle("Bomberman");
     		    stage.setScene(game.getScene());
-    		    stage.setResizable(true);
+    		    stage.setResizable(false);
     		    stage.show();
     			
     	}
