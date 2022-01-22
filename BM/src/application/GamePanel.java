@@ -19,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 //Koordinaten und wichtige Attribute Spieles intialisieren. 
@@ -36,6 +38,7 @@ public class GamePanel {
 	private Scene scene;
 	Canvas canvas;
 	Group root;
+	Text pause;
 	public static Bomberman player;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static int mapIndex=0;
@@ -143,13 +146,20 @@ public void run() {
 	//Aktualisierung der Objekte im Spiel.
 private void update() throws InterruptedException {
 	if(KeysHandler.play) {
+		if(	root.getChildren().contains(pause)) {
+			pause.setFill(Color.TRANSPARENT);
+			System.out.println("KAKAKAKA''FLKASGLKASNGLKANFGLKA##LÖFMLADÖS");
+			root.getChildren().remove(pause);
+		
+		}
 		InputManager.handlePlayerMovements(player);
 		drawBackground(gc);
 		drawObjekte(gc);
 		drawBomb(gc);
 		getScore(gc);
 	}else {
-		gc.fillText("Play stopped \n",280, 280	);
+		gc.setFont(new Font(30));
+		gc.fillText("Pause",250,300);
 		
 	}
 
@@ -169,6 +179,7 @@ private void drawBackground(GraphicsContext gc)
 }
 
 private void getScore(GraphicsContext gc) {
+	gc.setFont(new Font(10));
 		  gc.setFill(Color.BLACK); 
 		  
 		  gc.drawImage(Ressourcen.IMAGES.BOT.getImage(),0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
