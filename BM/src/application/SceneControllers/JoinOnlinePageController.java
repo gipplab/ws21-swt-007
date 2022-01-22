@@ -1,6 +1,5 @@
 package application.SceneControllers;
 
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.fxml.FXMLLoader;
@@ -13,12 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
-
-
 import java.io.IOException;
-
-
 import application.Client;
 import application.Ressourcen;
 import javafx.beans.property.SimpleStringProperty;
@@ -26,11 +20,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-
 import javafx.scene.control.TableView;
-
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
+
 
 
 public class JoinOnlinePageController {
@@ -86,6 +79,7 @@ public class JoinOnlinePageController {
 			TableColumn col = pos.getTableColumn();
 			// this gives the value in the selected cell:
 			
+			@SuppressWarnings("unchecked")
 			String hostToJoin = (String) col.getCellObservableValue(hostTableView.getItems().get(row)).getValue();
 	
 			String msg = "Player-Join-"+hostToJoin+"-"+pseudoName.getText();
