@@ -8,10 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+
 import java.io.IOException;
+
 import application.Ressourcen;
 import javafx.event.ActionEvent;
-
 
 public class LandingPageController {
 	private Stage stage;

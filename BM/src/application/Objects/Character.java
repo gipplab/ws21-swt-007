@@ -304,14 +304,18 @@ case 3:
 	
 	return true;	
 }
+
+
 public boolean getDeath() {
 	return this.dead;
 }
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
-public boolean isPlayer() {
-		return Player;	
-	}
 
+
+public boolean isPlayer() {
+		return Player;
+		
+	}
 public int getBombanzahl(){
 		return this.bombanzahl;
 	}
@@ -319,8 +323,7 @@ public int getBombanzahl(){
 public int getExplosion(){
 		return this.explosion;
 	}
-
-//Bombenanzahl erhhen.
+	//Bombenanzahl erhhen.
 public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
@@ -330,12 +333,10 @@ public void BombanzahlDown(){
 	}
 //Explosion reichweite erhöhen.  
 public void ExplosionUp(){
-	if(this.explosion<5)
 	this.explosion++;
 }
 //Health erhhen.
 public void HealthUp(){
-	if(this.health<3)
 	this.health++;
 }
 public int getHealth(){
@@ -373,12 +374,13 @@ public int indexAnimPlayer() {
 	 }
 	 
 //Hier wird geprft, ob es in diesem Block ein Item gibt.
-public int isItem(double nextX, double nextY) {
-	// TODO Auto-generated method stub
-		  	Entities obje;
+		public int isItem(double nextX, double nextY) {
+		// TODO Auto-generated method stub
+		  Entities obje;
+	
 		     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
 		     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
-		     
+	
 		     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
 		     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
 		    

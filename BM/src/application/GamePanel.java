@@ -142,16 +142,12 @@ public void run() {
 
 	//Aktualisierung der Objekte im Spiel.
 private void update() throws InterruptedException {
-	if(KeysHandler.play) {
 		InputManager.handlePlayerMovements(player);
 		drawBackground(gc);
 		drawObjekte(gc);
 		drawBomb(gc);
 		getScore(gc);
-	}else {
-		gc.fillText("Play stopped \n",280, 280	);
 		
-	}
 
 	}
 private void drawBackground(GraphicsContext gc) 
