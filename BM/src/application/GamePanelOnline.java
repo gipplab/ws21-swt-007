@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 
@@ -49,6 +50,7 @@ public class GamePanelOnline {
 	public static int mapIndex=0;
 	public static int nbrOfPlayers=2;
 	public static ArrayList<ArrayList<String>> mapLayout;
+	String otherPlayersUpdates;
 
 	
 
@@ -140,7 +142,7 @@ void EndOfGame() throws InterruptedException {
 
 	public void run() {
 		drawObjekte(gc);
-		Main.playmusic();
+		//Main.playmusic();
 	}
 
 void update() throws InterruptedException {
@@ -184,25 +186,19 @@ void update() throws InterruptedException {
 	}
 	
 	private void getScore(GraphicsContext gc) {
+		gc.setFont(new Font(12));
 		gc.setFill(Color.BLACK); 
 		  
 		gc.drawImage(Ressourcen.IMAGES.BOT.getImage(),0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-			gc.fillText("Welcome Back \n" + SinglePlayPanelController.name,40, 15	);
-		  
-		gc.drawImage(Ressourcen.IMAGES.HERZITEM.getImage(),4*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-	    	gc.fillText(Integer.toString(player[mainPlayerIndex].health),185, 21);
+			gc.fillText("Room: "+Client.roomToJoin+"\n" + player[mainPlayerIndex].getName(),40, 15	);
 	    	
-	    gc.drawImage(Ressourcen.IMAGES.BOMBITEM.getImage(),6*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-	    	gc.fillText(Integer.toString(player[mainPlayerIndex].bombanzahl),255, 21);
+	    gc.drawImage(Ressourcen.IMAGES.BOMBITEM.getImage(),4*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+	    	gc.fillText(Integer.toString(player[mainPlayerIndex].bombanzahl),185, 21);
+	    	gc.setFont(new Font(10));
+	    	gc.fillText(otherPlayersUpdates,300,10);
 	    	
-	    gc.drawImage(Ressourcen.IMAGES.SPEEDITEM.getImage(),8*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-	 		gc.fillText(Double.toString(player[mainPlayerIndex].speed),325,21);
-		
-	 	gc.drawImage(Ressourcen.IMAGES.FLAMMEITEM.getImage(),10*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-			gc.fillText(Integer.toString(player[mainPlayerIndex].explosion),395,21);
+	    	
 				
-		
-		gc.fillText("SCORE : " +  Integer.toString(Bot.killbot),440, 21);
 	
 		
 	}
@@ -218,7 +214,7 @@ void update() throws InterruptedException {
 			if(this.getPlayer().getDeath()) {
 				if(gameOver==2) {
 					gameOver=1;	
-					Client.updateString =System.currentTimeMillis()+"-DEAD";
+					Client.updateString =System.currentTimeMillis()+"-DEAD-0-0";
 					   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
 					   	String resp= "";
 					   System.out.println(messageout);
@@ -248,8 +244,10 @@ void update() throws InterruptedException {
 void onlineUpdates(String resp) {
 		System.out.println(resp);
 		String[] message = resp.split("-");
+		otherPlayersUpdates ="";
 		int i =1;
 		while(i < message.length){
+			
 			System.out.println(message[i]+" :i "+i);
 			switch(message[i]) {
 			case "PLAYER":
@@ -258,6 +256,8 @@ void onlineUpdates(String resp) {
 						System.out.println(player[j].getName()+":"+i);
 						if(System.currentTimeMillis()-Double.parseDouble(message[i+1])>3000) {
 							System.out.println("Player:"+player[j].getName()+" is disconnected");
+							otherPlayersUpdates = otherPlayersUpdates + player[j].getName()+" is disconnected \n";
+								
 						}else {
 							System.out.println(player[j].getName()+":"+message[i+3]);
 							switch(message[i+3]) {
@@ -265,31 +265,39 @@ void onlineUpdates(String resp) {
 								player[j].moveUp();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "DOWN": 
 								player[j].moveDown();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "RIGHT": 
 								player[j].moveRight();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "LEFT": 
 								player[j].moveLeft();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "STOP": 
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
+							case "DEAD": 
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is dead \n";
+								i=i+6;
 							}
 							if(message[i].equals("BOMB")) {
 								System.out.println(message[i]+"/i"+i);
@@ -311,6 +319,7 @@ void onlineUpdates(String resp) {
 			}
 			i++;
 		}
+		
 }
 void onlineMapUpdates(String resp) {
 	System.out.println(resp);
@@ -322,7 +331,7 @@ void onlineMapUpdates(String resp) {
 					}
 			nbrOfPlayers=Integer.parseInt( message[2]);
 			String[] map = null;
-			if(message.length>3)
+			if(message.length>3) {
 				map = message[3].split("/");
 			int k=0;
 			while(k < map.length) {
@@ -360,6 +369,7 @@ void onlineMapUpdates(String resp) {
             		k=k+2;
 			}				            	
 	}
+}
 }
 	 private static void loadMapFile()  {
 		

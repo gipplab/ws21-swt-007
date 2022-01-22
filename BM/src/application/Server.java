@@ -127,10 +127,7 @@ public class Server {
 											room.map.remove(i);
 									}
 									
-								}else if(message[5].equals("DEAD")) {
-									room.decreasePlayernumber();
-									messageOut="SuccessUpdate";
-								}else {
+								}{
 									for(PlayerInfos player : room.players) {									
 										if(message[2].equals(player.getName())) {
 											player.setAction(message[4]);
@@ -139,9 +136,14 @@ public class Server {
 											}else if(message[5].equals("NOBOMB")) {
 												player.setBomb(message[5]);
 											}
-											else { 
-												player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);
+											else if(message[5].equals("DEAD")){ 
+												player.isDaed = true;
+												room.decreasePlayernumber();
+												messageOut="SuccessUpdate";
+												player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);		
 												
+											}else {
+												player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);
 											}
 											messageOut="SuccessUpdate";
 											break;
@@ -157,8 +159,13 @@ public class Server {
 											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb();
 											
 									}else {
-										player.setPosition("STOP-"+message[5]+"-"+message[6]);
-										player.action = message[4];
+										if(!player.isDaed) {
+											player.setPosition("STOP-"+message[5]+"-"+message[6]);
+											player.action = message[4];
+										}else {
+											player.action = message[4];
+										}
+										
 									}
 								}
 							}else if(message[3].equals("GetMap")) {
