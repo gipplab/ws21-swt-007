@@ -1,6 +1,5 @@
 package application;
 
-import java.nio.file.Paths;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +19,7 @@ public class Main extends Application {
 	
 		
 		try {
+			
 			music();
 			player.SetAddress("localhost"); 
 			Ressourcen.readFiles();
@@ -31,32 +31,24 @@ public class Main extends Application {
 			primaryStage.show();
 
 		} catch(Exception e) {
-			
 			e.printStackTrace();
-			
 		}
 	}
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	static MediaPlayer mediaPlayer;
 	static double volumen=0.50;;
 	public void music() {
-		String s = "src/application/music/BG.mp3";
-		Media h = new Media(Paths.get(s).toUri().toString());
+		Media h = new Media(getClass().getResource("music/BG.mp3").toExternalForm());
 		mediaPlayer = new MediaPlayer(h);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-		mediaPlayer.setVolume(volumen);
-	
-		
+		mediaPlayer.setVolume(volumen);		
 	}
 	static void  stopmusic() {
 		mediaPlayer.stop();
 	}
-	
 	static void playmusic() {
-		
 		mediaPlayer.play();
 	}
 	static void volumeUp() {
@@ -64,14 +56,12 @@ public class Main extends Application {
 		volumen+=0.005;
 		else volumen=1;
 		mediaPlayer.setVolume(volumen);
-		 System.out.println(volumen);
 	}
 	static void volumeDown() {
 		if(volumen>=0.05)
 		volumen-=0.005;
 		else volumen=0;
 		mediaPlayer.setVolume(volumen);
-		 System.out.println(volumen);
 	}
 
 }

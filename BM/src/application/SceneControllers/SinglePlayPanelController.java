@@ -2,19 +2,17 @@ package application.SceneControllers;
 
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import application.GamePanel;
 import application.Ressourcen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -22,16 +20,21 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
-public class SinglePlayPanelController  implements Initializable{
+
+public class SinglePlayPanelController{
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
     public static int playerFarbe=0;
     public static String name = null;
 	@FXML
-    
-    private Button BackButton;
-
+	private Button SingelPlayerBackButton;
+	@FXML
+	private Label SinglePlayColorLabel;
+    @FXML
+	private Label SinglePlayNameLabel;
+    @FXML
+    private Button nextMapbutton;
     @FXML
     private RadioButton BluePlayersRadioButton;
     @FXML
@@ -57,16 +60,29 @@ public class SinglePlayPanelController  implements Initializable{
     @FXML
     ImageView MapImage;
     int counter;
-
     @FXML
     void BackButton(ActionEvent event) throws IOException {
-    	root = FXMLLoader.load(getClass().getResource("../Scenes/LandingPage.fxml"));
+    	root = FXMLLoader.load(getClass().getResource("/application/Scenes/LandingPage.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 
     }
+    public void initialize() {
+    	SingelPlayerBackButton.setText(Ressourcen.language.get(8).get(LandingPageController.languageIndex));
+    	SinglePlayColorLabel.setText(Ressourcen.language.get(6).get(LandingPageController.languageIndex));
+    	SinglePlayNameLabel.setText(Ressourcen.language.get(5).get(LandingPageController.languageIndex));  
+        RunRoomButton.setText(Ressourcen.language.get(7).get(LandingPageController.languageIndex));	
+        try {
+			Ressourcen.readFiles();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		counter=0;
+		MapImage.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
+	}
 
     @FXML
     void RunRoomButtonIsClicked(ActionEvent event) throws IOException {
@@ -80,7 +96,7 @@ public class SinglePlayPanelController  implements Initializable{
     			stage =(Stage)((Node)event.getSource()).getScene().getWindow();
     		    stage.setTitle("Bomberman");
     		    stage.setScene(game.getScene());
-    		    stage.setResizable(true);
+    		    stage.setResizable(false);
     		    stage.show();
     			
     	}
@@ -88,6 +104,7 @@ public class SinglePlayPanelController  implements Initializable{
 public boolean validate() {
 		
 		StringBuilder errors = new StringBuilder();
+		
 	
 	    // Confirm mandatory fields are filled out
 	    if (PlayerNicknameTextField.getText().trim().isEmpty()) {
@@ -146,19 +163,8 @@ public boolean validate() {
     	    GamePanel.mapIndex=counter;
     }
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
-		try {
-			Ressourcen.readFiles();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		counter=0;
-		MapImage.setImage(Ressourcen.IMAGES.MAP.getMap(counter));
-	}
+	
+
     
 
 }

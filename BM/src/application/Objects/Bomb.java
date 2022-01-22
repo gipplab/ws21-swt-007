@@ -1,6 +1,8 @@
 package application.Objects;
 
+import application.Client;
 import application.GamePanel;
+import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
@@ -22,7 +24,7 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	this.power=power;
 	player=p;
 	
-	if (BombeDuplikate()) {
+	if (BombeDuplikate()||ExDuplikate()) {
 		player.BombanzahlUp();
 		death=true;
 		GameObjects.tileObjects.remove(this);
@@ -91,7 +93,7 @@ public boolean isFreeExplosion()
 	}
 
 
-//prüft, ob in einem Block mehrere Bomben gibt
+//prÃ¼ft, ob in einem Block mehrere Bomben gibt
 private Boolean BombeDuplikate() 
 {
 	   for(int i=0; i< GameObjects.tileObjects.size(); i++) 
@@ -100,7 +102,15 @@ private Boolean BombeDuplikate()
 	   return false;
 	   
 }
-public boolean getDeath() 
+private Boolean ExDuplikate() 
+{
+	   for(int i=0; i< GameObjects.explosionObjects.size(); i++) 
+		   if(this.x==(GameObjects.explosionObjects.get(i).getEntityX()) && this.y==(GameObjects.tileObjects.get(i).getEntityY())) 
+			   return true;
+	   return false;
+	   
+}
+public boolean getDeath()  
 {
 	return death;
 }
@@ -114,7 +124,7 @@ public boolean isPlayer()
 	return false;
 }
 
-//Hier wird geprüft, ob es in diesem Block eine Explosion gibt.
+//Hier wird geprÃ¼ft, ob es in diesem Block eine Explosion gibt.
 @Override
 protected int getItemtype() 
 {
@@ -138,20 +148,38 @@ public void update()
 		death=true;
 		GameObjects.tileObjects.remove(this);
 		if(player instanceof Bomberman) { 
+		@SuppressWarnings("unused")
 		Explotionart ex0= new Explotionart((int)this.x,(int) this.y);
+		@SuppressWarnings("unused")
 		Explotionart ex1= new Explotionart((int)this.x,(int) this.y, 0, this.power);
+		@SuppressWarnings("unused")
 		Explotionart ex2= new Explotionart((int)this.x,(int) this.y, 1, this.power);
+		@SuppressWarnings("unused")
 		Explotionart ex3= new Explotionart((int)this.x, (int)this.y, 2, this.power);
+		@SuppressWarnings("unused")
 		Explotionart ex4= new Explotionart((int)this.x,(int) this.y, 3, this.power);
+		if(Main.online) {
+			Client.updateString =System.currentTimeMillis()+"-NOBOMB";
+     	    String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+ 		   	String resp= "";
+ 			resp=Client.accessServer(messageout);
+ 			System.out.println(resp);
+		}
 		}
 		else if(player instanceof Bot)
 		{
+			@SuppressWarnings("unused")
 			Explosionbot ex0= new Explosionbot((int)this.x,(int) this.y);
+			@SuppressWarnings("unused")
 			Explosionbot ex1= new Explosionbot((int)this.x,(int) this.y, 0, this.power);
+			@SuppressWarnings("unused")
 			Explosionbot ex2= new Explosionbot((int)this.x,(int) this.y, 1, this.power);
+			@SuppressWarnings("unused")
 			Explosionbot ex3= new Explosionbot((int)this.x, (int)this.y, 2, this.power);
+			@SuppressWarnings("unused")
 			Explosionbot ex4= new Explosionbot((int)this.x,(int) this.y, 3, this.power);
 		}
+		    
 			player.BombanzahlUp();
 	}
 }

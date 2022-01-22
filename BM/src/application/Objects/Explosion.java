@@ -1,6 +1,9 @@
 package application.Objects;
 
 
+import application.Client;
+import application.GamePanelOnline;
+import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
 
@@ -13,13 +16,13 @@ public class Explosion extends Entities{
 		super(x,y,img);
 		time= System.currentTimeMillis();
 		GameObjects.spawn(this);
-		timeToExplosion=1200;
+		timeToExplosion=1200; 
 		death=false;
-		
+		System.out.println("erzeuge Ex");
 	}
-	
+	 
 
-//Explosion aktualisieren und prüft, ob hier ein Item auftaucht.	
+//Explosion aktualisieren und prï¿½ft, ob hier ein Item auftaucht.	
 public void update() {
 		if(System.currentTimeMillis()-time>=timeToExplosion && !death) {
 			death=true;
@@ -27,14 +30,21 @@ public void update() {
 			for(int i=0;i<GameObjects.tileObjects.size();i++)
 				if(GameObjects.tileObjects.get(i).getEntityX()==this.x &&
 				GameObjects.tileObjects.get(i).getEntityY()==this.y ) {
+					
+					if(Main.online) { 
+				 		   Client.updateString =System.currentTimeMillis()+"-WALL-"+ (int)(this.getEntityX()/GamePanelOnline.SQUARE_SIZE)+"-"+(int)(this.getEntityY()/GamePanelOnline.SQUARE_SIZE);
+				 		   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
+				 		   	String resp= "";
+				 		   System.out.println(messageout);
+				 			resp=Client.accessServer(messageout);
+				 			System.out.println(resp);
+				 		   }
+					if( Math.round(Math.random())<0.5 && !Main.online)
+					 createItem();
 					GameObjects.tileObjects.remove(i);
-					if( Math.round(Math.random())<0.5)
-					createItem();
 					}
-}
-		
 		}
-	
+	}
 //Erstellung eines neuen Items.
 void createItem(){
 	   int poweruptype = (int) Math.round(Math.random() * 3);
@@ -56,6 +66,7 @@ void createItem(){
        	break;
        }
        case 3:{
+
        	imageItem = Ressourcen.IMAGES.SPEEDITEM.getImage();
        	break;
        }
@@ -64,8 +75,8 @@ void createItem(){
        	break;
        
        }
-	Items item= new Items(this.x,this.y, imageItem,poweruptype);
-	GameObjects.spawn(item);
+       Items item= new Items(this.x,this.y, imageItem,poweruptype);
+       GameObjects.spawn(item);
 }
 
 

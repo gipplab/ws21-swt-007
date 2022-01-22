@@ -26,7 +26,7 @@ public void SetAddress(String addr){
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-}
+} 
 public static void main(String[] args)
   {
     try
@@ -43,11 +43,11 @@ public static void main(String[] args)
      }
    public static String accessServer(String message)
 { 
-	   String response="";
+	   String response="Disconnected";
 try
   {
     	//datagramSocket=new DatagramSocket();
-         System.out.println(InetAddress.getLocalHost()+"  enter message :");
+         //System.out.println(InetAddress.getLocalHost()+"  enter message :");
          //message=userEntry.nextLine();
          if(!message.equals("***CLOSE***"))
            {
@@ -56,9 +56,11 @@ try
          //System.out.println(" \n sent msg--<<" +message+">> 1 "+host);
          datagramSocket.send(outPacket);
          datagramSocket.setSoTimeout( 2000 ) ;
-         buffer=new byte[256];
+         buffer=new byte[4096];
          inPacket=new DatagramPacket(buffer,buffer.length);
-         datagramSocket.receive(inPacket);
+         //System.out.println(" \n sent msg--<<" +message+">> 4 "+host);        
+         datagramSocket.receive(inPacket);        
+         //System.out.println(" \n sent msg--<<" +message+">> 5 "+host);
          response=new String(inPacket.getData(),0,inPacket.getLength());
           //System.out.println(" \n SERVER-->>" +response);
           //datagramSocket.close();
@@ -77,47 +79,11 @@ catch(IOException ioEx)
 
 finally
 {
-   System.out.println("\n close connection.... ");
+   //System.out.println("\n close connection.... ");
     //datagramSocket.close();
  }
 return response;
 }
-  /* public static String serverUpdates(String message)
-{ 
-	   String response="";
-try
-  {
-    	datagramSocket=new DatagramSocket();
-         System.out.println(InetAddress.getLocalHost()+"  enter message :");
-         //message=userEntry.nextLine();
-         if(!message.equals("***CLOSE***"))
-           {
-        	 message="Play-"+roomToJoin+"-"+playerpseudo+"-"+message;
-        	 System.out.println(" \n sent msg--<<" +message+">>  "+host);
-         outPacket=new DatagramPacket(message.getBytes(),message.length(),host,PORT);
-         System.out.println(" \n sent msg--<<" +message+">> 1 "+host);
-         datagramSocket.send(outPacket);
-         buffer=new byte[256];
-         inPacket=new DatagramPacket(buffer,buffer.length);
-         datagramSocket.receive(inPacket);
-         response=new String(inPacket.getData(),0,inPacket.getLength());
-          System.out.println(" \n SERVER-->>" +response);
-          datagramSocket.close();
-          return response;          
-      }
-}
-catch(IOException ioEx)
-{
- ioEx.printStackTrace();
-}
-
-finally
-{
-   System.out.println("\n close connection.... ");
-    datagramSocket.close();
- }
-return response;
-}*/ 
 public static void addPlayer(String player) {
 	// TODO Auto-generated method stub
     players.add(player);

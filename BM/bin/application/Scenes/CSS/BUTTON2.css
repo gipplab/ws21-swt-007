@@ -4,8 +4,7 @@
 }
 .button{
 	
-	-fx-front-size :16pt;
-	-fx-txt-fill:white;
+	
 	-fx-effect:dropshadow(three-pass-box,pink,5,5,0,0);
 	
 }

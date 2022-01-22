@@ -5,8 +5,8 @@ import application.Ressourcen;
 
 public class Bomberman extends Character {
 String Name="";
-public static double startX;
-public static double startY;
+private  double startX;
+private  double startY;
 
 public Bomberman(double x, double y,Image img, Boolean p) {
 	super(x,y,img,p);
@@ -47,7 +47,7 @@ public void update()
 	           GameObjects.bomberObjects.remove(this);
 	        }
 	}
-//verschiedene Items auftauchen können.
+//verschiedene Items auftauchen kÃ¶nnen.
 int v=isItem(this.x, this.y);
 	 
         switch(v) {
@@ -66,6 +66,7 @@ int v=isItem(this.x, this.y);
 	       	break;
 	       }
 	       case 3:{	// Speed
+	    	   
 	    	   speedUp();
 	       	break;
 	       }
@@ -75,6 +76,16 @@ int v=isItem(this.x, this.y);
 	       
 	       }	
 }
+public void gethit() {
+	--this.health;
+	if(this.health<=0) 
+		this.dead=true;
+		
+if(!dead)
+	dontMove=false;
 
+this.x=startX;
+this.y=startY;
+}
 }
 

@@ -33,11 +33,15 @@ public int getPlayerFarbe() {
 }
 
 
+
 public void setPlayerFarbe(int playerFarbe) {
 	PlayerFarbe = playerFarbe;
 }
-//Hier wird geprüft, ob das Block frei(ein Weg) ist.
-	public static boolean isFree(double nextX, double nextY) {
+
+
+
+//Hier wird geprft, ob das Block frei(ein Weg) ist.
+public static boolean isFree(double nextX, double nextY) {
 	     boolean  frei = true;
 	     Entities obje;
 	     
@@ -79,10 +83,12 @@ public boolean isFreeExplosion(double x,  double y) {
 	if(restX==0 && restY==0) {
 		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
 			if(GameObjects.explosionObjects.get(i).getEntityX()==x&& GameObjects.explosionObjects.get(i).getEntityY()==y) {
-				return false;
-				}
+				 System.out.println(this.x +", " +this.y);
+				return false;}
+			
 		}
 	}
+	
 	else if(restX==0 && restY!=0) {
 		for(int i=0; i < GameObjects.explosionObjects.size(); i++) {
 		 if((GameObjects.explosionObjects.get(i).getEntityX() == x &&
@@ -90,7 +96,7 @@ public boolean isFreeExplosion(double x,  double y) {
 				 ||
 				 (GameObjects.explosionObjects.get(i).getEntityX() == x &&
 				 GameObjects.explosionObjects.get(i).getEntityY() == y+(GamePanel.SQUARE_SIZE- restY ))) {
-
+			 System.out.println(this.x +", " +this.y);
 			 return false;}
 		 }
 		
@@ -133,6 +139,9 @@ public boolean isFreeExplosion(double x,  double y) {
 	}
 		
 	}
+	 
+	
+	
 	
 	return true;
 	
@@ -295,31 +304,14 @@ case 3:
 	
 	return true;	
 }
-
-
 public boolean getDeath() {
 	return this.dead;
 }
 //Reduktion der Gesundheit bei kollision von Bombercharakter mit der explosion
-public void gethit() {
-	--this.health;
-	if(this.health<=0)
-		this.dead=true;
-	
-	
-	
-dontMove=false;
-if(this instanceof Bomberman) {
-this.x=Bomberman.startX;
-this.y=Bomberman.startY;
-}
-System.out.println("###### getroffen");
-}
-
 public boolean isPlayer() {
-		return Player;
-		
+		return Player;	
 	}
+
 public int getBombanzahl(){
 		return this.bombanzahl;
 	}
@@ -327,7 +319,8 @@ public int getBombanzahl(){
 public int getExplosion(){
 		return this.explosion;
 	}
-	//Bombenanzahl erhöhen.
+
+//Bombenanzahl erhhen.
 public void BombanzahlUp(){
 		 this.bombanzahl++;
 	}
@@ -337,12 +330,12 @@ public void BombanzahlDown(){
 	}
 //Explosion reichweite erhöhen.  
 public void ExplosionUp(){
-	if(explosion<3)
+	if(this.explosion<5)
 	this.explosion++;
 }
-//Health erhöhen.
+//Health erhhen.
 public void HealthUp(){
-	if(health<3)
+	if(this.health<3)
 	this.health++;
 }
 public int getHealth(){
@@ -379,14 +372,13 @@ public int indexAnimPlayer() {
 	        return indexAnimPlayer;
 	 }
 	 
-//Hier wird geprüft, ob es in diesem Block ein Item gibt.
-		public int isItem(double nextX, double nextY) {
-		// TODO Auto-generated method stub
-		  Entities obje;
-	
+//Hier wird geprft, ob es in diesem Block ein Item gibt.
+public int isItem(double nextX, double nextY) {
+	// TODO Auto-generated method stub
+		  	Entities obje;
 		     int nextX_1 = (int) (nextX / GamePanel.SQUARE_SIZE);
 		     int nextY_1 = (int) (nextY / GamePanel.SQUARE_SIZE);
-	
+		     
 		     int nextX_2 = (int) ((nextX + GamePanel.SQUARE_SIZE - 1) / GamePanel.SQUARE_SIZE);
 		     int nextY_2 = (int) (nextY / GamePanel.SQUARE_SIZE);
 		    
@@ -412,7 +404,7 @@ public int indexAnimPlayer() {
 			  }
 		    	return -1;
 		} 
-//Geschwindigkeit erhöhen.		
+//Geschwindigkeit erhhen.		
 protected void speedUp() {
 		if(speed ==2.5)
 			speed=5;
@@ -433,11 +425,28 @@ public void moveRight() {
 		 } 
 	 	 else if(this.x % GamePanel.SQUARE_SIZE !=0) {
 	 		 this.x+= GamePanel.SQUARE_SIZE - (this.x % GamePanel.SQUARE_SIZE);
+	 		 
 	 	 }
-	 	 
+	 	 else if((this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65))
+	 			 &&(this.y%GamePanel.SQUARE_SIZE)!=0
+	 			 &&isFree(this.x,this.y+ (this.speed/2))
+	 			 &&isFreeBomb(this.x,this.y,2)
+	 			
+	 			 ) {
+		 		  	this.y= this.y+  (this.speed/2);	
+		 		}
+		 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)
+				 &&(this.y%GamePanel.SQUARE_SIZE)!=0
+				 &&isFree(this.x,this.y- (this.speed/2))
+				 &&isFreeBomb(this.x,this.y,0)
+				 ) {
+		 		  this.y= this.y- (this.speed/2);	
+		 		 
+		 	 }
 	 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
 
-        } //die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
+        } 
+	//die Pixel verteilung könnte in der Calss Bopmberman implementiert werden und die Strucktur zu vereinfachen 
 	// und nicht immer auf Ressourcen greifen 
 	// die Player Matrix wird ein Teil des class  Charackter werden
 
@@ -454,6 +463,18 @@ public void moveLeft() {
 	 		 this.x-= this.x % GamePanel.SQUARE_SIZE;
 	 		 
 	 	 }
+	 	 else if(this.y%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65)
+	 			 &&(this.y%GamePanel.SQUARE_SIZE)!=0
+	 			 &&isFree(this.x,this.y+ (this.speed/2))
+		 		 &&isFreeBomb(this.x,this.y,2)) {
+	 		  	this.y= this.y+  (this.speed/2);	
+	 		}
+	 	 else if( (this.y%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)
+	 			&&(this.y%GamePanel.SQUARE_SIZE)!=0
+	 			&&isFree(this.x,this.y- (this.speed/2))
+	 			&&isFreeBomb(this.x,this.y,0)) {
+	 		  this.y= this.y- (this.speed/2);	 
+	 	 }
 	 	  
 	}
 	this.img = Ressourcen.IMAGES.playerLeft[this.PlayerFarbe][indexAnimPlayer()];
@@ -468,6 +489,22 @@ public void moveUp() {
 		 else if(this.y % GamePanel.SQUARE_SIZE !=0) {
 			 this.y-= this.y % GamePanel.SQUARE_SIZE;
 	 		 
+	 	 }
+		 else if((this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65))
+				 &&((this.x%GamePanel.SQUARE_SIZE)!=0 )
+				 &&isFree(this.x+ (this.speed/2) ,this.y )
+				 &&isFreeBomb(this.x,this.y,1)) 
+	 	 {
+	 		  this.x= this.x+  (this.speed/2);	
+	 	 }
+		
+	 	 else if( ((this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35))
+	 			 &&((this.x%GamePanel.SQUARE_SIZE)!=0 ) 
+	 			 &&isFree(this.x-(this.speed/2) ,this.y )
+	 			 &&isFreeBomb(this.x,this.y,3)
+	 			 ) 
+	 	 {
+	 		  this.x= this.x-  (this.speed/2);	
 	 	 }
 
 	}
@@ -486,6 +523,21 @@ public void moveDown() {
 		 else if(this.y % GamePanel.SQUARE_SIZE !=0) {
 	 		 this.y+= GamePanel.SQUARE_SIZE - (this.y % GamePanel.SQUARE_SIZE);
 	 		 
+	 	 }
+		 else if((this.x%GamePanel.SQUARE_SIZE>(GamePanel.SQUARE_SIZE*0.65))
+				 &&(this.x%GamePanel.SQUARE_SIZE!=0)
+				 &&isFree(this.x+ (this.speed/2) ,this.y )
+				 &&isFreeBomb(this.x,this.y,1)) 
+		 {
+	 		  this.x= this.x+(this.speed/2);	
+	 	 }
+		
+		 else if( (this.x%GamePanel.SQUARE_SIZE) < (GamePanel.SQUARE_SIZE*0.35)
+				 &&(this.x%GamePanel.SQUARE_SIZE!=0)
+				 &&isFree(this.x-(this.speed/2) ,this.y )
+				 &&isFreeBomb(this.x,this.y,3)) 
+		 { 
+	 		  this.x= this.x-  (this.speed/2);	
 	 	 }
  	  
 	}

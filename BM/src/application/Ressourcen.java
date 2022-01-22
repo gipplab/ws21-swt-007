@@ -1,7 +1,10 @@
 package application;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
@@ -9,9 +12,12 @@ import javafx.scene.image.WritableImage;
 
 public class Ressourcen {
 	
+	public static ArrayList<ArrayList<String>> language;
 	public static int farbe=3;
 	public static InputStreamReader file[]=new InputStreamReader[5] ,file_Server[]=new InputStreamReader[5];
 	public static ArrayList<ArrayList<String>> mapLayout;
+
+	
 	public static String[] fields;
 	
 
@@ -25,7 +31,7 @@ public enum IMAGES
 		//das muss gemacht werden 
 		
 		
-		// Matrix für Farbe und Richtung
+		// Matrix fr Farbe und Richtung
 		public static Image[] PlayerFarbe= new Image[4] ;
 		public static Image[][] playerUp = new Image[4][4];
 		public static Image[][] playerDown = new Image[4][4];
@@ -82,7 +88,7 @@ public static void readFiles() throws IOException
 			IMAGES.SOFTWALL5.image= new Image(Ressourcen.class.getResource("img/Soft5.png").toString());
 			IMAGES.BG1.image= new Image(Ressourcen.class.getResource("img/BG1.png").toString());
 			IMAGES.BG5.image= new Image(Ressourcen.class.getResource("img/BG555.png").toString());
-			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/Bombe.gif").toString());
+			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/bombe.gif").toString());
 			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/FlammeItem.jpeg").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
 			IMAGES.SPEEDITEM.image= new Image(Ressourcen.class.getResource("img/SpeedItem.jpeg").toString());
@@ -106,6 +112,24 @@ public static void readFiles() throws IOException
 			file_Server[2] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map3server.csv"));
 			file_Server[3] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map4server.csv"));
 			file_Server[4] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map5server.csv"));
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Ressourcen.class.getResourceAsStream("Language/Lng.csv")));
+			language = new ArrayList<>();
+		 
+	        try {
+	            String currentLine;
+
+	            while ((currentLine = bufferedReader.readLine()) != null) {
+	               if (currentLine.isEmpty()) {
+	                  continue;
+	               }
+	               language.add(new ArrayList<>(Arrays.asList(currentLine.split(","))));
+	             
+	            }   
+	          
+	        } catch (IOException | NullPointerException e) {
+	            System.out.println(e + "Error beim LoadMapFile()");
+	            e.printStackTrace();
+	        }
 			
 
 			// 0  White , 1 Black , 2 Rot, 3 Blue 
