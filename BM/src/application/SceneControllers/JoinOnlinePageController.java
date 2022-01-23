@@ -30,6 +30,7 @@ public class JoinOnlinePageController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	int row=0;
 	@FXML
 	private TextField pseudoName;
 	
@@ -70,10 +71,11 @@ public class JoinOnlinePageController {
 	@FXML
 	public void JoinButtonOnClick(ActionEvent event) throws IOException {
 	    // ueberpruefen ob der Name der Spieler leer oder '-' beinhaltet
+		    
 			if(validate()==true) {
 				
 			TablePosition pos = hostTableView.getSelectionModel().getSelectedCells().get(0);
-			int row = pos.getRow();
+			row = pos.getRow();
 			System.out.println("selected:"+row);
 			// Item here is the table view type:
 			TableColumn col = pos.getTableColumn();
@@ -97,6 +99,12 @@ public class JoinOnlinePageController {
 				scene = new Scene(root);
 				stage.setScene(scene);		
 				stage.show();
+			}else if(resp.equals("Exist")) {
+				Alert alrt = new Alert(Alert.AlertType.WARNING);
+				alrt.setTitle("Warning");
+				alrt.setHeaderText("Alert!");
+				alrt.setContentText("This Player name is already existing!");
+				alrt.showAndWait();	
 			}
 		}
 			
@@ -195,10 +203,14 @@ public class JoinOnlinePageController {
 				         errors.append("Your name must not contain a minus - sign\n");
 				    }
 		} 
-	    if(hostTableView.getSelectionModel().getSelectedItem() == null) {
+	    /*if(hostTableView.getSelectionModel().getSelectedItem() == null) {
 				
 		         errors.append("No room selected! please select a room\n");
-		 }
+		 }*/
+	    if(row == 0) {
+			
+	         errors.append("No room selected! please select a room\n");
+	 }
 	    
 	    
 	    // If any missing information is found, show the error messages and return false

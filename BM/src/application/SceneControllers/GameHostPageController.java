@@ -123,11 +123,51 @@ public class GameHostPageController {
 	
 	@FXML
 	public void RoomNameTextField(ActionEvent event) throws IOException {}
+	public boolean validate(){
+		StringBuilder errors = new StringBuilder();
+		
+	    // Confirm mandatory fields are filled out
+		if (RoomNameTextField.getText().trim().isEmpty()) {
+	         errors.append("- Please enter your room name.\n");
+	    }else if(RoomNameTextField.getText().trim().isEmpty()== false) {
+				
+					String valid_name = RoomNameTextField.getText();
+					CharSequence seq = "-"; 
+				    if(valid_name.contains(seq)) {	
+				         errors.append("Your room name must not contain a minus - sign\n");
+				    }
+		}
+		if (PlayerNicknameTextField.getText().trim().isEmpty()) {
+	         errors.append("- Please enter your name.\n");
+	    }else if(PlayerNicknameTextField.getText().trim().isEmpty()== false) {
+				
+					String valid_name = PlayerNicknameTextField.getText();
+					CharSequence seq = "-"; 
+				    if(valid_name.contains(seq)) {	
+				         errors.append("Your name must not contain a minus - sign\n");
+				    }
+		}
+	    
+
+	    // If any missing information is found, show the error messages and return false
+	    if (errors.length() > 0) {
+	        Alert alert = new Alert(Alert.AlertType.WARNING);
+	        alert.setTitle("Warning");
+	        alert.setHeaderText("Required Fields Empty");
+	        alert.setContentText(errors.toString());
+	        alert.showAndWait();
+	            return false;
+	     }
+	
+	    // No errors
+	        return true;
+	    
+	}
 	
 	@FXML
 	void RunRoomButtonIsClicked(ActionEvent event) throws IOException {
 	   // check the empty fields
-		
+		if(validate()) {
 			String msg = "Host-"+RoomNameTextField.getText()+"-"+PlayerNicknameTextField.getText();
 			if(FourPlayersRadioButton.isSelected()) {
 				msg = msg+"-4-"+counter;	
@@ -151,6 +191,12 @@ public class GameHostPageController {
 		    scene = new Scene(root);
 		    stage.setScene(scene);		
 		    stage.show();
+	    }else if(resp.equals("Exist")) {
+	    	Alert alrt = new Alert(Alert.AlertType.WARNING);
+			alrt.setTitle("Warning");
+			alrt.setHeaderText("Alert!");
+			alrt.setContentText("This room name is already existing!");
+			alrt.showAndWait();	    	
 	    }else if(resp.equals("NoConnexion")) {
 	    	System.out.println("************* Connexion lost *************");
 			Alert alrt = new Alert(Alert.AlertType.WARNING);
@@ -159,6 +205,8 @@ public class GameHostPageController {
 			alrt.setContentText("You are not connected to the game server!");
 			alrt.showAndWait();
 	    }
+		}
+			
 	    		
 	    
 		}
