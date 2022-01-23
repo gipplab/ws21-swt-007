@@ -170,9 +170,9 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text fx:id="TEXT2" layoutX="16.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU CAN PLAY A TWO PLAYER GAME WITH YOUR FRIENDS OR JUST AGAINST THE COMPUTER OPPONETS." wrappingWidth="277.0">
+      <Text fx:id="TEXT2" layoutX="13.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAYERS CAN COLLECT BONUS ITEMS BY DESTROYING SOMEWALLS ,WHICH TEMPORARILY BOOST THE PLAYERS" wrappingWidth="277.0">
          <font>
-            <Font name="Segoe Print" size="12.0" />
+            <Font name="Segoe Print" size="10.0" />
          </font>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -225,7 +225,7 @@
             <Glow level="0.85" />
          </effect>
          <font>
-            <Font name="Segoe Print" size="11.0" />
+            <Font name="Segoe Print" size="10.0" />
          </font>
       </Text>
       <Text fx:id="T1" layoutX="12.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AIM OF " wrappingWidth="129.0">
@@ -386,12 +386,12 @@
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.03840000182390213" green="0.7809841632843018" blue="0.9599999785423279" />
+                        <Color red="0.04749999940395355" green="0.784541666507721" blue="0.949999988079071" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color red="0.035999998450279236" green="0.8712000250816345" blue="0.8999999761581421" />
                      </color>
                   </Stop>
                </stops>
@@ -507,7 +507,7 @@
             <Shadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="462.0" layoutY="239.0">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="460.0" layoutY="239.0">
          <image>
             <Image url="@../img/ArrowUp.png" />
          </image>
@@ -531,7 +531,7 @@
             <Shadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="90.0" layoutY="280.0">
+      <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="90.0" layoutY="283.0">
          <image>
             <Image url="@../img/A.png" />
          </image>
@@ -539,7 +539,7 @@
             <Shadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="87.0" layoutY="275.0">
+      <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="88.0" layoutY="280.0">
          <image>
             <Image url="@../img/A.png" />
          </image>
@@ -662,5 +662,277 @@
          <effect>
             <Glow level="0.85" />
          </effect></Button>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="397.0" layoutY="109.0">
+         <image>
+            <Image url="@../img/Plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="478.0" layoutY="109.0">
+         <image>
+            <Image url="@../img/MInus.png" />
+         </image>
+      </ImageView>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="TEXT21" layoutX="12.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BONUS ITEMS : " wrappingWidth="277.0">
+         <font>
+            <Font name="Segoe Print" size="12.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.9078947305679321" green="0.033625729382038116" blue="0.5873294472694397" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Text>
+      <Text fx:id="TEXTBOMB" layoutX="57.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LET THE PLAYER USE ADITIONAL BOMB AT THE SAME TIME." wrappingWidth="224.0">
+         <font>
+            <Font name="Segoe Print" size="10.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.9078947305679321" green="0.033625729382038116" blue="0.5873294472694397" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Text>
+      <Text fx:id="TEXTFLAME" layoutX="57.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE RANGE OF A BOMB" wrappingWidth="224.0">
+         <font>
+            <Font name="Segoe Print" size="10.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.9078947305679321" green="0.033625729382038116" blue="0.5873294472694397" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Text>
+      <Text fx:id="VOLUMEUP" layoutX="386.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOLUME UP" wrappingWidth="86.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.03921568766236305" green="0.7803921699523926" blue="0.9607843160629272" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+         <font>
+            <Font name="Ravie" size="11.0" />
+         </font>
+      </Text>
+      <Text fx:id="VOLUMEDOWN" layoutX="496.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VOLUME DOWN" wrappingWidth="113.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.03921568766236305" green="0.7803921699523926" blue="0.9607843160629272" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+         <font>
+            <Font name="Ravie" size="10.0" />
+         </font>
+      </Text>
+      <Text fx:id="PAUS" layoutX="443.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAUS" wrappingWidth="50.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.03921568766236305" green="0.7803921699523926" blue="0.9607843160629272" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+         <font>
+            <Font name="Ravie" size="10.0" />
+         </font>
+      </Text>
+      <Text fx:id="MUTE" layoutX="324.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MUTE" wrappingWidth="61.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.03921568766236305" green="0.7803921699523926" blue="0.9607843160629272" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+         <font>
+            <Font name="Ravie" size="11.0" />
+         </font>
+      </Text>
+      <Text fx:id="HEALTH" layoutX="57.0" layoutY="615.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYER´S HEALTH" wrappingWidth="224.0">
+         <font>
+            <Font name="Segoe Print" size="10.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.9078947305679321" green="0.033625729382038116" blue="0.5873294472694397" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Text>
+      <Text fx:id="HEALTH1" layoutX="57.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYER´S MOVEMENT SPEED" wrappingWidth="224.0">
+         <font>
+            <Font name="Segoe Print" size="10.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8069093227386475" green="0.243599995970726" blue="0.8700000047683716" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.007662835249042145">
+                     <color>
+                        <Color red="0.9078947305679321" green="0.033625729382038116" blue="0.5873294472694397" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Text>
    </children>
 </AnchorPane>
