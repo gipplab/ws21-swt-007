@@ -181,24 +181,29 @@ void update() throws InterruptedException {
 	}
 	private void drawBackground(GraphicsContext gc) 
 	{
-		// Meer  #b1e8fe
-		//ORANGE
-		if(mapIndex==0||mapIndex==4)
-			gc.setFill(Color.WHITE);
-		else if(mapIndex==1)
-			gc.setFill(Color.valueOf("#FFFBD3"));
-		else if (mapIndex==2||mapIndex==3)
-			gc.setFill(Color.valueOf("#b1e8fe"));
-		
-		gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);	
-		//gc.drawImage(Ressourcen.IMAGES.BG5.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
+		if(mapIndex==0) {
+			for(int i=0;i<COLUMNS;i++)
+				for(int j=0;j<ROWS;j++)
+				gc.drawImage(Ressourcen.IMAGES.BG5.getImage(),i*SQUARE_SIZE,j*SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);	
+			}
+			else if(mapIndex==4) {
+
+				gc.drawImage(Ressourcen.IMAGES.SNOW1.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);	
+			}
+			else if(mapIndex==1) {
+				gc.setFill(Color.valueOf("#FFFBD3"));
+				gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);}
+			else if(mapIndex==3||mapIndex==2) {
+				gc.drawImage(Ressourcen.IMAGES.WATER.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
+
+			}
 	}
 	
 	private void getScore(GraphicsContext gc) {
 		gc.setFont(new Font(12));
 		gc.setFill(Color.BLACK); 
 		  
-		gc.drawImage(Ressourcen.IMAGES.BOT.getImage(),0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+		gc.drawImage(Ressourcen.IMAGES.playerDown[0][0],0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
 			gc.fillText("Room: "+Client.roomToJoin+"\n" + player[mainPlayerIndex].getName(),40, 15	);
 	    	
 	    gc.drawImage(Ressourcen.IMAGES.BOMBITEM.getImage(),4*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
@@ -206,10 +211,6 @@ void update() throws InterruptedException {
 	    	gc.setFont(new Font(10));
 	    	gc.fillText(otherPlayersUpdates,300,10);
 	    	
-	    	
-				
-	
-		
 	}
 
 	private void drawObjekte(GraphicsContext gc) {
