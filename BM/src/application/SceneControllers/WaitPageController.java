@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+
 public class WaitPageController {
 	private Stage stage;
 	private Scene scene;
@@ -56,6 +57,8 @@ public class WaitPageController {
 							}
 							fall.cancel();
 							fall.purge();
+							
+							
 							try {
 								Main.online=true;
 								GamePanelOnline game= new GamePanelOnline();
@@ -70,6 +73,7 @@ public class WaitPageController {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							
 							
 						}else {
 							infoRoom.setText(Ressourcen.language.get(24).get(LandingPageController.languageIndex)+"... "+resp);
