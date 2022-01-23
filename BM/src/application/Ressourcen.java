@@ -24,9 +24,9 @@ public class Ressourcen {
 public enum IMAGES
 {
 		BACKGROUND, BOMBE, SOFTWALL,SOFTWALL1,SOFTWALL2,SOFTWALL3,SOFTWALL4,SOFTWALL5, 
-		HARDWALL,HARDWALL1,HARDWALL2,HARDWALL3, HARDWALL4,HARDWALL5,BG1,BG5, PLAYER1, BOT, PLAYER2, 
+		HARDWALL,HARDWALL1,HARDWALL2,HARDWALL3, HARDWALL4,HARDWALL5,BG1,BG5, PLAYER1, PLAYER2, 
 		BOMBITEM, HERZITEM, SPEEDITEM, FLAMMEITEM, MAP,EXPLOSION , PLAYERWHITE, 
-		PLAYERBLACK,PLAYERROT,PLAYERBLUE,GAMEOVER,WIN;
+		PLAYERBLACK,PLAYERROT,PLAYERBLUE,GAMEOVER,WIN,WATER,SNOW,SNOW1,SNOW2;
 		// Alle Player in einem Feld Speichern und Farben anhand zahlen als Farben intepretieren
 		//das muss gemacht werden 
 		
@@ -86,8 +86,12 @@ public static void readFiles() throws IOException
 			IMAGES.SOFTWALL4.image= new Image(Ressourcen.class.getResource("img/Soft4.png").toString());
 			IMAGES.HARDWALL5.image= new Image(Ressourcen.class.getResource("img/Hard5.png").toString());
 			IMAGES.SOFTWALL5.image= new Image(Ressourcen.class.getResource("img/Soft5.png").toString());
-			IMAGES.BG1.image= new Image(Ressourcen.class.getResource("img/BG1.png").toString());
-			IMAGES.BG5.image= new Image(Ressourcen.class.getResource("img/BG555.png").toString());
+			IMAGES.WATER.image= new Image(Ressourcen.class.getResource("img/waterBG.png").toString());
+			IMAGES.SNOW.image= new Image(Ressourcen.class.getResource("img/socolatile.png").toString());
+			IMAGES.SNOW1.image= new Image(Ressourcen.class.getResource("img/snowtile.png").toString());
+			IMAGES.SNOW2.image= new Image(Ressourcen.class.getResource("img/palacetile.png").toString());
+
+			IMAGES.BG5.image= new Image(Ressourcen.class.getResource("img/grass.png").toString());
 			IMAGES.BOMBE.image= new Image(Ressourcen.class.getResource("img/bombe.gif").toString());
 			IMAGES.FLAMMEITEM.image= new Image(Ressourcen.class.getResource("img/FlammeItem.jpeg").toString());
 			IMAGES.HERZITEM.image= new Image(Ressourcen.class.getResource("img/herzplus.jpg").toString());
@@ -99,7 +103,6 @@ public static void readFiles() throws IOException
 			IMAGES.Map[2] = new Image(Ressourcen.class.getResource("img/map3.png").toString());
 			IMAGES.Map[3] = new Image(Ressourcen.class.getResource("img/map4.png").toString());
 			IMAGES.Map[4] = new Image(Ressourcen.class.getResource("img/map5.png").toString());
-			IMAGES.BOT.image= new Image(Ressourcen.class.getResource("img/CharacterImages/RotPlayer.png").toString());
 			IMAGES.GAMEOVER.image = new Image(Ressourcen.class.getResource("img/GameOver.png").toString());
 		    IMAGES.WIN.image = new Image(Ressourcen.class.getResource("img/Win.png").toString());
 			file[0] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map1.csv"));
