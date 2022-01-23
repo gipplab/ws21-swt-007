@@ -228,7 +228,7 @@
             <Font name="Segoe Print" size="10.0" />
          </font>
       </Text>
-      <Text fx:id="T1" layoutX="12.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AIM OF " wrappingWidth="129.0">
+      <Text fx:id="T1" layoutX="12.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AIM OF " wrappingWidth="153.0">
          <font>
             <Font name="Ravie" size="24.0" />
          </font>
@@ -257,7 +257,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="T2" layoutX="131.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE GAME" wrappingWidth="169.0">
+      <Text fx:id="T2" layoutX="131.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE GAME" wrappingWidth="210.0">
          <font>
             <Font name="Ravie" size="24.0" />
          </font>

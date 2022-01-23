@@ -101,10 +101,7 @@ public class GuidePageController {
     	TEXTFLAME.setText(Ressourcen.language.get(30).get(LandingPageController.languageIndex));
     	HEALTH.setText(Ressourcen.language.get(31).get(LandingPageController.languageIndex));
     	HEALTH1.setText(Ressourcen.language.get(32).get(LandingPageController.languageIndex));
-    	backButton.setText(Ressourcen.language.get(33).get(LandingPageController.languageIndex));
-    	
-    
-    
+    	backButton.setText(Ressourcen.language.get(33).get(LandingPageController.languageIndex));   
     
     }
     @FXML
