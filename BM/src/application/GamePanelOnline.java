@@ -77,7 +77,7 @@ public void init() throws IOException {
 	  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/30), e -> 
 	  {
 		try {
-			if(nbrOfPlayers > 1 && offlineCounter <200 ) 
+			if(nbrOfPlayers > 1 && offlineCounter <150 ) 
 			{
 				if(nbrOfPlayers-nbrOfPlayersOffline == 1) {
 					offlineCounter=offlineCounter+1;
