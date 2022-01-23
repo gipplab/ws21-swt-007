@@ -44,7 +44,7 @@ public class Main extends Application {
 		mediaPlayer = new MediaPlayer(h);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.setVolume(volumen);		
-		playmusic();
+		
 	}
 	static void  stopmusic() {
 		mediaPlayer.stop();
