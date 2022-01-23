@@ -57,12 +57,14 @@ public class Main extends Application {
 		volumen+=0.005;
 		else volumen=1;
 		mediaPlayer.setVolume(volumen);
+		 System.out.println(volumen);
 	}
 	static void volumeDown() {
 		if(volumen>=0.05)
 		volumen-=0.005;
 		else volumen=0;
 		mediaPlayer.setVolume(volumen);
+		 System.out.println(volumen);
 	}
 
 

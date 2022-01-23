@@ -151,7 +151,7 @@ void EndOfGame() throws InterruptedException {
 
 	public void run() {
 		drawObjekte(gc);
-		//Main.playmusic();
+		Main.playmusic();
 	}
 
 void update() throws InterruptedException {
