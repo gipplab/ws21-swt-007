@@ -349,7 +349,7 @@ private static void loadMapFile()  {
                     	GameObjects.spawn(GamePanel.player);                    
                     break;
                     case ("B"):     // BOT
-                       Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,null,false);
+                       Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0][0],false);
                        if(bot!=null) 
                        GameObjects.spawn(bot);
                            break;
