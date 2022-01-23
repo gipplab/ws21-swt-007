@@ -224,6 +224,7 @@ void update() throws InterruptedException {
 				if(gameOver==2) {
 					gameOver=1;	
 					Client.updateString =System.currentTimeMillis()+"-DEAD-0-0";
+					Main.online= false;
 					   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
 					   	String resp= "";
 					   System.out.println(messageout);
