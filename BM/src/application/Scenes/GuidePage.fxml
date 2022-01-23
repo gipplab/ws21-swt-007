@@ -32,7 +32,7 @@
             <Image url="@../img/Backgraund.jpg" />
          </image>
       </ImageView>
-      <Text fx:id="UP1" layoutX="144.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UP" wrappingWidth="31.0">
+      <Text fx:id="UP1" layoutX="144.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UP" wrappingWidth="31.0">
          <font>
             <Font name="Ravie" size="10.0" />
          </font>
@@ -56,7 +56,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="LEFT1" layoutX="36.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEFT --" wrappingWidth="72.0">
+      <Text fx:id="LEFT1" layoutX="37.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LEFT --" wrappingWidth="72.0">
          <font>
             <Font name="Ravie" size="10.0" />
          </font>
@@ -80,7 +80,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="RIGHT1" layoutX="214.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-- RIGHT" wrappingWidth="83.0">
+      <Text fx:id="RIGHT1" layoutX="214.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-- RIGHT" wrappingWidth="83.0">
          <font>
             <Font name="Ravie" size="10.0" />
          </font>
@@ -104,7 +104,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="DROPBOMB1" layoutX="116.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DROP BOMB" wrappingWidth="83.0">
+      <Text fx:id="DROPBOMB1" layoutX="116.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DROP BOMB" wrappingWidth="83.0">
          <font>
             <Font name="Ravie" size="10.0" />
          </font>
@@ -128,7 +128,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text layoutX="140.0" layoutY="232.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--" wrappingWidth="21.0">
+      <Text layoutX="141.0" layoutY="190.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--" wrappingWidth="21.0">
          <font>
             <Font name="Ravie" size="14.0" />
          </font>
@@ -149,7 +149,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="142.0" layoutY="332.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--" wrappingWidth="21.0">
+      <Text layoutX="143.0" layoutY="297.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--" wrappingWidth="21.0">
          <font>
             <Font name="Ravie" size="14.0" />
          </font>
@@ -170,7 +170,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text fx:id="TEXT2" layoutX="13.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAYERS CAN COLLECT BONUS ITEMS BY DESTROYING SOMEWALLS ,WHICH TEMPORARILY BOOST THE PLAYERS" wrappingWidth="277.0">
+      <Text fx:id="TEXT2" layoutX="13.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAYERS CAN COLLECT BONUS ITEMS BY DESTROYING SOMEWALLS ,WHICH TEMPORARILY BOOST THE PLAYERS" wrappingWidth="277.0">
          <font>
             <Font name="Segoe Print" size="10.0" />
          </font>
@@ -443,7 +443,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text fx:id="DOWN" layoutX="133.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOWN" wrappingWidth="72.0">
+      <Text fx:id="DOWN" layoutX="133.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOWN" wrappingWidth="72.0">
          <font>
             <Font name="Ravie" size="10.0" />
          </font>
@@ -475,7 +475,7 @@
             <Shadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="72.0" layoutX="118.0" layoutY="359.0">
+      <ImageView fitHeight="47.0" fitWidth="72.0" layoutX="117.0" layoutY="317.0">
          <image>
             <Image url="@../img/Spacebar.png" />
          </image>
@@ -499,7 +499,7 @@
             <Shadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="131.0" layoutY="277.0">
+      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="131.0" layoutY="236.0">
          <image>
             <Image url="@../img/S.png" />
          </image>
@@ -523,7 +523,7 @@
             <Shadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="173.0" layoutY="277.0">
+      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="173.0" layoutY="236.0">
          <image>
             <Image url="@../img/D.png" />
          </image>
@@ -531,7 +531,7 @@
             <Shadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="90.0" layoutY="283.0">
+      <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="90.0" layoutY="242.0">
          <image>
             <Image url="@../img/A.png" />
          </image>
@@ -539,12 +539,12 @@
             <Shadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="88.0" layoutY="280.0">
+      <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="90.0" layoutY="242.0">
          <image>
             <Image url="@../img/A.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="55.0" fitWidth="178.0" layoutX="64.0" layoutY="229.0">
+      <ImageView fitHeight="55.0" fitWidth="178.0" layoutX="65.0" layoutY="185.0">
          <image>
             <Image url="@../img/W.png" />
          </image>
@@ -572,7 +572,7 @@
             <Image url="@../img/ArrowUp.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="171.0" layoutY="273.0">
+      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="173.0" layoutY="236.0">
          <image>
             <Image url="@../img/D.png" />
          </image>
@@ -582,17 +582,17 @@
             <Image url="@../img/Spacebar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="128.0" layoutY="273.0">
+      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="128.0" layoutY="236.0">
          <image>
             <Image url="@../img/S.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="72.0" layoutX="115.0" layoutY="354.0">
+      <ImageView fitHeight="47.0" fitWidth="72.0" layoutX="115.0" layoutY="315.0">
          <image>
             <Image url="@../img/Spacebar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="55.0" fitWidth="178.0" layoutX="62.0" layoutY="225.0">
+      <ImageView fitHeight="55.0" fitWidth="178.0" layoutX="64.0" layoutY="185.0">
          <image>
             <Image url="@../img/W.png" />
          </image>
@@ -618,7 +618,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <Text layoutX="142.0" layoutY="414.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--" wrappingWidth="21.0">
+      <Text layoutX="141.0" layoutY="379.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="--" wrappingWidth="21.0">
          <font>
             <Font name="Ravie" size="14.0" />
          </font>
@@ -673,7 +673,7 @@
          </image>
       </ImageView>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="TEXT21" layoutX="12.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BONUS ITEMS : " wrappingWidth="277.0">
+      <Text fx:id="TEXT21" layoutX="13.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BONUS ITEMS : " wrappingWidth="277.0">
          <font>
             <Font name="Segoe Print" size="12.0" />
          </font>
@@ -702,7 +702,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="TEXTBOMB" layoutX="57.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LET THE PLAYER USE ADITIONAL BOMB AT THE SAME TIME." wrappingWidth="224.0">
+      <Text fx:id="TEXTBOMB" layoutX="57.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LET THE PLAYER USE ADITIONAL BOMB AT THE SAME TIME." wrappingWidth="224.0">
          <font>
             <Font name="Segoe Print" size="10.0" />
          </font>
@@ -731,7 +731,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="TEXTFLAME" layoutX="57.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE RANGE OF A BOMB" wrappingWidth="224.0">
+      <Text fx:id="TEXTFLAME" layoutX="57.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE RANGE OF A BOMB" wrappingWidth="224.0">
          <font>
             <Font name="Segoe Print" size="10.0" />
          </font>
@@ -876,7 +876,7 @@
             <Font name="Ravie" size="11.0" />
          </font>
       </Text>
-      <Text fx:id="HEALTH" layoutX="57.0" layoutY="615.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYER´S HEALTH" wrappingWidth="224.0">
+      <Text fx:id="HEALTH" layoutX="57.0" layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYER´S HEALTH" wrappingWidth="224.0">
          <font>
             <Font name="Segoe Print" size="10.0" />
          </font>
@@ -905,7 +905,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="HEALTH1" layoutX="57.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYER´S MOVEMENT SPEED" wrappingWidth="224.0">
+      <Text fx:id="HEALTH1" layoutX="57.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYER´S MOVEMENT SPEED" wrappingWidth="224.0">
          <font>
             <Font name="Segoe Print" size="10.0" />
          </font>

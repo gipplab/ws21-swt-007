@@ -45,7 +45,21 @@ public class LandingPageController {
 		GuideButton.setText(Ressourcen.language.get(3).get(languageIndex));
 		ExitButton.setText(Ressourcen.language.get(4).get(languageIndex));
 		langComboBox.getItems().addAll("EN","DE","FR");
-		langComboBox.setValue("EN");
+		switch(languageIndex){
+		case 1:
+			langComboBox.setValue("EN");
+			break;
+		case 2:
+			langComboBox.setValue("DE");
+			break;
+		case 3:
+			langComboBox.setValue("FR");
+			break;
+		default:
+			langComboBox.setValue("EN");
+			break;
+		}
+
 		
 	}
 	// Event Listener on Button[#OnlineButton].onAction
