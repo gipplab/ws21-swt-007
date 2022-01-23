@@ -7,11 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import application.Objects.Bomb;
 import application.Objects.Bomberman;
-import application.Objects.Bot;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
 import application.Objects.Wall;
-import application.SceneControllers.SinglePlayPanelController;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -49,6 +47,8 @@ public class GamePanelOnline {
 	public static int mainPlayerIndex=0;
 	public static int mapIndex=0;
 	public static int nbrOfPlayers=2;
+	public static int nbrOfPlayersOffline=0;
+	public static int offlineCounter=0;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	String otherPlayersUpdates;
 
@@ -77,10 +77,19 @@ public void init() throws IOException {
 	  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/30), e -> 
 	  {
 		try {
-			if(nbrOfPlayers > 1) 
+			if(nbrOfPlayers > 1 && offlineCounter <200 ) 
 			{
-				update();
+				if(nbrOfPlayers-nbrOfPlayersOffline == 1) {
+					offlineCounter=offlineCounter+1;
+				}else {
+					offlineCounter=0;
+				}
+				System.out.println("condition   "+nbrOfPlayers +"///   "+ nbrOfPlayersOffline+"///"+offlineCounter);
+				nbrOfPlayersOffline = 0;
+				update();				
 				time=System.currentTimeMillis();
+				
+				
 			}
 			else if(System.currentTimeMillis()-time>=timeToEnd)  
 			{
@@ -247,7 +256,6 @@ void onlineUpdates(String resp) {
 		otherPlayersUpdates ="";
 		int i =1;
 		while(i < message.length){
-			
 			System.out.println(message[i]+" :i "+i);
 			switch(message[i]) {
 			case "PLAYER":
@@ -257,6 +265,7 @@ void onlineUpdates(String resp) {
 						if(System.currentTimeMillis()-Double.parseDouble(message[i+1])>3000) {
 							System.out.println("Player:"+player[j].getName()+" is disconnected");
 							otherPlayersUpdates = otherPlayersUpdates + player[j].getName()+" is disconnected \n";
+							nbrOfPlayersOffline=nbrOfPlayersOffline+1;
 								
 						}else {
 							System.out.println(player[j].getName()+":"+message[i+3]);
