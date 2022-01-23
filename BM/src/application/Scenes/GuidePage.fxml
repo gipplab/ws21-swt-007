@@ -199,7 +199,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="TEXT1" layoutX="21.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLOW UP YOUR OPPONENTS BEFORE THEY KILL YOU. YOU CAN CHOOSE EITHER 1,2,3 OPPONENS." wrappingWidth="268.0">
+      <Text fx:id="TEXT1" layoutX="21.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLOW UP YOUR OPPONENTS BEFORE THEY KILL YOU.YOU WILL PLAY AGAINST 3 OPPONENTS IN OFFLINE MODE OR YOU CAN CHOOSE EITHER 1,2,3 OPPONENTS IN ONLINE MODE " wrappingWidth="268.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -225,7 +225,7 @@
             <Glow level="0.85" />
          </effect>
          <font>
-            <Font name="Segoe Print" size="12.0" />
+            <Font name="Segoe Print" size="11.0" />
          </font>
       </Text>
       <Text fx:id="T1" layoutX="12.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AIM OF " wrappingWidth="129.0">
@@ -467,10 +467,90 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="87.0" layoutY="273.0">
+      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="455.0" layoutY="279.0">
+         <image>
+            <Image url="@../img/ArrowDown.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="72.0" layoutX="118.0" layoutY="359.0">
+         <image>
+            <Image url="@../img/Spacebar.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="72.0" layoutX="445.0" layoutY="357.0">
+         <image>
+            <Image url="@../img/Spacebar.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="503.0" layoutY="279.0">
+         <image>
+            <Image url="@../img/ArrowRight.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="131.0" layoutY="277.0">
+         <image>
+            <Image url="@../img/S.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="462.0" layoutY="239.0">
+         <image>
+            <Image url="@../img/ArrowUp.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="410.0" layoutY="279.0">
+         <image>
+            <Image url="@../img/ArrowLeft.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="173.0" layoutY="277.0">
+         <image>
+            <Image url="@../img/D.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="90.0" layoutY="280.0">
          <image>
             <Image url="@../img/A.png" />
          </image>
+         <effect>
+            <Shadow />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="87.0" layoutY="275.0">
+         <image>
+            <Image url="@../img/A.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="178.0" layoutX="64.0" layoutY="229.0">
+         <image>
+            <Image url="@../img/W.png" />
+         </image>
+         <effect>
+            <Shadow />
+         </effect>
       </ImageView>
       <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="451.0" layoutY="274.0">
          <image>
@@ -492,7 +572,7 @@
             <Image url="@../img/ArrowUp.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="171.0" layoutY="271.0">
+      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="171.0" layoutY="273.0">
          <image>
             <Image url="@../img/D.png" />
          </image>
@@ -502,7 +582,7 @@
             <Image url="@../img/Spacebar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="128.0" layoutY="271.0">
+      <ImageView fitHeight="47.0" fitWidth="46.0" layoutX="128.0" layoutY="273.0">
          <image>
             <Image url="@../img/S.png" />
          </image>
