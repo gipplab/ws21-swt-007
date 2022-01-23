@@ -22,7 +22,7 @@ public class Room {
 		int column=0;
 		for(ArrayList<String> x : mapLayout) {
 			for(String y : x) {
-				if(y.equals("S")||y.equals("P")||y.equals("E")||y.equals("L")||y.equals("Q")) {
+				if(y.equals("M")||y.equals("P")||y.equals("E")||y.equals("L")||y.equals("Q")) {
 					String[] softWall= new String[2];
 					softWall[0]= String.valueOf(row);
 					softWall[1]= String.valueOf(column);
