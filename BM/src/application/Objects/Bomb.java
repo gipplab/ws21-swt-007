@@ -1,10 +1,13 @@
 package application.Objects;
 
+
 import application.Client;
 import application.GamePanel;
 import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Bomb extends TileObjects 
 {
@@ -12,14 +15,14 @@ public class Bomb extends TileObjects
 	int power;
 	double time;
 	final double timeToExplosion=3000;
-	 Boolean death;
-	
+	Boolean death;
+	static MediaPlayer mediaPlayer;
 public Bomb(double x2, double y2,int power, Image image,Character p)  {
 	super(x2,y2,image);
 	this.x=x2;
 	this.y=y2;
 	
-	time= System.currentTimeMillis();
+
 	death=false;
 	this.power=power;
 	player=p;
@@ -29,6 +32,8 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 		death=true;
 		GameObjects.tileObjects.remove(this);
 	}
+	music();
+	time= System.currentTimeMillis();
 	}
 
 
@@ -138,13 +143,20 @@ public boolean isBreakable() {
 	return true;
 } 
 
+public void music() {
+	Media h = new Media(getClass().getResource("../music/Explosion.mp3").toExternalForm());
+	mediaPlayer = new MediaPlayer(h);
+	mediaPlayer.setVolume(0.30);		
+	
+}
 
 
 //Bombezustand und Bombeanzahl aktualisieren.
-public void update() 
+public void update()  
 {
 	
 	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
+		mediaPlayer.play();
 		death=true;
 		GameObjects.tileObjects.remove(this);
 		if(player instanceof Bomberman) { 
