@@ -3,18 +3,23 @@ package application;
 
 public class PlayerInfos {
 		
-	String name;
-	String position;
+	String name;// playerpseudo
+	String position;// location of player
 	String bomb="NOBOMB";
 	public boolean isDaed=false;
 	public String action="0"; 
+	
+	// return the loction of player
 	public String getPosition() {
 		return position;
 		
 	}
+	
+	//set the location of player
 	public void setPosition(String position) {
 		this.position = position;
 	}
+	
 	public String getBomb() {
 		return bomb;
 	}

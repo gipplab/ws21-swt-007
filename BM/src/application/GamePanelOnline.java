@@ -43,7 +43,7 @@ public class GamePanelOnline {
 	Group root;
 	double Playerspeed;
 	public static double imageX = 4, imageY = 4;
-    public static Bomberman[] player=new Bomberman[4];
+    public static Bomberman[] player=new Bomberman[4]; // 4 player maximum
 	public static int mainPlayerIndex=0;
 	public static int mapIndex=0;
 	public static int nbrOfPlayers=2;
@@ -159,7 +159,7 @@ void update() throws InterruptedException {
 			String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-GetUpdates-"+System.currentTimeMillis()+"-"+player[mainPlayerIndex].getEntityX()+"-"+player[mainPlayerIndex].getEntityY();
 			System.out.println(messageout);
 			String resp= "";
-			resp=Client.accessServer(messageout);
+			resp=Client.accessServer(messageout); // resp speichert die Antwoet des servers
 			//System.out.println(resp);
 			//druekeNachricht(resp);
 			Client.updateString="";
@@ -167,7 +167,7 @@ void update() throws InterruptedException {
 			messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-GetMap";
 			System.out.println(messageout);
 			resp= "";
-			resp=Client.accessServer(messageout);
+			resp=Client.accessServer(messageout);// send messageout to server
 			//System.out.println(resp);
 			//druekeNachricht(resp);
 			Client.updateString="";
@@ -254,67 +254,69 @@ void update() throws InterruptedException {
 	
 void onlineUpdates(String resp) {
 		System.out.println(resp);
-		String[] message = resp.split("-");
+		String[] message = resp.split("-"); // message aufteilen mit -
 		otherPlayersUpdates ="";
 		int i =1;
+		// Nachricht lesen
 		while(i < message.length){
 			System.out.println(message[i]+" :i "+i);
 			switch(message[i]) {
-			case "PLAYER":
+			case "PLAYER": 
 				for(int j=0; j< Client.players.size();j++) {
 					if( message[i+2].equals(player[j].getName()) ){
 						System.out.println(player[j].getName()+":"+i);
-						if(System.currentTimeMillis()-Double.parseDouble(message[i+1])>3000) {
-							System.out.println("Player:"+player[j].getName()+" is disconnected");
+						if(System.currentTimeMillis()-Double.parseDouble(message[i+1])>3000) { // wenn aktuelle zeit - action grosser 3 sekunden
+							System.out.println("Player:"+player[j].getName()+" is disconnected"); // dann der Spieler ist nicht mehr verbunden
 							otherPlayersUpdates = otherPlayersUpdates + player[j].getName()+" is disconnected \n";
-							nbrOfPlayersOffline=nbrOfPlayersOffline+1;
+							nbrOfPlayersOffline=nbrOfPlayersOffline+1; // die Anzahl der Offline-Spieler Erhoehen
 								
-						}else {
+						}else { // Spielerbewegungen lesen
 							System.out.println(player[j].getName()+":"+message[i+3]);
 							switch(message[i+3]) {
 							case "UP": 
-								player[j].moveUp();
+								player[j].moveUp(); // move up
+								//set Position of player
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
 								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "DOWN": 
-								player[j].moveDown();
+								player[j].moveDown(); // move down
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
 								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "RIGHT": 
-								player[j].moveRight();
+								player[j].moveRight(); // move right
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
 								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "LEFT": 
-								player[j].moveLeft();
+								player[j].moveLeft();// move left
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
 								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
-							case "STOP": 
+							case "STOP": // no move , set Position of player
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
 								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
-							case "DEAD": 
+							case "DEAD": // when player is killed
 								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is dead \n";
 								i=i+6;
 							}
 							if(message[i].equals("BOMB")) {
 								System.out.println(message[i]+"/i"+i);
-								if(player[j].getBombanzahl()>0) {
-									Bomb bmb = new Bomb(Double.parseDouble(message[i+1]), Double.parseDouble(message[i+2]),1,Ressourcen.IMAGES.BOMBE.getImage(),player[j]);
-									player[j].BombanzahlDown();
+								if(player[j].getBombanzahl()>0) { // if the player still has a bomb
+									Bomb bmb = new Bomb(Double.parseDouble(message[i+1]), Double.parseDouble(message[i+2]),1,Ressourcen.IMAGES.BOMBE.getImage(),player[j]);//Drop bomb and show her photo
+									player[j].BombanzahlDown();//Decrease the number of bombs for this player
 									GameObjects.spawn(bmb);	
 									i=i+3;
 								}
@@ -334,7 +336,7 @@ void onlineUpdates(String resp) {
 }
 void onlineMapUpdates(String resp) {
 	System.out.println(resp);
-	String[] message = resp.split("-");
+	String[] message = resp.split("-");// message aufteilen
 		if(message[0].equals("ServerUpdates")) {
 			for(int l=0;l<GameObjects.tileObjects.size();l++)
 				if( GameObjects.tileObjects.get(l) instanceof Wall && GameObjects.tileObjects.get(l).isBreakable()) {
