@@ -1,6 +1,11 @@
 package application.Objects;
 
 
+import java.io.IOException;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import application.GamePanel;
 import application.Ressourcen;
 

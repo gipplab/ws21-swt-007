@@ -103,4 +103,9 @@ public class PathFinding {
 		return new Point((int)currentNode.x, (int)currentNode.y);
 	}
 	
+	public Node nextStepVor (Node currenNode) {
+		currenNode = currenNode.parentNode;
+		return currenNode;
+	}
+	
 }

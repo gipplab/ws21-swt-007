@@ -6,25 +6,30 @@ import application.GamePanelOnline;
 import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Explosion extends Entities{
 	double time;//aktuelle Zeit.
 	double timeToExplosion;//bleibende Zeit zu explodieren.
 	Boolean death;
-	 
-	Explosion(double x, double y, Image img){
+	MediaPlayer mediaPlayer;
+	Explosion(double x, double y, Image img) {
 		super(x,y,img);
 		time= System.currentTimeMillis();
 		GameObjects.spawn(this);
 		timeToExplosion=1200; 
 		death=false;
-		System.out.println("erzeuge Ex");
-	}
-	 
+		System.out.println("erzeuge Ex");		
 
+	}
+	
+	
+	
 //Explosion aktualisieren und pr�ft, ob hier ein Item auftaucht.	
 public void update() {
 		if(System.currentTimeMillis()-time>=timeToExplosion && !death) {
+		
 			death=true;
 			GameObjects.explosionObjects.remove(this);
 			for(int i=0;i<GameObjects.tileObjects.size();i++)

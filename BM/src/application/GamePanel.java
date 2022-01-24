@@ -90,12 +90,7 @@ public void init() throws IOException {
 					if(System.currentTimeMillis()>timeofDeath+5000) 
 					{
 						System.exit(0);
-//						Stage primaryStage= new Stage();
-//					 	root = FXMLLoader.load(getClass().getResource("Scenes/SinglePlayPanel.fxml"));
-//				    	scene = new Scene(root);
-//				    	primaryStage.setScene(scene);
-//						primaryStage.setResizable(false);
-//						primaryStage.show();
+
 						
 					}
 				}
@@ -137,10 +132,10 @@ public void run() {
 
 	//Aktualisierung der Objekte im Spiel.
 private void update() throws InterruptedException {
+	
 	if(KeysHandler.play) {
 		if(	root.getChildren().contains(pause)) {
 			pause.setFill(Color.TRANSPARENT);
-			System.out.println("KAKAKAKA''FLKASGLKASNGLKANFGLKA##LÖFMLADÖS");
 			root.getChildren().remove(pause);
 		
 		}
@@ -217,11 +212,12 @@ private void drawObjekte(GraphicsContext gc) {
 			    	 timeofDeath= System.currentTimeMillis();
 			    	 System.out.println("GameOver"
 			    	 		+ "### der Spieler ist tot ###");
+			    	 Main.stopmusic();
 			     }else if( GameObjects.bomberObjects.size()==1) {
 			    		System.out.println("###Alle BOTS sind Tot ausser der Spieler ###");
 			    		 timeofDeath= System.currentTimeMillis();
 			    		 gameOver=2;
-			    	
+			    	 Main.stopmusic();
 			    	}
 			 
 			    	 

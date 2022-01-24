@@ -20,7 +20,14 @@ public class Bot extends Character {
 	boolean randBot2 = true ;
 	boolean randBot3 = true ;
 	boolean randBot4 = true ;
+	boolean gefahr ;
+	int startX ;
+	int startY ;
+	int zielX ;
+	int zielY ;
 	Point nextStep ;
+	Node nextStepVor ;
+	PathFinding pathFinding = new PathFinding();
 	Image Bombimag= Ressourcen.IMAGES.BOMBE.getImage();
 public Bot(double x, double y, Image img, Boolean p)
 {
@@ -35,7 +42,18 @@ public Bot(double x, double y, Image img, Boolean p)
 
 	//Bombenanzahl prfen aund eine Bombe Platzieren.
 
-void placeBomb() 
+void placeBombb( double xx , double yy ) 
+{
+		if(bombanzahl>0) {
+     
+			Bomb b= new Bomb( xx , yy, explosion , Bombimag, this );
+			b.BombCollision(xx,yy);
+			bombanzahl--;
+			GameObjects.spawn(b);
+		}
+}
+	
+	void placeBomb() 
 {
 		if(bombanzahl>0) 
 		{
@@ -46,52 +64,91 @@ void placeBomb()
 		}
 }
 
-//  Methode geheZuPlayer()  suche nach einem guenstigen Weg zum Bomberman  und fuert den Bot zum Bomberman .
-private void geheZuPlayer()	{
+//  Methode moveBot()()  suche nach einem guenstigen Weg zum Bomberman  und fuert den Bot zum Bomberman .
 
-	PathFinding pathFinding = new PathFinding();
+public void moveBot()	{
+
+  startX = (int)this.x/GamePanel.SQUARE_SIZE ;
+  startY = (int)this.y/GamePanel.SQUARE_SIZE ;
+
+  if ((int)this.x % GamePanel.SQUARE_SIZE != 0 && (int)this.y % GamePanel.SQUARE_SIZE != 0) {
+	   moveLeft();
+ 	   moveUp();
+	   return;
+  } 
+  else {	 
+	
+	for(int j=0 ; j < GameObjects.tileObjects.size() ; j++) {
+		Entities obje = GameObjects.tileObjects.get(j);	
+		if(obje instanceof Bomb) {
+			
+			if( obje.getEntityX() <= this.x && obje.getEntityY() <= this.y ) {
+   	             zielX = 14 ;
+   	             zielY = 15 ;   	             
+			}else  if (obje.getEntityX() < this.x  && obje.getEntityY() > this.y ) {
+				 zielX = 14 ;
+  	             zielY = 2 ;				
+			}
+			else  if (obje.getEntityX() > this.x && obje.getEntityY() < this.y ) {
+				 zielX = 1 ;
+ 	             zielY = 15 ;				
+			}
+			else  if (obje.getEntityX() >= this.x && obje.getEntityY() >= this.y ) {
+				 zielX = 1 ;
+	             zielY = 2;				
+			} 
+							
+			gefahr = true ;
+
+	    }else gefahr = false ;
+	 }
+
+
+   if (!gefahr) {
 	for (int i = 0; i < GameObjects.bomberObjects.size(); i++) {		   
 	     Entities obje = GameObjects.bomberObjects.get(i);	  
 
 	     if(obje.isPlayer()) { 	
-	   		    	
-	        if ((int)this.x % GamePanel.SQUARE_SIZE != 0 && (int)this.y % GamePanel.SQUARE_SIZE != 0) {
-	        	
-	    		 moveLeft();
-          	         moveUp();
-	 		 return;
-	 	} 
-	        else {	    	 
-	              ArrayList<Node> arrList = pathFinding.doAlgorithmAStar((int)this.x/GamePanel.SQUARE_SIZE,(int)this.y/GamePanel.SQUARE_SIZE,
-	        		                       (int)obje.getEntityX()/GamePanel.SQUARE_SIZE, (int)obje.getEntityY()/GamePanel.SQUARE_SIZE);
+    	 
+	    	 zielX = (int)obje.getEntityX()/GamePanel.SQUARE_SIZE ;
+	    	 zielY = (int)obje.getEntityY()/GamePanel.SQUARE_SIZE ;
+	       }
+	   }
+   }
+   ArrayList<Node> arrList  = pathFinding.doAlgorithmAStar(startX,startY,zielX, zielY);
 	
-	              if (arrList.isEmpty()) {
-	            //    moveRandom();
-		          return;	
-	               }            
-	               else{
-		            Point nextStep = pathFinding.nextStep(arrList.get(arrList.size() - 1));
-		
-		            if (nextStep.x  > (int)this.x/GamePanel.SQUARE_SIZE ){
-		        	moveRight();
-			    }   
-		            if (nextStep.x *GamePanel.SQUARE_SIZE < (int)this.x) {
-			        moveLeft();
-		            }
-                            if (nextStep.y > (int)this.y/GamePanel.SQUARE_SIZE){
-				moveDown();
-			    }    
-			    if (nextStep.y*GamePanel.SQUARE_SIZE  < (int)this.y ){
-				moveUp();
-			   }
-		       }
-	 	}
-	     }
-       }
- }	
-	
+   if (arrList.isEmpty()) {
+	   moveRandom();
+	   return;	
+   }            
+   else{
+		 nextStep = pathFinding.nextStep(arrList.get(arrList.size() - 1));
+		 
+		 nextStepVor = pathFinding.nextStepVor(arrList.get(arrList.size() - 1));
 
-  public void moveBot(){
+		 if (nextStep.x  > (int)this.x/GamePanel.SQUARE_SIZE ){
+		      moveRight();
+		 }   
+		 if (nextStep.x *GamePanel.SQUARE_SIZE < (int)this.x) {
+			 moveLeft();
+		 }
+         if (nextStep.y > (int)this.y/GamePanel.SQUARE_SIZE){
+			 moveDown();
+		 }    
+		 if (nextStep.y*GamePanel.SQUARE_SIZE  < (int)this.y ){
+			 moveUp();
+		 }
+			           
+		 if( !gefahr && (startX - 1 <= zielX ) && (startX + 1 >= zielX  ) && (startY - 1  <= zielY ) && (startY + 1 >= zielY )) {
+		     placeBombb(nextStepVor.x *GamePanel.SQUARE_SIZE , nextStepVor.y*GamePanel.SQUARE_SIZE) ;
+			        	    
+		   //  placeBomb(arrList.get(arrList.size() - 2).x *GamePanel.SQUARE_SIZE , arrList.get(arrList.size() - 2).y*GamePanel.SQUARE_SIZE) ;	        	  
+		 }			            
+  }
+ }
+ }
+
+  public void moveBott(){
 	isFreeBot();
         for (int i = 0; i < GameObjects.bomberObjects.size(); i++) {		   
 	     Entities obje = GameObjects.bomberObjects.get(i);	   	    
@@ -221,7 +278,7 @@ private void geheZuPlayer()	{
 //					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
 //				lastRichtung=(int) Math.round(Math.random() * 3);
 //				if((int) Math.round(Math.random() * 15)==2)
-//						placeBomb();
+//					placeBomb();
 //					}
 //			break;
 //		}
@@ -243,7 +300,7 @@ void isFreeBot()
 				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))
 			{
 				lastRichtung=(int) Math.round(Math.random() * 3);
-				placeBomb();
+			//	placeBomb();
 				}
 			break;
 		}
@@ -254,7 +311,7 @@ void isFreeBot()
 		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))
 		{
 			lastRichtung=(int) Math.round(Math.random() * 3);
-				placeBomb();
+			//	placeBomb();
 				}
 			
 		break;
@@ -267,7 +324,7 @@ void isFreeBot()
 		{
 		lastRichtung=(int) Math.round(Math.random() * 3);
 		if((System.currentTimeMillis()-time>=timeToExplosion)) {
-			placeBomb();
+		//	placeBomb();
 			time=System.currentTimeMillis();
 		}
 		
@@ -283,7 +340,8 @@ void isFreeBot()
 					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
 				lastRichtung=(int) Math.round(Math.random() * 3);
 				if((int) Math.round(Math.random() * 15)==2)
-						placeBomb();
+					//	placeBomb();
+					;
 					}
 			break;
 		}
@@ -311,10 +369,10 @@ public void update() {
 		this.img = Ressourcen.IMAGES.playerDead[0][indexAnimPlayer()];
 	    GameObjects.bomberObjects.remove(this);	
 	      }else
- 		//	moveBot();
-		        geheZuPlayer();
+ 			moveBot();
 
 }
+	
 public void gethit() {
 	--this.health;
 	if(this.health<=0) 
