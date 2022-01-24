@@ -3,6 +3,7 @@ package application.Objects;
 
 import application.Client;
 import application.GamePanel;
+import application.KeysHandler;
 import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
@@ -32,6 +33,7 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 		death=true;
 		GameObjects.tileObjects.remove(this);
 	}
+	if(KeysHandler.playMusik)
 	music();
 	time= System.currentTimeMillis();
 	}
@@ -40,7 +42,6 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 //die Bombe im richtigen Block platzieren 
 public void BombCollision(double x1, double y1) 
 {
-	
 	int a = (int) (x1 % GamePanel.SQUARE_SIZE);
 	int b= (int) (y1 % GamePanel.SQUARE_SIZE);
 	System.out.println(a+", "+ b);
@@ -144,7 +145,7 @@ public boolean isBreakable() {
 } 
 
 public void music() {
-	Media h = new Media(getClass().getResource("../music/Explosion.mp3").toExternalForm());
+	Media h = new Media(getClass().getResource("Explosion.mp3").toExternalForm());
 	mediaPlayer = new MediaPlayer(h);
 	mediaPlayer.setVolume(0.30);		
 	

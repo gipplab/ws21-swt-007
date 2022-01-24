@@ -73,6 +73,7 @@ public class JoinOnlinePageController {
 	    // ueberpruefen ob der Name der Spieler leer oder '-' beinhaltet
 		    
 			if(validate()==true) {
+				@SuppressWarnings("rawtypes")
 				TablePosition pos = hostTableView.getSelectionModel().getSelectedCells().get(0);
 				row = pos.getRow();
 			if(row == -1) {
@@ -85,6 +86,7 @@ public class JoinOnlinePageController {
 			else {
 				System.out.println("selected:"+row);
 				// Item here is the table view type:
+				@SuppressWarnings("rawtypes")
 				TableColumn col = pos.getTableColumn();
 				// this gives the value in the selected cell:
 				

@@ -1,9 +1,6 @@
 package application.SceneControllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import application.Client;
 import application.GamePanelOnline;
 import application.Ressourcen;
