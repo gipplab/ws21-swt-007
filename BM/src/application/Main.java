@@ -1,6 +1,12 @@
 package application;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,15 +19,24 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	public static Client player= new Client();
 	public static Boolean  online= false;
+	BufferedReader bufferedReader;
 	
 	@Override
 	public void start(Stage primaryStage) {
-	
 		
 		try {
+			bufferedReader=new
+					BufferedReader(new InputStreamReader(Main.class.getResourceAsStream("ServerIp.csv")));
+			 String ip = new String();
 			
-			music();
-			player.SetAddress("localhost"); 
+			ip = bufferedReader.readLine();
+			System.out.println(ip);
+			
+		
+		    if(!ip.isEmpty())	
+		    	player.SetAddress(ip); 
+		    else 
+		    	player.SetAddress("loocalhost"); 
 			Ressourcen.readFiles();
 			Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
 		    Scene scene = new Scene(root);
@@ -29,6 +44,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
+			music();
 
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -64,7 +80,7 @@ public class Main extends Application {
 		volumen-=0.005;
 		else volumen=0;
 		mediaPlayer.setVolume(volumen);
-		 System.out.println(volumen);
+	
 	}
 
 

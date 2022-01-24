@@ -17,7 +17,7 @@ public class Ressourcen {
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static ArrayList<ArrayList<String>> language;
 	public static String[] fields;
-	
+
 
 public enum IMAGES
 {
@@ -115,7 +115,7 @@ public static void readFiles() throws IOException
 			file_Server[4] = new InputStreamReader(Ressourcen.class.getResourceAsStream("maps/map5server.csv"));
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Ressourcen.class.getResourceAsStream("Language/Lng.csv")));
 			language = new ArrayList<>();
-		 
+			
 	        try {
 	            String currentLine;
 
