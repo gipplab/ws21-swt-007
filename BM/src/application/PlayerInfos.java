@@ -6,6 +6,7 @@ public class PlayerInfos {
 	String name;
 	String position;
 	String bomb="NOBOMB";
+	public boolean isDaed=false;
 	public String action="0"; 
 	public String getPosition() {
 		return position;
