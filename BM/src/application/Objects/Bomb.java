@@ -3,6 +3,7 @@ package application.Objects;
 
 import application.Client;
 import application.GamePanel;
+import application.KeysHandler;
 import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
@@ -32,6 +33,7 @@ public Bomb(double x2, double y2,int power, Image image,Character p)  {
 		death=true;
 		GameObjects.tileObjects.remove(this);
 	}
+	if(KeysHandler.playMusik)
 	music();
 	time= System.currentTimeMillis();
 	}
