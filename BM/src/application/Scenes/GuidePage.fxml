@@ -945,7 +945,7 @@
             <Font name="Ravie" size="12.0" />
          </font>
       </Text>
-      <Text fx:id="HEALTH" layoutX="57.0" layoutY="616.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYER´S HEALTH" wrappingWidth="224.0">
+      <Text fx:id="HEALTH" layoutX="57.0" layoutY="616.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYERS HEALTH" wrappingWidth="224.0">
          <font>
             <Font name="Segoe Print" size="10.0" />
          </font>
@@ -974,7 +974,7 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="HEALTH1" layoutX="57.0" layoutY="644.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYER´S MOVEMENT SPEED" wrappingWidth="224.0">
+      <Text fx:id="HEALTH1" layoutX="57.0" layoutY="644.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INCREASES THE PLAYERS MOVEMENT SPEED" wrappingWidth="224.0">
          <font>
             <Font name="Segoe Print" size="10.0" />
          </font>
