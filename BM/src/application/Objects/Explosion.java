@@ -6,7 +6,6 @@ import application.GamePanelOnline;
 import application.Main;
 import application.Ressourcen;
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Explosion extends Entities{
