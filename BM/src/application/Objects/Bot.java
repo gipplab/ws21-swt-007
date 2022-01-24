@@ -66,7 +66,7 @@ public void moveBot()	{
 	   return;
   } 
   else {	 
-	
+	/*
 	for(int j=0 ; j < GameObjects.tileObjects.size() ; j++) {
 		Entities obje = GameObjects.tileObjects.get(j);	
 		if(obje instanceof Bomb) {
@@ -91,7 +91,7 @@ public void moveBot()	{
 
 	    }else gefahr = false ;
 	 }
-
+*/
 
    if (!gefahr) {
 	for (int i = 0; i < GameObjects.bomberObjects.size(); i++) {		   
@@ -129,7 +129,7 @@ public void moveBot()	{
 		 }
 			           
 		 if( !gefahr && (startX - 1 <= zielX ) && (startX + 1 >= zielX  ) && (startY - 1  <= zielY ) && (startY + 1 >= zielY )) {
-			 placeBomb(nextStepVor.x *GamePanel.SQUARE_SIZE , nextStepVor.y*GamePanel.SQUARE_SIZE) ;
+			// placeBomb(nextStepVor.x *GamePanel.SQUARE_SIZE , nextStepVor.y*GamePanel.SQUARE_SIZE) ;
 			        	    
 		   //  placeBomb(arrList.get(arrList.size() - 2).x *GamePanel.SQUARE_SIZE , arrList.get(arrList.size() - 2).y*GamePanel.SQUARE_SIZE) ;	        	  
 		 }			            
