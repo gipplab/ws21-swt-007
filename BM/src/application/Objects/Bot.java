@@ -137,7 +137,7 @@ public void moveBot()	{
  }
  }
 
-  public void moveBot(){
+  public void moveBott(){
 	isFreeBot();
         for (int i = 0; i < GameObjects.bomberObjects.size(); i++) {		   
 	     Entities obje = GameObjects.bomberObjects.get(i);	   	    
@@ -267,7 +267,7 @@ public void moveBot()	{
 //					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
 //				lastRichtung=(int) Math.round(Math.random() * 3);
 //				if((int) Math.round(Math.random() * 15)==2)
-//						placeBomb();
+//					placeBomb();
 //					}
 //			break;
 //		}
@@ -289,7 +289,7 @@ void isFreeBot()
 				|| !isFreeExplosion((int)this.x,(int)this.y-GamePanel.SQUARE_SIZE))
 			{
 				lastRichtung=(int) Math.round(Math.random() * 3);
-				placeBomb();
+			//	placeBomb();
 				}
 			break;
 		}
@@ -300,7 +300,7 @@ void isFreeBot()
 		|| !isFreeExplosion((int)this.x+GamePanel.SQUARE_SIZE,(int)this.y))
 		{
 			lastRichtung=(int) Math.round(Math.random() * 3);
-				placeBomb();
+			//	placeBomb();
 				}
 			
 		break;
@@ -313,7 +313,7 @@ void isFreeBot()
 		{
 		lastRichtung=(int) Math.round(Math.random() * 3);
 		if((System.currentTimeMillis()-time>=timeToExplosion)) {
-			placeBomb();
+		//	placeBomb();
 			time=System.currentTimeMillis();
 		}
 		
@@ -329,7 +329,8 @@ void isFreeBot()
 					|| !isFreeExplosion((int)this.x,(int)this.y+(GamePanel.SQUARE_SIZE))){
 				lastRichtung=(int) Math.round(Math.random() * 3);
 				if((int) Math.round(Math.random() * 15)==2)
-						placeBomb();
+					//	placeBomb();
+					;
 					}
 			break;
 		}
