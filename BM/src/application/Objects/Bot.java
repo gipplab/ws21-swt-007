@@ -42,12 +42,23 @@ public Bot(double x, double y, Image img, Boolean p)
 
 	//Bombenanzahl prfen aund eine Bombe Platzieren.
 
-void placeBomb( double xx , double yy ) 
+void placeBombb( double xx , double yy ) 
 {
 		if(bombanzahl>0) {
      
 			Bomb b= new Bomb( xx , yy, explosion , Bombimag, this );
 			b.BombCollision(xx,yy);
+			bombanzahl--;
+			GameObjects.spawn(b);
+		}
+}
+	
+	void placeBomb() 
+{
+		if(bombanzahl>0) 
+		{
+			Bomb b= new Bomb( this.x , this.y, explosion , Bombimag, this );
+			b.BombCollision(this.x,this.y);
 			bombanzahl--;
 			GameObjects.spawn(b);
 		}
