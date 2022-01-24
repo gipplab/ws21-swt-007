@@ -41,13 +41,24 @@ public class Server {
 				
 				if(message[0].equals("Host")) 
 				{
-					PlayerInfos host = new PlayerInfos(message[2]); 
-					Room rm = new Room(message[1],Integer.parseInt(message[3]),Integer.parseInt(message[4]));
-					rm.AddPlayerToRoom(host);
-					roomsList.add(rm);
-					System.out.print(" : ");
-					System.out.println(messageIn);
-					messageOut = "Created";
+					boolean found =false;
+					for(Room rm : roomsList) {
+						
+						if(rm.getHostName().equals( message[1])) {
+							found=true;
+						}
+					}
+					if(found) {
+						messageOut = "Exist";
+					}else {
+						PlayerInfos host = new PlayerInfos(message[2]); 
+						Room rm = new Room(message[1],Integer.parseInt(message[3]),Integer.parseInt(message[4]));
+						rm.AddPlayerToRoom(host);
+						roomsList.add(rm);
+						System.out.print(" : ");
+						System.out.println(messageIn);
+						messageOut = "Created";
+					}					
 					outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
 					datagramSocket.send(outPacket);
 				}else if(message[0].equals("Player")){
@@ -70,17 +81,24 @@ public class Server {
 								{
 									if(room.GetPlayersNumber() < room.getHowManyPlayers())
 									{
-										PlayerInfos player = new PlayerInfos(message[3]); 
-										room.AddPlayerToRoom(player);										
-										found=true;
-										messageOut= "Added";
+										for(PlayerInfos plr : room.players ) {
+											if(plr.getName().equals(message[3])) {
+												found=true;
+												break;
+											}
+										}
+										if(found) {
+											messageOut= "Exist";
+										}else {
+											PlayerInfos player = new PlayerInfos(message[3]); 
+											room.AddPlayerToRoom(player);										
+											found=true;
+											messageOut= "Added";
+										}
+										
 										break;
 									}
 								}
-							}
-							if(!found) 
-							{
-								messageOut= "NoRoomFound";
 							}
 							
 							outPacket = new DatagramPacket(messageOut.getBytes(), messageOut.length(), clientAddress, clientPort);
@@ -127,10 +145,7 @@ public class Server {
 											room.map.remove(i);
 									}
 									
-								}else if(message[5].equals("DEAD")) {
-									room.decreasePlayernumber();
-									messageOut="SuccessUpdate";
-								}else {
+								}{
 									for(PlayerInfos player : room.players) {									
 										if(message[2].equals(player.getName())) {
 											player.setAction(message[4]);
@@ -139,9 +154,14 @@ public class Server {
 											}else if(message[5].equals("NOBOMB")) {
 												player.setBomb(message[5]);
 											}
-											else { 
-												player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);
+											else if(message[5].equals("DEAD")){ 
+												player.isDaed = true;
+												room.decreasePlayernumber();
+												messageOut="SuccessUpdate";
+												player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);		
 												
+											}else {
+												player.setPosition(message[5]+"-"+message[6]+"-"+message[7]);
 											}
 											messageOut="SuccessUpdate";
 											break;
@@ -157,8 +177,13 @@ public class Server {
 											messageOut=messageOut+"-PLAYER-"+player.action+"-"+player.getName()+"-"+player.getPosition()+"-"+player.getBomb();
 											
 									}else {
-										player.setPosition("STOP-"+message[5]+"-"+message[6]);
-										player.action = message[4];
+										if(!player.isDaed) {
+											player.setPosition("STOP-"+message[5]+"-"+message[6]);
+											player.action = message[4];
+										}else {
+											player.action = message[4];
+										}
+										
 									}
 								}
 							}else if(message[3].equals("GetMap")) {

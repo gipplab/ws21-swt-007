@@ -19,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 //Koordinaten und wichtige Attribute Spieles intialisieren. 
@@ -36,6 +38,7 @@ public class GamePanel {
 	private Scene scene;
 	Canvas canvas;
 	Group root;
+	Text pause;
 	public static Bomberman player;
 	public static ArrayList<ArrayList<String>> mapLayout;
 	public static int mapIndex=0;
@@ -54,6 +57,11 @@ public class GamePanel {
 		// scene.setOnKeyPressed(this);
 		gc = canvas.getGraphicsContext2D();
 
+	}
+
+	public Scene getScene() {
+		// TODO Auto-generated method stub
+		return scene;
 	}
 
 public void init() throws IOException {
@@ -82,12 +90,7 @@ public void init() throws IOException {
 					if(System.currentTimeMillis()>timeofDeath+5000) 
 					{
 						System.exit(0);
-//						Stage primaryStage= new Stage();
-//					 	root = FXMLLoader.load(getClass().getResource("Scenes/SinglePlayPanel.fxml"));
-//				    	scene = new Scene(root);
-//				    	primaryStage.setScene(scene);
-//						primaryStage.setResizable(false);
-//						primaryStage.show();
+
 						
 					}
 				}
@@ -119,21 +122,8 @@ public Bomberman getPlayer() {
 		return player;
 	}
 
-public Scene getScene() {
-		return scene;
-	}
 
-public double getSQUARE_SIZE() {
-		return SQUARE_SIZE;
-	}
 
-public double getWidth() {
-		return WIDTH;
-	}
-
-public double getHeight() {
-		return HEIGHT;
-	}
 
 public void run() {
 		drawObjekte(gc);
@@ -142,48 +132,70 @@ public void run() {
 
 	//Aktualisierung der Objekte im Spiel.
 private void update() throws InterruptedException {
+	
+	if(KeysHandler.play) {
+		if(	root.getChildren().contains(pause)) {
+			pause.setFill(Color.TRANSPARENT);
+			root.getChildren().remove(pause);
+		
+		}
 		InputManager.handlePlayerMovements(player);
 		drawBackground(gc);
 		drawObjekte(gc);
 		drawBomb(gc);
 		getScore(gc);
+	}else {
+		gc.setFont(new Font(30));
+		gc.fillText("Pause",250,300);
 		
+	}
 
 	}
 private void drawBackground(GraphicsContext gc) 
 {
 	
-	if(mapIndex==0||mapIndex==4)
-		gc.setFill(Color.WHITE);
-	else if(mapIndex==1)
+	if(mapIndex==0) {
+	for(int i=0;i<COLUMNS;i++)
+		for(int j=0;j<ROWS;j++)
+		gc.drawImage(Ressourcen.IMAGES.BG5.getImage(),i*SQUARE_SIZE,j*SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);	
+	}
+	else if(mapIndex==4) {
+
+		gc.drawImage(Ressourcen.IMAGES.SNOW1.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);	
+	}
+	else if(mapIndex==1) {
 		gc.setFill(Color.valueOf("#FFFBD3"));
-	else if (mapIndex==2||mapIndex==3)
-		gc.setFill(Color.valueOf("#b1e8fe"));
+		gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);}
+	else if(mapIndex==3||mapIndex==2) {
+		gc.drawImage(Ressourcen.IMAGES.WATER.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
+
+	}
+
 	
-	gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);	
-	//gc.drawImage(Ressourcen.IMAGES.BG5.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
 }
 
 private void getScore(GraphicsContext gc) {
-		  gc.setFill(Color.BLACK); 
+	
+			gc.setFont(new Font(10));
+		  		gc.setFill(Color.BLACK); 
 		  
-		  gc.drawImage(Ressourcen.IMAGES.BOT.getImage(),0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-		   gc.fillText("Welcome Back \n" + SinglePlayPanelController.name,40, 15	);
+		  	gc.drawImage(Ressourcen.IMAGES.playerDown[0][0],0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+		  		gc.fillText("Welcome Back \n" + SinglePlayPanelController.name,40, 15	);
 		  
-		  gc.drawImage(Ressourcen.IMAGES.HERZITEM.getImage(),4*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-	    	gc.fillText(Integer.toString(player.health),185, 21);
+		  	gc.drawImage(Ressourcen.IMAGES.HERZITEM.getImage(),4*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+	    		gc.fillText(Integer.toString(player.health),185, 21);
 	    	
-	     gc.drawImage(Ressourcen.IMAGES.BOMBITEM.getImage(),6*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-	       gc.fillText(Integer.toString(player.bombanzahl),255, 21);
+	    	gc.drawImage(Ressourcen.IMAGES.BOMBITEM.getImage(),6*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+	    		gc.fillText(Integer.toString(player.bombanzahl),255, 21);
 	    	
-	     gc.drawImage(Ressourcen.IMAGES.SPEEDITEM.getImage(),8*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-	 		gc.fillText(Double.toString(player.speed),325,21);
+	    	gc.drawImage(Ressourcen.IMAGES.SPEEDITEM.getImage(),8*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+	 			gc.fillText(Double.toString(player.speed),325,21);
 		
-	 		 gc.drawImage(Ressourcen.IMAGES.FLAMMEITEM.getImage(),10*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+	 		gc.drawImage(Ressourcen.IMAGES.FLAMMEITEM.getImage(),10*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
 		 		gc.fillText(Integer.toString(player.explosion),395,21);
 				
 		
-		gc.fillText("SCORE : " +  Integer.toString(Bot.killbot),440, 21);
+		 	gc.fillText("SCORE : " +  Integer.toString(Bot.killbot),440, 21);
 	
 		
 	}
@@ -200,11 +212,12 @@ private void drawObjekte(GraphicsContext gc) {
 			    	 timeofDeath= System.currentTimeMillis();
 			    	 System.out.println("GameOver"
 			    	 		+ "### der Spieler ist tot ###");
+			    	 Main.stopmusic();
 			     }else if( GameObjects.bomberObjects.size()==1) {
 			    		System.out.println("###Alle BOTS sind Tot ausser der Spieler ###");
 			    		 timeofDeath= System.currentTimeMillis();
 			    		 gameOver=2;
-			    	
+			    	 Main.stopmusic();
 			    	}
 			 
 			    	 
@@ -332,7 +345,7 @@ private static void loadMapFile()  {
                     	GameObjects.spawn(GamePanel.player);                    
                     break;
                     case ("B"):     // BOT
-                       Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.BOT.getImage(),false);
+                       Bot bot= new Bot(x* SQUARE_SIZE,y*SQUARE_SIZE,Ressourcen.IMAGES.playerDown[0][0],false);
                        if(bot!=null) 
                        GameObjects.spawn(bot);
                            break;
@@ -344,6 +357,7 @@ private static void loadMapFile()  {
             }
         }
     }
+
 	
  
 

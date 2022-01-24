@@ -7,11 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import application.Objects.Bomb;
 import application.Objects.Bomberman;
-import application.Objects.Bot;
 import application.Objects.Entities;
 import application.Objects.GameObjects;
 import application.Objects.Wall;
-import application.SceneControllers.SinglePlayPanelController;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -20,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 
@@ -48,7 +47,10 @@ public class GamePanelOnline {
 	public static int mainPlayerIndex=0;
 	public static int mapIndex=0;
 	public static int nbrOfPlayers=2;
+	public static int nbrOfPlayersOffline=0;
+	public static int offlineCounter=0;
 	public static ArrayList<ArrayList<String>> mapLayout;
+	String otherPlayersUpdates;
 
 	
 
@@ -75,10 +77,19 @@ public void init() throws IOException {
 	  timeline = new Timeline(new KeyFrame(Duration.millis(1000.0/30), e -> 
 	  {
 		try {
-			if(nbrOfPlayers > 1) 
+			if(nbrOfPlayers > 1 && offlineCounter <150 ) 
 			{
-				update();
+				if(nbrOfPlayers-nbrOfPlayersOffline == 1) {
+					offlineCounter=offlineCounter+1;
+				}else {
+					offlineCounter=0;
+				}
+				System.out.println("condition   "+nbrOfPlayers +"///   "+ nbrOfPlayersOffline+"///"+offlineCounter);
+				nbrOfPlayersOffline = 0;
+				update();				
 				time=System.currentTimeMillis();
+				
+				
 			}
 			else if(System.currentTimeMillis()-time>=timeToEnd)  
 			{
@@ -170,41 +181,36 @@ void update() throws InterruptedException {
 	}
 	private void drawBackground(GraphicsContext gc) 
 	{
-		// Meer  #b1e8fe
-		//ORANGE
-		if(mapIndex==0||mapIndex==4)
-			gc.setFill(Color.WHITE);
-		else if(mapIndex==1)
-			gc.setFill(Color.valueOf("#FFFBD3"));
-		else if (mapIndex==2||mapIndex==3)
-			gc.setFill(Color.valueOf("#b1e8fe"));
-		
-		gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);	
-		//gc.drawImage(Ressourcen.IMAGES.BG5.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
+		if(mapIndex==0) {
+			for(int i=0;i<COLUMNS;i++)
+				for(int j=0;j<ROWS;j++)
+				gc.drawImage(Ressourcen.IMAGES.BG5.getImage(),i*SQUARE_SIZE,j*SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);	
+			}
+			else if(mapIndex==4) {
+
+				gc.drawImage(Ressourcen.IMAGES.SNOW1.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);	
+			}
+			else if(mapIndex==1) {
+				gc.setFill(Color.valueOf("#FFFBD3"));
+				gc.fillRect(0,0 ,COLUMNS*SQUARE_SIZE, ROWS*SQUARE_SIZE);}
+			else if(mapIndex==3||mapIndex==2) {
+				gc.drawImage(Ressourcen.IMAGES.WATER.getImage(),0,0, 16*SQUARE_SIZE, 17*SQUARE_SIZE);
+
+			}
 	}
 	
 	private void getScore(GraphicsContext gc) {
+		gc.setFont(new Font(12));
 		gc.setFill(Color.BLACK); 
 		  
-		gc.drawImage(Ressourcen.IMAGES.BOT.getImage(),0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-			gc.fillText("Welcome Back \n" + SinglePlayPanelController.name,40, 15	);
-		  
-		gc.drawImage(Ressourcen.IMAGES.HERZITEM.getImage(),4*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-	    	gc.fillText(Integer.toString(player[mainPlayerIndex].health),185, 21);
+		gc.drawImage(Ressourcen.IMAGES.playerDown[0][0],0*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+			gc.fillText("Room: "+Client.roomToJoin+"\n" + player[mainPlayerIndex].getName(),40, 15	);
 	    	
-	    gc.drawImage(Ressourcen.IMAGES.BOMBITEM.getImage(),6*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-	    	gc.fillText(Integer.toString(player[mainPlayerIndex].bombanzahl),255, 21);
+	    gc.drawImage(Ressourcen.IMAGES.BOMBITEM.getImage(),4*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
+	    	gc.fillText(Integer.toString(player[mainPlayerIndex].bombanzahl),185, 21);
+	    	gc.setFont(new Font(10));
+	    	gc.fillText(otherPlayersUpdates,300,10);
 	    	
-	    gc.drawImage(Ressourcen.IMAGES.SPEEDITEM.getImage(),8*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-	 		gc.fillText(Double.toString(player[mainPlayerIndex].speed),325,21);
-		
-	 	gc.drawImage(Ressourcen.IMAGES.FLAMMEITEM.getImage(),10*SQUARE_SIZE,0* SQUARE_SIZE,SQUARE_SIZE, SQUARE_SIZE);
-			gc.fillText(Integer.toString(player[mainPlayerIndex].explosion),395,21);
-				
-		
-		gc.fillText("SCORE : " +  Integer.toString(Bot.killbot),440, 21);
-	
-		
 	}
 
 	private void drawObjekte(GraphicsContext gc) {
@@ -218,7 +224,8 @@ void update() throws InterruptedException {
 			if(this.getPlayer().getDeath()) {
 				if(gameOver==2) {
 					gameOver=1;	
-					Client.updateString =System.currentTimeMillis()+"-DEAD";
+					Client.updateString =System.currentTimeMillis()+"-DEAD-0-0";
+					Main.online= false;
 					   String messageout= "Play-"+Client.roomToJoin+"-"+Client.playerpseudo+"-SetUpdates-"+Client.updateString;
 					   	String resp= "";
 					   System.out.println(messageout);
@@ -248,6 +255,7 @@ void update() throws InterruptedException {
 void onlineUpdates(String resp) {
 		System.out.println(resp);
 		String[] message = resp.split("-");
+		otherPlayersUpdates ="";
 		int i =1;
 		while(i < message.length){
 			System.out.println(message[i]+" :i "+i);
@@ -258,6 +266,9 @@ void onlineUpdates(String resp) {
 						System.out.println(player[j].getName()+":"+i);
 						if(System.currentTimeMillis()-Double.parseDouble(message[i+1])>3000) {
 							System.out.println("Player:"+player[j].getName()+" is disconnected");
+							otherPlayersUpdates = otherPlayersUpdates + player[j].getName()+" is disconnected \n";
+							nbrOfPlayersOffline=nbrOfPlayersOffline+1;
+								
 						}else {
 							System.out.println(player[j].getName()+":"+message[i+3]);
 							switch(message[i+3]) {
@@ -265,31 +276,39 @@ void onlineUpdates(String resp) {
 								player[j].moveUp();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "DOWN": 
 								player[j].moveDown();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "RIGHT": 
 								player[j].moveRight();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "LEFT": 
 								player[j].moveLeft();
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
 							case "STOP": 
 								player[j].setEntityX(Double.parseDouble( message[i+4]));
 								player[j].setEntityY(Double.parseDouble( message[i+5]));
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is online \n";
 								i=i+6;
 								break;
+							case "DEAD": 
+								otherPlayersUpdates=otherPlayersUpdates+player[j].getName()+" is dead \n";
+								i=i+6;
 							}
 							if(message[i].equals("BOMB")) {
 								System.out.println(message[i]+"/i"+i);
@@ -311,6 +330,7 @@ void onlineUpdates(String resp) {
 			}
 			i++;
 		}
+		
 }
 void onlineMapUpdates(String resp) {
 	System.out.println(resp);
@@ -322,7 +342,7 @@ void onlineMapUpdates(String resp) {
 					}
 			nbrOfPlayers=Integer.parseInt( message[2]);
 			String[] map = null;
-			if(message.length>3)
+			if(message.length>3) {
 				map = message[3].split("/");
 			int k=0;
 			while(k < map.length) {
@@ -360,6 +380,7 @@ void onlineMapUpdates(String resp) {
             		k=k+2;
 			}				            	
 	}
+}
 }
 	 private static void loadMapFile()  {
 		
