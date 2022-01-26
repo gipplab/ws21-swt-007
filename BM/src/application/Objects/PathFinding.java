@@ -68,28 +68,27 @@ public class PathFinding {
 			 	  successors[2] = new Node(minNode.x, minNode.y + 1, minNode.g + 1, calculateH(minNode.x, minNode.y , goalX, goalY),minNode);
 			
 		  if (Character.isFree ((minNode.x*GamePanel.SQUARE_SIZE -  1.25) , minNode.y*GamePanel.SQUARE_SIZE))			
-				  successors[3] = new Node(minNode.x - 1, minNode.y, minNode.g + 1, calculateH(minNode.x , minNode.y, goalX, goalY),minNode);	
-			
-			for (int i = 0; i < successors.length; i++) {
-				if (successors[i] == null)
+				  successors[3] = new Node(minNode.x - 1, minNode.y, minNode.g + 1, calculateH(minNode.x , minNode.y, goalX, goalY),minNode);
+
+			for (Node successor : successors) {
+				if (successor == null)
 					continue;
-				if (successors[i].x == goalX && (successors[i].y == goalY)) {
-					System.out.println("Found Target.");
-					closeList.add(successors[i]);
+				if (successor.x == goalX && (successor.y == goalY)) {
+					closeList.add(successor);
 					return closeList;
-				}				
-				if (checkList(openList, successors[i]) != -1)
-					continue;								
-				int index = checkList(closeList,  successors[i]);				
+				}
+				if (checkList(openList, successor) != -1)
+					continue;
+				int index = checkList(closeList, successor);
 				if (index != -1)
 					continue;
-				else 
-					openList.add(successors[i]);	
+				else
+					openList.add(successor);
 			}	
 		}		
 
 		if (closeList.get(closeList.size() - 1).x != goalY ||closeList.get(closeList.size() - 1).y !=  goalX) {
-			  closeList.removeAll(closeList);
+			boolean b = closeList.removeAll(closeList);
 		}
 		
 		return closeList;

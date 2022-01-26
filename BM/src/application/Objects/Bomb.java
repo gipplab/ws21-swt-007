@@ -98,7 +98,7 @@ public boolean isFreeExplosion()
 	    	return true;
 	}
 
-
+//START java -jar --module-path "java\openjfx-17.0.1_windows-x64_bin-sdk\javafx-sdk-17.0.1\lib" --add-modules javafx.controls,javafx.fxml,javafx.media  Bomberman.jar
 //prüft, ob in einem Block mehrere Bomben gibt
 private Boolean BombeDuplikate() 
 {

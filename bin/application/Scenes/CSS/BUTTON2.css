@@ -1,0 +1,44 @@
+*{
+	-fx-base: #424242;
+	
+}
+.button{
+	
+	
+	-fx-effect:dropshadow(three-pass-box,pink,5,5,0,0);
+	
+}
+
+.first-butten{
+	
+	-fx-text-fill:white;
+	-fx-shape: "M150 0 L75 200 L225 200 Z";
+	-fx-background-color :#B900FF;
+	
+	
+}
+.first-butten:hover {
+	
+	-fx-text-fill:white;
+	-fx-shape: "M150 0 L75 200 L225 200 Z";
+	-fx-background-color :#2E86C1;
+	
+}
+.first-butten:pressed{
+	
+	-fx-text-fill:white;
+	-fx-shape: "M150 0 L75 200 L225 200 Z";
+	-fx-background-color :#B9770E;
+	
+	
+}
+
+.text-field{
+	-fx-text-fill:-fx-primarytext;
+	-fx-font-size:	12pt;
+	-fx-text-fill:white;
+	
+	
+}
+
+

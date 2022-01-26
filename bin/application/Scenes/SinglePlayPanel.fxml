@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneControllers.SinglePlayPanelController">
+   <children>
+      <Pane prefHeight="679.0" prefWidth="628.0">
+         <children>
+            <ImageView fitHeight="679.0" fitWidth="628.0">
+               <image>
+                  <Image url="@../img/BG2.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="MapImage" fitHeight="268.0" fitWidth="269.0" layoutX="180.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="RunRoomButton" layoutX="300.0" layoutY="603.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#RunRoomButtonIsClicked" prefHeight="43.0" prefWidth="152.0" stylesheets="@CSS/BUTTON.css" text="Run">
+               <font>
+                  <Font name="Ravie" size="22.0" />
+               </font>
+               <textFill>
+                  <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.9605262875556946" blue="0.8484649062156677" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <effect>
+                  <Glow level="0.85" />
+               </effect>
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="button" />
+               </styleClass>
+            </Button>
+            <Button fx:id="SingelPlayerBackButton" layoutX="462.0" layoutY="603.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#BackButton" prefHeight="43.0" prefWidth="141.0" stylesheets="@CSS/BUTTON.css" text="Back">
+               <font>
+                  <Font name="Ravie" size="22.0" />
+               </font>
+               <textFill>
+                  <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="0.018957345971563982">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.013888888992369175" blue="0.9013888835906982" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <effect>
+                  <Glow level="0.85" />
+               </effect>
+            </Button>
+            <Label fx:id="SinglePlayColorLabel" layoutX="14.0" layoutY="141.0" text="Color : ">
+               <font>
+                  <Font name="Ravie" size="18.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.2638888955116272" blue="0.9509259462356567" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="SinglePlayNameLabel" layoutX="14.0" layoutY="48.0" prefHeight="23.0" prefWidth="312.0" text="Player nickname :">
+               <font>
+                  <Font name="Ravie" size="18.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.25" blue="0.987500011920929" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <TextField fx:id="PlayerNicknameTextField" alignment="CENTER_RIGHT" layoutX="349.0" layoutY="38.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="170.0" stylesheets="@CSS/textfild.css">
+               <font>
+                  <Font name="Ravie" size="12.0" />
+               </font>
+               <effect>
+                  <Glow level="0.85" />
+               </effect></TextField>
+            <Button fx:id="nextMapbutton" layoutX="465.0" layoutY="333.0" mnemonicParsing="false" onAction="#nextMap" prefHeight="35.0" prefWidth="35.0" rotate="90.0" styleClass="first-butten" stylesheets="@CSS/BUTTON2.css" />
+            <Button fx:id="VorMapbutton" layoutX="129.0" layoutY="333.0" mnemonicParsing="false" onAction="#vorMap" prefHeight="35.0" prefWidth="35.0" rotate="-90.0" styleClass="first-butten" stylesheets="@CSS/BUTTON2.css" />
+            <ImageView fitHeight="59.0" fitWidth="199.0" layoutX="123.0" layoutY="82.0">
+               <image>
+                  <Image url="@../img/Farbe.png" />
+               </image>
+            </ImageView>
+            <RadioButton fx:id="WhitePlayersRadioButton" layoutX="140.0" layoutY="148.0" mnemonicParsing="false">
+               <toggleGroup>
+                  <ToggleGroup fx:id="FarbeGroup" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="BlackPlayersRadioButton" layoutX="192.0" layoutY="148.0" mnemonicParsing="false" toggleGroup="$FarbeGroup" />
+            <RadioButton fx:id="RedPlayersRadioButton" layoutX="241.0" layoutY="148.0" mnemonicParsing="false" toggleGroup="$FarbeGroup" />
+            <RadioButton fx:id="BluePlayersRadioButton" layoutX="288.0" layoutY="148.0" mnemonicParsing="false" toggleGroup="$FarbeGroup" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
