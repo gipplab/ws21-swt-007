@@ -88,7 +88,7 @@ public class PathFinding {
 		}		
 
 		if (closeList.get(closeList.size() - 1).x != goalY ||closeList.get(closeList.size() - 1).y !=  goalX) {
-			boolean b = closeList.removeAll(closeList);
+			closeList.removeAll(closeList);
 		}
 		
 		return closeList;
