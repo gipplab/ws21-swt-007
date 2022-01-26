@@ -229,9 +229,9 @@
             <Font name="Segoe Print" size="10.0" />
          </font>
       </Text>
-      <Text fx:id="T1" layoutX="12.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AIM OF " wrappingWidth="129.0">
+      <Text fx:id="T1" layoutX="31.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AIM OF " wrappingWidth="129.0">
          <font>
-            <Font name="Ravie" size="24.0" />
+            <Font name="Ravie" size="18.0" />
          </font>
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -258,9 +258,9 @@
             <Glow level="0.85" />
          </effect>
       </Text>
-      <Text fx:id="T2" layoutX="131.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE GAME" wrappingWidth="169.0">
+      <Text fx:id="T2" layoutX="124.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE GAME" wrappingWidth="169.0">
          <font>
-            <Font name="Ravie" size="24.0" />
+            <Font name="Ravie" size="18.0" />
          </font>
          <fill>
             <LinearGradient endX="0.3838862559241706" endY="1.0">
@@ -1011,7 +1011,7 @@
             <Bloom />
          </effect>
       </ImageView>
-      <ImageView fitHeight="55.0" fitWidth="93.0" layoutX="517.0" layoutY="449.0">
+      <ImageView fitHeight="55.0" fitWidth="93.0" layoutX="517.0" layoutY="447.0">
          <image>
             <Image url="@../img/P.png" />
          </image>
