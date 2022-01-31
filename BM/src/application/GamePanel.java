@@ -34,7 +34,7 @@ public class GamePanel {
 	private static BufferedReader bufferedReader;
 	public static ArrayList<Bomb> Objekte = new ArrayList<>();
 	private GraphicsContext gc;
-	private int gameOver=0;
+	public static int gameOver=0;
 	private Scene scene;
 	Canvas canvas;
 	Group root;

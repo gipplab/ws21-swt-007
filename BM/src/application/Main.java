@@ -17,8 +17,7 @@ public class Main extends Application {
 	public static Boolean  online= false;
 	BufferedReader bufferedReader;
 	
-	@Override
-	public void start(Stage primaryStage) {
+public void start(Stage primaryStage) {
 		
 		try {
 			bufferedReader=new
@@ -26,9 +25,7 @@ public class Main extends Application {
 			 String ip = new String();
 			
 			ip = bufferedReader.readLine();
-			System.out.println(ip);
-			
-		
+			System.out.println("Dein Server ist: "+ ip);
 		    if(!ip.isEmpty())	
 		    	player.SetAddress(ip); 
 		    else 

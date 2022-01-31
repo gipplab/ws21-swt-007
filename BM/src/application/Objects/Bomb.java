@@ -157,8 +157,11 @@ public void update()
 {
 	
 	if((System.currentTimeMillis()-time>=timeToExplosion&& !death)|| !isFreeExplosion()) {
-		mediaPlayer.play();
+		if(KeysHandler.playMusik)
+			mediaPlayer.play();
+		
 		death=true;
+		
 		GameObjects.tileObjects.remove(this);
 		if(player instanceof Bomberman) { 
 		@SuppressWarnings("unused")
