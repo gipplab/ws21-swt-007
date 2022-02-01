@@ -44,7 +44,7 @@ public void BombCollision(double x1, double y1)
 {
 	int a = (int) (x1 % GamePanel.SQUARE_SIZE);
 	int b= (int) (y1 % GamePanel.SQUARE_SIZE);
-	System.out.println(a+", "+ b);
+
 	if(a < GamePanel.SQUARE_SIZE/2) {
 		this.x=(int) x1-a ;
 
@@ -56,7 +56,7 @@ public void BombCollision(double x1, double y1)
 		this.y=(int) y1-b;
 
 		}
-		else {
+	else {
 			this.y=(int)y1 +(GamePanel.SQUARE_SIZE-b);
 		}
 }
