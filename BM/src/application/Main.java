@@ -29,7 +29,7 @@ public void start(Stage primaryStage) {
 		    if(!ip.isEmpty())	
 		    	player.SetAddress(ip); 
 		    else 
-		    	player.SetAddress("loocalhost"); 
+		    	player.SetAddress("localhost"); 
 			Ressourcen.readFiles();
 			Parent root = FXMLLoader.load(getClass().getResource("Scenes/LandingPage.fxml"));
 		    Scene scene = new Scene(root);
